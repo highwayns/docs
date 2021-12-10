@@ -6,7 +6,7 @@ For more information on setting up a validator, see [additional resources](./Ove
 
 ## Prerequisites
 
-- You have completed [how to run a full Terra node](https://docs.terra.money/How-to/Run-a-full-Terra-node/Hardware-requirements.html), which outlines how to install, connect, and configure a node.
+- You have completed [how to run a full Terra node](/How-to/Run-a-full-Terra-node/Hardware-requirements.html), which outlines how to install, connect, and configure a node.
 - You are familiar with [terrad](../../Reference/terrad/).
 - you have read through [the validator FAQ](./faq.md)
 - Hardware requirements: see [requirements for running a full node](../Run-a-full-Terra-node/Hardware-requirements.md).

@@ -3,7 +3,7 @@
 
 ## 先决条件
 
-- 下载并安装 [桌面版 Terra Station](/Tutorials/Get-started/Terra-Station-desktop.md)。
+- 下载并安装 [桌面版 Terra Station](/zh/Tutorials/Get-started/Terra-Station-desktop.md)。
 - 下载 [谷歌浏览器](https://www.google.com/chrome/)。
 
 ## 安装 Terra Station 扩展
@@ -14,7 +14,7 @@
 
 ## 创建一个钱包
 
-使用本教程创建一个新钱包。要连接到现有钱包，请访问 [如何连接到钱包](/How-to/Terra-Station/Wallet.md#connect-to-a-wallet-using-a-private-key)。
+使用本教程创建一个新钱包。要连接到现有钱包，请访问 [如何连接到钱包](/zh/How-to/Terra-Station/Wallet.md#connect-to-a-wallet-using-a-private-key)。
 
 1. 打开浏览器扩展，点击**新钱包**。
 
@@ -45,7 +45,7 @@
 
 ## 从交易所接收代币
 
-1. 使用任何支持 Terra 的交易所购买您的代币。要查看当前交易所列表，请访问 [集成页面](https://docs.terra.money/Reference/integrations.html#exchanges)
+1. 使用任何支持 Terra 的交易所购买您的代币。要查看当前交易所列表，请访问 [集成页面](/zh/Reference/integrations.html#exchanges)
 
 1. 从您的交易所提取 Terra 网络支持的任何代币。每次交换都不一样。请访问您的交易所网页以获取有关如何提取代币的指南。使用以下步骤作为通用指南。
 
@@ -95,4 +95,4 @@
 
 ## 下一步
 
-对于移动交易，请查看 Terra Station 移动应用程序。有关如何使用其他 Station 功能的更多指南，请访问 [How to](/How-to/Terra-Station) 部分。 
+对于移动交易，请查看 Terra Station 移动应用程序。有关如何使用其他 Station 功能的更多指南，请访问 [How to](/zh/How-to/Terra-Station) 部分。 

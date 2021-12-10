@@ -40,7 +40,7 @@
 
 ## 从交易所接收代币
 
-1. 使用任何支持 Terra 的交易所购买您的代币。要查看当前交易所列表，请访问 [集成页面](https://docs.terra.money/Reference/integrations.html#exchanges)
+1. 使用任何支持 Terra 的交易所购买您的代币。要查看当前交易所列表，请访问 [集成页面](/zh/Reference/integrations.html#exchanges)
 
 1. 从您的交易所提取 Terra 网络支持的任何代币。每次交换都不一样。请访问您的交易所网页以获取有关如何提取代币的指南。使用以下步骤作为通用指南。
 
@@ -144,4 +144,4 @@
 
 ## 下一步
 
-要在您的计算机上使用 Terra Station，请访问 [Terra Station 桌面教程](/Get-started/Terra-Station-desktop.md)。有关如何使用其他 Station 功能的更多指南，请访问 [How to](/How-to/Terra-Station) 部分。 
+要在您的计算机上使用 Terra Station，请访问 [Terra Station 桌面教程](/Get-started/Terra-Station-desktop.md)。有关如何使用其他 Station 功能的更多指南，请访问 [How to](/zh/How-to/Terra-Station) 部分。 

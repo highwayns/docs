@@ -324,12 +324,12 @@ requestAnimationFrame(function() {
                         {
                             title: "使用 Terra Station",
                             children: [
-                                "/How-to/Terra-Station/Wallet",
-                                "/How-to/Terra-Station/Testnet",
-                                "/How-to/Terra-Station/Staking",
-                                "/How-to/Terra-Station/Swap",
-                                "/How-to/Terra-Station/Governance",
-                                "/How-to/Terra-Station/Contracts",
+                                "/zh/How-to/Terra-Station/Wallet",
+                                "/zh/How-to/Terra-Station/Testnet",
+                                "/zh/How-to/Terra-Station/Staking",
+                                "/zh/How-to/Terra-Station/Swap",
+                                "/zh/How-to/Terra-Station/Governance",
+                                "/zh/How-to/Terra-Station/Contracts",
 
                             ],
                             collapsable: true,

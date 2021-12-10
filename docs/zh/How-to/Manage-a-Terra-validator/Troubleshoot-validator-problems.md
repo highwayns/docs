@@ -85,7 +85,7 @@ Linux 每个进程可以打开的默认文件数是“1024”。众所周知，`
 
     `terrad tx slashing unjail <terra> --chain-id=<chain_id> --from=<from>`
 
-- 验证器不在活动的 [验证器集](https://docs.terra.money/validators.html#delegations) 中。只有前 130 个验证者在这个集合中。要解决此问题，请增加您的总赌注，使其包含在前 130 名中。
+- 验证器不在活动的 [验证器集](/zh/validators.html#delegations) 中。只有前 130 个验证者在这个集合中。要解决此问题，请增加您的总赌注，使其包含在前 130 名中。
 
 ### 网络不对。
 

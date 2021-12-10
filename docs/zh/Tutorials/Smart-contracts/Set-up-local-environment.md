@@ -4,7 +4,7 @@
 
 ## 在本地安装 Terra Core
 
-访问 [build Terra core](/How-to/Run-a-full-Terra-node/Build-Terra-core.md) 安装最新版本的 Terra Core 以获得可用版本的 `terrad`。您将需要它来连接到您本地的 Terra 测试网络以使用智能合约。
+访问 [build Terra core](/zh/How-to/Run-a-full-Terra-node/Build-Terra-core.md) 安装最新版本的 Terra Core 以获得可用版本的 `terrad`。您将需要它来连接到您本地的 Terra 测试网络以使用智能合约。
 
 ## 下载 LocalTerra
 

@@ -6,7 +6,7 @@
 
 ## 先决条件
 
-- 您已完成[如何运行完整的 Terra 节点](https://docs.terra.money/How-to/Run-a-full-Terra-node/Hardware-requirements.html)，其中概述了如何安装、连接和配置节点。
+- 您已完成[如何运行完整的 Terra 节点](/zh/How-to/Run-a-full-Terra-node/Hardware-requirements.html)，其中概述了如何安装、连接和配置节点。
 - 你熟悉 [terrad](../../Reference/terrad/)。
 - 您已阅读[验证器常见问题解答](./faq.md)
 - 硬件要求:参见[运行完整节点的要求](../Run-a-full-Terra-node/Hardware-requirements.md)。

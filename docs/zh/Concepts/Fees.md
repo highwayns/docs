@@ -20,13 +20,13 @@ Terraswap 或其他 dApp 可能会在 Terra 网络费用之外收取自己的交
 - 未使用的燃气不予退还。
 - 交易不是根据 Gas 数量排队，而是按照收到的顺序排列。
 
-有关如何计算 gas 费用的深入说明，请访问 [terrad reference](/Reference/terrad/#fees) 页面。
+有关如何计算 gas 费用的深入说明，请访问 [terrad reference](/zh/Reference/terrad/#fees) 页面。
 
 要在浏览器中查看当前的汽油费率，请访问 [汽油费率](https://fcd.terra.dev/v1/txs/gas_prices) FCD 页面。
 
 ##稳定费
 
-稳定费是最常见的费用类型，会添加到使用 Terra 稳定币的任何交易中，不包括 [市场掉期](./glossary.md#market-swap)。此费用称为税率，介于 0.01% 至 1% 之间。每笔交易的稳定费上限为 1 SDT。当前税率可在 [税率](https://fcd.terra.dev/terra/treasury/v1beta1/tax_rate) FCD 页面上找到。有关税率及其运作方式的更多信息，请访问 [treasury module](/Reference/Terra-core/Module-specifications/spec-treasury.md)。
+稳定费是最常见的费用类型，会添加到使用 Terra 稳定币的任何交易中，不包括 [市场掉期](./glossary.md#market-swap)。此费用称为税率，介于 0.01% 至 1% 之间。每笔交易的稳定费上限为 1 SDT。当前税率可在 [税率](https://fcd.terra.dev/terra/treasury/v1beta1/tax_rate) FCD 页面上找到。有关税率及其运作方式的更多信息，请访问 [treasury module](/zh/Reference/Terra-core/Module-specifications/spec-treasury.md)。
 
 ##托宾税
 
@@ -36,6 +36,6 @@ Terraswap 或其他 dApp 可能会在 Terra 网络费用之外收取自己的交
 
 ##点差费
 
- Terra 和 Luna 之间的任何 [市场掉期](./glossary.md#market-swap) 都会增加点差费用。最低点差费为 0.5%。在极端波动时期，市场模块会调整点差费用以在 Terra 的大小之间保持 [恒定产品](/Reference/Terra-core/Module-specifications/spec-market.html#market-making-algorithm)池和 Luna 池的法币值，确保协议的稳定性。随着池达到恒定的产品平衡，传播率恢复到正常值。
+ Terra 和 Luna 之间的任何 [市场掉期](./glossary.md#market-swap) 都会增加点差费用。最低点差费为 0.5%。在极端波动时期，市场模块会调整点差费用以在 Terra 的大小之间保持 [恒定产品](/zh/Reference/Terra-core/Module-specifications/spec-market.html#market-making-algorithm)池和 Luna 池的法币值，确保协议的稳定性。随着池达到恒定的产品平衡，传播率恢复到正常值。
 
- 有关点差费用的更多信息，请访问 [市场模块](/Reference/Terra-core/Module-specifications/spec-market.md)。 
+ 有关点差费用的更多信息，请访问 [市场模块](/zh/Reference/Terra-core/Module-specifications/spec-market.md)。 

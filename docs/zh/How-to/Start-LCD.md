@@ -31,4 +31,4 @@ swagger = true
 
 有关 Terra REST API 端点的更多信息，请参阅 [Swagger 文档](https://lcd.terra.dev/swagger/)。
 
-有关配置`App.toml`的更多信息，请访问[配置常规设置](/How-to/Start-LCD.md)页面。 
+有关配置`App.toml`的更多信息，请访问[配置常规设置](/zh/How-to/Start-LCD.md)页面。 

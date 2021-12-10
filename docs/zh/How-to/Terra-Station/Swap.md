@@ -1,6 +1,6 @@
 # 铸造、燃烧或交换
 
-本指南适用于 Terra Station 中的高级交换功能。 如果这是您第一次使用 Terra Station 或者如果您想交换硬币，请按照 [Terra Station 教程](/Tutorials/Get-started/Terra-station-desktop.md) 进行操作。
+本指南适用于 Terra Station 中的高级交换功能。 如果这是您第一次使用 Terra Station 或者如果您想交换硬币，请按照 [Terra Station 教程](/zh/Tutorials/Get-started/Terra-station-desktop.md) 进行操作。
 
 ## 市场互换
 

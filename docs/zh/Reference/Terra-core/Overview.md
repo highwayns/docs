@@ -77,10 +77,10 @@ Terra Core 中的许多模块都继承自 Cosmos SDK，并通过在创世参数�
 
    - 检查所有已注册的不变量并断言它们仍然为真
 
-5. 语言机
+5. 预言机
 
-   - 如果在`VotePeriod`结束，运行[投票程序](Module-specifications/spec-oracle.md#voting-procedure)并**更新Luna Exchange Rate**。
-   - 如果在 `SlashWindow` 的末尾，**惩罚 [missed](Module-specifications/spec-slashing.md) 超过允许的 `VotePeriod`s 的验证器**。
+   - 如果在`VotePeriod`结束，运行[投票程序](/zh/Module-specifications/spec-oracle.md#voting-procedure)并**更新Luna Exchange Rate**。
+   - 如果在 `SlashWindow` 的末尾，**惩罚 [missed](/zh/Module-specifications/spec-slashing.md) 超过允许的 `VotePeriod`s 的验证器**。
 
 6. 治理
 
@@ -88,7 +88,7 @@ Terra Core 中的许多模块都继承自 Cosmos SDK，并通过在创世参数�
 
 7. 市场
 
-   - [补充](Module-specifications/spec-market.md#end-block) 流动性池，**允许点差费用减少**。
+   - [补充](/zh/Module-specifications/spec-market.md#end-block) 流动性池，**允许点差费用减少**。
 
 8. 国库
 

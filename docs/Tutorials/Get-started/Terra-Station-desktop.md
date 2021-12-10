@@ -46,7 +46,7 @@ Congratulations! You have just created a Terra Station wallet.
 
 ## Receive tokens from an exchange
 
-1. Purchase your tokens using any exchange that supports Terra. To view a list of current exchanges, visit the [Integrations page](https://docs.terra.money/Reference/integrations.html#exchanges)
+1. Purchase your tokens using any exchange that supports Terra. To view a list of current exchanges, visit the [Integrations page](/Reference/integrations.html#exchanges)
 
 1. Withdraw any token supported by the Terra network from your exchange. Every exchange is different. Please visit your exchange's web page for guides on how to withdraw tokens. Use the following steps as a generic guide.
 

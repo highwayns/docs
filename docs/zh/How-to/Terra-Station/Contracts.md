@@ -1,6 +1,6 @@
 # 使用智能合约
 
-智能合约是 Terra Station 的一项高级功能。如果您是第一次使用 Terra Station，请遵循 [Terra Station 教程](/Tutorials/Get-started/Terra-station-desktop.md)。
+智能合约是 Terra Station 的一项高级功能。如果您是第一次使用 Terra Station，请遵循 [Terra Station 教程](/zh/Tutorials/Get-started/Terra-station-desktop.md)。
 
 ## 先决条件
 

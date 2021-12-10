@@ -1,6 +1,6 @@
 # Terra 协议
 
-Terra 协议是用于 [算法稳定币](/Concepts/glossary.md#algorithmic-stablecoin) 的领先的去中心化和开源公共区块链协议。结合公开市场 [arbitrage](/Concepts/glossary.md#arbitrage) 激励和去中心化预言机投票，Terra 协议创建了稳定币，可以始终如一地跟踪任何法定货币的价格。用户可以在 Terra 区块链上即时消费、保存、交易或交换 Terra 稳定币。 Luna 为其持有者提供质押奖励和治理权。 Terra 生态系统是一个快速扩展的去中心化应用网络，创造了对 Terra 的稳定需求并提高了 Luna 的价格。
+Terra 协议是用于 [算法稳定币](/zh/Concepts/glossary.md#algorithmic-stablecoin) 的领先的去中心化和开源公共区块链协议。结合公开市场 [arbitrage](/zh/Concepts/glossary.md#arbitrage) 激励和去中心化预言机投票，Terra 协议创建了稳定币，可以始终如一地跟踪任何法定货币的价格。用户可以在 Terra 区块链上即时消费、保存、交易或交换 Terra 稳定币。 Luna 为其持有者提供质押奖励和治理权。 Terra 生态系统是一个快速扩展的去中心化应用网络，创造了对 Terra 的稳定需求并提高了 Luna 的价格。
 
 ## Terra 和 Luna
 
@@ -20,7 +20,7 @@ Terra 协议是用于 [算法稳定币](/Concepts/glossary.md#algorithmic-stable
 
 ### 扩张和收缩
 
-将整个 Terra 经济想象成两个池:一个用于 Terra，一个用于 Luna。为了维持 Terra 的价格，Luna 供应池会增加或减少 Terra 的供应量。用户燃烧 Luna 来铸造 Terra 和燃烧 Terra 来铸造 Luna，所有这些都受到协议算法[市场模块](/Reference/Terra-core/Module-specifications/spec-market.html) 的激励。
+将整个 Terra 经济想象成两个池:一个用于 Terra，一个用于 Luna。为了维持 Terra 的价格，Luna 供应池会增加或减少 Terra 的供应量。用户燃烧 Luna 来铸造 Terra 和燃烧 Terra 来铸造 Luna，所有这些都受到协议算法[市场模块](/zh/Reference/Terra-core/Module-specifications/spec-market.html) 的激励。
 
 - **扩张**:当 Terra 的价格相对于其挂钩较高时，供应太少而需求太高。该协议鼓励用户燃烧 Luna 和铸造 Terra。 Terra 的新供应使其池更大，平衡供需。用户从燃烧的 Luna 中铸造更多的 Terra，直到 Terra 达到其目标价格。 Luna 池在此过程中变小，从而提高了 Luna 的价格。
 
@@ -30,7 +30,7 @@ Luna 是稳定资产 Terra 的可变对应物。通过调节供应，Luna 的价
 
 ###市场模块和套利
 
-Terra 的价格稳定性是通过协议的算法[市场模块](/reference/terra-core/module-specifications/spec-market.md) 实现的，它通过套利机会激励 Terra 的铸造或燃烧。当用户从市场之间的价格差异中获利时，就会发生套利。
+Terra 的价格稳定性是通过协议的算法[市场模块](/zh/reference/terra-core/module-specifications/spec-market.md) 实现的，它通过套利机会激励 Terra 的铸造或燃烧。当用户从市场之间的价格差异中获利时，就会发生套利。
 
 Terra 协议的市场模块使用户始终可以用价值 1 美元的 Luna 交易 1 UST，反之亦然，激励用户维持 Terra 的价格。同样的原则适用于所有 Terra 稳定币面额。
 
@@ -53,9 +53,9 @@ Terra 协议中的所有铸币税都被烧毁，使 Luna 具有通货紧缩的�
 
 ## 验证器
 
-验证者是 Terra [区块链](/Concepts/glossary.md#blockchain) 的矿工。他们负责保护 Terra 区块链并确保其准确性。验证者运行称为全节点的程序，允许他们验证在 Terra 网络上进行的每笔交易。验证者提出区块，对其有效性进行投票，并将每个新区块添加到链中，以换取交易费用的抵押奖励。用户可以将他们的 Luna 质押给验证者以换取质押奖励。验证者在 Terra 协议的治理中也发挥着重要作用。
+验证者是 Terra [区块链](/zh/Concepts/glossary.md#blockchain) 的矿工。他们负责保护 Terra 区块链并确保其准确性。验证者运行称为全节点的程序，允许他们验证在 Terra 网络上进行的每笔交易。验证者提出区块，对其有效性进行投票，并将每个新区块添加到链中，以换取交易费用的抵押奖励。用户可以将他们的 Luna 质押给验证者以换取质押奖励。验证者在 Terra 协议的治理中也发挥着重要作用。
 
-有关验证器的更多信息，请访问 [验证器常见问题](/How-to/Manage-a-Terra-validator/faq.md)。
+有关验证器的更多信息，请访问 [验证器常见问题](/zh/How-to/Manage-a-Terra-validator/faq.md)。
 
 ### 共识
 
@@ -80,7 +80,7 @@ Terra 协议只允许前 130 名验证者参与共识。验证者的等级由他
 委托人是希望在不运行完整节点的情况下从共识中获得奖励的用户。任何质押 Luna 的用户都是委托人。委托人将他们的 Luna 质押给验证人，增加验证人的权重或总质押。作为回报，委托人会收到一部分交易费用作为抵押奖励。 
 
 :::tip 谁拥有抵押的 Luna？
-Staked Luna 永远不会离开委托人的财产。尽管不能自由交易，但质押的 Luna 永远不会归验证者所有。有关更多信息，请访问 [验证器常见问题](/How-to/Manage-a-Terra-validator/faq.md#can-a-validator-run-away-with-a-delegators-luna)
+Staked Luna 永远不会离开委托人的财产。尽管不能自由交易，但质押的 Luna 永远不会归验证者所有。有关更多信息，请访问 [验证器常见问题](/zh/How-to/Manage-a-Terra-validator/faq.md#can-a-validator-run-away-with-a-delegators-luna)
 :::
 
 ### Luna 的阶段
@@ -97,7 +97,7 @@ Luna存在于以下三个词组中:
 
 通常，术语绑定、抵押和委托可以互换使用，因为它们发生在同一步骤中。委托人将 Luna 委托给验证人，Luna 与验证人绑定，绑定的 Luna 被添加到验证人的股份中。
 
-委托人可以使用 Terra Station 中的委托功能将 Luna 绑定到 [active set](/Concepts/glossary.md#active-set) 中的任何验证器。委托人在与验证人绑定或质押的那一刻就开始获得质押奖励。
+委托人可以使用 Terra Station 中的委托功能将 Luna 绑定到 [active set](/zh/Concepts/glossary.md#active-set) 中的任何验证器。委托人在与验证人绑定或质押的那一刻就开始获得质押奖励。
 
 ### 解绑
 
@@ -131,7 +131,7 @@ Terra 协议通过质押奖励来激励验证者和委托者。 Staking 奖励�
 有关费用的更多信息，请访问 [费用页面](./fees.md)。
 
 在每个区块结束时，所有交易费用都会按比例分配给每个验证者及其委托人。验证者可以保留一部分奖励来​​支付他们的服务。这部分称为佣金。其余的奖励将根据委托人的质押数量分配给委托人。
-Staking 奖励在 Terra 协议的稳定性中也起着关键作用。在波动期间，Terra 协议会调整税率以维持稳定的挖矿激励。这个机制在[treasury module](/Reference/Terra-core/Module-specifications/spec-treasury.md)中有详细的描述。无论市场波动如何，稳定的回报确保稳定的 Staking 需求。 Staking 锁定系统价值，确保 Terra 价格的长期和短期稳定性。 
+Staking 奖励在 Terra 协议的稳定性中也起着关键作用。在波动期间，Terra 协议会调整税率以维持稳定的挖矿激励。这个机制在[treasury module](/zh/Reference/Terra-core/Module-specifications/spec-treasury.md)中有详细的描述。无论市场波动如何，稳定的回报确保稳定的 Staking 需求。 Staking 锁定系统价值，确保 Terra 价格的长期和短期稳定性。 
 
 
 ### 削减
@@ -150,11 +150,11 @@ Staking 奖励在 Terra 协议的稳定性中也起着关键作用。在波动�
 
 验证者相互密切监视，并可以提交不当行为的证据。一旦发现，行为不端的验证者将被削减一小部分资金。违规的验证者也将在一段时间内被监禁或被排除在共识之外。即使是升级导致的故障或停机等简单问题也可能导致大幅削减。
 
-有关削减的更多信息，请访问 [削减模块](/Reference/Terra-core/Module-specifications/spec-slashing.md)。
+有关削减的更多信息，请访问 [削减模块](/zh/Reference/Terra-core/Module-specifications/spec-slashing.md)。
 
 ## 治理
 
-Terra 协议是一个由社区成员管理的去中心化公共 [区块链](/Concepts/glossary.md#blockchain)。治理是允许用户和验证者对 Terra 协议进行更改的民主过程。社区成员提交、投票和实施提案。
+Terra 协议是一个由社区成员管理的去中心化公共 [区块链](/zh/Concepts/glossary.md#blockchain)。治理是允许用户和验证者对 Terra 协议进行更改的民主过程。社区成员提交、投票和实施提案。
 
 ### 提案
 
@@ -173,7 +173,7 @@ Terra 协议是一个由社区成员管理的去中心化公共 [区块链](/Con
 
 社区成员用他们质押的 Luna 投票。一个抵押的 Luna 等于一票。如果用户未能指定投票，他们的投票将默认给他们所抵押的验证者。除非委托人指定，否则验证人会用他们的全部股份进行投票。因此，每个委托人根据自己的喜好进行投票非常重要。
 
-以下是治理过程的基本概要。访问 [治理模块](/Reference/Terra-core/Module-specifications/spec-governance.md) 了解更多详细信息。
+以下是治理过程的基本概要。访问 [治理模块](/zh/Reference/Terra-core/Module-specifications/spec-governance.md) 了解更多详细信息。
 
 1. 用户提交提案，两周充值期开始。
 2. 用户存入 Luna 作为抵押品来支持该提案。一旦存入 50 Luna 的最低门槛，此期限就会结束。存款是为了防止垃圾邮件。

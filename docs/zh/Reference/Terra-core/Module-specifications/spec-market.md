@@ -91,7 +91,7 @@ $$Pool_{Luna} = ({Pool_{Base}})^2 / Pool_{Terra}$$
 
 ### 铸币税
 
-当 Luna 交换到 Terra 时，被协议重新捕获的 Luna 称为 seigniorage——发行新 Terra 产生的价值。每个时期结束时的总铸币税被计算并重新引入经济，作为汇率预言机的选票奖励和财政部模块的社区池，更完整地描述 [here](/Reference/Terra-core/Module-spec/spec-treasury.html#k-settleseigniorage）。
+当 Luna 交换到 Terra 时，被协议重新捕获的 Luna 称为 seigniorage——发行新 Terra 产生的价值。每个时期结束时的总铸币税被计算并重新引入经济，作为汇率预言机的选票奖励和财政部模块的社区池，更完整地描述 [here](/zh/Reference/Terra-core/Module-spec/spec-treasury.html#k-settleseigniorage）。
 
 ::: 警告 注意:
 从 Columbus-5 开始，所有铸币税都被烧毁，社区资金池不再被资助。掉期费被用作汇率预言机的投票奖励。
@@ -216,4 +216,4 @@ Terra 和 Luna 流动性池的初始起始大小。
 - type: `Dec`
 - default: 0.35%
 
-在 Terra 货币之间交换的额外费用（现货交易）。 汇率不同，取决于面额。 例如，虽然大多数面额的税率为 0.35%，但 MNT 的税率为 2%。 要查看费率，请[查询预言机](/Reference/terrad/subcommands.html#query-oracle-tobin-taxes)。
+在 Terra 货币之间交换的额外费用（现货交易）。 汇率不同，取决于面额。 例如，虽然大多数面额的税率为 0.35%，但 MNT 的税率为 2%。 要查看费率，请[查询预言机](/zh/Reference/terrad/subcommands.html#query-oracle-tobin-taxes)。

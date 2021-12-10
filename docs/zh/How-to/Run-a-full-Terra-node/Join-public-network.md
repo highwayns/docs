@@ -114,7 +114,7 @@ terrad status
 - 一旦您的全节点同步到当前区块高度，它就会出现在 [全节点列表](https://terra.stake.id/) 上。
 - 要在测试期间更快地同步，请参阅[用于测试的节点同步](#node-sync-for-testing)
 
-恭喜！您已作为全节点操作员成功加入网络。如果您是验证者，请继续[管理 Terra 验证者](/How-to/Manage-a-Terra-validator/Overview.html) 以了解后续步骤。
+恭喜！您已作为全节点操作员成功加入网络。如果您是验证者，请继续[管理 Terra 验证者](/zh/How-to/Manage-a-Terra-validator/Overview.html) 以了解后续步骤。
 
 ### 使用数据备份（推荐用于主网）
 
@@ -194,4 +194,4 @@ terrad start --x-crisis-skip-assert-invariants
 
 :::
 
-有关种子模式和 p2p 设置，请访问 [其他设置页面](/How-to/Run-a-full-Terra-node/Configure-general-settings.html#additional-settings)。
+有关种子模式和 p2p 设置，请访问 [其他设置页面](/zh/How-to/Run-a-full-Terra-node/Configure-general-settings.html#additional-settings)。

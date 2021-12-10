@@ -3,7 +3,7 @@
 验证者可以建立一个私有 Terra 网络，以便在加入公共网络之前熟悉运行 Terra 全节点。
 
 ::: 提示 LocalTerra
-如果您是开发人员并且想要为智能合约设置本地的、支持 WASM 的私有测试网，请访问 [下载 LocalTerra](/Tutorials/Smart-contracts/Set-up-local-environment.html#download-localterra)。
+如果您是开发人员并且想要为智能合约设置本地的、支持 WASM 的私有测试网，请访问 [下载 LocalTerra](/zh/Tutorials/Smart-contracts/Set-up-local-environment.html#download-localterra)。
 :::
 
 ##创建单个节点

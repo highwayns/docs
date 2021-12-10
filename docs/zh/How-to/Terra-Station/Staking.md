@@ -1,6 +1,6 @@
 # 管理委托
 
-使用本指南管理您在 Terra Station 中的质押委托。要了解如何委托或提取奖励，请访问 Terra Station [桌面](/Tutorials/Get-started/Terra-Station-desktop.md) 或 [mobile](/Tutorials/Get-started/Terra-Station-mobile。 md) 教程。
+使用本指南管理您在 Terra Station 中的质押委托。要了解如何委托或提取奖励，请访问 Terra Station [桌面](/zh/Tutorials/Get-started/Terra-Station-desktop.md) 或 [mobile](/zh/Tutorials/Get-started/Terra-Station-mobile。 md) 教程。
 
 ## 重新委托
 

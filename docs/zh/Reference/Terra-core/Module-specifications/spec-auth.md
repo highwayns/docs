@@ -12,7 +12,7 @@ Auth 模块从 [`Treasury`](./spec-treasury.md) 模块读取当前有效的 `Tax
 
 ### 汽油费
 
-与任何其他交易一样，[`MsgSend`](./spec-bank.md#msgsend) 和 [`MsgMultiSend`](./spec-bank.md#msgmultisend) 支付 gas 费用，其大小取决于验证者的偏好（每个验证者设置自己的最低汽油费）和交易的复杂性。 [gas 和费用的注释](/Reference/terrad/#fees) 更详细地解释了 gas 是如何计算的。这里要注意的重要细节是，gas 费用是在交易出站时由发件人指定的。
+与任何其他交易一样，[`MsgSend`](./spec-bank.md#msgsend) 和 [`MsgMultiSend`](./spec-bank.md#msgmultisend) 支付 gas 费用，其大小取决于验证者的偏好（每个验证者设置自己的最低汽油费）和交易的复杂性。 [gas 和费用的注释](/zh/Reference/terrad/#fees) 更详细地解释了 gas 是如何计算的。这里要注意的重要细节是，gas 费用是在交易出站时由发件人指定的。
 
 ### 稳定费
 

@@ -1,6 +1,6 @@
 # 管理 Terra Station 钱包
 
-本指南适用于 Terra Station 钱包的高级功能。如果这是您第一次使用 Terra Station，请遵循 [Terra Station 教程](/Tutorials/Get-started/Terra-station-desktop.md)。
+本指南适用于 Terra Station 钱包的高级功能。如果这是您第一次使用 Terra Station，请遵循 [Terra Station 教程](/zh/Tutorials/Get-started/Terra-station-desktop.md)。
 
 ##选择一个钱包
 

@@ -1,4 +1,4 @@
-# 语言机反馈
+# 预言机反馈
 
 以下代码段演示了如何使用 [LocalTerra](https://github.com/terra-money/LocalTerra) 网络使用 Terra.js 创建一个简单的价格预言机馈送器。 此示例中未显示价格。 它只是跟踪公共 LCD 节点当前注册的预言机价格并将其提交给本地测试网。
 

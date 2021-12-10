@@ -83,7 +83,7 @@ The validator might not be active for one of the following reasons:
 
     `terrad tx slashing unjail <terra> --chain-id=<chain_id> --from=<from>`
 
-- The validator is not in the active [validator set](https://docs.terra.money/validators.html#delegations). Only the top 130 validators are in this set. To fix this problem, increase your total stake so that it is included in the top 130.
+- The validator is not in the active [validator set](/validators.html#delegations). Only the top 130 validators are in this set. To fix this problem, increase your total stake so that it is included in the top 130.
 
 ### The network is wrong.
 

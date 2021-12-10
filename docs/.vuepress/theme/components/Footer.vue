@@ -64,13 +64,13 @@
       <ul class="developers">
         <li>Luna</li>
         <li>
-          <a href="https://docs.terra.money/Concepts/Protocol.html#terra-and-luna" target="_blank">What is Luna?</a>
+          <a href="/Concepts/Protocol.html#terra-and-luna" target="_blank">What is Luna?</a>
         </li>
         <li>
-          <a href="https://docs.terra.money/Reference/integrations.html#exchanges" target="_blank">Exchanges</a>
+          <a href="/Reference/integrations.html#exchanges" target="_blank">Exchanges</a>
         </li>
         <li>
-          <a href="https://docs.terra.money/Reference/integrations.html#wallets" target="_blank">Wallets</a>
+          <a href="/Reference/integrations.html#wallets" target="_blank">Wallets</a>
         </li>
       </ul>
       <ul class="developers">
@@ -85,10 +85,10 @@
           <a href="https://github.com/terra-money" target="_blank">Github</a>
         </li>
         <li>
-          <a href="https://docs.terra.money/" target="_blank">Documentation</a>
+          <a href="/" target="_blank">Documentation</a>
         </li>
         <li>
-          <a href="https://docs.terra.money/#sdks-for-developers" target="_blank">SDKs</a>
+          <a href="/#sdks-for-developers" target="_blank">SDKs</a>
         </li>
         <li>
           <a href="https://github.com/terra-money/TIPs" target="_blank">TIPs</a>
@@ -97,7 +97,7 @@
       <ul class="developers">
         <li>Validators</li>
         <li>
-          <a href="https://docs.terra.money/How-to/Manage-a-Terra-validator/Overview.html" target="_blank">Validator Guide</a>
+          <a href="/How-to/Manage-a-Terra-validator/Overview.html" target="_blank">Validator Guide</a>
         </li>
         <li>
           <a href="https://github.com/terra-money/validator-profiles" target="_blank">Profiles</a>

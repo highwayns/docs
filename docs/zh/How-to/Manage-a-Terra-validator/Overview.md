@@ -18,7 +18,7 @@ Terra 核心由 Tendermint 共识提供支持。验证者运行全节点，通�
 
 如果验证者双重签名、经常离线或不参与治理，他们质押的 Luna（包括委托给他们的用户的 Luna）可能会被削减。处罚会根据违规的严重程度而有所不同。
 
-有关验证器的更多一般信息，请访问概念页面的 [验证器部分](/Concepts/Protocol.md#validators)。
+有关验证器的更多一般信息，请访问概念页面的 [验证器部分](/zh/Concepts/Protocol.md#validators)。
 
 ## 其他资源
 

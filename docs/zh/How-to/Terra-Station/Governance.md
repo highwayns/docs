@@ -1,6 +1,6 @@
 # 参与治理
 
-治理是参与 Terra 社区的重要组成部分。使用以下信息了解如何在 Terra Station 中投票和提交治理提案。有关治理和投票选项的更多信息，请访问概念页面的[治理部分](/Concepts/Protocol.html#governance)。
+治理是参与 Terra 社区的重要组成部分。使用以下信息了解如何在 Terra Station 中投票和提交治理提案。有关治理和投票选项的更多信息，请访问概念页面的[治理部分](/zh/Concepts/Protocol.html#governance)。
 
 ## 对提案进行投票
 
@@ -25,7 +25,7 @@
 在达到 50 Luna 的最低存款后，用户可以对提案进行投票。为了帮助推动提案进行投票，请将 Luna 存入提案。
 
 :::警告押金和退款
-虽然大多数存款得到退还，但一些存款被烧毁。有关哪些存款被烧毁的更多信息，请访问概念页面的[治理部分](/Concepts/Protocol.html#governance)。
+虽然大多数存款得到退还，但一些存款被烧毁。有关哪些存款被烧毁的更多信息，请访问概念页面的[治理部分](/zh/Concepts/Protocol.html#governance)。
 :::
 
 1. 打开 Terra Station 并连接您的钱包。在侧边栏中，单击 **Governance**。
@@ -45,7 +45,7 @@
 ## 创建一个新的提案
 
 ::: 警告避免不必要的提议
-为防止不必要的提案或系统滥用，所有治理提案必须至少获得 50 Luna 的保证金。如果总票数的 33.4% 为“NoWithVeto”、“法定人数”未达到或未达到最低存款额，则存款将被销毁。所有其他投票结果都会退还押金。有关存款和退款的更多信息，请访问概念页面的[治理部分](/Concepts/Protocol.html#governance)。
+为防止不必要的提案或系统滥用，所有治理提案必须至少获得 50 Luna 的保证金。如果总票数的 33.4% 为“NoWithVeto”、“法定人数”未达到或未达到最低存款额，则存款将被销毁。所有其他投票结果都会退还押金。有关存款和退款的更多信息，请访问概念页面的[治理部分](/zh/Concepts/Protocol.html#governance)。
 :::
 
 1. 打开 Terra Station 并连接您的钱包。在侧边栏中，单击 **Governance**。
@@ -57,7 +57,7 @@
 :::warning 提案警告
 
 在上传任何提案之前，请尝试在 [Terra Agora 研究论坛](https://agora.terra.money) 上获得社区反馈。
-不要使用文本建议来建议参数更改。有关更多信息，请访问 [治理模块参考页面](/Reference/Terra-core/Module-specifications/spec-governance.md)。
+不要使用文本建议来建议参数更改。有关更多信息，请访问 [治理模块参考页面](/zh/Reference/Terra-core/Module-specifications/spec-governance.md)。
 :::
 
 4. 单击**下一步**。
@@ -66,4 +66,4 @@
 
 6. 输入您的密码并点击**Propose**。
 
-您的提案将进入两周的存款期。在达到 50 Luna 的最低存款后，您的提案将进入一周的投票期。有关治理的更多信息，请访问概念页面的[治理部分](/Concepts/Protocol.html#governance)。 
+您的提案将进入两周的存款期。在达到 50 Luna 的最低存款后，您的提案将进入一周的投票期。有关治理的更多信息，请访问概念页面的[治理部分](/zh/Concepts/Protocol.html#governance)。 

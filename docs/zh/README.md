@@ -2,7 +2,7 @@
 
 欢迎阅读 Terra 的官方文档，这是一个支持货币创新的去中心化金融基础设施。 Terra 通过其稳定币协议、预言机系统、智能合约和大规模用户采用计划为新的数字经济提供了基础构建块。 
 <div class="cards twoColumn">
-  <a href="/Concepts/Protocol.html" class="card">
+  <a href="/zh/Concepts/Protocol.html" class="card">
     <img src="/img/icon_terra.svg"/>
     <div class="title">
       What is Terra?
@@ -11,7 +11,7 @@
       If this is your first time learning about Terra, start here.
     </div>
   </a>
-  <a href="/Concepts/Protocol.html#terra-and-luna" class="card">
+  <a href="/zh/Concepts/Protocol.html#terra-and-luna" class="card">
     <img src="/img/icon_luna.svg"/>
     <div class="title">
       What is Luna?
@@ -20,7 +20,7 @@
       Learn about Luna, the native staking asset that powers the Terra ecosystem.
     </div>
   </a>
-  <a href="/Concepts/Protocol.html#stablecoin" class="card">
+  <a href="/zh/Concepts/Protocol.html#stablecoin" class="card">
     <img src="/img/icon_stable.svg"/>
     <div class="title">
       Stability Mechanisms
@@ -29,7 +29,7 @@
       Learn about how Terra achieves price-stability while ensuring steady increase in validator incentives.
     </div>
   </a>
-  <a href="/How-to/Run-a-full-Terra-node/Hardware-requirements.html" class="card">
+  <a href="/zh/How-to/Run-a-full-Terra-node/Hardware-requirements.html" class="card">
     <img src="/img/icon_node.svg"/>
     <div class="title">
       Run a Full Node
@@ -38,7 +38,7 @@
       Learn how to participate in the Terra network by running your own full Terra node.
     </div>
   </a>
-  <a href="/Reference/Terra-core/Overview.html" class="card">
+  <a href="/zh/Reference/Terra-core/Overview.html" class="card">
     <img src="/img/icon_core.svg"/>
     <div class="title">
       Contribute to Core
@@ -47,7 +47,7 @@
       Hack on the latest version of Terra core, the node software for Terra.
     </div>
   </a>
-  <a href="/How-to/Manage-a-Terra-validator/Overview.html" class="card">
+  <a href="/zh/How-to/Manage-a-Terra-validator/Overview.html" class="card">
     <img src="/img/icon_validator.svg"/>
     <div class="title">
       Run a validator
@@ -56,7 +56,7 @@
       Become a validator and earn delegation commissions in exchange for helping secure the network.
     </div>
   </a>
-  <a href="/Tutorials/Smart-contracts/Overview.html" class="card">
+  <a href="/zh/Tutorials/Smart-contracts/Overview.html" class="card">
     <img src="/img/icon_smartcontract.svg"/>
     <div class="title">
       Smart Contracts
@@ -65,7 +65,7 @@
       Build dApps that leverage the robust infrastructure for decentralized finance provided by Terra.
     </div>
   </a>
-  <a href="/Reference/integrations.html" class="card">
+  <a href="/zh/Reference/integrations.html" class="card">
     <img src="/img/icon_apps.svg"/>
     <div class="title">
       Integrations

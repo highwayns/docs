@@ -2,7 +2,7 @@
 
 本教程将引导您完成使用 Terra Station（Terra 的官方桌面钱包）的过程。
 
-有关如何使用 Station 高级功能的更多指南，请访问 [如何](/How-to/Terra-Station/Wallet.html) 部分。
+有关如何使用 Station 高级功能的更多指南，请访问 [如何](/zh/How-to/Terra-Station/Wallet.html) 部分。
 
 ## 安装 Terra Station
 
@@ -46,7 +46,7 @@
 
 ## 从交易所接收代币
 
-1. 使用任何支持 Terra 的交易所购买您的代币。要查看当前交易所列表，请访问 [集成页面](https://docs.terra.money/Reference/integrations.html#exchanges)
+1. 使用任何支持 Terra 的交易所购买您的代币。要查看当前交易所列表，请访问 [集成页面](/zh/Reference/integrations.html#exchanges)
 
 1. 从您的交易所提取 Terra 网络支持的任何代币。每次交换都不一样。请访问您的交易所网页以获取有关如何提取代币的指南。使用以下步骤作为通用指南。
 
@@ -136,4 +136,4 @@
 
 要开始使用 Terra 生态系统提供的众多 dApp 中的任何一个，请查看 Terra Station Chrome 浏览器扩展程序。对于移动交易，请查看 Terra Station 移动应用程序。
 
-有关如何使用其他 Station 功能的更多指南，请访问 [How to](/How-to/Terra-Station/Wallet.html) 部分。
+有关如何使用其他 Station 功能的更多指南，请访问 [How to](/zh/How-to/Terra-Station/Wallet.html) 部分。

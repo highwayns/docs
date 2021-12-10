@@ -179,7 +179,7 @@
 [Terra public FCD](https://fcd.terra.dev/swagger):Terra 的完整客户端守护进程<br>
 [Terra 公共 LCD](https://lcd.terra.dev/swagger/):Terra 的轻客户端守护进程<br>
 [Easy2stake public LCD](https://terra-lcd.easy2stake.com/82F438G9UNMwD5bwmycR/):Terra<br>的easy2stake轻客户端守护进程
-[RPC endpoints](/Reference/endpoints.md):推荐的RPC端点列表<br>
+[RPC endpoints](/zh/Reference/endpoints.md):推荐的RPC端点列表<br>
 
 ## 钱包
 

@@ -2,7 +2,7 @@
 
 使用以下信息来设置和管理您的生产级完整 Terra 节点。
 
-有关运行验证器节点的信息，请访问 [验证器指南](/How-to/Manage-a-Terra-validator/Overview.md)。
+有关运行验证器节点的信息，请访问 [验证器指南](/zh/How-to/Manage-a-Terra-validator/Overview.md)。
 
 :::warning 推荐的操作系统
 本指南仅针对基于 RPM 的 Linux 发行版进行了测试。 为确保您成功设置生产环境，请考虑在基于 RPM 的 Linux 系统上设置它。
@@ -32,7 +32,7 @@
 
 附加端口:
 
-- `1317`:[Lite Client Daemon](/How-to/Start-LCD.md) (LCD) 的默认端口，可以由 `terrad rest-server` 执行。 LCD 提供了一个 HTTP RESTful API 层，以允许应用程序和服务通过 RPC 与您的“terrad”实例进行交互。有关使用示例，请参阅 [Terra REST API](https://lcd.terra.dev/swagger/)。除非你有使用它，否则你不需要打开这个端口。
+- `1317`:[Lite Client Daemon](/zh/How-to/Start-LCD.md) (LCD) 的默认端口，可以由 `terrad rest-server` 执行。 LCD 提供了一个 HTTP RESTful API 层，以允许应用程序和服务通过 RPC 与您的“terrad”实例进行交互。有关使用示例，请参阅 [Terra REST API](https://lcd.terra.dev/swagger/)。除非你有使用它，否则你不需要打开这个端口。
 
 - `26660`:与[Prometheus](https://prometheus.io)数据库交互的默认端口，可用于监控环境。在默认配置中，此端口未打开。
 
