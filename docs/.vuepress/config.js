@@ -407,8 +407,8 @@ requestAnimationFrame(function() {
                             title: "Ecosystem",
                             collapsable: true,
                             children: [
-                                "/Reference/ecosystem",
-                                "/Reference/Terra-Delegation-Program/terra-delegation-program.md",
+                                "/zh/Reference/ecosystem",
+                                "/zh/Reference/Terra-Delegation-Program/terra-delegation-program.md",
                             ],
                         },
                         "/zh/Reference/endpoints.md",
