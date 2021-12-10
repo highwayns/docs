@@ -12,12 +12,12 @@ Terra 的费用授予模块继承自 Cosmos SDK 的 [`feegrant`](https://docs.co
 
 `Grant` 存储在 KVStore 中以记录具有完整上下文的授权。
 
-每个 `grant` 都包含以下信息：
+每个 `grant` 都包含以下信息:
 
 - `granter`: The account address that gives permission to the grantee.
 - `grantee`: The beneficiary account address.
 - `allowance`: The [type of fee allowance]
-`Allowance` 接受一个实现 `FeeAllowanceI` 编码为 `Any` 类型的接口，如下例所示： 
+`Allowance` 接受一个实现 `FeeAllowanceI` 编码为 `Any` 类型的接口，如下例所示: 
 
   ```
     // allowance can be any of basic and filtered fee allowance.
@@ -25,7 +25,7 @@ Terra 的费用授予模块继承自 Cosmos SDK 的 [`feegrant`](https://docs.co
   }
   ```
 
-以下示例显示了 `FeeAllowanceI`： 
+以下示例显示了 `FeeAllowanceI`: 
 
   ```
   type FeeAllowanceI interface {
@@ -73,9 +73,9 @@ message BasicAllowance {
 }
 ```
 
-- `spend_limit`：受赠者可以花费的来自授予者账户的代币数量。 该值是可选的。 如果为空，则不分配支出限制，并且受赠者可以在到期前从受赠者的帐户中花费任何数量的代币。
+- `spend_limit`:受赠者可以花费的来自授予者账户的代币数量。 该值是可选的。 如果为空，则不分配支出限制，并且受赠者可以在到期前从受赠者的帐户中花费任何数量的代币。
 
-- `expiration`：授权到期的日期和时间。 该值是可选的。 如果为空白，则授权不会过期。
+- `expiration`:授权到期的日期和时间。 该值是可选的。 如果为空白，则授权不会过期。
 
 要在 `spend_limit` 和 `expiration` 的值为空时限制受赠者，请撤销授权。
 
@@ -133,15 +133,15 @@ message Grant {
 ```
 :::
 
-- `basic`：`BasicAllowance` 的实例。 它是可选的。 如果为空，则赠款将没有 `spend_limit` 或 `expiration`。
+- `basic`:`BasicAllowance` 的实例。 它是可选的。 如果为空，则赠款将没有 `spend_limit` 或 `expiration`。
 
-- `period`：授予`PeriodicAllowance` 的持续时间。 在每个周期到期后，“period_spend_limit”被重置。
+- `period`:授予`PeriodicAllowance` 的持续时间。 在每个周期到期后，“period_spend_limit”被重置。
 
-- `period_spend_limit`：受赠者在此期间允许花费的最大代币数量。
+- `period_spend_limit`:受赠者在此期间允许花费的最大代币数量。
 
-- `period_can_spend`：在 period_reset 时间之前剩余的代币数量。
+- `period_can_spend`:在 period_reset 时间之前剩余的代币数量。
 
-- `period_reset`：周期结束和新周期开始的时间。
+- `period_reset`:周期结束和新周期开始的时间。
 
 ### 费用帐户标志
 
@@ -706,7 +706,7 @@ The following example shows a CLI command with the `--fee-account` flag:
 
 费用补贴是通过将“Granter”（授予另一个帐户将其可用代币用于费用的许可的帐户地址）与“Grantee”（获得将授予者的代币用于费用的许可的帐户地址）相结合来确定的。
 
-以下示例显示了如何在状态中存储费用津贴：
+以下示例显示了如何在状态中存储费用津贴:
 
 Grant: `0x00 | grantee_addr_len (1 byte) | grantee_addr_bytes | granter_addr_len (1 byte) | granter_addr_bytes -> ProtocolBuffer(Grant)`
 

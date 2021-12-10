@@ -1,8 +1,8 @@
-# Websockets
+# 网络套接字
 
 ## `WebSocketClient`
 
-Terra.js comes with `WebSocketClient`, which abstracts a subscription to Tendermint RPC's WebSocket endpoint. This requires access to a Terra node's RPC server, which may required privileged access as it exposes functions that can kill the node's operation. With LocalTerra, the WebSocket endpoint can be accessed at `ws://localhost:26657/websocket`.
+Terra.js 带有“WebSocketClient”，它抽象了对 Tendermint RPC 的 WebSocket 端点的订阅。 这需要访问 Terra 节点的 RPC 服务器，这可能需要特权访问，因为它公开了可以终止节点操作的函数。 使用 LocalTerra，可以通过 `ws://localhost:26657/websocket` 访问 WebSocket 端点。 
 
 ```ts
 import { LocalTerra, WebSocketClient } from '@terra-money/terra.js';
@@ -28,9 +28,9 @@ wsclient.subscribe('Tx', { 'message.action': 'send' }, data => {
 });
 ```
 
-### Supported Events
+### 支持的事件
 
-You can subscribe to the following recognized Tendermint events:
+您可以订阅以下公认的 Tendermint 事件: 
 
   - `CompleteProposal`
   - `Evidence`
@@ -49,9 +49,9 @@ You can subscribe to the following recognized Tendermint events:
   - `ValidBlock`
   - `Vote`
 
-### Query
+### 询问
 
-In order to specify the Tendermint query, the following syntax is used:
+为了指定 Tendermint 查询，使用以下语法:
 
 ```ts
 type TendermintQueryOperand = string | number | Date;
@@ -68,7 +68,7 @@ interface TendermintQuery {
 }
 ```
 
-The following shows an example of how to construct a `TendermintQuery` and use it for a subscription:
+下面显示了如何构造一个 `TendermintQuery` 并将其用于订阅的示例:
 
 ```ts
 const tmQuery = {
@@ -83,13 +83,13 @@ wsclient.subscribe('Tx', tmQuery, (data) => {
 });
 ```
 
-The resultant query will be:
+结果查询将是:
 
-`tm.event='Tx' AND message.action='send' tx.timestamp >= 2020-12-12 AND store_code.abc EXISTS AND abc.xyz CONTAINS 'terra1...'`
+`tm.event='Tx' AND message.action='send' tx.timestamp >= 2020-12-12 AND store_code.abc 存在且 abc.xyz CONTAINS 'terra1...'`
 
-### `subscribeTx`
+###`subscribeTx`
 
-It is a common use case to subscribe to transactions with a Tendermint query, such as listening for when specific addresses send or receive funds, or when specific events are triggered from within smart contracts. However, it is hard to extract data because the transaction result is encoded in Base64 Amino encoding. If you use `subscribeTx`, Terra.js will automatically inject the `txhash` into the resultant data value so you can more easily look up the transaction to decode it using `LCDClient`.
+使用 Tendermint 查询订阅交易是一个常见的用例，例如侦听特定地址何时发送或接收资金，或何时从智能合约中触发特定事件。 但是，由于交易结果采用 Base64 Amino 编码，因此很难提取数据。 如果您使用 `subscribeTx`，Terra.js 会自动将 `txhash` 注入到结果数据值中，以便您可以更轻松地查找交易以使用 `LCDClient` 对其进行解码。
 
 ```ts
 // swap tracker

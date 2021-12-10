@@ -1,209 +1,210 @@
-# The Terra protocol
+# Terra 协议
 
-The Terra protocol is the leading decentralized and open-source public blockchain protocol for [algorithmic stablecoins](/Concepts/glossary.md#algorithmic-stablecoin). Using a combination of open market [arbitrage](/Concepts/glossary.md#arbitrage) incentives and decentralized oracle voting, the Terra protocol creates stablecoins that consistently track the price of any fiat currency. Users can spend, save, trade, or exchange Terra stablecoins instantly, all on the Terra blockchain. Luna provides its holders with staking rewards and governance power. The Terra ecosystem is a quickly expanding network of decentralized applications, creating a stable demand for Terra and increasing the price of Luna.
+Terra 协议是用于 [算法稳定币](/Concepts/glossary.md#algorithmic-stablecoin) 的领先的去中心化和开源公共区块链协议。结合公开市场 [arbitrage](/Concepts/glossary.md#arbitrage) 激励和去中心化预言机投票，Terra 协议创建了稳定币，可以始终如一地跟踪任何法定货币的价格。用户可以在 Terra 区块链上即时消费、保存、交易或交换 Terra 稳定币。 Luna 为其持有者提供质押奖励和治理权。 Terra 生态系统是一个快速扩展的去中心化应用网络，创造了对 Terra 的稳定需求并提高了 Luna 的价格。
 
-## Terra and Luna
+## Terra 和 Luna
 
-The protocol consists of two main tokens, Terra and Luna.
+该协议由两个主要代币组成，Terra 和 Luna。
 
-- **Terra**: Stablecoins that track the price of fiat currencies. Users mint new Terra by burning Luna. Stablecoins are named for their fiat counterparts. For example, the base Terra stablecoin tracks the price of the IMF’s SDR, named TerraSDR, or SDT. Other stablecoin denominations include TerraUSD or UST, and TerraKRW or  KRT. All Terra denominations exist in the same pool.
+- **Terra**:跟踪法定货币价格的稳定币。用户通过燃烧 Luna 来铸造新的 Terra。稳定币以其法定货币命名。例如，基础 Terra 稳定币跟踪 IMF 的 SDR 的价格，称为 TerraSDR，或 SDT。其他稳定币面额包括 TerraUSD 或 UST，以及 TerraKRW 或 KRT。所有 Terra 面额都存在于同一个池中。
 
-- **Luna**: The Terra protocol’s native staking token that absorbs the price volatility of Terra. Luna is used for governance and in mining. Users stake Luna to validators who record and verify transactions on the blockchain in exchange for rewards from transaction fees. The more Terra is used, the more Luna is worth.
+- **Luna**:Terra 协议的原生质押代币，用于吸收 Terra 的价格波动。 Luna 用于治理和采矿。用户将 Luna 质押给在区块链上记录和验证交易的验证者，以换取交易费用的奖励。 Terra 使用得越多，Luna 的价值就越高。
 
-## How the Terra protocol works
+## Terra 协议的工作原理
 
-### Stablecoin
+### 稳定币
 
-Stablecoins are the main feature of the Terra protocol: crypto assets that track the price of an underlying currency. As a digital form of currency, Terra stablecoins can be used just like fiat currency with blockchain's added benefits: an unchangeable public ledger, instant transactions, faster settlement times, and fewer fees.
+稳定币是 Terra 协议的主要特征:跟踪基础货币价格的加密资产。作为一种数字形式的货币，Terra 稳定币可以像法定货币一样使用，并具有区块链的附加优势:不可更改的公共分类账、即时交易、更快的结算时间和更少的费用。
 
-Stablecoins are only valuable to users if they maintain their price peg. The Terra protocol uses the basic market forces of supply and demand to maintain the price of Terra. When the demand for Terra is high and the supply is limited, the price of Terra increases. When the demand for Terra is low and the supply is too large, the price of Terra decreases. The protocol ensures the supply and demand of Terra is always balanced, leading to a stable price.
+稳定币只有在用户保持与价格挂钩的情况下才对用户有价值。 Terra 协议使用供需的基本市场力量来维持 Terra 的价格。当 Terra 的需求旺盛而供应有限时，Terra 的价格就会上涨。当 Terra 的需求量低而供应量过大时，Terra 的价格就会下降。该协议确保 Terra 的供需始终平衡，从而导致价格稳定。
 
-### Expansion and contraction
+### 扩张和收缩
 
-Imagine the whole Terra economy as two pools: one for Terra and one for Luna. To maintain the price of Terra, the Luna supply pool adds to or subtracts from Terra’s supply. Users burn Luna to mint Terra and burn Terra to mint Luna, all incentivized by the protocol's algorithmic [market module](/Reference/Terra-core/Module-specifications/spec-market.html).
+将整个 Terra 经济想象成两个池:一个用于 Terra，一个用于 Luna。为了维持 Terra 的价格，Luna 供应池会增加或减少 Terra 的供应量。用户燃烧 Luna 来铸造 Terra 和燃烧 Terra 来铸造 Luna，所有这些都受到协议算法[市场模块](/Reference/Terra-core/Module-specifications/spec-market.html) 的激励。
 
-- **Expansion**: When the price of Terra is high relative to its peg, supply is too small and demand is too high. The protocol incentivizes users to burn Luna and mint Terra. The new supply of Terra makes its pool larger, balancing supply with demand. Users mint more Terra from burned Luna until Terra reaches its target price. The Luna pool gets smaller in this process, increasing the price of Luna.
+- **扩张**:当 Terra 的价格相对于其挂钩较高时，供应太少而需求太高。该协议鼓励用户燃烧 Luna 和铸造 Terra。 Terra 的新供应使其池更大，平衡供需。用户从燃烧的 Luna 中铸造更多的 Terra，直到 Terra 达到其目标价格。 Luna 池在此过程中变小，从而提高了 Luna 的价格。
 
-- **Contraction**: When the price of Terra is too low relative to its peg, supply is too large and demand is too low. The protocol incentives users to burn Terra and mint Luna. The decrease in Terra’s supply causes scarcity, and the price of Terra increases. More Luna is minted from burned Terra until Terra reaches its target price. The Luna pool increases and lowers in price.
+- **收缩**:当 Terra 的价格相对于其挂钩太低时，供应太大而需求太低。该协议鼓励用户燃烧 Terra 并铸造 Luna。 Terra 供应减少导致稀缺，Terra 价格上涨。更多的 Luna 从被烧毁的 Terra 中铸造，直到 Terra 达到其目标价格。 Luna 矿池的价格上涨和下跌。
 
-Luna is the variable counterpart to the stable asset Terra. By modulating supply, Luna's price increases as the demand for stablecoins increases.
+Luna 是稳定资产 Terra 的可变对应物。通过调节供应，Luna 的价格会随着对稳定币需求的增加而上涨。 
 
-### The market module and arbitrage
+###市场模块和套利
 
-The price stability of Terra is achieved by the protocol's algorithmic [market module](/reference/terra-core/module-specifications/spec-market.md), which incentivizes the minting or burning of Terra through arbitrage opportunities. Arbitrage occurs when a user profits from price differences between markets.
+Terra 的价格稳定性是通过协议的算法[市场模块](/reference/terra-core/module-specifications/spec-market.md) 实现的，它通过套利机会激励 Terra 的铸造或燃烧。当用户从市场之间的价格差异中获利时，就会发生套利。
 
-The Terra protocol's market module enables users to always trade 1 USD worth of Luna for 1 UST, and vice versa, incentivizing users to maintain the price of Terra. This same principle is true for all Terra stablecoin denominations.
+Terra 协议的市场模块使用户始终可以用价值 1 美元的 Luna 交易 1 UST，反之亦然，激励用户维持 Terra 的价格。同样的原则适用于所有 Terra 稳定币面额。
 
-- **Example**  
-  If 1 UST is trading at 1.01 USD, users can use the market swap feature of Terra Station to trade 1 USD of Luna for 1 UST. The market burns 1 USD of Luna and mints 1 UST. Users can then sell their 1 UST for 1.01 USD, profiting .01 USD through arbitrage, adding to the UST pool. This arbitrage continues until UST price falls back to match the price of USD, maintaining Terra's peg.
+- **例子**
+  如果 1 UST 的交易价格为 1.01 美元，用户可以使用 Terra Station 的市场掉期功能将 1 美元的 Luna 交易为 1 UST。市场燃烧 1 美元 Luna 并铸造 1 UST。然后用户可以以 1.01 美元的价格出售他们的 1 个 UST，通过套利获利 0.01 美元，添加到 UST 池中。这种套利一直持续到 UST 价格回落到与美元的价格相匹配，从而维持 Terra 的挂钩。
 
-The same arbitrage mechanism works in reverse for contraction.
+相同的套利机制对收缩起到相反的作用。
 
-- **Example**  
-  If 1 UST is trading at .99 USD, users can buy 1 UST for .99 USD. Users then utilize Terra Station's market swap function to trade 1 UST for 1 USD of Luna. The swap burns 1 UST and mints 1 USD of Luna. Users profit .01 UST from the swap. This arbitrage continues, and UST is burned to mint Luna until the price of UST rises back to 1 USD.
+- **例子**
+  如果 1 UST 的交易价格为 0.99 美元，则用户可以以 0.99 美元的价格购买 1 UST。用户然后利用 Terra Station 的市场掉期功能将 1 UST 交易为 1 美元的 Luna。掉期会消耗 1 UST 并铸造 1 美元的 Luna。用户从交换中获利 0.01 UST。这种套利还在继续，UST 被烧毁以铸造 Luna，直到 UST 的价格回升至 1 美元。
 
-### Scalability
+### 可扩展性
 
-The Terra protocol is scalable: it is designed to maintain Terra's price stability regardless of market size, volatility, or demand. The monetary policies encoded into the protocol ensure its durability and resilience in all market fluctuations.
+Terra 协议是可扩展的:无论市场规模、波动性或需求如何，它都旨在保持 Terra 的价格稳定。编码到协议中的货币政策确保其在所有市场波动中的持久性和弹性。
 
-### Seigniorage and deflation
+### 铸币税和通货紧缩
 
-Seigniorage is the value of a coin minus the cost of its production. In early versions of the Terra protocol, seigniorage was diverted to fund various community projects. While seigniorage can create enormous value, it also creates inflation in the system.
-All seigniorage in the Terra protocol is burned, making Luna deflationary in nature.
+铸币税是硬币的价值减去其生产成本。在 Terra 协议的早期版本中，铸币税被转用于资助各种社区项目。虽然铸币税可以创造巨大的价值，但它也会在系统中造成通货膨胀。
+Terra 协议中的所有铸币税都被烧毁，使 Luna 具有通货紧缩的性质。
 
-## Validators
+## 验证器
 
-Validators are the miners of the Terra [blockchain](/Concepts/glossary.md#blockchain). They are responsible for securing the Terra blockchain and ensuring its accuracy. Validators run programs called full nodes which allow them to verify each transaction made on the Terra network. Validators propose blocks, vote on their validity, and add each new block to the chain in exchange for staking rewards from transaction fees. Users can stake their Luna to validators in exchange for staking rewards. Validators also play an important role in the governance of the Terra protocol.
+验证者是 Terra [区块链](/Concepts/glossary.md#blockchain) 的矿工。他们负责保护 Terra 区块链并确保其准确性。验证者运行称为全节点的程序，允许他们验证在 Terra 网络上进行的每笔交易。验证者提出区块，对其有效性进行投票，并将每个新区块添加到链中，以换取交易费用的抵押奖励。用户可以将他们的 Luna 质押给验证者以换取质押奖励。验证者在 Terra 协议的治理中也发挥着重要作用。
 
-For more information on validators, visit the [Validator FAQ](/How-to/Manage-a-Terra-validator/faq.md).
+有关验证器的更多信息，请访问 [验证器常见问题](/How-to/Manage-a-Terra-validator/faq.md)。
 
-### Consensus
+### 共识
 
-The Terra blockchain is a proof-of-stake blockchain, powered by the [Cosmos SDK](https://cosmos.network/) and secured by a system of verification called the Tendermint consensus.
+Terra 区块链是一个权益证明区块链，由 [Cosmos SDK](https://cosmos.network/) 提供支持，并由称为 Tendermint 共识的验证系统保护。
 
-The following process explains how Tendermint consensus works. For more information on the Tendermint consensus, visit the [official Tendermint documentation](https://docs.tendermint.com/).
+以下过程解释了 Tendermint 共识的工作原理。有关 Tendermint 共识的更多信息，请访问 [官方 Tendermint 文档](https://docs.tendermint.com/)。
 
-1. A validator called a **proposer** is chosen to submit a new block of transactions.
-2. Validators vote in two rounds on whether they accept or reject the proposed block. If a block is rejected, a new proposer is selected and the process starts again.
-3. If accepted, the block is signed and added to the chain.
-4. The transaction fees from the block are distributed as staking rewards to validators and delegators. Proposers get rewarded extra for their participation.
+1. 选择一个名为 **proposer** 的验证器来提交一个新的交易块。
+2. 验证者分两轮投票决定是否接受或拒绝提议的区块。如果一个区块被拒绝，则会选择一个新的提议者并重新开始该过程。
+3. 如果被接受，则区块被签名并添加到链中。
+4. 来自区块的交易费用作为质押奖励分配给验证者和委托者。提议者因参与而获得额外奖励。
 
-This process repeats, adding new blocks of transactions to the chain. Each validator has a copy of all transactions made on the network, which they compare against the proposed block of transactions before voting. Because multiple independent validators take place in consensus voting, it is infeasible for any false block to be accepted. In this way, validators protect the integrity of the Terra blockchain and ensure the validity of each transaction.
+重复此过程，将新的交易块添加到链中。每个验证者都有网络上所有交易的副本，他们在投票前将其与提议的交易块进行比较。由于在共识投票中发生了多个独立的验证器，因此任何虚假块都不可能被接受。通过这种方式，验证者保护了 Terra 区块链的完整性，并确保了每笔交易的有效性。
 
-### Staking
+### 质押
 
-Staking is the process of bonding Luna to a validator in exchange for staking rewards.
+Staking 是将 Luna 绑定到验证者以换取 Staking 奖励的过程。
 
-The Terra protocol only allows the top 130 validators to participate in consensus. A validator's rank is determined by their stake or the total amount of Luna bonded to them. Although validators can bond Luna to themselves, they mainly amass larger stakes from delegators. Validators with larger stakes get chosen more often to propose new blocks and earn proportionally more rewards.
+Terra 协议只允许前 130 名验证者参与共识。验证者的等级由他们的股份或绑定到他们的 Luna 总量决定。虽然验证者可以将 Luna 与自己绑定，但他们主要是从委托人那里积累更多的股份。拥有更大权益的验证者被更频繁地选择以提出新区块并按比例获得更多奖励。
 
-### Delegators
-Delegators are users who want to receive rewards from consensus without running a full node. Any user that stakes Luna is a delegator. Delegators stake their Luna to a validator, adding to a validator’s weight, or total stake. In return, delegators receive a portion of transaction fees as staking rewards.
+### 委托人
+委托人是希望在不运行完整节点的情况下从共识中获得奖励的用户。任何质押 Luna 的用户都是委托人。委托人将他们的 Luna 质押给验证人，增加验证人的权重或总质押。作为回报，委托人会收到一部分交易费用作为抵押奖励。 
 
-:::tip Who owns staked Luna?
-Staked Luna never leaves the possession of the delegator. Even though it can’t be traded freely, staked Luna is never owned by a validator. For more information, visit the [Validator FAQ](/How-to/Manage-a-Terra-validator/faq.md#can-a-validator-run-away-with-a-delegators-luna)
+:::tip 谁拥有抵押的 Luna？
+Staked Luna 永远不会离开委托人的财产。尽管不能自由交易，但质押的 Luna 永远不会归验证者所有。有关更多信息，请访问 [验证器常见问题](/How-to/Manage-a-Terra-validator/faq.md#can-a-validator-run-away-with-a-delegators-luna)
 :::
 
-### Phases of Luna
+### Luna 的阶段
 
-To start receiving rewards, delegators bond their Luna to a validator. The bonding process adds a delegator's Luna to a validator's stake, which helps validators to participate in consensus.
+为了开始获得奖励，委托人将他们的 Luna 绑定到验证者。绑定过程将委托人的 Luna 添加到验证者的权益中，这有助于验证者参与共识。
 
-Luna exists in the following three phrases:
+Luna存在于以下三个词组中:
 
-- **Unbonded**: Luna that can be freely traded and is not staked to a validator.
-- **Bonded**: Luna that is staked to a validator. Bonded Luna accrues staking rewards. Although Luna bonded to validators in Terra Station can’t be traded freely, bLuna is a token that represents bonded Luna that can be traded freely or used as collateral on other protocols in the Terra network, such as [Anchor](https://anchorprotocol.com/) and [Mirror](https://mirror.finance/).
-- **Unbonding**: Luna that is in the process of becoming unbonded from a validator and does not accrue rewards. This process takes 21 days to complete.
+- **Unbonded**:Luna 可以自由交易且不抵押给验证者。
+- **绑定**:抵押给验证者的 Luna。绑定的 Luna 累积质押奖励。虽然与 Terra Station 中的验证者绑定的 Luna 不能自由交易，但 bLuna 是代表绑定 Luna 的代币，可以自由交易或用作 Terra 网络中其他协议的抵押品，例如 [Anchor](https:// anchorprotocol.com/) 和 [Mirror](https://mirror.finance/)。
+- **解除绑定**:Luna 正在与验证者解除绑定并且不会产生奖励。此过程需要 21 天才能完成。
 
-### Bonding, staking, and delegating
+### 绑定、抵押和委托
 
-Generally, the terms bonding, staking, and delegating can be used interchangeably, as they happen in the same step. A delegator delegates Luna to a validator, the Luna gets bonded to the validator, and the bonded Luna gets added to the validator's stake.
+通常，术语绑定、抵押和委托可以互换使用，因为它们发生在同一步骤中。委托人将 Luna 委托给验证人，Luna 与验证人绑定，绑定的 Luna 被添加到验证人的股份中。
 
-Delegators can bond Luna to any validator in the [active set](/Concepts/glossary.md#active-set) using the delegate function in Terra Station. Delegators start earning staking rewards the moment they bond or stake to a validator.
+委托人可以使用 Terra Station 中的委托功能将 Luna 绑定到 [active set](/Concepts/glossary.md#active-set) 中的任何验证器。委托人在与验证人绑定或质押的那一刻就开始获得质押奖励。
 
-### Unbonding
+### 解绑
 
-Delegators can unbond or unstake their Luna using the undelegate function in Terra Station. The unbonding process takes 21 days to complete. During this period, the unbonding Luna can't be traded, and no staking rewards accrue.
+委托人可以使用 Terra Station 中的解除委托功能解除绑定或解除对 Luna 的抵押。解绑过程需要 21 天才能完成。在此期间，解绑的 Luna 无法交易，也不会产生 Staking 奖励。
 
-::: warning Warning
-Once started, the delegating or undelegating processes can't be stopped.
-Undelegating takes 21 days to complete. The only way to undo a delegating or undelegating transaction is to wait for the unbonding process to pass. Alternatively, you can redelegate staked Luna to a different validator without waiting 21 days.
+::: 警告 警告
+一旦启动，就无法停止委派或取消委派过程。
+取消委派需要 21 天才能完成。撤销委托或取消委托交易的唯一方法是等待解除绑定过程通过。或者，您可以将质押的 Luna 重新委托给不同的验证者，而无需等待 21 天。
 :::
 
-The 21-day unbonding process helps the long-term stability of the Terra protocol. The unbonding period discourages volatility by locking staked Luna in the system for at least 21 days. In exchange, delegators receive staking rewards, further incentivizing network stability.
+21 天的解绑过程有助于 Terra 协议的长期稳定性。解绑期通过将抵押的 Luna 锁定在系统中至少 21 天来抑制波动。作为交换，委托人获得质押奖励，进一步激励网络稳定性。
 
-### Redelegation
+### 重新授权
 
-Redelegating instantly sends staked Luna from one validator to another. Instead of waiting for the 21-day unstaking period, a user can redelegate their staked Luna at any time using Terra Station's redelegate function. Validators receiving redelegations are barred from further redelegating any amount of Luna to any validator for 21 days.
+重新委托立即将质押的 Luna 从一个验证器发送到另一个验证器。用户无需等待 21 天的取消质押期，而是可以随时使用 Terra Station 的重新委托功能重新委托他们质押的 Luna。接受重新委托的验证者在 21 天内不得进一步将任何数量的 Luna 重新委托给任何验证者。
 
-::: warning Warning
-When a user redelegates staked Luna from one validator to another, the validator receiving the staked Luna is barred from making further redelegation transactions for 21 days. This requirement only applies to the wallet that made the redelegation transaction.
+::: 警告 警告
+当用户将质押 Luna 从一个验证者重新委托给另一个验证者时，收到质押 Luna 的验证者将被禁止在 21 天内进行进一步的重新委托交易。此要求仅适用于进行重新委托交易的钱包。
 :::
 
-### Rewards
+### 奖励
 
-The Terra protocol incentivizes validators and delegators with staking rewards. Staking rewards come from three sources: gas, stability fees, and swap fees.
+Terra 协议通过质押奖励来激励验证者和委托者。 Staking 奖励来自三个来源:gas、稳定费和掉期费。
 
-- [Gas](./fees.md#gas): Compute fees added on to each transaction to avoid spamming. Validators set minimum gas prices and reject transactions that have implied gas prices below this threshold.
+- [Gas](./fees.md#gas):计算每笔交易的费用以避免垃圾邮件。验证者设置最低 gas 价格并拒绝隐含 gas 价格低于此阈值的交易。
 
-- [Stability fees](./fees.md#stability-fees): Fees added on to any transaction to provide stability in the market, capped at 1SDT. The fee rate is variable and called the tax rate.
+- [稳定费用](./fees.md#stability-fees):为提供市场稳定性而添加到任何交易中的费用，上限为 1SDT。费率是可变的，称为税率。
 
-- **Swap fees**: The fee for swapping Terra stablecoin denominations is called a [Tobin tax](./fees.md#tobin-tax). Exchanges between Terra and Luna are subject to a [spread fee](./fees.md#spread-fees).
+- **交换费用**:交换 Terra 稳定币面额的费用称为 [托宾税](./fees.md#tobin-tax)。 Terra 和 Luna 之间的交易需要支付 [点差费](./fees.md#spread-fees)。
 
-For more information on fees, visit the [fee page](./fees.md).
+有关费用的更多信息，请访问 [费用页面](./fees.md)。
 
-At the end of every block, all transaction fees are distributed to each validator and their delegators proportional to their staked amount. Validators can keep a portion of rewards to pay for their services. This portion is called commission. The rest of the rewards are distributed to delegators according to their staked amounts.
-Staking rewards also play a key role in the stability of the Terra protocol. During periods of volatility, the Terra protocol modulates tax rates to maintain a stable mining incentive. This mechanism is described in detail in the [treasury module](/Reference/Terra-core/Module-specifications/spec-treasury.md). Steady rewards regardless of market volatility ensure steady demand for staking. Staking locks value in the system, ensuring long- and short-term stability for the price of Terra.
+在每个区块结束时，所有交易费用都会按比例分配给每个验证者及其委托人。验证者可以保留一部分奖励来​​支付他们的服务。这部分称为佣金。其余的奖励将根据委托人的质押数量分配给委托人。
+Staking 奖励在 Terra 协议的稳定性中也起着关键作用。在波动期间，Terra 协议会调整税率以维持稳定的挖矿激励。这个机制在[treasury module](/Reference/Terra-core/Module-specifications/spec-treasury.md)中有详细的描述。无论市场波动如何，稳定的回报确保稳定的 Staking 需求。 Staking 锁定系统价值，确保 Terra 价格的长期和短期稳定性。 
 
-### Slashing
 
-Running a validator is a big responsibility. Validators must meet strict standards and constantly monitor and participate in the consensus process. Slashing is the penalty for misbehaving validators. When a validator gets slashed, they lose a small portion of their stake as well as a small portion of their delegator's stake. Slashed validators also get jailed, or excluded, from consensus for a period of time.
+### 削减
 
-::: danger The risks of staking
-Slashing affects validators and delegators. When a validator gets slashed, delegators who stake to that validator also get slashed. Slashing is proportional to a delegator's staked amount. Though slashing is rare and usually results in a small penalty, it does occur. Delegators should monitor their validators closely, do their research, and understand the risks of staking Luna.
+运行验证器是一项重大责任。验证者必须符合严格的标准，并不断监控和参与共识过程。削减是对行为不端的验证者的惩罚。当验证者被削减时，他们会失去他们的一小部分股份以及委托人的一小部分股份。被削减的验证者也会在一段时间内被监禁或排除在共识之外。
+
+:: 危险 赌注的风险
+削减影响验证者和委托者。当验证者被削减时，向该验证者质押的委托人也会被削减。削减与委托人的抵押金额成正比。尽管削减很少见并且通常会导致很小的惩罚，但它确实发生了。委托人应该密切监控他们的验证人，进行研究，并了解质押 ​​Luna 的风险。
 :::
 
-Slashing occurs under the following conditions:
+削减发生在以下条件下:
 
-- **Double signing**: When a validator signs two different blocks with the same chain ID at the same height.
-- **Downtime**: When a validator is unresponsive or can't be reached for a period of time.
-- **Missed votes**: When a validator misses votes in consensus or fails to vote correctly in the oracle process.
+- **双重签名**:当验证者在相同高度签署具有相同链 ID 的两个不同区块时。
+- **停机时间**:当验证器无响应或在一段时间内无法访问时。
+- **Missed votes**:当验证者在共识中错过投票或在oracle过程中未能正确投票。
 
-Validators monitor each other closely and can submit evidence of misbehavior. Once discovered, the misbehaving validator will have a small portion of their funds slashed. Offending validators will also be jailed or excluded from consensus for a period of time. Even simple issues such as malfunctions or downtimes from upgrading can lead to slashing.
+验证者相互密切监视，并可以提交不当行为的证据。一旦发现，行为不端的验证者将被削减一小部分资金。违规的验证者也将在一段时间内被监禁或被排除在共识之外。即使是升级导致的故障或停机等简单问题也可能导致大幅削减。
 
-For more information on slashing, visit the [slashing module](/Reference/Terra-core/Module-specifications/spec-slashing.md).
+有关削减的更多信息，请访问 [削减模块](/Reference/Terra-core/Module-specifications/spec-slashing.md)。
 
-## Governance
+## 治理
 
-The Terra protocol is a decentralized public [blockchain](/Concepts/glossary.md#blockchain) governed by community members. Governance is the democratic process that allows users and validators to make changes to the Terra protocol. Community members submit, vote, and implement proposals.  
+Terra 协议是一个由社区成员管理的去中心化公共 [区块链](/Concepts/glossary.md#blockchain)。治理是允许用户和验证者对 Terra 协议进行更改的民主过程。社区成员提交、投票和实施提案。
 
-### Proposals
+### 提案
 
-Proposals start as ideas within the community. A community member drafts and submits a proposal alongside an initial deposit.
+提案始于社区内的想法。社区成员起草并提交提案以及初始存款。
 
-The most common proposal types include:
+最常见的提案类型包括:
 
-- `ParameterChangeProposal`: To change the parameters defined in each module.
-- `TaxRateUpdateProposal`: To update tax rate monetary policy lever.
-- `RewardWeightUpdateProposal`: To update the reward weight monetary policy lever
-- `CommunityPoolSpendProposal`: To spend funds in the community pool
+- `ParameterChangeProposal`:更改每个模块中定义的参数。
+- `TaxRateUpdateProposal`:更新税率货币政策杠杆。
+- `RewardWeightUpdateProposal`:更新奖励权重货币政策杠杆
+- `CommunityPoolSpendProposal`:在社区池中花费资金
 
-Other issues like large directional changes or any decision requiring manual implementation are submitted as a `TextProposal`.
+其他问题，如大的方向变化或任何需要手动实施的决定，都作为“TextProposal”提交。
 
-### Voting process
+###投票过程
 
-Community members vote with their staked Luna. One staked Luna equals one vote. If a user fails to specify a vote, their vote defaults to the validator they are staked to. Validators vote with their entire stake unless specified by delegators. For this reason, it is very important that each delegator votes according to their preferences.
+社区成员用他们质押的 Luna 投票。一个抵押的 Luna 等于一票。如果用户未能指定投票，他们的投票将默认给他们所抵押的验证者。除非委托人指定，否则验证人会用他们的全部股份进行投票。因此，每个委托人根据自己的喜好进行投票非常重要。
 
-The following is a basic outline of the governance process. Visit the [governance module](/Reference/Terra-core/Module-specifications/spec-governance.md) for more details.
+以下是治理过程的基本概要。访问 [治理模块](/Reference/Terra-core/Module-specifications/spec-governance.md) 了解更多详细信息。
 
-1. A user submits a proposal and a two-week deposit period begins.
-2. Users deposit Luna as collateral to back the proposal. This period ends once a minimum threshold of 50 Luna is deposited. Deposits are to protect against spam.
-3. The one-week vote period begins.
-    The voting options are:
-    - `Yes`: In favor.
-    - `No`: Not in favor.
-    - `NoWithVeto`: Not in favor, the deposit should be burned.
-    - `Abstain`: Voter abstains.
-4. The votes are tallied.
-    Proposals pass if they meet three conditions:
-    - `Quorum` is met: at least 40% of all staked Luna must vote.
-    - The total number of `NoWithVeto` votes is less than 33.4% of the total vote.
-    - The number of `Yes` votes reaches a 50% majority.
-    If the previous conditions are not met, the proposal is rejected.
-5. Accepted proposals get put into effect.
-6. Deposits get refunded or burned.
+1. 用户提交提案，两周充值期开始。
+2. 用户存入 Luna 作为抵押品来支持该提案。一旦存入 50 Luna 的最低门槛，此期限就会结束。存款是为了防止垃圾邮件。
+3. 一周投票期开始。
+    投票选项是:
+    - `是`:赞成。
+    - `不`:不赞成。
+    - `NoWithVeto`:不赞成，存款应该被烧毁。
+    - `弃权`:选民弃权。
+4. 计票。
+    满足三个条件的提案通过:
+    - 满足“法定人数”:至少 40% 的所有质押 Luna 必须投票。
+    - “NoWithVeto”的总票数低于总票数的 33.4%。
+    - “是”的票数达到 50% 的多数。
+    如果不满足前面的条件，则该提案将被拒绝。
+5、通过的提案付诸实施。
+6. 押金退还或烧毁。
 
-Once accepted, the changes described in a governance proposal are automatically put into effect by the proposal handler. Generic proposals, such as a passed `TextProposal`, must be reviewed by the Terra team and community, and they must be manually implemented.
+一旦被接受，治理提案中描述的更改将由提案处理程序自动生效。通用提案，例如通过的“TextProposal”，必须由 Terra 团队和社区审查，
 
-### Deposits
+### 存款
 
-Deposits protect against unnecessary proposals and spam. Users can veto any proposal they deem to be spam by voting `NoWithVeto`.
+押金可以防止不必要的提案和垃圾邮件。 用户可以通过投票“NoWithVeto”来否决他们认为是垃圾邮件的任何提案。
 
-Deposits get refunded if all of the following conditions are met:
-- The minimum deposit of 50 Luna is reached within the two-week deposit period.
-- `Quorum` is met: the number of total votes is greater than 40% of all staked Luna
-- The total number of `NoWithVeto` votes is less than 33.4% of the total vote.
-- A vote returns a majority of `Yes` or `No` votes.
+如果满足以下所有条件，押金将被退还:
+- 在两周存款期内达到最低存款 50 Luna。
+- 满足“法定人数”:总票数大于所有质押 Luna 的 40%
+- “NoWithVeto”的总票数低于总票数的 33.4%。
+- 投票返回多数“是”或“否”选票。
 
-Deposits are burned under any of the following conditions:
-- The minimum deposit of 50 Luna is not reached within the two-week deposit period.
-- `Quorum` is not met: the number of total votes after the one-week voting period is less than 40% of all staked Luna.
-- the number of `NoWithVeto` votes is above 33.4% of the total vote.
+存款在以下任何一种情况下都会被烧毁:
+- 在两周存款期内未达到最低存款 50 Luna。
+- 未达到“法定人数”:一周投票期后的总投票数少于所有质押 Luna 的 40%。
+- “NoWithVeto”票数超过总票数的 33.4%。 

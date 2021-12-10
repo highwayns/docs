@@ -1,7 +1,6 @@
-# Terra Docs
+# Terra 文档
 
-Welcome to the official documentation for Terra, a decentralized financial infrastructure powering the innovation of money. Terra provides the foundational building blocks for a new digital economy with its stablecoin protocol, oracle system, smart contracts, and plan for mass-user adoption.
-
+欢迎阅读 Terra 的官方文档，这是一个支持货币创新的去中心化金融基础设施。 Terra 通过其稳定币协议、预言机系统、智能合约和大规模用户采用计划为新的数字经济提供了基础构建块。 
 <div class="cards twoColumn">
   <a href="/Concepts/Protocol.html" class="card">
     <img src="/img/icon_terra.svg"/>
@@ -77,9 +76,9 @@ Welcome to the official documentation for Terra, a decentralized financial infra
   </a>
 </div>
 
-### SDKs for Developers
+### 面向开发人员的 SDK
 
-The Terra SDKs provide an easy way to programmatically interact with a Terra node with popular programming languages to develop applications. Currently, we have SDKs in Python 3 and JavaScript, with support for other runtimes coming soon in the near future.
+Terra SDK 提供了一种简单的方法，可以通过流行的编程语言以编程方式与 Terra 节点交互以开发应用程序。 目前，我们有 Python 3 和 JavaScript 的 SDK，不久将支持其他运行时。
 
 <div class="cards twoColumn">
   <a href="https://terra-money.github.io/terra.py/" class="card lg dark">

@@ -1,3 +1,3 @@
-# Tutorials
+# 教程
 
-Learn how to [use Terra Station](./Get-started/Terra-Station-desktop.md), [stake Luna](./Get-started/Terra-Station-desktop.md#stake-luna), or [build a simple dApp on Terra](./Smart-contracts/Build-Terra-dApp.md) by completing the tutorials in this section. For more in-depth guides, visit the [How to](/How-to/) section. 
+了解如何[使用 Terra Station](./Get-started/Terra-Station-desktop.md)、[stake Luna](./Get-started/Terra-Station-desktop.md#stake-luna) 或 [ 通过完成本节中的教程，在 Terra 上构建一个简单的 dApp](./Smart-contracts/Build-Terra-dApp.md)。 如需更深入的指南，请访问 [How to](/How-to/) 部分。 

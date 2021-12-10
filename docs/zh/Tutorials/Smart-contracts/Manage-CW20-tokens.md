@@ -1,16 +1,16 @@
-# CW20 Tokens
-According to the [official documentation](https://docs.rs/crate/cw20/0.2.3)
-> CW20 is a specification for fungible tokens based on CosmWasm. The name and design is loosely based on Ethereum's ERC20 standard, but many changes have been made. The types in here can be imported by contracts that wish to implement this spec, or by contracts that call to any standard cw20 contract.
+# CW20 代币
+根据[官方文档](https://docs.rs/crate/cw20/0.2.3)
+> CW20 是基于 CosmWasm 的可替代代币规范。名称和设计松散地基于以太坊的 ERC20 标准，但已经进行了许多更改。此处的类型可以由希望实现此规范的合约导入，也可以由调用任何标准 cw20 合约的合约导入。
 
-## Checking CW20 balance
-  - Query to `/wasm/contracts/<tokenContractAddress>/store` with query_msg `{"balance":{"address":"<userAddress>"}}`
-  - Response: `{"height":"2947306","result":{"balance":"24732816921"}}`
-  - [Example](https://bombay-lcd.terra.dev/wasm/contracts/terra1800p00qlxh0nmt0r0u9hv7m4lg042fnafng2t6/store?query_msg={%22balance%22:{%22address%22:%22terra1dakqt3s8dywea9advxz4duxkuvglz3a34yczw9%22}})
+## 检查 CW20 余额
+  - 使用 query_msg 查询`/wasm/contracts/<tokenContractAddress>/store``{"balance":{"address":"<userAddress>"}}`
+  - 响应:`{"height":"2947306","re​​sult":{"balance":"24732816921"}}`
+  - [示例](https://bombay-lcd.terra.dev/wasm/contracts/terra1800p00qlxh0nmt0r0u9hv7m4lg042fnafng2t6/store?query_msg={%22balance%22:{%22address%22:%22address%22:%23terra1dux9vlz3}dakwz3dakwz3
 
-## Interacting with CW20 contract
+## 与 CW20 合约交互
 
-- CW20 is a cosmwasm contract and `wasm/MsgExecuteContract` is used to interact with it
-- Breakdown of message payload format is as follows (similar to `bank/MsgSend` but `execute_msg` is added):
+- CW20 是一个 cosmwasm 合约，使用 `wasm/MsgExecuteContract` 与之交互
+- 消息有效载荷格式细分如下（类似于`bank/MsgSend`，但添加了`execute_msg`）: 
 
 ```
 {

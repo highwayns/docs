@@ -1,5 +1,5 @@
-# Terra Delegation Program
+# Terra 委托计划
 
-A reliable community of validators forms the strong foundation of the Terra network. To support this community and to keep it vibrant, Terraform Labs is dedicated to delegating Luna from its treasury to facilitate a more decentralized, efficient, and secure network via the Terra Delegation Program.
+可靠的验证者社区构成了 Terra 网络的强大基础。 为支持该社区并保持其活力，Terraform Labs 致力于从其资金库中委派 Luna，以通过 Terra 委派计划促进更加分散、高效和安全的网络。
 
-Validators are encouraged to apply for the Terra Delegation Program. Validators that qualify will receive a delegation from Terraform Labs. To participate in the Terra Delegation Program, validators must meet specific requirements.
+鼓励验证者申请 Terra 委托计划。 符合条件的验证者将收到 Terraform Labs 的委托。 要参与 Terra 委托计划，验证者必须满足特定要求。 

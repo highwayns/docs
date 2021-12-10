@@ -1,46 +1,46 @@
-# Sign with a multisig account
+# 使用多重签名帐户签名
 
-A **multisig account** is a Terra account with a special key that can require more than one signatures to sign transactions. This can be useful for increasing the security of the account or for requiring the consent of multiple parties to make transactions. Multisig accounts can be created by specifying:
+**multisig 帐户** 是具有特殊密钥的 Terra 帐户，需要多个签名才能签署交易。 这对于提高帐户的安全性或要求多方同意进行交易非常有用。 可以通过指定以下方式创建多重签名帐户:
 
-- threshold number of signatures required
-- the public keys involved in signing
+- 所需签名的阈值数量
+- 参与签名的公钥
 
-To sign with a multisig account, the transaction must be signed individually by the different keys specified for the account. Then, the signatures will be combined into a multisignature which can be used to sign the transaction. If fewer than the threshold number of signatures needed are present, the resultant multisignature is considered invalid.
+要使用多重签名帐户进行签名，交易必须由为该帐户指定的不同密钥单独签名。 然后，签名将组合成一个多重签名，可用于签署交易。 如果存在的签名数量少于所需的阈值数量，则生成的多重签名将被视为无效。
 
-## Generate a Multisig key
+## 生成多重签名密钥 
 
 ```bash
 terrad keys add --multisig=name1,name2,name3[...] --multisig-threshold=K new_key_name
 ```
 
-`K` is the minimum number of private keys that must have signed the transactions that carry the public key's address as signer.
+`K` 是必须签署交易的最小私钥数量，这些交易携带公钥地址作为签名者。
 
-The `--multisig` flag must contain the name of public keys that will be combined into a public key that will be generated and stored as `new_key_name` in the local database. All names supplied through `--multisig` must already exist in the local database.
+`--multisig` 标志必须包含将组合成一个公钥的公钥的名称，该公钥将在本地数据库中生成并存储为 `new_key_name`。 通过 `--multisig` 提供的所有名称必须已经存在于本地数据库中。
 
-Unless the flag `--nosort` is set, the order in which the keys are supplied on the command line does not matter, i.e. the following commands generate two identical keys:
+除非设置了“--nosort”标志，否则在命令行上提供键的顺序无关紧要，即以下命令生成两个相同的键:
 
 ```bash
 terrad keys add --multisig=p1,p2,p3 --multisig-threshold=2 multisig_address
 terrad keys add --multisig=p2,p3,p1 --multisig-threshold=2 multisig_address
 ```
 
-Multisig addresses can also be generated on-the-fly and printed through the which command:
+Multisig 地址也可以即时生成并通过 which 命令打印: 
 
 ```bash
 terrad keys show --multisig-threshold=K name1 name2 name3 [...]
 ```
 
-## Signing a transaction
+## 签署交易
 
-::: warning NOTE
-This example uses `test1`, `test2`, `test3` keys from [LocalTerra](https://github.com/terra-money/LocalTerra). Import them into your `terrad` keystore to follow along.
+::: 警告注意
+此示例使用来自 [LocalTerra](https://github.com/terra-money/LocalTerra) 的 `test1`、`test2`、`test3` 键。 将它们导入您的 `terrad` 密钥库以进行后续操作。
 :::
 
-### Step 1: Create the multisig key
+### 第 1 步:创建多重签名密钥
 
-Let's assume that you have `test1` and `test2` want to make a multisig account with `test3`.
+假设您有 `test1` 和 `test2` 想要使用 `test3` 创建一个多重签名帐户。
 
-First import the public keys of `test3` into your keyring.
+首先将“test3”的公钥导入您的密钥环。
 
 ```sh
 terrad keys add \
@@ -48,7 +48,7 @@ terrad keys add \
     --pubkey=terrapub1addwnpepqgcxazmq6wgt2j4rdfumsfwla0zfk8e5sws3p3zg5dkm9007hmfysxas0u2
 ```
 
-Generate the multisig key with 2/3 threshold.
+生成具有 2/3 阈值的多重签名密钥。
 
 ```sh
 terrad keys add \
@@ -57,7 +57,7 @@ terrad keys add \
     --multisig-threshold=2
 ```
 
-You can see its address and details:
+你可以看到它的地址和详细信息
 
 ```sh
 terrad keys show multi
@@ -71,7 +71,7 @@ terrad keys show multi
   pubkeys: []
 ```
 
-Let's add 10 LUNA to the multisig wallet:
+让我们将 10 个 LUNA 添加到多重签名钱包中:
 
 ```bash
 terrad tx send \
@@ -84,9 +84,9 @@ terrad tx send \
     --broadcast-mode=block
 ```
 
-### Step 2: Create the multisig transaction
+### 第 2 步:创建多重签名交易
 
-We want to send 5 LUNA from our multisig account to `terra1fmcjjt6yc9wqup2r06urnrd928jhrde6gcld6n`.
+我们想从我们的多重签名账户发送 5 个 LUNA 到 `terra1fmcjjt6yc9wqup2r06urnrd928jhrde6gcld6n`。
 
 ```bash
 terrad tx bank send \
@@ -99,7 +99,7 @@ terrad tx bank send \
     --generate-only > unsignedTx.json
 ```
 
-The file `unsignedTx.json` contains the unsigned transaction encoded in JSON.
+文件 `unsignedTx.json` 包含以 JSON 编码的未签名交易。
 
 ```json
 {
@@ -125,10 +125,9 @@ The file `unsignedTx.json` contains the unsigned transaction encoded in JSON.
 }
 ```
 
-### Step 3: Sign individually
+### 第 3 步:单独签名
 
-Sign with `test1` and `test2` and create individual signatures.
-
+使用 `test1` 和 `test2` 签名并创建单独的签名。 
 ```sh
 terrad tx sign \
     unsignedTx.json \
@@ -147,10 +146,9 @@ terrad tx sign \
     --chain-id=localterra
 ```
 
-### Step 4: Create multisignature
+### 第 4 步:创建多重签名
 
-Combine signatures to sign transaction.
-
+结合签名来签署交易。 
 ```sh
 terrad tx multisign \
     unsignedTx.json \
@@ -159,7 +157,7 @@ terrad tx multisign \
     --chain-id=localterra > signedTx.json
 ```
 
-The TX is now signed:
+TX 现在已签署: 
 
 ```json
 {
@@ -209,8 +207,7 @@ The TX is now signed:
 }
 ```
 
-### Step 5: Broadcast transaction
-
+### 第 5 步:广播交易 
 ```sh
 terrad tx broadcast signedTx.json \
     --chain-id=localterra \

@@ -1,3 +1,3 @@
-# Reference
+# 参考
 
-Use this section to quickly find the information you need about the [Terra core modules](./Terra-core/Overview.md) and the syntax for running all the `terrad` [commands](./Terrad/commands.md) and [subcommands](./Terrad/subcommands.md).
+使用此部分可快速找到您需要的有关 [Terra 核心模块](./Terra-core/Overview.md) 和运行所有 `terrad` [命令](./Terra-core/commands.md) 的语法的信息 和 [子命令](./Terrad/subcommands.md)。 

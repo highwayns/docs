@@ -1,14 +1,14 @@
-# Oracle feeder
+# 语言机反馈
 
-The following code segment demonstrates how to create a simple price oracle feeder with Terra.js by using a [LocalTerra](https://github.com/terra-money/LocalTerra) network. The prices aren't live in this example. It just tracks the public LCD node's current registered oracle price and submits them to the local testnet.
+以下代码段演示了如何使用 [LocalTerra](https://github.com/terra-money/LocalTerra) 网络使用 Terra.js 创建一个简单的价格预言机馈送器。 此示例中未显示价格。 它只是跟踪公共 LCD 节点当前注册的预言机价格并将其提交给本地测试网。
 
-Note the following:
+请注意以下事项:
 
-1. Prevotes are automatically generated using [`MsgAggregateExchangeRateVote.getPrevote()`](https://terra-money.github.io/terra.js/classes/msgexchangeratevote.html#getprevote)
+1. 使用 [`MsgAggregateExchangeRateVote.getPrevote()`](https://terra-money.github.io/terra.js/classes/msgexchangeratevote.html#getprevote) 自动生成预投票
 
-2. `MsgAggregateExchangeRateVote` messages must precede `MsgAggregateExchangeRatePrevote` messages in sequence inside a transaction otherwise the `MsgAggregateExchangeRatePrevote` would override the current registered outstanding prevote for the validator.
+2. `MsgAggregateExchangeRateVote` 消息必须在一个交易中按顺序先于 `MsgAggregateExchangeRatePrevote` 消息，否则 `MsgAggregateExchangeRatePrevote` 将覆盖当前为验证器注册的未完成预投票。
 
-### Pseudo feeder
+### 伪反馈 
 
 ```ts
 import { randomBytes } from 'crypto';

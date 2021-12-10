@@ -1,52 +1,53 @@
-# Troubleshoot validator problems
+# 解决验证器问题
 
-Here are some common problems you might encounter when you run a validator node and their solutions.
+以下是您在运行验证器节点时可能会遇到的一些常见问题及其解决方案。
 
-## Validator has 0 voting power
+## 验证者的投票权为 0
 
-If your validator has 0 voting power, your validator has become auto-unbonded. On the mainnet, validators unbond when they do not vote on `9500` of the last `10000` blocks (`50` of the last `100` blocks on the testnet). Because blocks are proposed every ~5 seconds, a validator that is unresponsive for ~13 hours (~4 minutes on testnet) become unbonded. This problem usually happens when your `terrad` process crashes.
+如果您的验证人的投票权为 0，则您的验证人已自动解除绑定。在主网上，当验证者没有对最后“10000”块中的“9500”（测试网上最后“100”块中的“50”）投票时，他们就会解除绑定。由于区块每约 5 秒提出一次，因此在约 13 小时（在测试网上约 4 分钟）内没有响应的验证器将被解除绑定。这个问题通常发生在你的 `terrad` 进程崩溃时。
 
-To return the voting power back to your validator:
+要将投票权返还给验证者:
 
-1. If `terrad` is not running, restart it:
+1. 如果 `terrad` 没有运行，重启它:
 
   ```bash
   terrad start
   ```
 
-1. Wait for your full node to reach the latest block, and run:
+
+1. 等待你的全节点到达最新的区块，然后运行:
 
   ```bash
   terrad tx slashing unjail <terra> --chain-id=<chain_id> --from=<from>
   ```
 
-where
+在哪里
 
 
-- `<terra>` is the address of your validator account.
-- `<name>` is the name of the validator account. To find this information, run `terrad keys list`.
+- `<terra>` 是你的验证者账户的地址。
+- `<name>` 是验证器帐户的名称。要查找此信息，请运行“terrad keys list”。
 
-  ::: warning
-  If you don't wait for `terrad` to sync before running `unjail`, an error message will inform you that your validator is still jailed.
+  ::: 警告
+  如果你在运行 `unjail` 之前没有等待 `terrad` 同步，一条错误消息会通知你你的验证器仍然被监禁。
   :::
 
-1.  Check your validator again to see if your voting power is back:
+1. 再次检查您的验证器，看看您的投票权是否恢复:
 
   ```bash
-  terrad status
-  ```
+  泰拉德状态
+  ``
 
-If your voting power is less than it was previously, it's less because you were slashed for downtime.
+如果您的投票权比以前少，那是因为您因停机而被削减。
 
-## Terrad crashes because of too many open files
+## Terrad 因为打开的文件太多而崩溃
 
-The default number of files Linux can open per process is `1024`. `terrad` is known to open more than this amount, causing the process to crash. To fix this problem:
+Linux 每个进程可以打开的默认文件数是“1024”。众所周知，`terrad` 打开的数量超过了这个数量，从而导致进程崩溃。要解决此问题:
 
-1. Increase the number of open files allowed by running `ulimit -n 4096`.  
+1.通过运行`ulimit -n 4096`来增加允许打开的文件数。
 
-2. Restart the process with `terrad start`.
+2. 用 `terrad start` 重新启动进程。
 
-  If you are using `systemd` or another process manager to launch `terrad`, you might need to configure them. The following  sample `systemd` file fixes the problem:
+  如果您使用 `systemd` 或其他进程管理器来启动 `terrad`，您可能需要配置它们。以下示例 `systemd` 文件修复了该问题:
 
   ```systemd
   # /etc/systemd/system/terrad.service
@@ -67,27 +68,28 @@ The default number of files Linux can open per process is `1024`. `terrad` is kn
   WantedBy=multi-user.target
   ```
 
-## Oracle voting error
 
-You might receive the following error message by the [Terra Oracle feeder](https://github.com/terra-money/oracle-feeder):
+## Oracle 投票错误
 
-    `broadcast error: code: 3, raw_log: validator does not exist: terravaloperxxx`
+您可能会通过 [Terra Oracle feeder](https://github.com/terra-money/oracle-feeder) 收到以下错误消息:
 
-This message occurs for the following reasons:
+    `广播错误:代码:3，raw_log:验证器不存在:terravaloperxxx`
 
-### The validator is not active
+出现此消息的原因如下:
 
-The validator might not be active for one of the following reasons:
+### 验证器不活跃
 
-- The validator is jailed. To solve this problem, `unjail` the validator by running:
+由于以下原因之一，验证器可能不处于活动状态:
+
+- 验证者被监禁。要解决此问题，请通过运行“解除”验证器:
 
     `terrad tx slashing unjail <terra> --chain-id=<chain_id> --from=<from>`
 
-- The validator is not in the active [validator set](https://docs.terra.money/validators.html#delegations). Only the top 130 validators are in this set. To fix this problem, increase your total stake so that it is included in the top 130.
+- 验证器不在活动的 [验证器集](https://docs.terra.money/validators.html#delegations) 中。只有前 130 个验证者在这个集合中。要解决此问题，请增加您的总赌注，使其包含在前 130 名中。
 
-### The network is wrong.
+### 网络不对。
 
-The oracle feeder might be submitting to the wrong network. To fix this problem, run the feeder with the lite client daemon (LCD) specified:
+oracle feeder 可能正在提交到错误的网络。要解决此问题，请使用指定的 lite 客户端守护程序 (LCD) 运行馈送器:
 
 ```bash
 nom start vote --\
@@ -98,26 +100,27 @@ nom start vote --\
   --password "${PASSWORD}" \
 ```
 
-The LCD to which the voter is connecting might be running from a different network than your node. The remote LCD for different networks are:
+投票者连接的 LCD 可能在与您的节点不同的网络上运行。不同网络的远程 LCD 有:
 
-- https://lcd.terra.dev for the Columbus mainnet
-- https://bombay-lcd.terra.dev for the Bombay testnet
+- https://lcd.terra.dev 用于哥伦布主网
+- https://bombay-lcd.terra.dev 用于 Bombay 测试网
 
-Ensure you specify the LCD for the same network to which your node is connecting.
+确保为节点连接的同一网络指定 LCD。
 
-If you run a [local LCD](../Start-LCD.md) (for example, localhost:1317), ensure your LCD is connecting to the same node.
+如果您运行 [local LCD](../Start-LCD.md)（例如，localhost:1317），请确保您的 LCD 连接到同一节点。
 
-## Terrad crashes because of memory fragmentation
+## Terrad 因为内存碎片而崩溃
 
-As described in [this issue](https://github.com/terra-money/core/issues/592), huge memory allocation can cause memory fragmentation issue. Temporal solution is just using small wasm cache size like 50~100MB.
+如[本期](https://github.com/terra-money/core/issues/592) 中所述，巨大的内存分配会导致内存碎片问题。临时解决方案只是使用较小的 wasm 缓存大小，如 50~100MB。
 
-If you use v0.5.10+,
+如果您使用 v0.5.10+，
 
 ```toml
 contract-memory-cache-size = 100
 ```
 
-If you use v0.5.7~v0.5.9,
+
+如果使用 v0.5.7~v0.5.9，
 ```toml
 write-vm-memory-cache-size = 100
-```
+``` 

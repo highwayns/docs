@@ -1,10 +1,10 @@
-# Commands
+# 命令
 
-This section describes the commands available from `terrad`, the command line interface that connects a running `terrad` process.
+本节描述了从 `terrad` 可用的命令，这是连接正在运行的 `terrad` 进程的命令行界面。
 
 ## `add-genesis-account`
 
-Adds a genesis account to `genesis.json`.
+将 genesis 帐户添加到 `genesis.json`。 
 
 **Syntax**
 ```bash
@@ -18,7 +18,7 @@ terrad add-genesis-account acc1 '200000000uluna,550000ukrw'
 
 ## `collect-gentxs`
 
-Collects genesis transactions and outputs them to `genesis.json`.
+收集创世交易并将它们输出到“genesis.json”。
 
 **Syntax**
 ```bash
@@ -27,11 +27,11 @@ terrad collect-gentxs
 
 ## `debug`
 
-Helps debug the application. For a list of syntax and subcommands, see the [debug subcommands](subcommands.md#debug-addr).
+帮助调试应用程序。 有关语法和子命令的列表，请参阅 [debug subcommands](subcommands.md#debug-addr)。 
 
 ## `export`
 
-Exports the state to JSON.
+将状态导出到 JSON。 
 
 **Syntax**
 ```bash
@@ -40,7 +40,7 @@ terrad export
 
 ## `gentx`
 
-Adds a genesis transaction to `genesis.json`.
+将创世交易添加到 `genesis.json`。 
 
 **Syntax**
 ```bash
@@ -61,7 +61,7 @@ terrad gentx myKey 1000000uluna --home=/path/to/home/dir --keyring-backend=os --
 
 ## `help`
 
-Shows help information.
+显示帮助信息。 
 
 **Syntax**
 ```bash
@@ -70,7 +70,7 @@ terrad help
 
 ## `init`
 
-Initializes the configuration files for a validator and a node.
+初始化验证器和节点的配置文件。 
 
 **Syntax**
 ```bash
@@ -84,11 +84,11 @@ terrad init myNode
 
 ## `keys`
 
-Manages Keyring commands. For a list of syntax and subcommands, see the [keys subcommands](subcommands.md#keys-add).
+管理密钥环命令。 有关语法和子命令的列表，请参阅 [keys subcommands](subcommands.md#keys-add)。
 
 
 ## `migrate`
-Migrates the source genesis into the target version and prints to STDOUT.
+将源代码迁移到目标版本并打印到 STDOUT。
 
 **Syntax**
 ```bash
@@ -102,11 +102,11 @@ terrad migrate /genesis.json --chain-id=testnet --genesis-time=2020-04-19T17:00:
 
 ## `query`
 
-Manages queries. For a list of syntax and subcommands, see the [query subcommands](subcommands.md#query-account).
+管理查询。 有关语法和子命令的列表，请参阅 [查询子命令](subcommands.md#query-account)。 
 
 ## `rosetta`
 
-Creates a Rosetta server.
+创建 Rosetta 服务器。 
 
 **Syntax**
 ```bash
@@ -115,7 +115,7 @@ terrad rosetta
 
 ## `start`
 
-Runs the full node application with Tendermint in or out of process. By default, the application runs with Tendermint in process.
+在进程内或进程外使用 Tendermint 运行全节点应用程序。 默认情况下，应用程序在 Tendermint 进程中运行。 
 
 **Syntax**
 ```bash
@@ -124,7 +124,7 @@ terrad start
 
 ## `status`
 
-Displays the status of a remote node.
+显示远程节点的状态。 
 
 **Syntax**
 ```bash
@@ -133,11 +133,11 @@ terrad status
 
 ## `tendermint`
 
-Manages the Tendermint protocol. For a list of subcommands, see []()
+管理 Tendermint 协议。 有关子命令的列表，请参阅 []()
 
 ## `testnet`
 
-Creates a testnet with the specified number of directories and populates each directory with the necessary files.
+使用指定数量的目录创建一个测试网，并用必要的文件填充每个目录。
 
 **Syntax**
 ```bash
@@ -151,7 +151,7 @@ terrad testnet --v 6 --output-dir ./output --starting-ip-address 192.168.10.2
 
 ## `tx`
 
-Retrieves a transaction by its hash, account sequence, or signature. For a list of full syntax and subcommands, see the [tx subcommands](subcommands.md#tx-authz-exec).
+通过哈希、帐户序列或签名检索交易。 有关完整语法和子命令的列表，请参阅 [tx 子命令](subcommands.md#tx-authz-exec)
 
 **Syntax to query by hash**
 ```bash
@@ -170,7 +170,7 @@ terrad query tx --type=signature <sig1_base64,sig2_base64...>
 
 ## `txs`
 
-Retrieves transactions that match the specified events where results are paginated.
+检索与结果分页的指定事件匹配的事务。
 
 **Syntax**
 ```bash
@@ -184,7 +184,7 @@ terrad query txs --events 'message.sender=cosmos1...&message.action=withdraw_del
 
 ## `unsafe-reset-all`
 
-Resets the blockchain database, removes address book files, and resets `data/priv_validator_state.json` to the genesis state.
+重置区块链数据库，删除地址簿文件，并将 `data/priv_validator_state.json` 重置为创世状态。 
 
 **Syntax**
 ```bash
@@ -193,7 +193,7 @@ terrad unsafe-reset-all
 
 ## `validate-genesis`
 
-Validates the genesis file at the default location or at the location specified.
+在默认位置或指定位置验证创世文件。
 
 **Syntax**
 ```bash
@@ -207,7 +207,7 @@ terrad validate-genesis </genesis.json>
 
 ## `version`
 
-Returns the version of Terra you're running.
+返回您正在运行的 Terra 版本。
 
 **Syntax**
 ```bash

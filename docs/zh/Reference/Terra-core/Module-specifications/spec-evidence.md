@@ -90,7 +90,7 @@ message GenesisState {
 
 ### MsgSubmitEvidence
 
-证据是通过“MsgSubmitEvidence”消息提交的：
+证据是通过“MsgSubmitEvidence”消息提交的:
 
 ```
 // MsgSubmitEvidence 表示支持任意提交的消息
@@ -103,7 +103,7 @@ message MsgSubmitEvidence {
 
 `MsgSubmitEvidence` 消息的 `Evidence` 必须有一个相应的 `Handler` 注册到证据模块的 `Router` 才能被正确处理和路由。
 
-鉴于 `Evidence` 已注册到相应的 `Handler`，其处理如下：
+鉴于 `Evidence` 已注册到相应的 `Handler`，其处理如下:
 
 ```
 func SubmitEvidence(ctx Context, evidence Evidence) error {
@@ -135,7 +135,7 @@ func SubmitEvidence(ctx Context, evidence Evidence) error {
 
 ### Events
 
-证据模块发出以下处理程序事件： 
+证据模块发出以下处理程序事件: 
 
 #### MsgSubmitEvidence
 
@@ -155,7 +155,7 @@ Tendermint 块可以包括
 
 #### 歧义
 
-目前，SDK 在 ABCI `BeginBlock` 中处理两种类型的证据：
+目前，SDK 在 ABCI `BeginBlock` 中处理两种类型的证据:
 
 - `DuplicateVoteEvidence`,
 - `LightClientAttackEvidence`.
@@ -172,7 +172,7 @@ message Equivocation {
 }
 ```
 
-要使在 `block` 中提交的 `Equivocation` 有效，它必须满足以下要求：
+要使在 `block` 中提交的 `Equivocation` 有效，它必须满足以下要求:
 
 `Evidence.Timestamp >= block.Timestamp - MaxEvidenceAge`
 

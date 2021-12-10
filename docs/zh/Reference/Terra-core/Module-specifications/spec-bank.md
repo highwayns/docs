@@ -4,7 +4,7 @@
 Terra 的 Bank 模块继承自 Cosmos SDK 的 [`bank`](https://docs.cosmos.network/master/modules/bank/) 模块。本文档是一个存根，主要涵盖有关如何使用它的 Terra 特定的重要说明。
 :::
 
-Bank 模块是 Terra 区块链的基础交易层：它允许资产从一个“账户”发送到另一个“账户”。银行定义了两种类型的发送交易：`MsgSend` 和 `MsgMultiSend`。这些消息会自动产生稳定费，这是由 [`Auth` 模块中的 ante 处理程序](spec-auth.md#stability-fee) 执行的。
+Bank 模块是 Terra 区块链的基础交易层:它允许资产从一个“账户”发送到另一个“账户”。银行定义了两种类型的发送交易:`MsgSend` 和 `MsgMultiSend`。这些消息会自动产生稳定费，这是由 [`Auth` 模块中的 ante 处理程序](spec-auth.md#stability-fee) 执行的。
 
 ## 消息类型
 

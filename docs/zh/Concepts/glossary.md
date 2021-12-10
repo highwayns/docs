@@ -1,286 +1,213 @@
-# Glossary
+# 词汇表
 
-Use this glossary to learn about terms specific to the Terra Protocol.
+使用此词汇表了解特定于 Terra 协议的术语。
 
-## Active set
+## 活动集
 
-The top 130 validators that participate in consensus and receive rewards.
+参与共识并获得奖励的前 130 名验证者。
 
-## Air drops
+##空投
 
-Additional rewards given to delegators through certain validators, separate from staking rewards. Airdrops come from protocols in the Terra ecosystem to increase visibility. To claim an airdrop, visit the webpage of the protocol giving out the airdrop.
+通过某些验证者给予委托人的额外奖励，与质押奖励分开。空投来自 Terra 生态系统中的协议，以提高可见性。要申请空投，请访问空投协议的网页。
 
-## Algorithmic stablecoin
+## 算法稳定币
 
-A cryptocurrency that tracks the price of any asset, usually currency. Algorithmic stablecoins maintain their price peg through a set of rules or software instead of an underlying asset.
+一种追踪任何资产价格的加密货币，通常是货币。算法稳定币通过一套规则或软件而不是基础资产来维持其价格挂钩。
 
-## Arbitrage
+## 套利
 
-To profit from price differences across different markets. Arbitrageurs buy coins in one market and sell them on another market for a higher price.
+从不同市场的价格差异中获利。套利者在一个市场购买硬币，然后在另一个市场以更高的价格出售。
 
-## Blockchain
+## 区块链
 
-An unchangeable ledger of transactions copied among a network of independent computer systems.
+在独立计算机系统网络之间复制的不可更改的交易分类帐。
 
-## Blocks
+## 块
 
-Groups of information stored on a blockchain. Each block contains transactions that are grouped, verified, and signed by validators.
+存储在区块链上的信息组。每个区块都包含由验证者分组、验证和签名的交易。
 
-## bLuna
+## 绑定Luna
 
-A token representing bonded Luna that can be traded freely or used as collateral on other protocols in the Terra network, such as [Anchor](https://anchorprotocol.com/) and [Mirror](https://mirror.finance/). Bonded Luna takes 21 days to become unbonded.
+代表绑定 Luna 的代币，可以自由交易或用作 Terra 网络中其他协议的抵押品，例如 [Anchor](https://anchorprotocol.com/) 和 [Mirror](https://mirror.finance/ ）。 Bonded Luna 需要 21 天才能解除绑定。
 
-## Bonded validator
+## 绑定验证器
 
-A validator in the active set participating in consensus. Bonded validators earn rewards.
+参与共识的活跃集中的验证者。绑定验证器获得奖励。
 
-## Bonding
+## 粘合
 
-When a user delegates or bonds Luna to a validator to receive staking rewards. Validators never have ownership of a delegator's Luna, even when bonded. Delegating, bonding, and staking generally refer to the same process.
+当用户将 Luna 委托或绑定给验证器以获得质押奖励时。验证者永远不会拥有委托人 Luna 的所有权，即使在绑定时也是如此。委托、绑定和抵押通常是指相同的过程。
 
-## Burn
+## 燃烧
 
-The destruction of coins. The Terra protocol burns Luna to mint Terra stablecoins and vice versa. Burned coins are destroyed.
+硬币的破坏。 Terra 协议燃烧 Luna 以铸造 Terra 稳定币，反之亦然。烧毁的硬币被销毁。
 
-## CHAI
+## 柴
 
-A mobile payments app powered by Terra's blockchain network.
+由 Terra 的区块链网络提供支持的移动支付应用程序。
 
-## Columbus-5
+## 哥伦布-5
 
-The current version of the Terra mainnet.
+Terra 主网的当前版本。
 
-## Commission
+## 委员会
 
-The percentage of staking rewards a validator will keep before distributing the rest of the rewards to delegators. Commission is a validator’s income. Validators set their own commission rates.
+在将其余奖励分配给委托人之前，验证者将保留的质押奖励百分比。佣金是验证者的收入。验证者设置自己的佣金率。
 
-## Community pool
+## 社区池
 
-A special fund designated for funding community projects. Any community member can create a governance proposal to spend the tokens in the community pool. If the proposal passes, the funds are spent as specified in the proposal.
+专门用于资助社区项目的专项基金。任何社区成员都可以创建治理提案以在社区池中使用代币。如果提案通过，资金将按照提案中的规定使用。
 
-## Consensus
+## 共识
 
-A system used by validators or miners to agree that each block of transactions in a blockchain is correct. The Terra blockchain uses the Tendermint consensus. Validators earn rewards for participating in consensus. Visit the [Tendermint official documentation site](https://docs.tendermint.com/) for more information.
+验证者或矿工用来同意区块链中的每个交易块都是正确的系统。 Terra 区块链使用 Tendermint 共识。验证者因参与共识而获得奖励。访问 [Tendermint 官方文档站点](https://docs.tendermint.com/) 了解更多信息。
 
 ## Cosmos-SDK
 
-The open-source framework the Terra blockchain is built on. For more information, check out the [Cosmos SDK Documentation](https://docs.cosmos.network/).
+Terra 区块链所基于的开源框架。有关更多信息，请查看 [Cosmos SDK 文档](https://docs.cosmos.network/)。
 
 ## dApp
 
-An application built on a decentralized platform. Protocol’s built on Terra are dApps.
+建立在去中心化平台上的应用程序。建立在 Terra 上的协议是 dApp。
 
 ## DDoS
 
-Distributed denial of service attack. When an attacker floods a network with traffic or requests in order to disrupt service.
+分布式拒绝服务攻击。当攻击者用流量或请求淹没网络以中断服务时。
 
 ## DeFi
 
-Decentralized finance. A movement away from traditional finance and toward systems that do not require financial intermediaries.
+去中心化金融。从传统金融转向不需要金融中介的系统。
 
-## Delegate
+## 代表
 
-When users or delegators add their Luna to a validator's stake in exchange for rewards. Delegated Luna is bonded to a validator. Validators never have ownership of a delegator's Luna. Delegating, bonding, and staking generally refer to the same process.
+当用户或委托人将他们的 Luna 添加到验证者的股份中以换取奖励时。委托的 Luna 绑定到验证器。验证者永远不会拥有委托人的 Luna。委托、绑定和抵押通常是指相同的过程。
 
 
-## Delegator
+##委托人
 
-A user who delegates, bonds, or stakes Luna to a validator to earn rewards.
+将 Luna 委托、绑定或抵押给验证者以获得奖励的用户。
 
-## Fees
+## 费用
 
-- **Gas**: Compute fees added on to all transactions to avoid spamming. Validators set minimum gas prices and reject transactions that have implied gas prices below this threshold.
+- **Gas**:计算添加到所有交易中的费用以避免垃圾邮件。验证者设置最低 gas 价格并拒绝隐含 gas 价格低于此阈值的交易。
 
-- **Stability fee**: A fee added to any Terra stablecoin transaction excluding [market swaps](#market-swaps). Stability fees are capped at 1 SDT and are also referred to as taxes.
+- **稳定费**:添加到任何 Terra 稳定币交易中的费用，不包括 [市场掉期](#market-swaps)。稳定费的上限为 1 SDT，也称为税费。
 
-- **Spread fee**: A variable fee on any transaction between Terra and Luna.
+- **点差费**:Terra 和 Luna 之间任何交易的可变费用。
 
-- **Tobin tax**: A fee on any transaction between Terra stablecoin denominations.
+- **托宾税**:Terra 稳定币面额之间的任何交易的费用。
 
-For more information on fees, visit [Fees on Terra](/Concepts/Fees.md).
+有关费用的更多信息，请访问 [Fees on Terra](/Concepts/Fees.md)。
 
-## Fiat currency
+##法定货币
 
-Currency issued by a government that is not backed by an underlying asset. USD is the fiat currency of the United States.
+由政府发行的没有基础资产支持的货币。美元是美国的法定货币。
 
-## Full node
+##全节点
 
-A computer connected to the Terra mainnet able to validate transactions and interact with the Terra blockchain. All active validators run full nodes.
+连接到 Terra 主网的计算机，能够验证交易并与 Terra 区块链交互。所有活跃的验证器都运行完整的节点。
 
 ## Luna
 
-The native staking token of the Terra protocol. Luna supply expands and contracts in order to maintain the prices of Terra stablecoins. Luna is also used as a governance token. [Delegators](#Delegator) can stake Luna to recieve rewards.
+Terra 协议的原生质押代币。 Luna 供应量增加和收缩以维持 Terra 稳定币的价格。 Luna 也被用作治理令牌。 [Delegators](#Delegator) 可以质押 Luna 获得奖励。 
+## 治理
 
-## Governance
+治理是允许用户和验证者对 Terra 协议进行更改的民主过程。社区成员提交、投票和实施提案。一个抵押的 Luna 等于一票。
 
-Governance is the democratic process that allows users and validators to make changes to the Terra protocol. Community members submit, vote, and implement proposals. One staked Luna is equal to one vote.
+## 治理提案
 
-## Governance proposal
+对 Terra 协议进行更改或添加的书面提交。提案的主题可以从社区池支出、软件更改、参数更改或与 Terra 协议相关的任何想法不同。
 
-A written submission for a change or addition to the Terra protocol. Topics of proposals can vary from community pool spending, software changes, parameter changes, or any idea pertaining to the Terra protocol.
+## 非活动集
 
-## Inactive set
+不在活动集中的验证器。这些验证者不参与共识，也不会获得奖励。
 
-Validators that are not in the active set. These validators do not participate in consensus and do not earn rewards.
+## 入狱
 
-## Jailed
+行为不端的验证者将被监禁或从验证者集合中排除一段时间。
 
-Validators who misbehave are jailed or excluded from the validator set for a period amount of time.
+## 市场互换
 
-## Market swap
+Terra Station 中使用 Terra 协议的市场功能的交换。市场互换发生在 Terra 稳定币面额之间或 Terra 和 Luna 之间。市场掉期花费 [gas](#fees) 并产生 [托宾税](#fees) 或 [点差费](#fees)，但不受 [稳定费](#fees) 的约束。
 
-A swap in Terra Station that uses the Terra protocol's market function. Market swaps occur between Terra stablecoin denominations or between Terra and Luna. Market swaps spend [gas](#fees) and incur either a [Tobin tax](#fees) or a [Spread fee](#fees), but are not subject to a [stability fee](#fees).
+**例子**
+- 在 Terra Station 将 UST 换成 KRT 将收取托宾税和汽油费。
+- 在 Terra Station 将 Luna 换成 UST 将收取点差费和汽油费。
 
-**Examples**
-- Swapping UST for KRT in Terra Station will charge a Tobin tax and gas fees.
-- Swapping Luna for UST in Terra Station will charge a spread fee and gas fees.
+要了解如何在 Terra Station 中使用市场掉期功能，请访问 [如何使用 Terra Station](/How-to/Terra-Station/Swap.html#market-swap)。
 
-To learn how to use the market swap feature in Terra station, visit [how to use Terra Station](/How-to/Terra-Station/Swap.html#market-swap).
+有关费用的更多信息，请访问 [Fees on Terra](./fees.md)。
 
-For more information on fees, visit [Fees on Terra](./fees.md).
+## 燃烧
 
-## Mint
+创造新的硬币。铸造与燃烧相反。 Terra 协议燃烧 Luna 以铸造 Terra 稳定币，反之亦然。
 
-The creation of new coins. Minting is the opposite of burning. The Terra protocol burns Luna to mint Terra stablecoins and vice versa.
+## 模块
 
-## Module
+Terra 核心的一部分，代表 Terra 协议的特定功能。访问 [Terra 核心模块规范](/Reference/Terra-core/Overview.md) 了解更多信息。
 
-A section of the Terra core that represents a particular function of the Terra protocol. Visit the [Terra core module specifications](/Reference/Terra-core/Overview.md) for more information.
+## 语言机
 
-## Oracle
+一款监控不同资产真实世界价格和汇率的软件。验证者向协议提交汇率并投票选出正确的汇率。预言机用于将当前的外部汇率传递给协议。
 
-A software that monitors the real-world price and exchange rates of different assets. Validators submit exchange rates to the protocol and vote on the correct rates. Oracles are used to relay current external exchange rates to the protocol.
+有关更多信息，请访问 [Oracle](/Reference/Terra-core/Module-specifications/spec-oracle.md) 参考文档。
 
-For more information, visit the [Oracle](/Reference/Terra-core/Module-specifications/spec-oracle.md) reference documentation.
+## 挂钩
 
-## Peg
+直接跟踪资产价格的货币汇率。 UST 的挂钩是美元的价格。理想的挂钩比率是 1:1。
 
-A currency rate that directly tracks an asset's price. The peg for UST is the price of USD. The ideal peg ratio is 1:1.
+## 池
 
-## Pools
+令牌组。供应池代表市场中代币的总供应量。
 
-Groups of tokens. Supply pools represent the total supply of tokens in a market.
+## 股权证明
 
-## Proof of Stake
+股权证明。一种区块链风格，其中选择验证者根据他们持有的硬币数量提出区块。
 
-Proof of Stake. A style of blockchain where validators are chosen to propose blocks according to the number of coins they hold.
+## 重新委托
 
-## Redelegate
+当委托人想要将其绑定的 Luna 转移到不同的验证人时。重新委派 Luna 是即时的，不需要 21 天的解除绑定期。
 
-When a delegator wants to transfer their bonded luna to a different validator. Redelegating Luna is instant and does not require a 21-day unbonding period.
+## 奖励
 
-## Rewards
+从支付给验证者和委托者的费用中产生的收入。
 
-Revenue generated from fees given to validators and delegators.
+##特别提款权
 
-## SDR
+特别提款权。国际货币基金组织创建的一种国际储备资产和记账单位。 SDR 值每天使用一篮子世界上最大的经济体计算。 Terra 协议使用 TerraSDR 或 SDT 作为计算和制定标准的基础货币。
 
-Special Drawing Rights. An international reserve asset and unit of account created by the IMF. SDR value is calculated daily using a basket of the world's largest economies. The Terra protocol uses TerraSDR or SDT as its base currency for calculations and to set standards.
+## 铸币税
 
-## Seigniorage
+一枚硬币的价值减去其生产成本。在 Terra 协议中，铸币的成本非常小。 Terra 协议中的所有铸币税都被烧毁。
 
-The value of a coin minus the cost of its production. In the Terra protocol, the cost of minting is very small. All seigniorage in the Terra protocol is burned.
+## 自我授权
 
-## Self-delegation
+验证者绑定到自己的 Luna 数量。也称为自键。
 
-The amount of Luna a validator bonds to themselves. Also referred to as self-bond.
+## 削减
 
-## Slashing
+对行为不端的验证者的惩罚。
 
-Punishment for validators that misbehave.
+## 滑点
 
-## Slippage
+交易开始和结束之间硬币价格的差异。
 
-The difference in a coin's price between the start and end of a transaction.  
+## 股权
 
-## Stake
+绑定到验证器的 Luna 数量。
 
-The amount of Luna bonded to a validator.
+## 质押
 
-## Staking
+当用户或委托人将 Luna 委托并绑定到一个活跃的验证人以获得奖励时。 Bonded Luna 增加了验证者的权益。验证者提供他们的股份作为参与共识过程的抵押品。选择具有更大权益的验证者更频繁地参与。验证者因参与而获得质押奖励。如果验证者行为不端，则验证者的权益可能会被削减。验证人永远不会拥有委托人的 Luna，即使在质押时也是如此。
 
-When a user or delegator delegates and bonds Luna to an active validator in order to receive rewards. Bonded Luna adds to a validator's stake. Validators provide their stakes as collateral to participate in the consensus process. Validators with larger stakes are chosen to participate more often. Validators receive staking rewards for their participation. A validator's stake can be slashed if the validator misbehaves. Validators never have ownership of a delegator's Luna, even when staking.
+## Tendermint 共识
 
-## Tendermint consensus
+Terra 协议使用的共识程序。首先，验证者提出一个新区块。其他验证者分两轮对区块进行投票。如果一个区块在两轮中获得三分之二或更多的赞成票，它就会被添加到区块链中。验证者获得区块交易费用的奖励。提议者获得额外奖励。每个验证者都被选择根据他们的权重提出建议。查看 [Tendermint 官方文档](https://docs.tendermint.com/) 了解更多信息。
 
-The consensus procedure used by the Terra protocol. First, a validator proposes a new block. Other validators vote on the block in two rounds. If a block receives a two-thirds majority or greater of yes votes in both rounds, it gets added to the blockchain. Validators get rewarded with the block's transaction fees. Proposers get rewarded extra. Each validator is chosen to propose based on their weight. Checkout the [Tendermint official documentation](https://docs.tendermint.com/) for more information.
+## Cosmos SDK
 
-## Terra core
+Terra 协议的官方源代码。
 
-The official source code for the Terra protocol.
+## Terra 稳定币
 
-## Terra stablecoins
-
-Crypto assets that track the price of fiat currency enabled by the Terra protocol. Users mint new Terra stablecoins by burning Luna. Stablecoins are named for their fiat counterparts. For example, the base Terra stablecoin tracks the price of the IMF’s SDR, named TerraSDR, or SDT. Other stablecoin denominations include TerraUSD or UST, and TerraKRW or  KRT. All Terra stablecoin denominations exist in the same pool.
-
-## Terra mainnet
-
-The Terra protocol's blockchain network where all transactions take place.
-
-## Terra Station
-
-Terra's native wallet, swap, governance, and staking platform. In Station, you can send, receive, swap, and stake Terra coins. You can also participate in governance and read proposals.
-
-## Terrad
-
-A command line interface for connecting to a Terra node.
-
-## Terravaloper address
-
-A validator's public address beginning with `terravaloper` followed by a string of characters.
-
-## Testnet
-
-A version of the mainnet just for testing. The testnet does not use real coins. You can use the testnet to get familiar with transactions.
-
-## The Terra ecosystem
-
-A quickly expanding network of decentralized applications built on the Terra protocol.
-
-## The Terra protocol
-
-The leading decentralized and open-source public blockchain protocol for algorithmic stablecoins. Using a combination of open market arbitrage incentives and decentralized oracle voting, the Terra protocol creates stablecoins that consistently track the price of any fiat currency.
-
-## Tobin tax
-
-A fee added to every swap between Terra stablecoins (spot-trading). The rate varies, depending on the denomination. For example, while the rate for most denominations is .35%, the rate for MNT is 2%. To see the rates, [query the oracle](../terrad/oracle.html#tobin-taxes).
-
-## Total stake
-
-The total amount of Luna bonded to a delegator, including self-bonded Luna.
-
-## Unbonded validator
-
-A validator that is not in the active set and does not participate in consensus or receive rewards. Some unbonded validators may be jailed.
-
-## Unbonding validator
-
-A validator transitioning from the active set to the inactive set. An unbonding validator does not participate in consensus or earn rewards. The unbonding process takes 21 days.
-
-## Unbonded Luna
-
-Luna that can be freely traded and is not staked to a validator.
-
-## Unbonding
-
-When a delegator decides to undelegate their Luna from a validator. This process takes 21 days. No rewards accrue during this period. This action cannot be stopped once executed.
-
-## Unbonding Luna
-
-Luna that is transitioning from bonded to unbonded. Luna that is unbonding cannot be traded freely. The unbonding process takes 21 days. No rewards accrue during this period. This action cannot be stopped once executed.
-
-## Undelegate
-
-When a delegator no longer wishes to have their Luna bonded to a validator. This process takes 21 days. No rewards accrue during this period. This action cannot be stopped once executed.
-
-## Uptime
-
-The amount of time a validator has been active in a given timeframe. Validators with low up time may be slashed.
-
-## Validator
-
-A Terra blockchain miner responsible for verifying transactions on the blockchain. Validators run programs called full nodes that allow them to participate in consensus, verify blocks, participate in governance, and receive rewards. The top 130 validators with the highest total stake can participate in consensus.
-
-## Weight
-
-The measure of a validator's total stake. Validators with higher weights get selected more often to propose blocks. A validator's weight is also a measure of their voting power in governance.
+跟踪由 Terra 协议启用的法定货币价格的加密资产。用户通过燃烧 Luna 来铸造新的 Terra 稳定币。稳定币以其法定货币命名。例如，基础 Terra 稳定币跟踪 IMF 的 SDR 的价格，称为 TerraSDR，或 SDT。其他稳定币面额包括 TerraUSD 或 UST，以及 TerraKRW 或 KR 

@@ -78,11 +78,11 @@ type MsgCreateValidator struct {
 在每个块的末尾运行。作为此过程的一部分，任何更新
 验证器也会返回到 Tendermint 以包含在 Tendermint 中
 验证器集，负责验证 Tendermint 消息
-共识层。操作如下：
+共识层。操作如下:
 
 - 新的验证器集被视为最高的 `params.MaxValidators` 数量
   从 ValidatorsByPower 索引中检索的验证器
-- 将先前的验证器集与新的验证器集进行比较：
+- 将先前的验证器集与新的验证器集进行比较:
   - 缺失的验证者开始解除绑定，他们的“代币”从
     `BondedPool` 到 `NotBondedPool` `ModuleAccount`
   - 新的验证者立即绑定，他们的“代币”从
@@ -119,7 +119,7 @@ type MsgCreateValidator struct {
 ##### 解除绑定委托
 
 完成所有成熟的`UnbondingDelegations.Entries` 内的解除绑定
-`UnbondingDelegations` 队列具有以下过程：
+`UnbondingDelegations` 队列具有以下过程:
 
 - 将余额币转移到委托人的钱包地址
 - 从`UnbondingDelegation.Entries`中删除成熟的条目
@@ -129,7 +129,7 @@ type MsgCreateValidator struct {
 ##### 重新授权
 
 完成所有成熟的“Redelegation.Entries”的解绑
-`Redelegations` 队列具有以下过程：
+`Redelegations` 队列具有以下过程:
 
 - 从`Redelegation.Entries`中删除成熟的条目
 - 如果没有，则从商店中删除 `Redelegation` 对象

@@ -1,6 +1,6 @@
 # 治理
 
-::: 警告 注意：
+::: 警告 注意:
 Terra 的治理模块继承自 Cosmos SDK 的 [`gov`](https://docs.cosmos.network/master/modules/gov/) 模块。本文档是一个存根，主要涵盖有关如何使用它的 Terra 特定的重要说明。
 :::
 
@@ -10,7 +10,7 @@ Terra 的治理模块继承自 Cosmos SDK 的 [`gov`](https://docs.cosmos.networ
 
 ## 概念
 
-以下是治理提案程序：
+以下是治理提案程序:
 
 ### 存款期
 
@@ -20,7 +20,7 @@ Terra 的治理模块继承自 Cosmos SDK 的 [`gov`](https://docs.cosmos.networ
 
 ### 投票期
 
-如果在存款期结束前达到最低存款额，则提案进入投票阶段。一旦达到最低存款额，投票就会开始，并持续一周。在提案投票期间，Luna 持有者可以为提案投票。可用的 4 个投票选项是： 
+如果在存款期结束前达到最低存款额，则提案进入投票阶段。一旦达到最低存款额，投票就会开始，并持续一周。在提案投票期间，Luna 持有者可以为提案投票。可用的 4 个投票选项是: 
 
 - `Yes` - in favor
 - `No` - not in favor
@@ -31,17 +31,17 @@ Terra 的治理模块继承自 Cosmos SDK 的 [`gov`](https://docs.cosmos.networ
 
 ### 提案
 
-提案要通过，必须满足以下条件：
+提案要通过，必须满足以下条件:
 
-1. 选民参与必须至少达到`quorum` $Q$：
+1. 选民参与必须至少达到`quorum` $Q$:
 
 $$\frac{Yes + No + NoWithVeto}{Stake} \ge Q$$
 
-2.`NoWithVeto`投票的比例必须小于`veto`$V$：
+2.`NoWithVeto`投票的比例必须小于`veto`$V$:
 
 $$\frac{NoWithVeto}{Yes + No + NoWithVeto} \lt V$$
 
-3.`Yes`投票的比例必须大于`threshold`$T$：
+3.`Yes`投票的比例必须大于`threshold`$T$:
 
 $$\frac{Yes}{Yes + No + NoWithVeto} \gt T$$
 
@@ -143,7 +143,7 @@ type ParamChange struct {
 }
 ```
 
-::: 警告 注意：
+::: 警告 注意:
 Parameter Change Proposals 实际上位于Params 模块中，它是一个内部模块。 为方便起见，此处显示它。
 :::
 

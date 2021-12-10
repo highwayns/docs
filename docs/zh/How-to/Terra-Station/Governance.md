@@ -1,69 +1,69 @@
-# Participate in governance
+# 参与治理
 
-Governance is an important part of being involved in the Terra community. Use the following information to learn how to vote on and submit governance proposals in Terra Station. For more information on governance and voting options, visit the [governance section](/Concepts/Protocol.html#governance) of the concepts page.
+治理是参与 Terra 社区的重要组成部分。使用以下信息了解如何在 Terra Station 中投票和提交治理提案。有关治理和投票选项的更多信息，请访问概念页面的[治理部分](/Concepts/Protocol.html#governance)。
 
-## Vote on a proposal
+## 对提案进行投票
 
-Voting is an important way for community members to help the Terra protocol evolve. Follow these steps to vote with your staked Luna.
+投票是社区成员帮助 Terra 协议发展的重要方式。请按照以下步骤使用您质押的 Luna 进行投票。
 
-1. Open Terra Station and connect your wallet. In the sidebar, click **Governance**.
+1. 打开 Terra Station 并连接您的钱包。在侧边栏中，单击 **Governance**。
 
-2. Click on **Voting** to view the active proposals.
+2. 点击**Voting**查看活动提案。
 
-3. Click on the proposal you want to vote on.
+3. 单击您要投票的提案。
 
-4. In the upper right corner, click **Vote**.
+4. 点击右上角的**投票**。
 
-5. Select your vote and click **Next**.
+5. 选择您的投票并单击**下一步**。
 
-6. Enter your password and click **Vote**.
+6. 输入您的密码并点击**投票**。
 
-Your vote will be submitted.
+您的投票将被提交。
 
-## Deposit Luna to a proposal
+## 将 Luna 存入提案
 
-Users can vote on a proposal after a minimum deposit of 50 Luna is reached. To help push a proposal forward to a vote, deposit Luna to the proposal.
+在达到 50 Luna 的最低存款后，用户可以对提案进行投票。为了帮助推动提案进行投票，请将 Luna 存入提案。
 
-:::warning Deposits and refunds
-While most deposits get refunded, some deposits get burned. For more information on which deposits get burned, visit the [governance section](/Concepts/Protocol.html#governance) of the concepts page.
+:::警告押金和退款
+虽然大多数存款得到退还，但一些存款被烧毁。有关哪些存款被烧毁的更多信息，请访问概念页面的[治理部分](/Concepts/Protocol.html#governance)。
 :::
 
-1. Open Terra Station and connect your wallet. In the sidebar, click **Governance**.
+1. 打开 Terra Station 并连接您的钱包。在侧边栏中，单击 **Governance**。
 
-2. Click on **Deposit** to view the proposals still in the deposit period.
+2. 点击**入金**，查看还在入金期内的提案。
 
-3. Click on the proposal you want to deposit to.
+3. 单击您要存入的提案。
 
-4. In the upper right corner, click **Deposit**.
+4. 在右上角，点击**存款**。
 
-5. Enter the amount of Luna you want to deposit and click **Next**.
+5. 输入您要存入的 Luna 数量，然后单击**下一步**。
 
-6. Enter your password and click **Deposit**.
+6. 输入您的密码并点击**存款**。
 
-Your deposit will be added to the proposal.
+您的存款将被添加到提案中。
 
-## Create a new proposal
+## 创建一个新的提案
 
-::: warning Avoid unnecessary proposals
-To prevent unnecessary proposals or abuse of the system, all governance proposals must obtain a minimum deposit of 50 Luna. If 33.4% of the total vote is `NoWithVeto`, `quorum` is not met, or the minimum deposit isn't reached, the deposit will be burned. All other vote outcomes get their deposits refunded. For more information on deposits and refunds, visit the [governance section](/Concepts/Protocol.html#governance) of the concepts page.
+::: 警告避免不必要的提议
+为防止不必要的提案或系统滥用，所有治理提案必须至少获得 50 Luna 的保证金。如果总票数的 33.4% 为“NoWithVeto”、“法定人数”未达到或未达到最低存款额，则存款将被销毁。所有其他投票结果都会退还押金。有关存款和退款的更多信息，请访问概念页面的[治理部分](/Concepts/Protocol.html#governance)。
 :::
 
-1. Open Terra Station and connect your wallet. In the sidebar, click **Governance**.
+1. 打开 Terra Station 并连接您的钱包。在侧边栏中，单击 **Governance**。
 
-2. Click on **New proposal**.
+2. 点击**新提案**。
 
-3. Select the type of proposal, and enter a title, a description, and the amount of Luna you want to deposit initially.
+3. 选择提案类型，并输入标题、描述和您最初想要存入的 Luna 数量。
 
-:::warning Proposal warnings
+:::warning 提案警告
 
-Before uploading any proposal, try to get community feedback on [the Terra Agora research forum](https://agora.terra.money).
-Do not use text proposals to suggest parameter changes. For more information, visit the [Governance module reference page](/Reference/Terra-core/Module-specifications/spec-governance.md).
+在上传任何提案之前，请尝试在 [Terra Agora 研究论坛](https://agora.terra.money) 上获得社区反馈。
+不要使用文本建议来建议参数更改。有关更多信息，请访问 [治理模块参考页面](/Reference/Terra-core/Module-specifications/spec-governance.md)。
 :::
 
-4. Click **Next**.
+4. 单击**下一步**。
 
-5. Enter the amount of Luna you want to deposit and click **Next**.
+5. 输入您要存入的 Luna 数量，然后单击**下一步**。
 
-6. Enter your password and click **Propose**.
+6. 输入您的密码并点击**Propose**。
 
-Your proposal will enter the two-week deposit period. After a minimum deposit of 50 Luna has been reached, your proposal will enter a one-week voting period. For more information on governance, visit the [governance section](/Concepts/Protocol.html#governance) of the concepts page.
+您的提案将进入两周的存款期。在达到 50 Luna 的最低存款后，您的提案将进入一周的投票期。有关治理的更多信息，请访问概念页面的[治理部分](/Concepts/Protocol.html#governance)。 

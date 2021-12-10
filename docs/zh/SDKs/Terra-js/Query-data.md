@@ -1,6 +1,6 @@
-# Query data
+# 查询数据
 
-After you're connected to the blockchain via an `LCDClient` instance, you can query data from it. Data access is organized into various module APIs, which are accessible from within the `LCDClient` instance. Because they make HTTP requests in the background, they are Promises that can be awaited in order to not block during network IO.
+通过“LCDClient”实例连接到区块链后，您可以从中查询数据。 数据访问被组织成各种模块 API，可以从“LCDClient”实例中访问这些 API。 因为它们在后台发出 HTTP 请求，所以它们是可以等待的 Promises，以便在网络 IO 期间不被阻塞。 
 
 ```ts
 async main() {
@@ -13,7 +13,7 @@ async main() {
 main();
 ```
 
-Each module has its own set of querying functions. To get a comprehensive list, explore the module documentation:
+每个模块都有自己的一组查询函数。 要获得完整列表，请浏览模块文档:
 
 - [`auth`](https://terra-money.github.io/terra.js/classes/AuthAPI.html)
 - [`bank`](https://terra-money.github.io/terra.js/classes/BankAPI.html)

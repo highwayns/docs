@@ -1,46 +1,46 @@
-# Manage delegations
+# 管理委托
 
-Use this guide to manage your staking delegations in Terra Station. To learn how to delegate or withdraw rewards, visit the Terra Station [desktop](/Tutorials/Get-started/Terra-Station-desktop.md) or [mobile](/Tutorials/Get-started/Terra-Station-mobile.md) tutorials.  
+使用本指南管理您在 Terra Station 中的质押委托。要了解如何委托或提取奖励，请访问 Terra Station [桌面](/Tutorials/Get-started/Terra-Station-desktop.md) 或 [mobile](/Tutorials/Get-started/Terra-Station-mobile。 md) 教程。
 
-## Redelegate
+## 重新委托
 
-Redelegating lets you transfer staked Luna from one validator to another without waiting the 21-day unstaking period. Redelegating happens instantly.
+重新委托让您可以将质押的 Luna 从一个验证器转移到另一个验证器，而无需等待 21 天的取消质押期。重新授权立即发生。
 
-::: warning Warning
-When a user redelegates staked Luna from one validator to another, the validator receiving the staked Luna is barred from making further redelegation transactions for 21 days. This requirement only applies to the wallet that made the redelegation transaction.
+::: 警告 警告
+当用户将质押 Luna 从一个验证者重新委托给另一个验证者时，收到质押 Luna 的验证者将被禁止在 21 天内进行进一步的重新委托交易。此要求仅适用于进行重新委托交易的钱包。
 :::
 
-1. Open Terra Station and connect your wallet. Click **Staking**.
+1. 打开 Terra Station 并连接您的钱包。点击**放样**。
 
-2. Click on the validator you want to redelegate to.
+2. 单击您要重新委托给的验证器。
 
-3. Under the **My delegations** section, click **Redelegate**.
+3. 在**我的代表团**部分下，单击**重新代表**。
 
-4. Select the validator you would like to redelegate from.
+4. 选择您想要重新委托的验证器。
 
-5. Enter the amount of Luna you want to redelegate.
+5. 输入您要重新分配的 Luna 数量。
 
-6. Confirm the amounts. Enter your password and click **Redelegate**.
+6. 确认金额。输入您的密码，然后单击**重新委托**。
 
-Your staked Luna will be transferred to the new validator.
+您质押的 Luna 将转移到新的验证者。
 
-## Undelegate
+## 取消委托
 
-Undelegate Luna to unstake it from a validator. The unstaking period takes 21 days to complete.
+取消对 Luna 的委托以从验证者那里取消抵押。取消抵押期需要 21 天才能完成。
 
-::: warning Warning
-Once started, the delegating or undelegating processes can't be stopped.
-Undelegating takes 21 days to complete. The only way to undo a delegating or undelegating transaction is to wait for the unbonding process to pass. Alternatively, you can redelegate staked Luna to a different validator without waiting 21 days.
+::: 警告 警告
+一旦启动，就无法停止委派或取消委派过程。
+取消委派需要 21 天才能完成。撤销委托或取消委托交易的唯一方法是等待解除绑定过程通过。或者，您可以将质押的 Luna 重新委托给不同的验证者，而无需等待 21 天。
 :::
 
-1. Open Terra Station and connect your wallet. Click **Staking**.
+1. 打开 Terra Station 并连接您的钱包。点击**放样**。
 
-2. Click on the validator you want to unstake from.
+2. 点击你想要取消质押的验证人。
 
-3. Click **Undelegate** under the **My delegations** section.
+3. 单击**我的委派**部分下的**取消委派**。
 
-4. Enter the amount of Luna you want to undelegate. Click **Next**.
+4. 输入您要取消委托的 Luna 数量。点击下一步**。
 
-4. Confirm the amounts. Enter your password and click **Undelegate**.
+4. 确认金额。输入您的密码，然后单击**取消委托**。
 
-Your staked Luna is unbonding. Please check back in 21 days to complete the process.
+您的抵押 Luna 正在解除绑定。请在 21 天后回来查看以完成该过程。 

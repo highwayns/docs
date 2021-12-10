@@ -1,6 +1,6 @@
-# Keys
+# 键
 
-To perform actions using an account with Terra.js, you need a **Key**, which provides an abstraction around signing functions of an account.
+要使用带有 Terra.js 的帐户执行操作，您需要一个 **Key**，它提供围绕帐户签名功能的抽象。
 
 ## Key interface
 
@@ -20,13 +20,13 @@ interface Key {
 }
 ```
 
-## Key implementations
+## 关键实现
 
-Terra.js provides several standard `Key` implementations that provide a variety of ways to load an account with signing features into your program.
+Terra.js 提供了几种标准的“Key”实现，这些实现提供了多种方式将具有签名功能的帐户加载到您的程序中。
 
-### `RawKey`
+###`RawKey`
 
-The most basic implementation of `Key` is `RawKey`, which is created with a plain private key.
+`Key` 最基本的实现是 `RawKey`，它是用一个普通的私钥创建的。
 
 ```ts
 import { RawKey } from '@terra-money/terra.js';
@@ -34,7 +34,7 @@ import { RawKey } from '@terra-money/terra.js';
 const rk = new RawKey("<private key>");
 ```
 
-The private key associated with the `RawKey` is available through the instance:
+与 `RawKey` 关联的私钥可通过实例获得:
 
 ```ts
 console.log(rk.privateKey);
@@ -50,18 +50,18 @@ const mk = new MnemonicKey({
 });
 ```
 
-#### Generate random mnemonic
+#### 生成随机助记符
 
-If you want to generate a random mnemonic, you can create a `MnemonicKey` without any arguments:
+如果你想生成一个随机助记符，你可以创建一个不带任何参数的`MnemonicKey`: 
 
 ```ts
 const mk = new MnemonicKey();
 console.log(mk.mnemonic);
 ```
 
-#### Specifying HD path
+#### 指定高清路径
 
-`MnemonicKey` can used to recover a wallet with a particular BIP44 HD path: `m/44'/${coinType}'/${account}'/0/${index}`.
+`MnemonicKey` 可用于恢复具有特定 BIP44 HD 路径的钱包:`m/44'/${coinType}'/${account}'/0/${index}`。 
 
 ```ts
 const mk = new MnemonicKey({
@@ -72,7 +72,7 @@ const mk = new MnemonicKey({
 });
 ```
 
-For example, to recover a mnemonic with the old Terra wallet HD path using coin type for ATOM (118):
+例如，使用代币类型为 ATOM (118) 使用旧的 Terra 钱包 HD 路径恢复助记符: 
 
 ```ts
 const mk = new MnemonicKey({
@@ -83,9 +83,9 @@ const mk = new MnemonicKey({
 
 ### `CLIKey`
 
-> NOTE: This requires you to have `terrad` installed.
+> 注意:这需要您安装 `terrad`。
 
-If you want to use keys stored in your `terrad` installation's keyring to sign transactions, you can use `CLIKey`. This also will work for keys that have been registered in your keyring with `--ledger`, using a Ledger hardware device.
+如果您想使用存储在“terrad”安装密钥环中的密钥来签署交易，您可以使用“CLIKey”。 这也适用于使用 Ledger 硬件设备使用 `--ledger` 在您的密钥环中注册的密钥。
 
 ```ts
 import { StdFee, MsgSend } from '@terra-money/terra.js';
@@ -113,11 +113,11 @@ async function main() {
 main().catch(console.error);
 ```
 
-## Custom key implementation
+## 自定义键实现
 
-If you need to write your own key management solution, you will need to subclass the abstract `Key` class and provide your own signing function. Note that the key need not expose any details pertaining to the private key -- you could specify a `sign()` function that forwards the signing request to a server or to a hardware wallet, for instance. The remaining functions related to signing (`createSignature()` and `signTx()`) are automatically provided and use `sign()` underneath.
+如果您需要编写自己的密钥管理解决方案，则需要继承抽象的“Key”类并提供您自己的签名功能。 请注意，密钥不需要公开与私钥有关的任何详细信息——例如，您可以指定一个 `sign()` 函数，将签名请求转发到服务器或硬件钱包。 其余与签名相关的函数（`createSignature()` 和 `signTx()`）是自动提供的，并在下面使用 `sign()`。
 
-The following code listing is the implementation of `RawKey`, which illustrates how to write a custom `Key`:
+下面的代码清单是`RawKey`的实现，它说明了如何编写自定义`Key`:
 
 ```ts
 import SHA256 from 'crypto-js/sha256';
@@ -153,4 +153,4 @@ export class RawKey extends Key {
 }
 ```
 
-Note that you must call `super()` with the public key—this generates the relevant account and validator public keys associated with your key.
+请注意，您必须使用公钥调用“super()”——这会生成与您的密钥关联的相关帐户和验证器公钥。 

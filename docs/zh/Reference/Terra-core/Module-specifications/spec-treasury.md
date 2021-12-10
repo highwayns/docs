@@ -6,7 +6,7 @@ sidebarDepth: 2
 
 财政部模块充当 Terra 经济的“中央银行”，通过[观察指标](#observed-indicators) 和调整[货币政策杠杆](#monetary-policy-levers) 来衡量宏观经济活动，以调节矿工的激励措施，使其趋于稳定，长期增长。
 
-::: 警告 注意：
+::: 警告 注意:
 虽然财政部通过调整奖励来稳定矿工需求，但 [`Market`](spec-market.md) 模块通过套利和做市商负责 Terra 的价格稳定。
 :::
 
@@ -14,35 +14,35 @@ sidebarDepth: 2
 
 ### 观察到的指标
 
-财政部观察每个时期的三个宏观经济指标，并保留 [指标](#indicators) 在前几个时期的值：
+财政部观察每个时期的三个宏观经济指标，并保留 [指标](#indicators) 在前几个时期的值:
 
-- **税收奖励**：$T$，一个时期内交易和稳定费用产生的收入。
-- **铸币税奖励***：$S$，在一个纪元期间从 Luna 交换到 Terra 所产生的铸币税金额，该纪元将用于“Oracle”奖励中的投票奖励。从 Columbus-5 开始，所有铸币税都被烧毁。
-- **总质押 Luna **：$\lambda$，用户质押的 Luna 总量并绑定到他们委托的验证者。
+- **税收奖励**:$T$，一个时期内交易和稳定费用产生的收入。
+- **铸币税奖励***:$S$，在一个纪元期间从 Luna 交换到 Terra 所产生的铸币税金额，该纪元将用于“Oracle”奖励中的投票奖励。从 Columbus-5 开始，所有铸币税都被烧毁。
+- **总质押 Luna **:$\lambda$，用户质押的 Luna 总量并绑定到他们委托的验证者。
 
-这些指标用于推导出另外两个值：
-- **每单位 Luna 的税收奖励** $\tau = T / \lambda$：这用于 [更新税率](#k-updatetaxpolicy)
-- **总挖矿奖励** $R = T + S$：税收奖励和铸币税奖励的总和，用于[更新奖励权重](#k-updaterewardpolicy)。
+这些指标用于推导出另外两个值:
+- **每单位 Luna 的税收奖励** $\tau = T / \lambda$:这用于 [更新税率](#k-updatetaxpolicy)
+- **总挖矿奖励** $R = T + S$:税收奖励和铸币税奖励的总和，用于[更新奖励权重](#k-updaterewardpolicy)。
 
-::: 警告 注意：
+::: 警告 注意:
 从 Columbus-5 开始，所有铸币税都被烧毁，不再为社区或奖励池提供资金。
 :::
 
-- **铸币税奖励：**：$S$，在每个时期 Luna 交换到 Terra 产生的铸币税金额。
+- **铸币税奖励:**:$S$，在每个时期 Luna 交换到 Terra 产生的铸币税金额。
 
-::: 警告 注意：
+::: 警告 注意:
 从 Columbus-5 开始，所有铸币税都被烧毁。
 :::
 
-这些指标可用于推导出另外两个值，用 $\tau = T / \lambda$ 表示的 **每单位 Luna 的税收奖励**，用于[更新税率](#k-updatetaxpolicy)，以及**总挖矿奖励** $R = T + S$：税收奖励和铸币税奖励的总和，用于[更新奖励权重](#k-updaterewardpolicy)。
+这些指标可用于推导出另外两个值，用 $\tau = T / \lambda$ 表示的 **每单位 Luna 的税收奖励**，用于[更新税率](#k-updatetaxpolicy)，以及**总挖矿奖励** $R = T + S$:税收奖励和铸币税奖励的总和，用于[更新奖励权重](#k-updaterewardpolicy)。
 
 该协议可以计算和比较上述指标的短期 ([`WindowShort`](#windowshort)) 和长期 ([`WindowLong`](#windowlong)) 滚动平均值，以确定相对方向和速度Terra 经济。
 
 ### 货币政策杠杆
 
-- **税率**：$r$，调整从 Terra 交易中获得的收入金额，受 [_tax cap_](#tax-caps) 限制。
+- **税率**:$r$，调整从 Terra 交易中获得的收入金额，受 [_tax cap_](#tax-caps) 限制。
 
-- **奖励权重**：$w$，分配给 [`Oracle`](spec-oracle.md) 投票获胜者奖励池的铸币税部分。这是给在加权中值汇率的奖励范围内投票的验证者。
+- **奖励权重**:$w$，分配给 [`Oracle`](spec-oracle.md) 投票获胜者奖励池的铸币税部分。这是给在加权中值汇率的奖励范围内投票的验证者。
 
 ::: 警告提示
 从 Columbus-5 开始，所有铸币税都被烧毁，不再为社区池或预言机奖励池提供资金。验证者通过交换费用获得忠实的预言机投票奖励。
@@ -50,7 +50,7 @@ sidebarDepth: 2
 
 ### 更新政策
 
-[Tax Rate](#tax-rate) 和 [Reward Weight](#reward-weight) 都作为值存储在 `KVStore` 中，并且可以在它们之后通过 [governance proposal](#governance-proposals) 更新它们的值已经通过。财政部在每个时期重新校准每个杠杆一次，以稳定 Luna 的单位回报，确保通过 Staking 获得可预测的采矿奖励：
+[Tax Rate](#tax-rate) 和 [Reward Weight](#reward-weight) 都作为值存储在 `KVStore` 中，并且可以在它们之后通过 [governance proposal](#governance-proposals) 更新它们的值已经通过。财政部在每个时期重新校准每个杠杆一次，以稳定 Luna 的单位回报，确保通过 Staking 获得可预测的采矿奖励:
 
 - 对于税率，为了确保单位挖矿奖励不会停滞不前，国库添加了 [`MiningIncrement`](#miningincrement)，因此挖矿奖励会随着时间的推移稳步增加，如 [此处](#kupdatetaxpolicy) 所述。
 
@@ -160,7 +160,7 @@ type TaxRateUpdateProposal struct {
 
 ### 指标
 
-财政部跟踪当前和以前时期的以下指标：
+财政部跟踪当前和以前时期的以下指标:
 
 #### Tax Rewards
 
@@ -202,7 +202,7 @@ func (k Keeper) UpdateTaxPolicy(ctx sdk.Context) (newTaxRate sdk.Dec)
 
 在每个时期结束时，该函数计算税率货币杠杆的下一个值。
 
-使用 $r_t$ 作为当前税率和 $n$ 作为 [`MiningIncrement`](#miningincrement) 参数：
+使用 $r_t$ 作为当前税率和 $n$ 作为 [`MiningIncrement`](#miningincrement) 参数:
 
 1.计算过去一年`WindowLong`单位Luna税收奖励的滚动平均值$\tau_y$。
 
@@ -222,7 +222,7 @@ func (k Keeper) UpdateRewardPolicy(ctx sdk.Context) (newRewardWeight sdk.Dec)
 
 在每个 epoch 结束时，此函数会计算下一个奖励权重货币杠杆的值。
 
-使用 $w_t$ 作为当前奖励权重，$b$ 作为 [`SeigniorageBurdenTarget`](#seigniorageburdentarget) 参数：
+使用 $w_t$ 作为当前奖励权重，$b$ 作为 [`SeigniorageBurdenTarget`](#seigniorageburdentarget) 参数:
 
 1.计算上个月`WindowShort`的铸币税奖励总和$S_m$。
 
@@ -233,7 +233,7 @@ func (k Keeper) UpdateRewardPolicy(ctx sdk.Context) (newRewardWeight sdk.Dec)
 4.如果$R_m > 0$或$S_m > 0$，新的奖励权重为$w_{t+1} = b w_t S_m / R_m$，受`pc.Clamp()`规则约束。 有关更多详细信息，请参阅 [约束](#policy-constraints)。
 
 
-::: 警告 注意：
+::: 警告 注意:
 从 Columbus-5 开始，所有铸币税都被烧毁，不再为社区或奖励池提供资金。
 :::
 
@@ -263,7 +263,7 @@ func (k Keeper) SettleSeigniorage(ctx sdk.Context)
 
 3. 剩余的硬币 $\Sigma - S$ 被发送到 [`Distribution`](spec-distribution.md) 模块，在那里它被分配到社区池中。
 
-::: 警告 注意：
+::: 警告 注意:
 从 Columbus-5 开始，所有铸币税都被烧毁，不再为社区池或预言机奖励池提供资金。验证者通过交换费用获得忠实的预言机投票奖励。
 :::
 

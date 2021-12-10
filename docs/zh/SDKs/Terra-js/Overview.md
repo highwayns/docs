@@ -1,8 +1,8 @@
 # Terra.js
 
-Terra.js seeks to provide a compatible way to work with the Terra blockchain within JavaScript runtimes, such as Node.js and the browser. Terra.js enables the following functions:
+Terra.js 寻求提供一种兼容的方式来在 JavaScript 运行时（例如 Node.js 和浏览器）中使用 Terra 区块链。 Terra.js 启用以下功能:
 
-- Deserializing blockchain data into JavaScript objects with native data types and methods
-- Serializing objects back into a blockchain-compatible format
-- Providing access to the `terrad` node API (LCD) from a JavaScript-based interface
-- Providing additional utilities, such as hash functions and key-signing algorithms
+- 使用原生数据类型和方法将区块链数据反序列化为 JavaScript 对象
+- 将对象序列化回与区块链兼容的格式
+- 从基于 JavaScript 的界面提供对 `terrad` 节点 API (LCD) 的访问
+- 提供额外的实用程序，例如哈希函数和密钥签名算法 

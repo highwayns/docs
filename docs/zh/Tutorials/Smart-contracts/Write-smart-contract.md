@@ -1,33 +1,32 @@
-# Writing the Contract
+# 编写合约
 
-::: tip
-To better understand the building blocks of the smart contract you will build in this tutorial, view the [complete contract](https://github.com/CosmWasm/cw-template).
+::: 小费
+为了更好地理解您将在本教程中构建的智能合约的构建块，请查看 [完整合约](https://github.com/CosmWasm/cw-template)。
 :::
 
-A smart contract can be considered an instance of a singleton object whose internal state is persisted on the blockchain. Users can trigger state changes through sending it JSON messages, and users can also query its state through sending a request formatted as a JSON message. These messages are different than Terra blockchain messages such as `MsgSend` and `MsgSwap`.
+可以将智能合约视为单例对象的实例，其内部状态保存在区块链上。用户可以通过向其发送 JSON 消息来触发状态变化，用户也可以通过发送格式为 JSON 消息的请求来查询其状态。这些消息不同于 Terra 区块链消息，例如“MsgSend”和“MsgSwap”。
 
-As a smart contract writer, your job is to define 3 functions that define your smart contract's interface:
+作为智能合约编写者，您的工作是定义 3 个定义智能合约接口的函数:
 
-- `instantiate()`: a constructor which is called during contract instantiation to provide initial state
-- `execute()`: gets called when a user wants to invoke a method on the smart contract
-- `query()`: gets called when a user wants to get data out of a smart contract
+- `instantiate()`:在合约实例化期间调用以提供初始状态的构造函数
+- `execute()`:当用户想要调用智能合约上的方法时被调用
+- `query()`:当用户想要从智能合约中获取数据时被调用
 
-In this section, we'll define our expected messages alongside their implementation.
+在本节中，我们将定义预期的消息及其实现。
 
-## Start with a template
+## 从模板开始
 
-In your working directory, quickly launch your smart contract with the recommended folder structure and build options by running the following commands:
-
+在您的工作目录中，通过运行以下命令，使用推荐的文件夹结构和构建选项快速启动您的智能合约: 
 ```sh
 cargo generate --git https://github.com/CosmWasm/cw-template.git --branch 0.16 --name my-first-contract
 cd my-first-contract
 ```
 
-This helps get you started by providing the basic boilerplate and structure for a smart contract. You'll find in the `src/lib.rs` file that the standard CosmWasm entrypoints `instantiate()`, `execute()`, and `query()` are properly exposed and hooked up.
+这通过提供智能合约的基本样板和结构来帮助您入门。 你会在 `src/lib.rs` 文件中发现标准 CosmWasm 入口点 `instantiate()`、`execute()` 和 `query()` 被正确暴露和连接。
 
-## Contract State
+## 合约状态
 
-The starting template has the basic following state:
+起始模板具有以下基本状态:
 
 - a singleton struct `State` containing:
   - a 32-bit integer `count`
@@ -50,13 +49,13 @@ pub struct State {
 pub const STATE: Item<State> = Item::new("state");
 ```
 
-Terra smart contracts have the ability to keep persistent state through Terra's native LevelDB, a bytes-based key-value store. As such, any data you wish to persist should be assigned a unique key at which the data can be indexed and later retrieved. The singleton in our example above is assigned the key `config` (in bytes).
+Terra 智能合约能够通过 Terra 的原生 LevelDB（一种基于字节的键值存储）保持持久状态。因此，您希望保留的任何数据都应分配一个唯一的键，在该键上可以对数据进行索引并在以后检索。我们上面例子中的单例被分配了键`config`（以字节为单位）。
 
-Data can only be persisted as raw bytes, so any notion of structure or data type must be expressed as a pair of serializing and deserializing functions. For instance, objects must be stored as bytes, so you must supply both the function that encodes the object into bytes to save it on the blockchain, as well as the function that decodes the bytes back into data types that your contract logic can understand. The choice of byte representation is up to you, so long as it provides a clean, bi-directional mapping.
+数据只能作为原始字节持久化，因此任何结构或数据类型的概念都必须表示为一对序列化和反序列化函数。例如，对象必须存储为字节，因此您必须提供将对象编码为字节以将其保存在区块链上的函数，以及将字节解码回合约逻辑可以理解的数据类型的函数。字节表示的选择取决于您，只要它提供干净的双向映射即可。
 
-Fortunately, the CosmWasm team have provided utility crates such as [cosmwasm_storage](https://github.com/CosmWasm/cosmwasm/tree/master/packages/storage), which provides convenient high-level abstractions for data containers such as a "singleton" and "bucket", which automatically provide serialization and deserialization for commonly-used types such as structs and Rust numbers.
+幸运的是，CosmWasm 团队提供了诸如 [cosmwasm_storage](https://github.com/CosmWasm/cosmwasm/tree/master/packages/storage) 之类的实用工具箱，它为数据容器提供了方便的高级抽象，例如“ singleton”和“bucket”，它们自动为常用类型（如结构和 Rust 数字）提供序列化和反序列化。
 
-Notice how the `State` struct holds both `count` and `owner`. In addition, the `derive` attribute is applied to auto-implement some useful traits:
+注意 `State` 结构如何同时保存 `count` 和 `owner`。此外，`derive` 属性用于自动实现一些有用的特征:
 
 - `Serialize`: provides serialization
 - `Deserialize`: provides deserialization
@@ -65,18 +64,18 @@ Notice how the `State` struct holds both `count` and `owner`. In addition, the `
 - `PartialEq`: gives us equality comparison
 - `JsonSchema`: auto-generates a JSON schema for us
 
-`Addr`, refers to a human-readable Terra address prefixed with `terra...`. Its counterpart is the `CanonicalAddr`, which refers to a Terra address's native decoded Bech32 form in bytes.
+`Addr`，是指以 `terra...` 为前缀的人类可读的 Terra 地址。 它的对应物是“CanonicalAddr”，它指代 Terra 地址的本地解码 Bech32 格式（以字节为单位）。
 
 
-## InstantiateMsg
+## 实例化消息
 
-The `InstantiateMsg` is provided when a user creates a contract on the blockchain through a `MsgInstantiateContract`. This provides the contract with its configuration as well as its initial state.
+当用户通过“MsgInstantiateContract”在区块链上创建合约时，会提供“InstantiateMsg”。 这为合约提供了它的配置以及它的初始状态。
 
-On the Terra blockchain, the uploading of a contract's code and the instantiation of a contract are regarded as separate events, unlike on Ethereum. This is to allow a small set of vetted contract archetypes to exist as multiple instances sharing the same base code but configured with different parameters (imagine one canonical ERC20, and multiple tokens that use its code).
+在 Terra 区块链上，与以太坊不同，合约代码的上传和合约的实例化被视为单独的事件。 这是为了允许一小组经过审查的合约原型作为多个实例存在，这些实例共享相同的基本代码但配置了不同的参数（想象一个规范的 ERC20，以及多个使用其代码的代币）。
 
-### Example
+### 例子
 
-For our contract, we will expect a contract creator to supply the initial state in a JSON message:
+对于我们的合约，我们希望合约创建者在 JSON 消息中提供初始状态: 
 
 ```json
 {
@@ -99,9 +98,9 @@ pub struct InstantiateMsg {
 
 ```
 
-### Logic
+### 逻辑
 
-Here we define our first entry-point, the `instantiate()`, or where the contract is instantiated and passed its `InstantiateMsg`. We extract the count from the message and set up our initial state, where:
+在这里，我们定义了我们的第一个入口点，`instantiate()`，或者合约被实例化并传递其 `InstantiateMsg` 的位置。 我们从消息中提取计数并设置我们的初始状态，其中:
 
 - `count` is assigned the count from the message
 - `owner` is assigned to the sender of the `MsgInstantiateContract`
@@ -129,15 +128,15 @@ pub fn instantiate(
 }
 ```
 
-## ExecuteMsg
+## 执行消息
 
-The `ExecuteMsg` is a JSON message passed to the `execute()` function through a `MsgExecuteContract`. Unlike the `InstantiateMsg`, the `ExecuteMsg` can exist as several different types of messages, to account for the different types of functions that a smart contract can expose to a user. The `execute()` function demultiplexes these different types of messages to its appropriate message handler logic.
+`ExecuteMsg` 是通过 `MsgExecuteContract` 传递给 `execute()` 函数的 JSON 消息。 与 `InstantiateMsg` 不同，`ExecuteMsg` 可以作为几种不同类型的消息存在，以说明智能合约可以向用户公开的不同类型的功能。 `execute()` 函数将这些不同类型的消息多路分解到其适当的消息处理程序逻辑。
 
-### Example
+### 例子
 
-#### Increment
+#### 增量
 
-Any user can increment the current count by 1.
+任何用户都可以将当前计数加 1。
 
 ```json
 {
@@ -145,9 +144,9 @@ Any user can increment the current count by 1.
 }
 ```
 
-#### Reset
+#### 重启
 
-Only the owner can reset the count to a specific number.
+只有所有者才能将计数重置为特定数字。 
 
 ```json
 {
@@ -157,9 +156,9 @@ Only the owner can reset the count to a specific number.
 }
 ```
 
-### Message Definition
+### 消息定义
 
-As for our `ExecuteMsg`, we will use an `enum` to multiplex over the different types of messages that our contract can understand. The `serde` attribute rewrites our attribute keys in snake case and lower case, so we'll have `increment` and `reset` instead of `Increment` and `Reset` when serializing and deserializing across JSON.
+至于我们的 `ExecuteMsg`，我们将使用一个 `enum` 来复用我们的合约可以理解的不同类型的消息。 `serde` 属性以蛇形大小写和小写形式重写了我们的属性键，因此在跨 JSON 序列化和反序列化时，我们将使用 `increment` 和 `reset` 而不是 `Increment` 和 `Reset`。 
 
 ```rust
 // src/msg.rs
@@ -191,7 +190,7 @@ pub fn execute(
 }
 ```
 
-This is our `execute()` method, which uses Rust's pattern matching to route the received `ExecuteMsg` to the appropriate handling logic, either dispatching a `try_increment()` or a `try_reset()` call depending on the message received.
+这是我们的 `execute()` 方法，它使用 Rust 的模式匹配将接收到的 `ExecuteMsg` 路由到适当的处理逻辑，根据接收到的消息调度 `try_increment()` 或 `try_reset()` 调用。
 
 ```rust
 pub fn try_increment(deps: DepsMut) -> Result<Response, ContractError> {
@@ -204,7 +203,7 @@ pub fn try_increment(deps: DepsMut) -> Result<Response, ContractError> {
 }
 ```
 
-It is quite straightforward to follow the logic of `try_increment()`. We acquire a mutable reference to the storage to update the singleton located at key `b"config"`, made accessible through the `config` convenience function defined in the `src/state.rs`. We then update the present state's count by returning an `Ok` result with the new state. Finally, we terminate the contract's execution with an acknowledgement of success by returning an `Ok` result with the `Response`.
+遵循 `try_increment()` 的逻辑非常简单。 我们获取对存储的可变引用，以更新位于键“b”config”处的单例，可通过“src/state.rs”中定义的“config”便利函数访问。 然后我们通过返回带有新状态的“Ok”结果来更新当前状态的计数。 最后，我们通过返回带有“Response”的“Ok”结果来确认成功终止合约的执行。
 
 ```rust
 // src/contract.rs
@@ -221,7 +220,7 @@ pub fn try_reset(deps: DepsMut, info: MessageInfo, count: i32) -> Result<Respons
 }
 ```
 
-The logic for reset is very similar to increment -- except this time, we first check that the message sender is permitted to invoke the reset function.
+重置的逻辑与增量非常相似——除了这次，我们首先检查消息发送者是否被允许调用重置函数。 
 
 ## QueryMsg
 
@@ -249,9 +248,9 @@ Which should return:
 
 ### Message Definition
 
-To support queries against our contract for data, we'll have to define both a `QueryMsg` format (which represents requests), as well as provide the structure of the query's output -- `CountResponse` in this case. We must do this because `query()` will send back information to the user through JSON in a structure and we must make the shape of our response known.
+为了支持对我们的数据契约的查询，我们必须定义一个 `QueryMsg` 格式（代表请求），以及提供查询输出的结构——在这种情况下是 `CountResponse`。 我们必须这样做，因为`query()` 将通过结构中的 JSON 将信息发送回用户，并且我们必须使我们的响应的形状已知。
 
-Add the following to your `src/msg.rs`:
+将以下内容添加到您的 `src/msg.rs`:
 
 ```rust
 // src/msg.rs
@@ -271,8 +270,7 @@ pub struct CountResponse {
 
 ### Logic
 
-The logic for `query()` should be similar to that of `execute()`, except that, since `query()` is called without the end-user making a transaction, we omit the `env` argument as there is no information.
-
+`query()` 的逻辑应该类似于 `execute()` 的逻辑，除了因为 `query()` 是在没有最终用户进行交易的情况下调用的，我们省略了 `env` 参数，因为有 无信息。 
 ```rust
 // src/contract.rs
 
@@ -291,7 +289,7 @@ fn query_count(deps: Deps) -> StdResult<CountResponse> {
 
 ## Building the Contract
 
-To build your contract, run the following command. This will check for any preliminary errors before optimizing.
+要构建您的合约，请运行以下命令。 这将在优化之前检查任何初步错误。 
 
 ```sh
 cargo wasm
@@ -303,7 +301,7 @@ cargo wasm
 You will need [Docker](https://www.docker.com) installed to run this command.
 :::
 
-You will need to make sure the output WASM binary is as small as possible in order to minimize fees and stay under the size limit for the blockchain. Run the following command in the root directory of your Rust smart contract's project folder.
+您需要确保输出的 WASM 二进制文件尽可能小，以最大限度地减少费用并保持在区块链的大小限制之下。 在 Rust 智能合约的项目文件夹的根目录中运行以下命令。 
 
 ```sh
 cargo run-script optimize
@@ -318,16 +316,16 @@ docker run --rm -v "$(pwd)":/code \
   cosmwasm/rust-optimizer-arm64:0.12.4
   ```
 
-This will result in an optimized build of `artifacts/my_first_contract.wasm` or `artifacts/my_first_contract-aarch64.wasm` in your working directory.
+这将导致在您的工作目录中优化构建 `artifacts/my_first_contract.wasm` 或 `artifacts/my_first_contract-aarch64.wasm`。
 
-::: warning NOTE
-Please note that rust-optimizer will produce different contracts on Intel and ARM machines. So for reproducible builds you'll have to stick to one.
+::: 警告注意
+请注意，rust-optimizer 会在 Intel 和 ARM 机器上生成不同的合约。 因此，对于可重复的构建，您必须坚持使用一个。
 :::
 
 
-## Schemas
+## 架构
 
-In order to make use of JSON-schema auto-generation, we should register each of the data structures that we need schemas for.
+为了利用 JSON 模式自动生成，我们应该注册我们需要模式的每个数据结构。 
 
 ```rust
 // examples/schema.rs
@@ -360,7 +358,7 @@ You can then build the schemas with:
 cargo schema
 ```
 
-Your newly generated schemas should be visible in your `schema/` directory. The following is an example of `schema/query_msg.json`.
+您新生成的模式应该在您的 `schema/` 目录中可见。 以下是`schema/query_msg.json` 的示例。 
 
 ```json
 {

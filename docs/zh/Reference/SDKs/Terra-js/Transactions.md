@@ -1,21 +1,21 @@
-# Transactions
+# 交易
 
-This document explains how to influence the blockchain's state by broadcasting transactions.
+本文档解释了如何通过广播交易来影响区块链的状态。
 
-Transactions include:
+交易包括:
 
-- a list of messages
-- an optional memo
-- a fee
-- a signature from a key
+- 消息列表
+- 可选的备忘录
+- 费用
+- 来自钥匙的签名
 
-The messages included in a transaction contain the information that will be routed to a proper message handler in the node, which in turn parses the inputs and determines the next state of the blockchain.
+交易中包含的消息包含将路由到节点中适当消息处理程序的信息，该处理程序依次解析输入并确定区块链的下一个状态。
 
-## Create transactions
+## 创建交易
 
-### Create a wallet
+### 创建一个钱包
 
-You will first want to create a wallet which you can use to sign transactions.
+您首先要创建一个可用于签署交易的钱包。 
 
 ```ts
 import { MnemonicKey, LCDClient } from '@terra-money/terra.js';
@@ -28,7 +28,7 @@ const terra = new LCDClient({
 const wallet = terra.wallet(mk);
 ```
 
-### Create messages
+### 创建消息 
 
 ```ts
 import { MsgSend } from '@terra-money/terra.js';
@@ -40,7 +40,7 @@ const send = new MsgSend(
 );
 ```
 
-### Create and Sign Transaction
+### 创建和签署交易 
 
 ```ts
 const tx = await wallet.createAndSignTx({
@@ -49,23 +49,23 @@ const tx = await wallet.createAndSignTx({
 });
 ```
 
-### Broadcast transaction
+### 广播交易 
 
 ```ts
 const txResult = await terra.tx.broadcast(tx);
 ```
-The default broadcast mode is `block`, which waits until the transaction has been included in a block. This will give you the most information about the transaction, including events and errors while processing.
+默认的广播模式是`block`，它会一直等到交易被包含在一个区块中。 这将为您提供有关交易的最多信息，包括处理时的事件和错误。
 
-You can also use `sync` or `async` broadcast modes.
+您还可以使用 `sync` 或 `async` 广播模式。 
 
 ```ts
 // const syncTxResult = await terra.tx.broadcastSync(tx);
 // const asyncTxResult = await terra.tx.broadcastAsync(tx);
 ```
 
-### Check events
+### 检查事件
 
-If you broadcasted the transaction with `block`, you can get the events emitted by your transaction.
+如果您使用 `block` 广播交易，您可以获得交易发出的事件。
 
 ```ts
 import { isTxError } from "@terra-money/terra.js";

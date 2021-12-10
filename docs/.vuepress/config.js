@@ -4,7 +4,7 @@ module.exports = {
             title: "Terra Docs",
             description: "Terra is an open source, public blockchain protocol that provides fundamental infrastructure for a decentralized economy and enables open participation in the creation of new financial primitives to power the innovation of money.",
         },
-        '/zh': {
+        '/zh/': {
             title: "Terra 文档",
             description: "Terra is an open source, public blockchain protocol that provides fundamental infrastructure for a decentralized economy and enables open participation in the creation of new financial primitives to power the innovation of money.",
         }
@@ -276,7 +276,7 @@ requestAnimationFrame(function() {
                     }, ],
                 },
             },
-            '/zh': {
+            '/zh/': {
                 selectText: '选择语言',
                 // 该语言在下拉菜单中的标签
                 label: '简体中文',
@@ -397,9 +397,9 @@ requestAnimationFrame(function() {
                             title: "terrad",
                             collapsable: true,
                             children: [
-                                "/Reference/terrad/",
-                                "/Reference/terrad/commands",
-                                "/Reference/terrad/subcommands",
+                                "/zh/Reference/terrad/",
+                                "/zh/Reference/terrad/commands",
+                                "/zh/Reference/terrad/subcommands",
                             ],
                         },
                         "/zh/Reference/integrations",

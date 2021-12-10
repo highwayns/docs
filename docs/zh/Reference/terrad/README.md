@@ -1,28 +1,28 @@
-# Using terrad
+# 使用 terrad
 
-The following information explains the functions you can use from `terrad`, the command line interface that connects a running `terrad` process. Use it to access Terra. For more general information at the command line, run `terrad --help`. For more information about a specific `terrad` command, append the `-h` or `--help` flag after the command, such as `terrad query --help`.
+以下信息解释了您可以从“terrad”（连接正在运行的“terrad”进程的命令行界面）中使用的功能。使用它来访问 Terra。有关命令行的更多一般信息，请运行`terrad --help`。有关特定`terrad` 命令的更多信息，请在命令后附加`-h` 或`--help` 标志，例如`terrad query --help`。
 
-## Accessing a Node
+## 访问节点
 
-To query the state and send transactions, you must connect to a node, which is the access point to the entire network of peer connections. You can either run your own full node or connect to someone else's.
+要查询状态并发送交易，您必须连接到一个节点，该节点是整个对等连接网络的接入点。您可以运行自己的完整节点或连接到其他人的。
 
-### Running your own full node
+### 运行你自己的全节点
 
-Running your own full node is the most secure option, but it comes with relatively high resource requirements. For more information about the requirements to run your own full node and a tutorial for installing `terrad`, see [installation](../../How-to/Run-a-full-Terra-node/Build-Terra-core.md). For a tutorial that explains how to connect to an existing Terra network, see [joining a network](../../How-to/Run-a-full-Terra-node/Join-public-network.md).
+运行自己的全节点是最安全的选择，但它对资源的要求相对较高。有关运行您自己的完整节点的要求和安装 `terrad` 的教程的更多信息，请参阅 [安装](../../How-to/Run-a-full-Terra-node/Build-Terra-核心.md）。有关解释如何连接到现有 Terra 网络的教程，请参阅[加入网络](../../How-to/Run-a-full-Terra-node/Join-public-network.md)。
 
-### Connecting to a remote full node
+### 连接远程全节点
 
-If you don't want to run your own full node, you can connect to someone else's full node. As you consider your options for operators, prioritize operators you trust because malicious operators might intentionally return incorrect query results or censor your transactions. However, they will never be able to steal your funds because your private keys are stored locally on your computer or on your Ledger hardware device. Possible options of full-node operators include validators, wallet providers or exchanges.
+如果您不想运行自己的完整节点，则可以连接到其他人的完整节点。当您考虑运营商的选择时，请优先考虑您信任的运营商，因为恶意运营商可能会故意返回不正确的查询结果或审查您的交易。但是，他们永远无法窃取您的资金，因为您的私钥本地存储在您的计算机或 Ledger 硬件设备上。全节点运营商的可能选项包括验证器、钱包提供商或交易所。
 
-To connect to the full-node, you need an address in the `https://<host>:<port>` format, for example `https://77.87.106.33:26657`. This address has to be communicated by the full-node operator you choose to trust. You will use this address in the following section.
+连接全节点需要一个`https://<host>:<port>`格式的地址，例如`https://77.87.106.33:26657`。该地址必须由您选择信任的全节点运营商传达。您将在下一节中使用此地址。
 
-## Configuring terrad
+## 配置 terrad
 
-`terrad` enables you to interact with the node that runs on the Terra network, whether you run it yourself or not. To configure `terrad`, edit the the `config.toml` file in the `~/.terra/config/` directory.
+`terrad` 使您能够与在 Terra 网络上运行的节点进行交互，无论您是否自己运行它。要配置`terrad`，请编辑`~/.terra/config/` 目录中的`config.toml` 文件。
 
-## Querying Blockchain State
+## 查询区块链状态
 
-To query all relevant information from the blockchain, such as like account balances, amount of bonded tokens, outstanding rewards, and so on, use `terrad query`. The following list shows some of the most useful commands for delegators:
+要从区块链查询所有相关信息，例如账户余额、保税代币数量、未偿奖励等，请使用“terrad query”。以下列表显示了一些对委托者最有用的命令: 
 
 ```bash
 # query account balances and other account-related information
@@ -45,19 +45,19 @@ terrad query staking delegation <delegatorAddress> <validatorAddress>
 terrad query distr rewards <delegatorAddress>
 ```
 
-## Sending Transactions
+## 发送交易
 
-To interact with the blockchain by sending transactions containing module messages with state-changing directives that get processed and included in blocks, use `terrad tx`. All of transaction-sending operations follow the form:
+要通过发送包含带有状态更改指令的模块消息的交易与区块链进行交互，这些指令会被处理并包含在块中，请使用“terrad tx”。 所有交易发送操作都遵循以下形式: 
 
 ```bash
 terrad tx ...
 ```
 
-To learn more about the different types of interactions you can issue, see the section for each module.
+要了解有关您可以发出的不同类型交互的更多信息，请参阅每个模块的部分。
 
-### Simulating a transaction
+### 模拟交易
 
-To simulate a transaction without actually broadcasting it, append the `--dry-run` flag to the command statement:
+要模拟交易而不实际广播它，请将 `--dry-run` 标志附加到命令语句: 
 
 ```bash
 terrad tx send \
@@ -68,9 +68,9 @@ terrad tx send \
     --dry-run
 ```
 
-### Generating a transaction without sending
+### 生成交易而不发送
 
-To build a transaction and print its JSON format to STDOUT, append `--generate-only` to the list of the command line arguments. This allows you to separate the creation and signing of a transaction with the broadcasting.
+要构建交易并将其 JSON 格式打印到 STDOUT，请将 `--generate-only` 附加到命令行参数列表。 这允许您将交易的创建和签名与广播分开。 
 
 ```bash
 terrad tx send \
@@ -88,7 +88,7 @@ terrad tx sign \
     unsignedSendTx.json > signedSendTx.json
 ```
 
-You can validate the transaction's signatures by typing the following:
+您可以通过键入以下内容来验证交易的签名:
 
 ```bash
 terrad tx sign --validate-signatures signedSendTx.json
@@ -101,55 +101,55 @@ terrad tx broadcast --node=<node> signedSendTx.json
 ```
 
 
-## Fees
+## 费用
 
-Transactions on the Terra Protocol network need to include a transaction fee in order to be processed. This fee pays for the gas required to run the transaction. The formula is the following:
+Terra 协议网络上的交易需要包括交易费才能进行处理。这笔费用用于支付运行交易所需的 gas。公式如下:
 
-$$fees = gas * gasPrices$$
+$$ 费用 = gas * gasPrices$$
 
-The `gas` is dependent on the transaction. Different transaction require different amount of `gas`. The `gas` amount for a transaction is calculated as it is being processed, but there is a way to estimate it beforehand by using the `auto` value for the `gas` flag. Of course, this only gives an estimate. You can adjust this estimate with the flag `--gas-adjustment` \(default `1.0`\) if you want to be sure you provide enough `gas` for the transaction.
+`gas` 取决于交易。不同的交易需要不同数量的“gas”。交易的 `gas` 金额是在处理过程中计算的，但是有一种方法可以通过使用 `gas` 标志的 `auto` 值来预先估计它。当然，这只是一个估计。如果你想确保为交易提供足够的`gas`，你可以使用标志`--gas-adjustment` \（默认`1.0`\）来调整这个估计。
 
-The `gasPrice` is the price of each unit of `gas`. Each validator sets a `min-gas-price` value, and will only include transactions that have a `gasPrice` greater than their `min-gas-price`.
+`gasPrice` 是每单位 `gas` 的价格。每个验证器都会设置一个 `min-gas-price` 值，并且只会包含 `gasPrice` 大于其 `min-gas-price` 的交易。
 
-The transaction `fees` are the product of `gas` and `gasPrice`. As a user, you have to input 2 out of 3. The higher the `gasPrice`/`fees`, the higher the chance that your transaction will get included in a block.
+交易`fees`是`gas`和`gasPrice`的乘积。作为用户，您必须输入 3 中的 2。`gasPrice`/`fees` 越高，您的交易被包含在一个区块中的机会就越大。
 
-### Setting Fees
+### 设置费用
 
-Each transaction may either supply fees or gas prices, but not both. Most users will typically provide fees as this is the final cost you will end up incurring for the transaction being included in the ledger, where as gas prices will be dynamically calculated depending on the validator.
+每笔交易可能提供费用或天然气价格，但不能同时提供。大多数用户通常会提供费用，因为这是您最终为包含在分类账中的交易而产生的最终成本，而 gas 价格将根据验证器动态计算。
 
-Validators specify a minimum gas price that they use to determine whether to include a transaction, which they calculate during `CheckTx`, where `gasPrices >= minGasPrices`. Note, your transaction must supply fees that are greater than or equal to **any** of the denominations the validator requires.
+验证器指定他们用来确定是否包括交易的最低 gas 价格，他们在 `CheckTx` 期间计算，其中 `gasPrices >= minGasPrices`。请注意，您的交易提供的费用必须大于或等于验证者要求的 **任何** 面额。
 
-::: warning NOTE
-Validators may start to prioritize transactions by `gasPrice` in the mempool, so providing higher fees or gas prices will likely yield higher priority of inclusion in a block.
+::: 警告注意
+验证者可能会开始通过内存池中的 `gasPrice` 来确定交易的优先级，因此提供更高的费用或 gas 价格可能会产生更高的包含在区块中的优先级。
 :::
 
-To directly use fees:
+直接使用费用: 
 
 ```bash
 terrad tx send ... --fees=100000uluna
 ```
 
-If you use fees, validators will calculate the implied `minGasPrices` by dividing your fee with the estimated gas consumption, to properly assign the right priority to your transaction.
+如果您使用费用，验证器将通过将您的费用除以估计的 gas 消耗来计算隐含的 `minGasPrices`，以正确地为您的交易分配正确的优先级。
 
-To use gas prices (use a comma-separated list of amount and denominations).
+使用汽油价格（使用逗号分隔的金额和面额列表）。 
 
 ```bash
 terrad tx send ... --gas-prices=0.15uusd
 ```
 
-### Taxes
+### 税收
 
-Taxes in Terra must be included in the fee amount. Users can make transactions with existing methods without the `--fees` flag but with gas prices flag. This will automatically calculate the tax and return fees in addition to the existing gas fees.
+Terra 的税费必须包含在费用金额中。 用户可以使用现有方法进行交易，无需`--fees` 标志，但带有gas price 标志。 除了现有的gas费用外，这将自动计算税费和退货费。
 
-### Automatic Fee Estimation
+### 自动费用估算
 
-You may want to cap the maximum gas that can be consumed by the transaction via the `--gas` flag. If you pass `--gas=auto`, the gas will be automatically estimated before executing the transaction.
+您可能希望通过 `--gas` 标志限制交易可以消耗的最大气体。 如果您通过`--gas=auto`，将在执行交易前自动估算gas。
 
-Gas estimate might be inaccurate as state changes could occur in between the end of the simulation and the actual execution of a transaction, thus an adjustment is applied on top of the original estimate in order to ensure the transaction is broadcasted successfully.
+Gas 估计可能不准确，因为在模拟结束和交易实际执行之间可能发生状态变化，因此在原始估计之上应用调整以确保交易成功广播。
 
-The adjustment can be controlled via the `--gas-adjustment` flag, whose default value is 1.0.
+可以通过`--gas-adjustment` 标志控制调整，其默认值为 1.0。
 
-To get a direct fee estimation from `terrad`:
+要从“terrad”获得直接费用估算:
 
 ```bash
 terrad tx estimate-fee ...\
@@ -157,7 +157,7 @@ terrad tx estimate-fee ...\
     --gas-adjustment=1.4
 ```
 
-To create and send transactions using fee-estimation, use the template below as a format:
+要使用费用估算创建和发送交易，请使用以下模板作为格式: 
 
 ```bash
 terrad tx send ... \
@@ -166,18 +166,18 @@ terrad tx send ... \
     --gas-adjustment=1.4
 ```
 
-## Shell Autocompletion
+## shell自动完成
 
-Auto-completion scripts for popular UNIX shell interpreters such as `bash` and `zsh` can be generated through the `completion` command, which is available for both `terrad` and `terrad`. This allows for a more convenient way to interact with the Terra Core endpoints when using the command-line.
+可以通过 `completion` 命令生成流行的 UNIX shell 解释器（如 `bash` 和 `zsh`）的自动完成脚本，该命令可用于 `terrad` 和 `terrad`。 这允许在使用命令行时以更方便的方式与 Terra Core 端点交1互。
 
-If you want to generate `bash` completion scripts run the following command:
+如果要生成`bash`完成脚本，请运行以下命令: 11
 
 ```bash
 terrad completion > terrad_completion
 terrad completion > terrad_completion
 ```
 
-If you want to generate `zsh` completion scripts run the following command:
+如果要生成 `zsh` 完成脚本，请运行以下命令
 
 ```bash
 terrad completion --zsh > terrad_completion
@@ -185,12 +185,12 @@ terrad completion --zsh > terrad_completion
 ```
 
 ::: warning NOTE
-On most UNIX systems, such scripts may be loaded in `.bashrc` or `.bash_profile` to enable Bash autocompletion.
+在大多数 UNIX 系统上，此类脚本可能会加载到 `.bashrc` 或 `.bash_profile` 中以启用 Bash 自动完成功能。
 
 ```bash
 echo '. terrad_completion' >> ~/.bashrc
 echo '. terrad_completion' >> ~/.bashrc
 ```
 
-Refer to the user's manual of your interpreter provided by your operating system for information on how to enable shell autocompletion.
+有关如何启用 shell 自动完成的信息，请参阅操作系统提供的解释器用户手册。 
 :::

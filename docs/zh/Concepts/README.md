@@ -1,6 +1,6 @@
-# Concepts
+# 概念
 
-Learn more about [Terra and Luna](/Concepts/Protocol.md), [how the protocol works](/Concepts/Protocol.html#how-the-terra-protocol-works), [validators](/Concepts/Protocol.html#validators), [staking](/Concepts/Protocol.html#staking), and [governance](/Concepts/Protocol.html#governance) by exploring the concepts explained in this section. Use the [glossary](/Concepts/glossary.md) to learn more about specific terms.
+详细了解 [Terra 和 Luna](/Concepts/Protocol.md)、[协议的工作原理](/Concepts/Protocol.html#how-the-terra-protocol-works)、[验证器](/Concepts/Protocol .html#validators)、[staking](/Concepts/Protocol.html#staking) 和 [governance](/Concepts/Protocol.html#governance) 通过探索本节中解释的概念。 使用 [glossary](/Concepts/glossary.md) 了解有关特定术语的更多信息。 
 
 <!--
 <div class="cards twoColumn">

@@ -1,10 +1,10 @@
-# History and changes
+# 历史和变化
 
-This is a history of changes to the Terra core.
+这是 Terra 核心的变化历史。
 
 ## Columbus-5
 
-Columbus-5 is the current Terra Mainnet.
+Columbus-5 是当前的 Terra 主网。 
 
 - [Mainnet Changelog](https://github.com/terra-money/core/blob/main/CHANGELOG.md)
 - [Columbus-5 Upgrade Guide](https://github.com/terra-money/mainnet/wiki/Columbus-5-Upgrade-Instructions)

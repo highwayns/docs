@@ -1,10 +1,10 @@
-# Smart contracts
+# 智能合约
 
-This document explains how to perform tasks related to working with smart contracts with Terra.js.
+本文档解释了如何使用 Terra.js 执行与使用智能合约相关的任务。
 
-## Upload code
+## 上传代码
 
-You will first need a compiled WASM smart contract's binary to upload.
+您首先需要一个编译好的 WASM 智能合约的二进制文件来上传。 
 
 ```ts
 import { LCDClient, MsgStoreCode, MnemonicKey, isTxError } from '@terra-money/terra.js';
@@ -45,11 +45,11 @@ const {
 } = storeCodeTxResult.logs[0].eventsByType;
 ```
 
-## Create a contract
+## 创建合约
 
-For Terra smart contracts, there is a distinction between uploading contract code and creating a contract. This allows multiple contracts to share the same code if there are only minor variations in their logic which can be configured at contract creation. This configuration is passed in an **InitMsg**, and provides the initial state for the contract.
+对于 Terra 智能合约，上传合约代码和创建合约是有区别的。 这允许多个合约共享相同的代码，如果它们的逻辑只有很小的变化可以在合约创建时进行配置。 此配置在 **InitMsg** 中传递，并为合约提供初始状态。
 
-To create (instantiate) a smart contract, you must first know the code ID of an uploaded code. You will reference it in a `MsgInstantiateContract` alongside the InitMsg to create the contract. Upon successful creation, your contract will be located at an address that you specify.
+要创建（实例化）智能合约，您必须首先知道上传代码的代码 ID。 您将在 InitMsg 旁边的 `MsgInstantiateContract` 中引用它以创建合约。 成功创建后，您的合约将位于您指定的地址。 
 
 ```ts
 import { MsgInstantiateContract } from '@terra-money/terra.js';
@@ -83,9 +83,9 @@ const {
 } = instantiateTxResult.logs[0].eventsByType;
 ```
 
-## Execute a contract
+## 执行合约
 
-Smart contracts respond to JSON messages called **HandleMsg** which can exist as different types. The smart contract writer should provide any end-users of the smart contract with the expected format of all the varieties of HandleMsg the contract is supposed to understand, in the form of a JSON schema. The schema thus provides an analog to Ethereum contracts' ABI.
+智能合约响应称为 **HandleMsg** 的 JSON 消息，该消息可以以不同类型存在。 智能合约编写者应以 JSON 模式的形式向智能合约的任何最终用户提供合约应该理解的所有 HandleMsg 种类的预期格式。 因此，该模式提供了对以太坊合约 ABI 的模拟。 
 
 ```ts
 import { MsgExecuteContract } from '@terra-money/terra.js';
@@ -104,9 +104,9 @@ const executeTx = await wallet.createAndSignTx({
 const executeTxResult = await terra.tx.broadcast(executeTx);
 ```
 
-## Query data from a contract
+## 从合约中查询数据
 
-A contract can define a query handler, which understands requests for data specified in a JSON message called a QueryMsg. Unlike the message handler, the query handler cannot modify the contract's or blockchain's state -- it is a readonly operation. Therefore, a querying data from a contract does not use a message and transaction, but works directly through the `LCDClient` API.
+合约可以定义一个查询处理程序，该处理程序理解对名为 QueryMsg 的 JSON 消息中指定的数据的请求。 与消息处理程序不同，查询处理程序不能修改合约或区块链的状态——它是一个只读操作。 因此，从合约查询数据不使用消息和事务，而是直接通过“LCDClient”API 工作。
 
 ```ts
 const result = await terra.wasm.contractQuery(

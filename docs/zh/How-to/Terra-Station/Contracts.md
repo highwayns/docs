@@ -1,53 +1,53 @@
-# Use smart contracts
+# 使用智能合约
 
-Smart contracts are an advanced feature of Terra Station. If you’re using Terra Station for the first time, follow the [Terra Station tutorial](/Tutorials/Get-started/Terra-station-desktop.md).
+智能合约是 Terra Station 的一项高级功能。如果您是第一次使用 Terra Station，请遵循 [Terra Station 教程](/Tutorials/Get-started/Terra-station-desktop.md)。
 
-## Prerequisites
+## 先决条件
 
-Compile a contract locally and create a `.wasm` file.  
+在本地编译合约并创建一个 `.wasm` 文件。
 
-## Upload
+## 上传
 
-Deploy a contract by uploading your `.wasm` file to Terra Station.
+通过将您的 `.wasm` 文件上传到 Terra Station 来部署合约。
 
-1. Open Terra Station and connect your wallet. Click **Contracts**.
+1. 打开 Terra Station 并连接您的钱包。点击**合同**。
 
-2. Click **Upload**.
+2. 点击**上传**。
 
-3. Upload your `.wasm` file and enter the contract info. Click **Next**.
+3. 上传你的 `.wasm` 文件并输入合约信息。点击下一步**。
 
-4. Enter your password and click **Upload**.
+4. 输入您的密码并点击**上传**。
 
-Your contract is now uploaded, and you received a contract code ID.
+您的合同现已上传，您收到了合同代码 ID。
 
-## Create
+## 创建
 
-Use **Create** to initialize your contract after uploading.
+上传后使用 **Create** 初始化你的合约。
 
-1. Click **Create**.
+1. 点击**创建**。
 
-2. Enter your contract code ID, `InitMsg JSON`, name, and description. Click **Next**.
+2. 输入您的合约代码 ID、`InitMsg JSON`、名称和描述。点击下一步**。
 
-3. Confirm the fee amounts and enter your password. Click **Create**.
+3. 确认费用金额并输入您的密码。单击**创建**。
 
-Your contract is now initialized.
+您的合约现已初始化。
 
-## Query
+## 询问
 
-Use **Query** to find out contract values. Querying does not cost anything.
+使用 **Query** 找出合约价值。查询不需要任何费用。
 
-1. Click **Query** located under your contract address.
+1. 点击合约地址下方的**查询**。
 
-2. Enter your `HandleMsg JSON`. Click **Next**.
+2. 输入您的`HandleMsg JSON`。点击下一步**。
 
-Station will show your query result.
+Station 会显示您的查询结果。
 
-## Interact
+## 互动
 
-Use **Interact** to use the contract. Interacting will spend gas.
+使用**Interact** 来使用合约。互动会消耗gas。
 
-1. Click **Interact** located under your contract address.
+1. 点击位于您合约地址下的**互动**。
 
-2. Enter your `HandleMsg JSON`. Click **Next**.
+2. 输入您的`HandleMsg JSON`。点击下一步**。
 
-3. Confirm the fee amounts and enter your password. Click **Interact**.
+3. 确认费用金额并输入您的密码。点击**互动**。 

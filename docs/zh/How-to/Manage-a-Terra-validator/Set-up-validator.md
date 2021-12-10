@@ -1,59 +1,59 @@
-# Register your Terra validator
+# 注册您的 Terra 验证器
 
-This is a detailed step-by-step guide for setting up a Terra validator. Please be aware that while it is easy to set up a rudimentary validating node, running a production-quality validator node with a robust architecture and security features requires an extensive setup.
+这是设置 Terra 验证器的详细分步指南。请注意，虽然设置基本验证节点很容易，但运行具有强大架构和安全功能的生产质量验证器节点需要进行大量设置。
 
-For more information on setting up a validator, see [additional resources](./Overview.md#additional-resources).
+有关设置验证器的更多信息，请参阅 [附加资源](./Overview.md#additional-resources)。
 
-## Prerequisites
+## 先决条件
 
-- You have completed [how to run a full Terra node](https://docs.terra.money/How-to/Run-a-full-Terra-node/Hardware-requirements.html), which outlines how to install, connect, and configure a node.
-- You are familiar with [terrad](../../Reference/terrad/).
-- you have read through [the validator FAQ](./faq.md)
-- Hardware requirements: see [requirements for running a full node](../Run-a-full-Terra-node/Hardware-requirements.md).
+- 您已完成[如何运行完整的 Terra 节点](https://docs.terra.money/How-to/Run-a-full-Terra-node/Hardware-requirements.html)，其中概述了如何安装、连接和配置节点。
+- 你熟悉 [terrad](../../Reference/terrad/)。
+- 您已阅读[验证器常见问题解答](./faq.md)
+- 硬件要求:参见[运行完整节点的要求](../Run-a-full-Terra-node/Hardware-requirements.md)。
 
-## 1. Retrieve the consensus PubKey of your node
+## 1. 检索节点的共识公钥
 
-The consensus PubKey of your node is required to create a new validator. Run:
+创建新的验证器需要您节点的共识 PubKey。跑:
 
 ```bash
---pubkey=$(terrad tendermint show-validator)
-```
+--pubkey=$(terrad tendenmint show-validator)
+``
 
-## 2. Create a new validator
+## 2. 创建一个新的验证器
 
-:::tip Get tokens
-In order for Terrad to recognize a wallet address it must contain tokens. For the testnet, use [the faucet](https://faucet.terra.money/) to send Luna to your wallet. If you are on mainnet, send funds from an existing wallet. 1-3 luna are sufficient for most setup processes.
+:::tip 获取令牌
+为了让 Terrad 识别钱包地址，它必须包含代币。对于测试网，使用 [the faucet](https://faucet.terra.money/) 将 Luna 发送到您的钱包。如果您在主网上，请从现有钱包发送资金。 1-3 luna 足以满足大多数设置过程。
 :::
 
-To create the validator and initialize it with a self-delegation, run the following command. `key-name` is the name of the private key that is used to sign transactions.
+要创建验证器并使用自委托对其进行初始化，请运行以下命令。 `key-name` 是用于签署交易的私钥的名称。
 
 ```bash
-terrad tx staking create-validator \
+terrad tx 抵押创建验证器 \
     --amount=5000000uluna \
     --pubkey=$(<your-consensus-PubKey>) \
-    --moniker="<your-moniker>" \
+    --moniker="<你的名字>" \
     --chain-id=<chain_id> \
     --from=<key-name> \
     --commission-rate="0.10" \
     --commission-max-rate="0.20" \
     --commission-max-change-rate="0.01" \
     --min-self-delegation="1"
-```
+``
 
-::: warning Warning:
-When you specify commission parameters, the `commission-max-change-rate` is measured as a percentage-point change of the `commission-rate`. For example, a change from 1% to 2% is a 100% rate increase, but the `commission-max-change-rate` is measured as 1%.
+::: 警告警告:
+当您指定佣金参数时，`commission-max-change-rate` 被衡量为`commission-rate` 的百分比变化。例如，从 1% 到 2% 的变化是 100% 的速率增加，但“commission-max-change-rate”测量为 1%。
 :::
 
-## 3. Confirm your validator is active
+## 3. 确认您的验证器处于活动状态
 
-If running the following command returns something, the validator is active.
+如果运行以下命令返回一些内容，则验证器处于活动状态。
 
 ```bash
-terrad query tendermint-validator-set | grep "$(terrad tendermint show-validator)"
-```
+terrad 查询tendermint-validator-set | grep "$(terrad tendenmint show-validator)"
+``
 
-You are looking for the `bech32` encoded `address` in the `~/.terra/config/priv_validator.json` file.
+您正在`~/.terra/config/priv_validator.json` 文件中查找`bech32` 编码的`address`。
 
-::: warning Note:
-Only the top 130 validators in voting power are included in the active validator set.
-:::
+::: 警告 注意:
+只有投票权最高的 130 个验证者才包含在活动验证者集中。
+::: 

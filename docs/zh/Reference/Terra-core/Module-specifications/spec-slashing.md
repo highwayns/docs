@@ -26,7 +26,7 @@ Tendermint 块可以包含证据，这表明验证者犯下了恶意
 行为。相关信息作为 ABCI 证据转发给应用程序
 在`abci.RequestBeginBlock` 中，这样验证器就会受到相应的惩罚。
 
-对于在 `block` 中提交的一些 `Evidence` 有效，它必须满足：
+对于在 `block` 中提交的一些 `Evidence` 有效，它必须满足:
 
 `Evidence.Timestamp >= block.Timestamp - MaxEvidenceAge`
 
@@ -40,7 +40,7 @@ Tendermint 块可以包含证据，这表明验证者犯下了恶意
 应该削减，即使它已经被重新授权或开始解除绑定。
 
 我们首先需要遍历来自 slashed 的解除绑定和重新授权
-验证器并跟踪此后移动了多少股份： 
+验证器并跟踪此后移动了多少股份: 
 
 ```go
 slashAmountUnbondings := 0
@@ -77,7 +77,7 @@ for redel in redels {
 }
 ```
 
-然后我们削减验证器并将它们墓碑化：
+然后我们削减验证器并将它们墓碑化:
 
 ```
 curVal := validator
@@ -113,10 +113,10 @@ SigningInfo.Set(val.Address, signInfo)
 我们可以确定活跃度的高度，`minHeight`。如果当前块是
 大于 `minHeight` 并且验证器的 `MissedBlocksCounter` 大于
 `maxMissed`，他们将被 `SlashFractionDowntime` 削减，将被监禁
-对于`DowntimeJailDuration`，并重置以下值：
+对于`DowntimeJailDuration`，并重置以下值:
 `MissedBlocksBitArray`、`MissedBlocksCounter` 和 `IndexOffset`。
 
-**注意**：活性斜线**不会**导致墓碑。
+**注意**:活性斜线**不会**导致墓碑。
 
 ```go
 height := block.Height

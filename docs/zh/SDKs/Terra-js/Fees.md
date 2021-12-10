@@ -1,4 +1,4 @@
-# Fees
+# 费用 
 
 ```ts
 import { Fee } from '@terra-money/terra.js';
@@ -9,15 +9,15 @@ const fee = new Fee(50000, { uluna: 4500000 });
 const tx = await wallet.createAndSignTx({ msgs, fee });
 ```
 
-## Automatic fee estimation
+## 自动费用估算
 
-If you don't specify a fee when you create your transaction, it will automatically be estimated by simulating it within the node.
+如果您在创建交易时未指定费用，则会通过在节点内对其进行模拟来自动估算费用。
 
 ```ts
 const tx = await wallet.createAndSignTx({ msgs });
 ```
 
-You can define the fee estimation parameters when you create your `LCDClient` instance. The defaults are:
+您可以在创建 `LCDClient` 实例时定义费用估算参数。 默认值是: 
 
 ```ts
 const terra = new LCDClient({
@@ -28,7 +28,7 @@ const terra = new LCDClient({
 });
 ```
 
-You can override these settings by passing the fee estimation parameters in `wallet.createTx` or `wallet.createAndSignTx`:
+您可以通过在 `wallet.createTx` 或 `wallet.createAndSignTx` 中传递费用估算参数来覆盖这些设置: 
 
 ```ts
 const tx = await wallet.createAndSignTx({

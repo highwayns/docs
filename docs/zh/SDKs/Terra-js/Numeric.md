@@ -1,6 +1,6 @@
-# Numeric
+# 数字
 
-Terra.js includes `Dec` and `Int`, which represent decimal numbers and integer numbers, in a Cosmos-SDK compatible way.
+Terra.js 包含 `Dec` 和 `Int`，它们以 Cosmos-SDK 兼容的方式表示十进制数和整数。 
 
 ```ts
 import { Dec, Int } from '@terra-money/terra.js';

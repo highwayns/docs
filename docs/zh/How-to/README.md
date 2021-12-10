@@ -1,6 +1,6 @@
-# How to
+# 如何
 
-Learn how to manage Terra Station, run a full Terra node, and manage a validator by using the information in this section.
+使用本节中的信息了解如何管理 Terra Station、运行完整的 Terra 节点和管理验证器。 
 
 <!--
 <div class="cards twoColumn">

@@ -1,10 +1,10 @@
-# Hardware requirements
+# 硬件要求
 
-Running a full Terra node is a resource-intensive process that requires a persistent server. If you want to use Terra without downloading the entire blockchain, use [Terra Station](https://station.terra.money/).
+运行一个完整的 Terra 节点是一个需要持久服务器的资源密集型过程。 如果您想在不下载整个区块链的情况下使用 Terra，请使用 [Terra Station](https://station.terra.money/)。
 
-We recommend the following hardware to run a full node:
+我们建议使用以下硬件来运行完整节点:
 
-- Four or more CPU cores
-- At least 2 TB of disk storage
-- At least 32 GB of memory
-- At least 300 mbps of network bandwidth
+- 四个或更多 CPU 内核
+- 至少 2 TB 的磁盘存储空间
+- 至少 32 GB 的内存
+- 至少 300 mbps 的网络带宽 

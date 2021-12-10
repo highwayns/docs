@@ -1,8 +1,8 @@
-# Common examples
+# 常见例子
 
-## Configuring LCDClient
+## 配置 LCDClient
 
-The following code example shows how to initialize the LCDClient. The rest of the examples assume you initialized it by using this example or similar code.
+以下代码示例显示了如何初始化 LCDClient。 其余示例假定您使用此示例或类似代码对其进行了初始化。
 
 ```ts
 import fetch from 'isomorphic-fetch';
@@ -21,9 +21,9 @@ const lcd = new LCDClient({
 });
 ```
 
-## Sending native tokens
+## 发送原生代币
 
-The following code example shows how to send native tokens:
+以下代码示例显示了如何发送本机令牌:
 
 ```ts
 import { LCDClient, MnemonicKey, MsgSend } from "@terra-money/terra.js";
@@ -49,9 +49,9 @@ const result = await lcd.tx.broadcast(tx);
 console.log(result);
 ```
 
-## Sending CW20 tokens
+## 发送 CW20 代币
 
-The following code example shows how to send CW20 tokens:
+以下代码示例显示了如何发送 CW20 令牌:
 
 ```ts
 import {
@@ -86,9 +86,8 @@ const result = await lcd.tx.broadcast(tx);
 console.log(result);
 ```
 
-## Swaping using the market module
-
-The following code example shows how to swap native Terra assets using the market module: 
+## 使用市场模块交换
+以下代码示例显示了如何使用市场模块交换原生 Terra 资产:
 
 ```ts
 import {

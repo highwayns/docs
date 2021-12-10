@@ -1,6 +1,6 @@
-# Fees on Terra
+# Terra 的费用
 
-On the Terra network, all transactions incur a gas fee. Transactions invloving stablecoins incur additional fees depending on the type of transaction being made. The following table explains which extra fee is added to the different types of stablecoin transactions:
+在 Terra 网络上，所有交易都会产生 gas 费用。 涉及稳定币的交易会根据进行的交易类型产生额外费用。 下表解释了不同类型的稳定币交易需要添加哪些额外费用: 
 
 |                                                                        | [Gas](#gas) | [Tobin](#tobin-tax) | [Spread](#spread-fee) | [Stability](#stability-fee) |
 |------------------------------------------------------------------------|-------------|---------------------|-----------------------|-----------------------------|
@@ -8,34 +8,34 @@ On the Terra network, all transactions incur a gas fee. Transactions invloving s
 | [Market swaps](./glossary.md#market-swap) between stablecoins and Luna | x           |                     | x                     |                             |
 | All other stablecoin transactions (non market swap)                    | x           |                     |                       | x                           |
 
-Transactions that only involve Luna, such as sending Luna, delegating, or voting only incur gas fees.
-Terraswap or other dApps may charge their own transaction fees on top of Terra network fees.
+仅涉及 Luna 的交易，例如发送 Luna、委托或投票仅会产生 gas 费用。
+Terraswap 或其他 dApp 可能会在 Terra 网络费用之外收取自己的交易费用。
 
-## Gas
-[Gas](./glossary.md#fees) is a small computational fee that covers the cost of processing a transaction. Gas is estimated and added to every transaction in Terra Station. Any transaction that does not contain enough gas will not process.
-Gas on Terra works differently than it works on other blockchains:
+## 汽油
+[Gas](./glossary.md#fees) 是一笔很小的计算费用，用于支付处理交易的成本。汽油被估算并添加到 Terra Station 中的每笔交易中。任何不包含足够汽油的交易都不会处理。
+汽油在 Terra 上的工作方式与在其他区块链上的工作方式不同:
 
-- Validators can set their own minimum gas fees.
-- Most transactions will estimate more than the minimum amount of gas, ensuring the transaction gets completed.
-- Unused gas is not refunded.
-- Transactions are not queued based on gas amounts, but in the order received.
+- 验证者可以设置自己的最低gas费用。
+- 大多数交易将估计超过最小gas量，以确保交易完成。
+- 未使用的燃气不予退还。
+- 交易不是根据 Gas 数量排队，而是按照收到的顺序排列。
 
-For an in-depth explanation of how gas fees are calculated, visit the [terrad reference](/Reference/terrad/#fees) page.
+有关如何计算 gas 费用的深入说明，请访问 [terrad reference](/Reference/terrad/#fees) 页面。
 
-To view current gas rates in your browser, visit the [gas rates](https://fcd.terra.dev/v1/txs/gas_prices) FCD page.
+要在浏览器中查看当前的汽油费率，请访问 [汽油费率](https://fcd.terra.dev/v1/txs/gas_prices) FCD 页面。
 
-## Stability fee
+##稳定费
 
-Stability fees are the most common fee type, and are added to any transaction using Terra stablecoins, excluding [market swaps](./glossary.md#market-swap). This fee is called the tax rate and varies between .01% to 1%. Stability fees are capped at 1 SDT per transaction. The current tax rate can be found on the [tax rate](https://fcd.terra.dev/terra/treasury/v1beta1/tax_rate) FCD page. For more information on the tax rate and how it works, visit the [treasury module](/Reference/Terra-core/Module-specifications/spec-treasury.md).
+稳定费是最常见的费用类型，会添加到使用 Terra 稳定币的任何交易中，不包括 [市场掉期](./glossary.md#market-swap)。此费用称为税率，介于 0.01% 至 1% 之间。每笔交易的稳定费上限为 1 SDT。当前税率可在 [税率](https://fcd.terra.dev/terra/treasury/v1beta1/tax_rate) FCD 页面上找到。有关税率及其运作方式的更多信息，请访问 [treasury module](/Reference/Terra-core/Module-specifications/spec-treasury.md)。
 
-## Tobin tax
+##托宾税
 
-The Tobin tax is a fixed percentage fee added to any [market swap](./glossary.md#market-swap) between Terra stablecoin denominations. The rate varies depending on each Terra stablecoin. For example, while the rate for most denominations is .35%, the rate for MNT is 2%. To see the Tobin tax rates, [query the oracle](https://lcd.terra.dev/terra/oracle/v1beta1/denoms/tobin_taxes). When stablecoins have different Tobin tax rates, the higher tax rate will be used for the transaction.
+托宾税是添加到 Terra 稳定币面额之间的任何 [市场互换](./glossary.md#market-swap) 的固定百分比费用。费率因每个 Terra 稳定币而异。例如，虽然大多数面额的税率为 0.35%，但 MNT 的税率为 2%。要查看托宾税率，请[查询预言机](https://lcd.terra.dev/terra/oracle/v1beta1/denoms/tobin_taxes)。当稳定币有不同的托宾税率时，交易将使用较高的税率。
 
- The Tobin tax was created to discourage front-running the oracle and foreign exchange trading at the expense of users. For more information on the implementation of the Tobin tax, read ["On swap fees: the greedy and the wise"](https://medium.com/terra-money/on-swap-fees-the-greedy-and-the-wise-b967f0c8914e).
+ 托宾税旨在阻止以牺牲用户利益为代价抢先运行预言机和外汇交易。有关托宾税实施的更多信息，请阅读 [“关于掉期费:贪婪和明智”](https://medium.com/terra-money/on-swap-fees-the-greedy-and- the-wise-b967f0c8914e）。
 
-## Spread fee
+##点差费
 
- Spread fees are added to any [market swap](./glossary.md#market-swap) between Terra and Luna. The minimum spread fee is .5%. During times of extreme volatility, the market module adjusts the spread fee to maintain a [constant product](/Reference/Terra-core/Module-specifications/spec-market.html#market-making-algorithm) between the size of the Terra pool and the fiat value of the Luna pool, ensuring stability in the protocol. As the pools reach constant product equilibrium, The spread rate returns to a normal value.
+ Terra 和 Luna 之间的任何 [市场掉期](./glossary.md#market-swap) 都会增加点差费用。最低点差费为 0.5%。在极端波动时期，市场模块会调整点差费用以在 Terra 的大小之间保持 [恒定产品](/Reference/Terra-core/Module-specifications/spec-market.html#market-making-algorithm)池和 Luna 池的法币值，确保协议的稳定性。随着池达到恒定的产品平衡，传播率恢复到正常值。
 
- For more information on spread fees, visit the [market module](/Reference/Terra-core/Module-specifications/spec-market.md).
+ 有关点差费用的更多信息，请访问 [市场模块](/Reference/Terra-core/Module-specifications/spec-market.md)。 

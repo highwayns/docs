@@ -1,6 +1,6 @@
-# Columbus-5 upgrade
+# Columbus-5 升级
 
-Columbus-5 is the newest iteration of the Terra Mainnet. Use these guides to upgrade to Columbus-5.
+Columbus-5 是 Terra 主网的最新版本。 使用这些指南升级到 Columbus-5。 
 
 ## Migration Guides
 

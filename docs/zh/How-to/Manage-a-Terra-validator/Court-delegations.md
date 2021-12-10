@@ -1,28 +1,28 @@
-# Court delegations
+# 法院代表团
 
-Consider the following options to help improve your visibility and make yourself known to potential delegators.
+考虑以下选项，以帮助提高您的知名度并让潜在委托人了解您。
 
-## Set up a website
+##建立一个网站
 
-Set up a website so that your delegators can find you. We recommend making a custom section for Terra delegators that instructs how to delegate Luna tokens.
+建立一个网站，以便您的委托人可以找到您。我们建议为 Terra 委托人制作一个自定义部分，指示如何委托 Luna 代币。
 
-## Announce yourself on Discord
+## 在 Discord 上宣布自己
 
-Join the [Terra Validators Discord](https://discord.gg/ZHBuKda) channel, and introduce yourself.
+加入 [Terra Validators Discord](https://discord.gg/ZHBuKda) 频道，并自我介绍。
 
-## Submit a validator profile
+## 提交验证器配置文件
 
-Submit a [Validator Profile](https://github.com/terra-money/validator-profiles) to make it official.
+提交 [验证器配置文件](https://github.com/terra-money/validator-profiles) 使其正式化。
 
 ![validator-profile](/img/screens/validator-check.png)
 
 
-## Put a thumbnail on Terra Station
+## 在 Terra Station 上放一个缩略图
 
-Create a [Keybase Account](https://keybase.io/) follow the Keybase instructions to set up a PGP key, and upload a profile picture. 
-For best continuity use the same GitHub account to verify your Keybase, and your [Validator Profile](https://github.com/terra-money/validator-profiles)
+创建一个【Keybase 账户】(https://keybase.io/) 按照 Keybase 说明设置 PGP 密钥，并上传个人资料图片。
+为了获得最佳连续性，请使用相同的 GitHub 帐户来验证您的 Keybase 和 [验证器配置文件](https://github.com/terra-money/validator-profiles)
 
-Now link your Keybase profile to your validator. Open your validator terminal and execute this command:
+现在将您的 Keybase 配置文件链接到您的验证器。打开验证器终端并执行以下命令:
 
 ```bash
 terrad tx staking edit-validator \

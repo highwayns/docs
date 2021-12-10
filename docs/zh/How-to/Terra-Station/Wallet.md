@@ -1,137 +1,137 @@
-# Manage a Terra Station wallet
+# 管理 Terra Station 钱包
 
-This guide is for advanced features of the Terra Station wallet. If this is your first time using Terra Station, follow the [Terra Station tutorial](/Tutorials/Get-started/Terra-station-desktop.md).
+本指南适用于 Terra Station 钱包的高级功能。如果这是您第一次使用 Terra Station，请遵循 [Terra Station 教程](/Tutorials/Get-started/Terra-station-desktop.md)。
 
-## Select a wallet
+##选择一个钱包
 
-Follow these steps to connect to a wallet previously accessed on your device.
+按照以下步骤连接到之前在您的设备上访问过的钱包。
 
-1. Open Terra Station and click **Connect**.
+1. 打开 Terra Station 并点击**连接**。
 
-2. Click **Select wallet** and select the wallet you want to connect to.
+2. 点击**选择钱包**并选择您要连接的钱包。
 
-3. Enter the password of the wallet and click **Next**.
+3. 输入钱包密码，点击**下一步**。
 
-Terra Station is now connected to your selected wallet. To change wallets, [disconnect your wallet](#disconnect-a-wallet) and follow these steps again.
+Terra Station 现在已连接到您选择的钱包。要更换钱包，请[断开您的钱包](#disconnect-a-wallet) 并再次执行这些步骤。
 
-## Connect to a wallet using a private key
+## 使用私钥连接到钱包
 
-Use a private key to access your wallet from other devices. Unlike recovering your wallet using a seed phrase, private keys allow you to keep your wallet name and password. Follow these steps to connect to an existing wallet using a private key. You will need access to your existing wallet.
+使用私钥从其他设备访问您的钱包。与使用种子短语恢复钱包不同，私钥允许您保留钱包名称和密码。按照以下步骤使用私钥连接到现有钱包。您将需要访问您现有的钱包。
 
-### Export your private key
+### 导出您的私钥
 
-1. Open Terra Station and connect to your wallet.
+1. 打开 Terra Station 并连接到您的钱包。
 
-2. Locate your wallet address on Terra Station. Click the gear icon next to your wallet address.
+2. 在 Terra Station 上找到您的钱包地址。单击您的钱包地址旁边的齿轮图标。
 
-3. Click **Export private key**.
+3. 点击**导出私钥**。
 
-4. Enter your password and click **Generate key**.
+4. 输入您的密码并点击**生成密钥**。
 
-You can now access your private key. Do not share your private key with anyone. Anyone with your private key and password can access your account.
+您现在可以访问您的私钥。不要与任何人共享您的私钥。任何拥有您的私钥和密码的人都可以访问您的帐户。
 
-### Import your private key
+### 导入您的私钥
 
-1. Open Terra Station and click **Connect**.
+1. 打开 Terra Station 并点击**连接**。
 
-2. Click **Import private key**.
+2. 点击**导入私钥**。
 
-3. Enter your private key and password.
+3. 输入您的私钥和密码。
 
-4. Click **Submit**.
+4. 点击**提交**。
 
-Your private key has been imported to the device you are using. You can now use your wallet name and password to access your wallet on your device. Repeat this process for any device you wish to access your wallet.
+您的私钥已导入到您正在使用的设备中。您现在可以使用您的钱包名称和密码在您的设备上访问您的钱包。对您希望访问钱包的任何设备重复此过程。
 
-## Connect to a wallet using a QR code
+## 使用二维码连接到钱包
 
-Use a QR code to access your wallet on a mobile device. Unlike recovering your wallet using a seed phrase, QR codes allow you to keep your wallet name and password. Follow these steps to connect to an existing wallet using a private key QR code. You will need access to your existing wallet.
+使用二维码在移动设备上访问您的钱包。与使用种子短语恢复钱包不同，二维码允许您保留钱包名称和密码。按照以下步骤使用私钥二维码连接到现有钱包。您将需要访问您现有的钱包。
 
-### Export your QR code using desktop
+### 使用桌面导出您的二维码
 
-1. Open Terra Station and connect to your wallet.
+1. 打开 Terra Station 并连接到您的钱包。
 
-2. Locate your wallet address on Terra Station. Click the gear icon next to your wallet address.
+2. 在 Terra Station 上找到您的钱包地址。单击您的钱包地址旁边的齿轮图标。
 
-3. Click **Export with QR code**.
+3. 点击**用二维码导出**。
 
-4. Enter your password and click **Generate QR code**.
+4. 输入您的密码并点击**生成二维码**。
 
-### Export your QR code using the mobile app
+### 使用移动应用程序导出您的二维码
 
-1. Open the Terra Station app and connect to your wallet.
+1. 打开 Terra Station 应用程序并连接到您的钱包。
 
-2. Tap the gear icon in the upper right corner of the app.
+2. 点击应用程序右上角的齿轮图标。
 
-3. Click **Export wallet with QR code**.
+3. 点击**用二维码导出钱包**。
 
-4. Enter your password.
+4. 输入您的密码。
 
-You can now access your private key QR code. Do not share your private key with anyone. Anyone with your private key and password can access your account.
+您现在可以访问您的私钥二维码。不要与任何人共享您的私钥。任何拥有您的私钥和密码的人都可以访问您的帐户。
 
-### Import your QR code
+### 导入您的二维码
 
-1. Open the Terra Station app and tap **Recover wallet**.
+1. 打开 Terra Station 应用程序并点击 **Recover wallet**。
 
-2. Tap **Scan QR code**.
+2. 点击**扫描二维码**。
 
-3. Scan your QR code using your device's camera and enter your password.
+3. 使用您设备的相机扫描您的二维码并输入您的密码。
 
-4. Tap **Next**.
+4. 点击**下一步**。
 
-Your private key has been imported to the device you are using. You can now use your wallet name and password to access your wallet on your device. Repeat this process for any device you wish to access your wallet.
+您的私钥已导入到您正在使用的设备中。您现在可以使用您的钱包名称和密码在您的设备上访问您的钱包。对您希望访问钱包的任何设备重复此过程。
 
-## Recover a wallet using a seed phrase
+## 使用种子短语恢复钱包
 
-If you forgot or deleted your login info, you can recover a wallet using your seed phrase. You can also use this method to change your wallet name.
+如果您忘记或删除了您的登录信息，您可以使用您的种子短语恢复钱包。您也可以使用此方法更改您的钱包名称。
 
-1. Open Terra Station and click **Connect**.
+1. 打开 Terra Station 并点击**连接**。
 
-2. Click **Recover existing wallet**.
+2. 点击**恢复现有钱包**。
 
-3. Enter a wallet name and password. Confirm your password.
+3. 输入钱包名称和密码。确认你的密码。
 
-4. Enter your seed phrase and click **Next**.
+4. 输入您的种子短语并单击**下一步**。
 
-You can now access your wallet with your login and password.
+您现在可以使用登录名和密码访问您的钱包。
 
-## Disconnect a wallet
+## 断开钱包
 
-1. Locate your wallet address on Terra Station. Click the gear icon next to your wallet address.
+1. 在 Terra Station 上找到您的钱包地址。单击您的钱包地址旁边的齿轮图标。
 
-2. Select **disconnect** from the options.
+2. 从选项中选择**断开连接**。
 
-Your wallet is now disconnected.
+您的钱包现在已断开连接。
 
-## Delete a wallet
+## 删除钱包
 
-Deleting a wallet deletes the wallet name, password, and private key from your device. You can access the wallet again by entering your [seed phrase](#recover-a-wallet-using-a-seed-phrase) or [private key and password](#connect-to-a-wallet-using-a-private-key). Deleting a wallet from one device does not delete it from other devices.
+删除钱包会从您的设备中删除钱包名称、密码和私钥。您可以通过输入您的[种子短语](#recover-a-wallet-using-a-seed-phrase)或[私钥和密码](#connect-to-a-wallet-using-a-)再次访问钱包私钥）。从一台设备上删除钱包并不会从其他设备上删除它。
 
-::: danger Write down your seed phrase
-Before you delete your wallet, always make sure you have your seed phrase and private key. Never store your seed phrase on a digital device. Without a seed phrase or private key and password, your wallet and funds will be permanently inaccessible. Always store your seed phrase in a secure location.
+::: 危险 写下你的助记词
+在删除钱包之前，请务必确保您拥有种子短语和私钥。切勿将您的种子短语存储在数字设备上。如果没有种子短语或私钥和密码，您的钱包和资金将永远无法访问。始终将您的种子短语存储在安全的位置。
 :::
 
-1. Open Terra Station and connect to your wallet.
+1. 打开 Terra Station 并连接到您的钱包。
 
-2. Locate your wallet address on Terra Station. Click the gear icon next to your wallet address.
+2. 在 Terra Station 上找到您的钱包地址。单击您的钱包地址旁边的齿轮图标。
 
-3. Select **Delete wallet**.
+3. 选择**删除钱包**。
 
-4. Follow the prompt and click **Delete**.
+4. 按照提示点击**删除**。
 
-Your wallet is now deleted. You can only access it again by entering your [seed phrase](#recover-a-wallet-using-a-seed-phrase) or [private key and password](#connect-to-a-wallet-using-a-private-key).
+您的钱包现已删除。您只能通过输入您的 [种子短语](#recover-a-wallet-using-a-seed-phrase) 或 [私钥和密码](#connect-to-a-wallet-using-a-私钥）。 
 
-## Change your password
+## 更改您的密码
 
-Follow these steps to change your password. Changing your password only changes your wallet password on a single device. Repeat these steps to change your wallet password on other devices.
+请按照以下步骤更改密码。 更改密码只会更改单个设备上的钱包密码。 重复这些步骤以在其他设备上更改您的钱包密码。
 
-1. Open Terra Station and connect to your wallet.
+1. 打开 Terra Station 并连接到您的钱包。
 
-2. Locate your wallet address on Terra Station. Click the gear icon next to your wallet address.
+2. 在 Terra Station 上找到您的钱包地址。 单击您的钱包地址旁边的齿轮图标。
 
-3. Select **Change password** from the options.
+3. 从选项中选择**更改密码**。
 
-4. Enter your current password and your new password. Confirm your new password.
+4. 输入您的当前密码和新密码。 确认您的新密码。
 
-5. Click **Change password**.
+5. 点击**更改密码**。
 
-Your wallet password is now changed on your device. Repeat these steps to change your wallet password on other devices.
+您的钱包密码现已在您的设备上更改。 重复这些步骤以在其他设备上更改您的钱包密码。 

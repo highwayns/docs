@@ -1,18 +1,18 @@
-# Environment Setup
+# 环境设置
 
-As a smart contract developer, you will need to write, compile, upload, and test your contracts before deploying them to be used on the Columbus mainnet. As this development process can involve manually juggling multiple moving parts over many iterations, it is helpful to first set up a specialized environment to streamline development.
+作为智能合约开发人员，您需要编写、编译、上传和测试您的合约，然后才能将它们部署到 Columbus 主网上。由于此开发过程可能涉及在多次迭代中手动处理多个移动部件，因此首先设置专门的环境以简化开发是有帮助的。
 
-## Install Terra Core locally
+## 在本地安装 Terra Core
 
-Visit [build Terra core](/How-to/Run-a-full-Terra-node/Build-Terra-core.md) to install the latest version of Terra Core to obtain a working version of `terrad`. You will need this to connect to your local Terra test network to work with smart contracts.
+访问 [build Terra core](/How-to/Run-a-full-Terra-node/Build-Terra-core.md) 安装最新版本的 Terra Core 以获得可用版本的 `terrad`。您将需要它来连接到您本地的 Terra 测试网络以使用智能合约。
 
-## Download LocalTerra
+## 下载 LocalTerra
 
-In order to work with Terra Smart Contracts, you should have access to a Terra network that includes the WASM integration.
+为了使用 Terra 智能合约，您应该可以访问包含 WASM 集成的 Terra 网络。
 
-In this tutorial, we will be using [LocalTerra](https://github.com/terra-money/localterra), a package that enables you to easily spin up a local, WASM-enabled private testnet. This reduces the friction of development by giving you complete control of a private Terra blockchain with the possibility to easily reset the world state.
+在本教程中，我们将使用 [LocalTerra](https://github.com/terra-money/localterra)，这是一个使您能够轻松启动本地、支持 WASM 的私有测试网的包。这通过让您完全控制私有 Terra 区块链以及轻松重置世界状态的可能性来减少开发摩擦。
 
-To use **LocalTerra**, you should first make sure Docker is installed on your computer by following the [Docker get-started tutorial](https://www.docker.com/get-started). You will also need to set up and configure [Docker Compose](https://docs.docker.com/compose/install/) on your machine.
+要使用 **LocalTerra**，您应该首先按照 [Docker 入门教程](https://www.docker.com/get-started) 确保您的计算机上安装了 Docker。您还需要在您的机器上设置和配置 [Docker Compose](https://docs.docker.com/compose/install/)。 
 
 ```sh
 git clone --depth 1 https://github.com/terra-money/localterra
@@ -20,23 +20,23 @@ cd localterra
 docker-compose up
 ```
 
-You should now have a local testnet running on your machine, with the following configurations:
+您现在应该在您的机器上运行一个本地测试网，具有以下配置:
 
-- Node listening on RPC port `26657`
-- LCD running on port `1317`
-- Swagger Documentation at [http://localhost:3060/swagger](http://localhost:3060/swagger)
+- 节点监听 RPC 端口`26657`
+- LCD在端口`1317`上运行
+- [http://localhost:3060/swagger](http://localhost:3060/swagger) 上的 Swagger 文档
 
-The account with the following mnemonic is the sole validator on the network and has enough funds to get started with smart contracts.
+具有以下助记符的帐户是网络上的唯一验证器，并且有足够的资金开始使用智能合约。
 
-```
-satisfy adjust timber high purchase tuition stool faith fine install that you unaware feed domain license impose boss human eager hat rent enjoy dawn
-```
+``
+满足调整木材高额购买学费凳子信仰罚款安装你不知道饲料域许可证强加老板人类渴望帽子租金享受黎明
+``
 
-## Install Rust
+## 安装 Rust
 
-While WASM smart contracts can theoretically be written in any programming language, we currently only recommend using Rust as it is the only language for which mature libraries and tooling exist for CosmWasm. For this tutorial, you'll need to also install the latest version of Rust by following the instructions [here](https://www.rust-lang.org/tools/install).
+虽然理论上 WASM 智能合约可以用任何编程语言编写，但我们目前只推荐使用 Rust，因为它是 CosmWasm 存在成熟库和工具的唯一语言。对于本教程，您还需要按照 [此处](https://www.rust-lang.org/tools/install) 的说明安装最新版本的 Rust。
 
-Once you'll installed Rust and its toolchain (cargo et al.), you'll need to add the `wasm32-unknown-unknown` compilation target.
+安装 Rust 及其工具链（cargo 等）后，您需要添加 `wasm32-unknown-unknown` 编译目标。
 
 ```sh
 rustup default stable

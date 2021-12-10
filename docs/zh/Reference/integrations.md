@@ -1,6 +1,6 @@
-# Integrations
+# 集成
 
-## Applications
+## 应用程序 
 
 <div class="cards twoColumn">
   <a href="https://mirror.finance/" class="card app">
@@ -89,9 +89,9 @@
   </a>
 </div>
 
-## Exchanges
+## 交易
 
-LUNA and Terra stablecoins are traded on the following exchanges:
+LUNA 和 Terra 稳定币在以下交易所交易: 
 
 <div class="cards threeColumn">
   <a href="https://www.binance.com/" class="card image">
@@ -132,13 +132,13 @@ LUNA and Terra stablecoins are traded on the following exchanges:
   </a>
 </div>
 
-## Wallets
+##钱包
 
-[Terra Station](https://station.terra.money/): Terra’s native wallet<br>
-Terra Station Extension: [Chrome](https://chrome.google.com/webstore/detail/terra-station/aiifbnbfobpmeekipheeijimdpnlpgpp)<br>
-Terra Station Desktop: [MacOS](https://github.com/terra-money/station/releases/download/v3.5.0/Terra.Station-1.1.0.dmg) | [Windows](https://github.com/terra-money/station/releases/download/v3.5.0/Terra.Station.Setup.1.1.0.exe) | [Linux (deb)](https://github.com/terra-money/station/releases/download/v3.5.0/station-electron_1.1.1_amd64.deb) | [Linux (rpm)](https://github.com/terra-money/station/releases/download/v3.5.0/station-electron-1.1.1.x86_64.rpm)<br>
-Terra Station Mobile: [iOS](https://apps.apple.com/app/id1548434735) | [Android](https://play.google.com/store/apps/details?id=money.terra.station)<br>
-[Mirror Wallet](https://mirrorwallet.com/): Invest and trade cryptocurrencies and mirror assets<br>
-[MathWallet](https://mathwallet.org/en-us/): multi-platform crypto wallet for Terra assets<br>
-[Ledger Nano X/S](https://support.ledger.com/hc/en-us/articles/360017698979-Terra-LUNA-): hardware wallet by the Ledger team<br>
-[Oxis](https://www.oxis.com/): non-custodial wallet with fiat to crypto on and offramps & trading functionality<br>
+[Terra Station](https://station.terra.money/):Terra 的原生钱包<br>
+Terra Station 扩展:[Chrome](https://chrome.google.com/webstore/detail/terra-station/aiifbnbfobpmeekipheeijimdpnlpgpp)<br>
+Terra Station 桌面:[MacOS](https://github.com/terra-money/station/releases/download/v3.5.0/Terra.Station-1.1.0.dmg) | [Windows](https://github.com/terra-money/station/releases/download/v3.5.0/Terra.Station.Setup.1.1.0.exe) | [Linux (deb)](https://github.com/terra-money/station/releases/download/v3.5.0/station-electron_1.1.1_amd64.deb) | [Linux (rpm)](https://github.com/terra-money/station/releases/download/v3.5.0/station-electron-1.1.1.x86_64.rpm)<br>
+Terra Station 手机:[iOS](https://apps.apple.com/app/id1548434735) | [Android](https://play.google.com/store/apps/details?id=money.terra.station)<br>
+[镜像钱包](https://mirrorwallet.com/):投资交易加密货币和镜像资产<br>
+[MathWallet](https://mathwallet.org/en-us/):Terra 资产的多平台加密钱包<br>
+[Ledger Nano X/S](https://support.ledger.com/hc/en-us/articles/360017698979-Terra-LUNA-):Ledger 团队的硬件钱包<br>
+[Oxis](https://www.oxis.com/):非托管钱包，具有法定到加密货币入口和出口以及交易功能<br> 

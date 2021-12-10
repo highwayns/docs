@@ -1,20 +1,18 @@
-# Add modules
+# 添加模块
 
-When a new module is added to Terra core, you must add it to several places in Terra.js too. To add it, complete the following steps:
+将新模块添加到 Terra 核心时，您也必须将其添加到 Terra.js 中的多个位置。 要添加它，请完成以下步骤:
 
-##  Create a new folder
+##  新建一个文件夹
 
-In the `src/core` folder, create a new folder and name it after the new module. For example,`src/core/greeting`.
+在 `src/core` 文件夹中，创建一个新文件夹并以新模块命名。 例如，`src/core/greeting`。
 
-## Add messages
+## 添加消息
 
-1. Register new messages in a subdirectory in the folder that you created for your new module, as shown in the following example:
+1. 在您为新模块创建的文件夹的子目录中注册新消息，如以下示例所示:
 
 `src/core/greeting/msgs`
 
-For this example, let's assume that you are creating a two new messages, `MsgHello` and `MsgGoodbye`. The following example shows the code for `MsgHello`, and you can extrapolate from it the way to implement `MsgGoodbye`.
-
-`src/core/greeting/msgs/MsgHello.ts`
+在这个例子中，假设您正在创建两条新消息，`MsgHello` 和 `MsgGoodbye`。 以下示例显示了 `MsgHello` 的代码，您可以从中推断出实现 `MsgGoodbye` 的方式。
 
 ```ts
 import { JSONSerializable } from '../../../util/json';
@@ -59,9 +57,9 @@ export namespace MsgHello {
 
 ```
 
-1. Create the following file, which will index your new messages.
+1. 创建以下文件，它将为您的新消息建立索引。
 
-`src/core/greeting/msgs/index.ts`
+`src/core/greeting/msgs/index.ts` 
 
 ```ts
 import { MsgHello } from './MsgHello';
@@ -77,9 +75,9 @@ export namespace GreetingMsg {
 }
 ```
 
-3. Register the messages in `src/core/Msg.ts` so that they can be parsed correctly.
+3.在`src/core/Msg.ts`中注册消息，以便正确解析。
 
-`src/core/Msg.ts`
+`src/core/Msg.ts` 
 
 ```ts
 // import greeting module messages
@@ -134,7 +132,7 @@ export namespace Msg {
 }
 ```
 
-4. Register the messages to be exported in `src/core/index.ts`:
+4.在`src/core/index.ts`中注册要导出的消息: 
 
 ```ts
 ...
@@ -142,11 +140,11 @@ export namespace Msg {
 export 'greeting/msgs';
 ```
 
-5. Add parameter changes.
+5. 添加参数更改。
 
-Terra.js provides an easy way to generate `ParameterChangeProposal`s, which is a proposal for changing the blockchain parameters associated with a module. If your module has parameters that can be changed via proposal, you should create the following files:
+Terra.js 提供了一种简单的方法来生成`ParameterChangeProposal`s，这是一个改变与模块关联的区块链参数的提议。 如果您的模块具有可以通过提案更改的参数，您应该创建以下文件:
 
-`src/core/greeting/params.ts`
+`src/core/greeting/params.ts` 
 
 ```ts
 import { ParamChange } from '..';
@@ -240,16 +238,16 @@ export type ParamChange =
 
 ```
 
-## Add API functionality to the LCDClient
+## 向 LCDClient 添加 API 功能
 
-If there are API endpoints that exist for the new module, you will need to add this functionality to `LCDClient` so that they are accessible.
+如果新模块存在 API 端点，则需要将此功能添加到“LCDClient”，以便它们可以访问。
 
-Assume that our `greeting` module has the following endpoints:
+假设我们的 `greeting` 模块具有以下端点:
 
-- `GET /greeting/hello/{accAddress}`
-- `GET /greeting/parameters`
+-`GET /greeting/hello/{accAddress}`
+-`获取/问候/参数`
 
-1. Create `src/client/lcd/api/GreetingAPI.ts` with the following:
+1. 使用以下内容创建`src/client/lcd/api/GreetingAPI.ts`:
 
 ```ts
 import { BaseAPI } from "./BaseAPI";
@@ -286,7 +284,7 @@ export class GreetingAPI extends BaseAPI {
 }
 ```
 
-2. Register the API functionality inside `src/client/lcd/api/index.ts`:
+2. 在 `src/client/lcd/api/index.ts` 中注册 API 功能:
 
 ```ts
 export * from './AuthAPI';
@@ -306,7 +304,7 @@ export * from './TxAPI';
 export * from './WasmAPI';
 ```
 
-3. Add the functionality to `src/client/lcd/LCDClient.ts`:
+3. 将功能添加到`src/client/lcd/LCDClient.ts`:
 
 ```ts
 ...

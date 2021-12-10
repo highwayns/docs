@@ -18,7 +18,7 @@ Oracle 模块为 Terra 区块链提供了最新且准确的 Luna 与各种 Terra
 
 #### 预先投票和投票
 
-让 $P_t$ 是由 [`VotePeriod`](#voteperiod)（当前设置为 5 个区块链块）定义的当前时间间隔，在此期间验证者必须提交两条消息：
+让 $P_t$ 是由 [`VotePeriod`](#voteperiod)（当前设置为 5 个区块链块）定义的当前时间间隔，在此期间验证者必须提交两条消息:
 
 - [`MsgExchangeRatePrevote`](#msgexchangerateprevote)，包含 Luna 相对于 Terra 挂钩的汇率的 SHA256 哈希值。必须为每个不同的面额提交单独的预投票，以报告 Luna 汇率。
 
@@ -73,11 +73,11 @@ Oracle 模块为 Terra 区块链提供了最新且准确的 Luna 与各种 Terra
 
 ### 削减
 
-：：： 危险
+::: 危险
 请务必仔细阅读本节，因为它涉及潜在的资金损失。
 :::
 
-发生以下任一事件的 `VotePeriod` 被视为“未命中”：
+发生以下任一事件的 `VotePeriod` 被视为“未命中”:
 
 - 验证者未能针对 [`Whitelist`](#whitelist) 中指定的 ** 每种** 面额提交对 Luna 汇率的投票。
 
@@ -140,7 +140,7 @@ type MsgExchangeRateVote struct {
 
 验证者还可以选择将投票权委托给另一个密钥，以防止块签名密钥保持在线。 为此，他们必须提交“MsgDelegateFeedConsent”，将他们的预言机投票权委托给代表验证者签署“MsgExchangeRatePrevote”和“MsgExchangeRateVote”的“Delegate”。
 
-：：： 危险
+::: 危险
 委托验证者可能会要求您存入一些资金（在 Terra 或 Luna 中），他们可以用这些资金来支付费用，并在单独的“MsgSend”中发送。 该协议是在链下制定的，不受 Terra 协议的强制执行。
 :::
 
@@ -253,19 +253,19 @@ func SlashAndResetMissCounters(ctx sdk.Context, k Keeper)
 
 ### End-Block
 
-在每个块的末尾，Oracle 模块检查它是否是“VotePeriod”的最后一个块。如果是，则运行[投票程序](#voting-procedure)：
+在每个块的末尾，Oracle 模块检查它是否是“VotePeriod”的最后一个块。如果是，则运行[投票程序](#voting-procedure):
 
 1.所有当前活跃的Luna汇率从商店中清除
 
 2. 收到的选票按面额组织成选票。弃权投票，以及不活跃或被监禁的验证者的投票被忽略
 
-3. 不符合以下要求的面额将被删除：
+3. 不符合以下要求的面额将被删除:
 
    - 必须出现在 [`Whitelist`](#whitelist) 中允许的面额中
    - 选票必须至少有 [`VoteThreshold`](#votethreshold) 总投票权
    - 选择投票率最高的`ReferenceTerra`
 
-4. 对于每个剩余的带有通过选票的“denom”：
+4. 对于每个剩余的带有通过选票的“denom”:
 
    - 使用 [`Compute Cross Exchange Rate using Reference Terra`](#compute-cross-exchange-rate-using-reference-terra) 统计投票，并使用 [`tally()`]( #相符）
    - 遍历投票的获胜者并将他们的权重添加到他们的总和中

@@ -1,147 +1,147 @@
-# Use Terra Station mobile
+# 使用 Terra Station 手机
 
-Complete this tutorial to get started with the Terra Station mobile app.
+完成本教程以开始使用 Terra Station 移动应用程序。
 
-## Download the Terra Station app
+## 下载 Terra Station 应用程序
 
-1. Tap the download link for your operating system. Your device’s app store will open.
+1. 点击适用于您的操作系统的下载链接。您设备的应用商店将打开。
 
-- [Terra Station for iOS](https://apps.apple.com/app/id1548434735)
-- [Terra Station for Android](https://play.google.com/store/apps/details?id=money.terra.station)
+- [iOS 版 Terra Station](https://apps.apple.com/app/id1548434735)
+- [Android 版 Terra Station](https://play.google.com/store/apps/details?id=money.terra.station)
 
-2. Install the Terra Station app on your phone.
+2. 在您的手机上安装 Terra Station 应用程序。
 
-## Create a new wallet
+## 创建一个新钱包
 
-1. Launch the Terra Station app and select **New wallet**
+1. 启动 Terra Station 应用程序并选择 **New wallet**
 
-2. Enter a name for your wallet and a secure password. Confirm your password and tap **Next**
+2. 输入钱包名称和安全密码。确认您的密码并点击**下一步**
 
-3. Using a pen and paper, write down your 24-word seed phrase exactly as it appears. Number each word to make verifying easier.
+3. 使用笔和纸，准确地写下您的 24 字种子短语。为每个单词编号，以便更轻松地进行验证。
 
-:::danger Protect your seed phrase
-Anyone with your seed phrase can access your money, and there is no recourse for someone stealing your seed phrase. To protect your seed phrase, consider the following tips:
+:::danger 保护你的种子短语
+任何拥有您的种子短语的人都可以访问您的资金，并且窃取您的种子短语的人没有追索权。为了保护您的种子短语，请考虑以下提示:
 
-- Never save or store your seed phrase as a digital file on any device.
-- Always write down your seed phrase with a pen and paper.
-- Store the paper with your seed phrase on it somewhere safe.
-- Never give your seed phrase to anyone, not even support staff.
+- 切勿在任何设备上将您的种子短语保存或存储为数字文件。
+- 始终用笔和纸写下您的种子短语。
+- 将带有种子短语的纸张存放在安全的地方。
+- 切勿将您的种子短语提供给任何人，甚至支持人员也不行。
 :::
 
-4. Verify your writing to make sure every word is spelled correctly and in the right order. If you numbered your phrase, it can be helpful to verify it backward.
+4. 验证您的写作以确保每个单词都拼写正确且顺序正确。如果您对短语进行了编号，则向后验证它会很有帮助。
 
-5. Tap **Next**.
+5. 点击**下一步**。
 
-6. Confirm your seed phrase by typing or selecting the correct words in each prompt.
+6. 通过在每个提示中键入或选择正确的词来确认您的种子短语。
 
-7. Tap **Confirm**.
+7. 点击**确认**。
 
-Congratulations, you have just created a wallet!
+恭喜，您刚刚创建了一个钱包！
 
-## Receive tokens from an exchange
+## 从交易所接收代币
 
-1. Purchase your tokens using any exchange that supports Terra. To view a list of current exchanges, visit the [Integrations page](https://docs.terra.money/Reference/integrations.html#exchanges)
+1. 使用任何支持 Terra 的交易所购买您的代币。要查看当前交易所列表，请访问 [集成页面](https://docs.terra.money/Reference/integrations.html#exchanges)
 
-1. Withdraw any token supported by the Terra network from your exchange. Every exchange is different. Please visit your exchange's web page for guides on how to withdraw tokens. Use the following steps as a generic guide.
+1. 从您的交易所提取 Terra 网络支持的任何代币。每次交换都不一样。请访问您的交易所网页以获取有关如何提取代币的指南。使用以下步骤作为通用指南。
 
-    1. To receive tokens to your wallet, use your wallet address. Your wallet address will appear at the top of the Terra station Desktop app near your wallet name. Your wallet address will look like this: `terra1hm4grlwkt26tccr4vclwjz3elgh224wquctwye`
+    1. 要接收到您钱包的代币，请使用您的钱包地址。您的钱包地址将显示在您的钱包名称附近的 Terra station 桌面应用程序顶部。您的钱包地址将如下所示:`terra1hm4grlwkt26tccr4vclwjz3elgh224wquctwye`
 
-    1. Double-check your wallet address is correct before sending.
+    1. 发送前请仔细检查您的钱包地址是否正确。
 
-    1. Send the tokens from the exchange to your Terra Station wallet address.
+    1. 将代币从交易所发送到您的 Terra Station 钱包地址。
 
-:::warning Waiting times for transfers
-When you transfer tokens from an exchange to Terra, some time will pass before the tokens appear in your wallet. Don't panic. This waiting period is normal and varies depending on the exchange. If a transfer does not appear immediately, check back after some time.
+:::warning 转移等待时间
+当您将代币从交易所转移到 Terra 时，在代币出现在您的钱包中之前需要一些时间。不要惊慌。这个等待期是正常的，会因交易所而异。如果传输没有立即出现，请过一段时间再回来查看。
 :::
 
-Now you have tokens on Terra!
+现在你在 Terra 上有了代币！ 
 
-## Swap coins
+## 交换硬币
 
-1. Open the Terra Station app extension and connect to your wallet. Tap **Swap**.
+1. 打开 Terra Station 应用程序扩展程序并连接到您的钱包。点击**交换**。
 
-2. In the first dropdown, select a coin and enter the value you want to swap.
+2. 在第一个下拉菜单中，选择一个硬币并输入您想要交换的价值。
 
-3. In the second dropdown, select a coin to receive.
+3. 在第二个下拉菜单中，选择要接收的硬币。
 
-4. Tap **Next**.
+4. 点击**下一步**。
 
-5. Select the coin you want to pay fees in.
+5. 选择您要支付费用的硬币。
 
-5. Confirm your transaction amounts and tap **Confirm**.
+5. 确认您的交易金额并点击**确认**。
 
-Congratulations, you've just swapped coins!
+恭喜，您刚刚交换了硬币！
 
-## Send tokens
+##发送令牌
 
-1. Open the Terra Station app extension and connect to your wallet.
+1. 打开 Terra Station 应用程序扩展程序并连接到您的钱包。
 
-2. Tap on the token in your available balance that you want to send.
+2. 在可用余额中点击要发送的代币。
 
-3. Enter the address of the wallet you want to send tokens to
+3. 输入您要发送代币的钱包地址
 
-4. Enter the amount you want to send. You can also add a memo to specify what the transaction is for.
+4. 输入您要发送的金额。您还可以添加备忘录来指定交易的用途。
 
-5. Tap **Next**.
+5. 点击**下一步**。
 
-6. Verify the transaction amounts and specify which token you want to pay fees in. Remember to always leave enough tokens in your account for other transactions.
+6. 验证交易金额并指定您要支付费用的代币。请记住始终在您的帐户中保留足够的代币用于其他交易。
 
-::: warning Keep coins for fees
-Always keep some coins to pay fees with. Never spend your entire wallet amount. Without money for fees, you can't make any transactions.
+::: 警告保留硬币以收取费用
+总是保留一些硬币来支付费用。永远不要花掉你的整个钱包金额。没有钱支付费用，您将无法进行任何交易。
 :::
 
-7.  Enter your password and tap **Confirm**. Wait for the transaction to process. This generally takes a few seconds.
+7. 输入您的密码并点击**确认**。等待交易处理。这通常需要几秒钟。
 
-## Stake Luna
+## 赌注 Luna
 
-1. Open the Terra Station app extension and connect to your wallet. Make sure you have Luna in your wallet to stake.
+1. 打开 Terra Station 应用程序扩展程序并连接到您的钱包。确保你的钱包里有 Luna 可以抵押。
 
-2. Tap **Staking**.
+2. 点击**抵押**。
 
-2. Browse the list and tap on the validator you would like to stake to.
+2. 浏览列表并点击您想要质押的验证器。
 
-3. Tap **Delegate**
+3. 点击**代表**
 
-4. Enter the amount of Luna you want to delegate. Tap **Next**.
+4. 输入您要委托的 Luna 数量。点击**下一步**。
 
-5. Confirm the amount and select the coin you want to pay fees in.
+5. 确认金额并选择您要支付费用的硬币。
 
-::: warning Keep coins for fees
-Always keep some coins to pay fees with. Never stake your entire wallet amount. Without money for fees, you can't make any transactions.
+::: 警告保留硬币以收取费用
+总是保留一些硬币来支付费用。永远不要抵押您的全部钱包金额。没有钱支付费用，您将无法进行任何交易。
 :::
 
-6. Tap **Confirm** and wait for your transaction to process.
+6. 点击**确认**并等待您的交易处理。
 
-Your Luna is now staked to a validator.
+您的 Luna 现在已质押给验证者。
 
-## Withdraw staking rewards
+## 提取质押奖励
 
-Rewards start accruing the moment you stake Luna. Monitor your rewards in the staking section of Terra Station. Once you have sufficient rewards, follow these steps to withdraw them:
+奖励在您质押 Luna 的那一刻开始累积。在 Terra Station 的质押部分监控您的奖励。获得足够的奖励后，请按照以下步骤提取奖励:
 
-1. Open the Terra Station app. Connect to a wallet and tap **Staking**.
+1. 打开 Terra Station 应用程序。连接到钱包并点击 **Staking**。
 
-2. To claim all rewards, tap **Withdraw all rewards** at the top of the staking page.
+2. 如需领取所有奖励，请点击质押页面顶部的**提取所有奖励**。
 
-2. Review the amounts and specify which coin you want to pay fees in.
+2. 查看金额并指定您要支付费用的代币。
 
-3. Enter your password and tap **Confirm**.
+3. 输入您的密码并点击**确认**。
 
-Congratulations, you've just withdrawn your staking rewards!
+恭喜，您刚刚提取了质押奖励！
 
-## Connect to a dApp
+## 连接到一个 dApp
 
-1. Open the Terra Station app and connect to your wallet.
+1. 打开 Terra Station 应用程序并连接到您的钱包。
 
-2. In your browser, navigate to the dApp of your choice. For this tutorial, we'll use the [Anchor protocol WebApp](https://app.anchorprotocol.com/). Most dApps use a similar process, though others may vary.
+2. 在您的浏览器中，导航到您选择的 dApp。在本教程中，我们将使用 [Anchor protocol WebApp](https://app.anchorprotocol.com/)。大多数 dApp 使用类似的过程，但其他人可能会有所不同。
 
-3. Tap the wallet icon at the top of the page.
+3. 点击页面顶部的钱包图标。
 
-4. Wallet connect will open your Terra Station app.
+4. Wallet connect 将打开您的 Terra Station 应用程序。
 
-5. When prompted, tap **Allow**.
+5. 出现提示时，点击**允许**。
 
-You can now make transactions on different dApps in the Terra ecosystem.
+您现在可以在 Terra 生态系统中的不同 dApp 上进行交易。
 
-## Next steps
+## 下一步
 
-To use Terra Station on your computer, visit the [Terra Station desktop tutorial](/Get-started/Terra-Station-desktop.md). For more guides on how to use other Station features, visit the [How to](/How-to/Terra-Station) section.
+要在您的计算机上使用 Terra Station，请访问 [Terra Station 桌面教程](/Get-started/Terra-Station-desktop.md)。有关如何使用其他 Station 功能的更多指南，请访问 [How to](/How-to/Terra-Station) 部分。 

@@ -1,98 +1,98 @@
-# Use Terra Station on Chrome
-Complete this tutorial to install the Terra Station extension for the Google Chrome browser.
+# 在 Chrome 上使用 Terra Station
+完成本教程以安装适用于 Google Chrome 浏览器的 Terra Station 扩展程序。
 
-## Prerequisites
+## 先决条件
 
-- Download and install [Terra Station for desktop](/Tutorials/Get-started/Terra-Station-desktop.md).
-- Download [Google Chrome](https://www.google.com/chrome/).
+- 下载并安装 [桌面版 Terra Station](/Tutorials/Get-started/Terra-Station-desktop.md)。
+- 下载 [谷歌浏览器](https://www.google.com/chrome/)。
 
-## Install the Terra Station extension
+## 安装 Terra Station 扩展
 
-1. Open your Chrome browser and visit the [the Terra Station web extension](https://chrome.google.com/webstore/detail/terra-station/aiifbnbfobpmeekipheeijimdpnlpgpp).
+1. 打开您的 Chrome 浏览器并访问 [Terra Station 网络扩展程序](https://chrome.google.com/webstore/detail/terra-station/aiifbnbfobpmeekipheeijimdpnlpgpp)。
 
-2. Install the extension and add it to your browser.
+2. 安装扩展并将其添加到您的浏览器。
 
-## Create a wallet
+## 创建一个钱包
 
-Use this tutorial to create a new wallet. To connect to an existing wallet, visit [how to connect to a wallet](/How-to/Terra-Station/Wallet.md#connect-to-a-wallet-using-a-private-key).
+使用本教程创建一个新钱包。要连接到现有钱包，请访问 [如何连接到钱包](/How-to/Terra-Station/Wallet.md#connect-to-a-wallet-using-a-private-key)。
 
-1. Open the browser extension and click **New wallet**.
+1. 打开浏览器扩展，点击**新钱包**。
 
-2. Type in a secure wallet name and password.
+2. 输入安全钱包名称和密码。
 
-3. Confirm your password.
+3. 确认您的密码。
 
-4. Using a pen and paper, write down your 24-word seed phrase exactly as it appears. Number each word to make verifying easier.
+4. 使用笔和纸，准确地写下您的 24 字种子短语。为每个单词编号，以便更轻松地进行验证。
 
-:::danger Protect your seed phrase
-Anyone with your seed phrase can access your money, and there is no recourse for someone stealing your seed phrase. To protect your seed phrase, consider the following tips:
+:::danger 保护你的种子短语
+任何拥有您的种子短语的人都可以访问您的资金，并且窃取您的种子短语的人没有追索权。为了保护您的种子短语，请考虑以下提示:
 
-- Never save or store your seed phrase as a digital file on any device.
-- Always write down your seed phrase with a pen and paper.
-- Store the paper with your seed phrase on it somewhere safe.
-- Never give your seed phrase to anyone, not even support staff.
+- 切勿在任何设备上将您的种子短语保存或存储为数字文件。
+- 始终用笔和纸写下您的种子短语。
+- 将带有种子短语的纸张存放在安全的地方。
+- 切勿将您的种子短语提供给任何人，甚至支持人员也不行。
 :::
 
-5. Verify your writing to make sure every word is spelled correctly and in the right order. If you numbered your phrase, it can be helpful to verify it backward.
+5. 验证您的写作以确保每个单词都拼写正确且顺序正确。如果您对短语进行了编号，则向后验证它会很有帮助。
 
-5. Check the box ensuring you wrote down your seed phrase, and click **Next**.
+5. 选中确保您写下种子短语的框，然后单击**下一步**。
 
-6. Confirm your seed phrase by typing or selecting the correct words in each prompt.
+6. 通过在每个提示中键入或选择正确的词来确认您的种子短语。
 
-7. Click **Create a wallet**.
+7. 点击**创建钱包**。
 
-Congratulations! You have just created a Terra Station wallet.
+恭喜！您刚刚创建了一个 Terra Station 钱包。
 
-## Receive tokens from an exchange
+## 从交易所接收代币
 
-1. Purchase your tokens using any exchange that supports Terra. To view a list of current exchanges, visit the [Integrations page](https://docs.terra.money/Reference/integrations.html#exchanges)
+1. 使用任何支持 Terra 的交易所购买您的代币。要查看当前交易所列表，请访问 [集成页面](https://docs.terra.money/Reference/integrations.html#exchanges)
 
-1. Withdraw any token supported by the Terra network from your exchange. Every exchange is different. Please visit your exchange's web page for guides on how to withdraw tokens. Use the following steps as a generic guide.
+1. 从您的交易所提取 Terra 网络支持的任何代币。每次交换都不一样。请访问您的交易所网页以获取有关如何提取代币的指南。使用以下步骤作为通用指南。
 
-    1. To receive tokens to your wallet, use your wallet address. Your wallet address will appear at the top of the Terra station Desktop app near your wallet name. Your wallet address will look like this: `terra1hm4grlwkt26tccr4vclwjz3elgh224wquctwye`
+    1. 要接收到您钱包的代币，请使用您的钱包地址。您的钱包地址将显示在您的钱包名称附近的 Terra station 桌面应用程序顶部。您的钱包地址将如下所示:`terra1hm4grlwkt26tccr4vclwjz3elgh224wquctwye`
 
-    1. Double-check your wallet address is correct before sending.
+    1. 发送前请仔细检查您的钱包地址是否正确。
 
-    1. Send the tokens from the exchange to your Terra Station wallet address.
+    1. 将代币从交易所发送到您的 Terra Station 钱包地址。
 
-:::warning Waiting times for transfers
-When you transfer tokens from an exchange to Terra, some time will pass before the tokens appear in your wallet. Don't panic. This waiting period is normal and varies depending on the exchange. If a transfer does not appear immediately, check back after some time.
+:::warning 转移等待时间
+当您将代币从交易所转移到 Terra 时，在代币出现在您的钱包中之前需要一些时间。不要惊慌。这个等待期是正常的，会因交易所而异。如果传输没有立即出现，请过一段时间再回来查看。
 :::
 
-Now you have tokens on Terra!
+现在你在 Terra 上有了代币！
 
-## Send tokens
+##发送令牌
 
-1. Open the Terra Station browser extension and connect to your wallet.
+1. 打开 Terra Station 浏览器扩展程序并连接到您的钱包。
 
-2. Click on the token in your available balance that you want to send.
+2. 单击您要发送的可用余额中的代币。
 
-3. Enter the address of the wallet you want to send tokens to.
+3. 输入您要发送代币的钱包地址。
 
-4. Enter the amount you want to send. You can also add a memo for the transaction.
+4. 输入您要发送的金额。您还可以为交易添加备忘录。
 
-5. Click **Next**.
+5. 单击**下一步**。
 
-6. Verify the transaction amounts and specify which token you want to pay fees in. Remember to always leave enough tokens in your account for other transactions.
+6. 验证交易金额并指定您要支付费用的代币。请记住始终在您的帐户中保留足够的代币用于其他交易。
 
-7.  Enter your password and click **Send**.
+7. 输入您的密码并点击**发送**。
 
-After a few moments, the tokens will appear in the receiver's wallet.
+片刻之后，代币将出现在接收者的钱包中。
 
-## Connect to a dApp
+## 连接到一个 dApp
 
-1. Open the Terra Station browser extension and connect to your wallet.
+1. 打开 Terra Station 浏览器扩展程序并连接到您的钱包。
 
-2. Navigate to the dApp of your choice. We'll use the [Anchor protocol WebApp](https://app.anchorprotocol.com/) for this tutorial. Most dApps use a similar process, though others may vary.
+2. 导航到您选择的 dApp。我们将在本教程中使用 [Anchor protocol WebApp](https://app.anchorprotocol.com/)。大多数 dApp 使用类似的过程，但其他人可能会有所不同。
 
-3. To connect your wallet, click **Connect Wallet** at the top of the page.
+3. 要连接您的钱包，请单击页面顶部的**连接钱包**。
 
-4. Select **Terra Station (extension)** to connect your wallet.  
+4.选择**Terra Station（扩展）**连接你的钱包。
 
-5. When prompted, click **Allow**.
+5. 出现提示时，单击**允许**。
 
-You can now make transactions on different dApps in the Terra ecosystem.
+您现在可以在 Terra 生态系统中的不同 dApp 上进行交易。
 
-## Next steps
+## 下一步
 
-For on-the-go transactions, check out the Terra Station mobile app. For more guides on how to use other Station features, visit the [How to](/How-to/Terra-Station) section.
+对于移动交易，请查看 Terra Station 移动应用程序。有关如何使用其他 Station 功能的更多指南，请访问 [How to](/How-to/Terra-Station) 部分。 

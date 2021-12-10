@@ -1,51 +1,52 @@
-# Set up an oracle feeder
+# 设置一个oracle feeder
 
-Every Terra validator must participate in the oracle process and periodically submit a vote for the exchange rate of Luna in all whitelisted denominations. Because this process occurs every 30 seconds, validators must set up an automated process to avoid getting slashed and jailed.
+每个 Terra 验证者都必须参与预言机流程，并定期提交对所有白名单面额的 Luna 汇率的投票。因为这个过程每 30 秒发生一次，验证者必须建立一个自动化的过程，以避免被削减和监禁。
 
-## Make a new key for oracle votes
+## 为 oracle 投票创建一个新的密钥
 
-You can separate the keys used for controlling a validator account from those that are submitting oracle votes on behalf of a validator. Run:
+您可以将用于控制验证者帐户的密钥与代表验证者提交预言机投票的密钥分开。跑:
 
 ```bash
 terrad keys add <feeder>
 ```
 
-Show the feeder account details:
+
+显示馈线帐户详细信息:
 
 ```bash
 terrad keys show <feeder>
 ```
 
-## Delegate feeder consent
+## 委托馈线同意
 
-The account address used to submit oracle voting transactions is called a `feeder`. When you set up your oracle voting process for the first time, you must delegate the feeder permission to an account.
+用于提交预言机投票交易的账户地址称为“feeder”。当您第一次设置 oracle 投票流程时，您必须将 Feeder 权限委托给一个帐户。
 
 ```bash
 terrad tx oracle set-feeder <feeder-address> --from=<validator>
 ```
 
-## Send funds to the feeder
+## 向馈线发送资金
 
-The feeder needs funds to pay for transaction fees to submit oracle voting messages. TerraKRW, not Luna, are used for oracle voting fees because the smallest atomic unit of TerraKRW is much cheaper than Luna. You can send TerraKRW to your feeder address or send Luna and perform an on-chain swap by running the following command:
+馈线需要资金来支付交易费用以提交预言机投票消息。 TerraKRW 而非 Luna 用于支付预言机投票费，因为 TerraKRW 的最小原子单位比 Luna 便宜得多。您可以通过运行以下命令将 TerraKRW 发送到您的馈线地址或发送 Luna 并执行链上交换:
 
 ```bash
 terrad tx send <from-address> <feeder-address> <luna-amount>uluna
-```
+``
 
-**Syntax of a swap from the feeder**
+**从馈线交换的语法**
 
 ```bash
 terrad tx market swap <luna-amount>uluna ukrw --from=<feeder>
 ```
 
-## Set up oracle feeder program
+##设置oracle feeder程序
 
-To start submitting oracle messages with your feeder account, install and set up an oracle feeder.
+要开始使用您的 feeder 帐户提交 oracle 消息，请安装并设置 oracle feeder。
 
-- Install Terra's Node.js [`oracle-feeder`](https://github.com/terra-money/oracle-feeder) by visiting [Terra's oracle feeder Github repo](https://github.com/terra-money/oracle-feeder).
+- 通过访问 [Terra's oracle feeder Github repo](https://github.com/terra-) 安装 Terra 的 Node.js [`oracle-feeder`](https://github.com/terra-money/oracle-feeder)金钱/oracle-feeder）。
 
-Validators are encouraged to set up their own oracle feeders.
+鼓励验证者建立自己的预言机馈送器。
 
-Some examples of oracle feeder projects include:
-- The [`terra_oracle_voter`](https://github.com/b-harvest/terra_oracle_voter) in Python by [B-Harvest](https://bharvest.io/).
-- The [`terra-oracle`](https://github.com/node-a-team/terra-oracle) in Go by [Node A-Team](https://nodeateam.com/).
+Oracle Feeder 项目的一些示例包括:
+- [`terra_oracle_voter`](https://github.com/b-harvest/terra_oracle_voter) 由 [B-Harvest](https://bharvest.io/) 编写。
+- [`terra-oracle`](https://github.com/node-a-team/terra-oracle) 由 [Node A-Team](https://nodeateam.com/) 编写。

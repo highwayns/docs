@@ -1,13 +1,13 @@
-# Make a connection
+# 建立连接
 
-Users can interact with the blockchain by using the following modes:
+用户可以通过以下方式与区块链进行交互:
 
-- Querying data
-- Broadcasting a transaction
+- 查询数据
+- 广播交易
 
-## Connect to a chain
+## 连接到一个链
 
-To perform these actions, connect to the blockchain by using an `LCDClient` object, which represents a connection to a node running the light client daemon (LCD). The LCD serves as a RESTful API over HTTP. Terra.js abstracts away the details of making raw API calls and provide an interface with which you can work.
+要执行这些操作，请使用“LCDClient”对象连接到区块链，该对象表示与运行轻客户端守护程序 (LCD) 的节点的连接。 LCD 充当基于 HTTP 的 RESTful API。 Terra.js 抽象了进行原始 API 调用的细节，并提供了一个您可以使用的界面。 
 
 ```ts
 import { LCDClient } from '@terra-money/terra.js';

@@ -1,9 +1,9 @@
-# MsgAuthorization
+# 消息授权
 
-The following code snippet requires LocalTerra.
+以下代码片段需要 LocalTerra。
 
-1. `test1` creates MsgGrantAuthorization message to grant MsgSend authorization to grantee `test2`.
-2. `test2` creates MsgExecAuthorized message to send `2000000000000ukrw` from the `test1` account to the `test3` account.
+1. `test1` 创建 MsgGrantAuthorization 消息来授予被授权者 `test2` 的 MsgSend 权限。
+2.`test2`创建MsgExecAuthorized消息，将`2000000000000ukrw`从`test1`账户发送到`test3`账户。 
 
 ```ts
 import {

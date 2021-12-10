@@ -1,68 +1,68 @@
-# Terra Docs Style guide
+# Terra Docs 风格指南
 
-Use the following style guide to ensure the Terra documentation is understandable, useful, consistent, and organized.
+使用以下样式指南确保 Terra 文档易于理解、有用、一致且有条理。
 
-Although the current Terra documentation doesn't adhere to all of the following style guidelines, apply them when you revise the current content and write new content. Over time, the style guidelines will be applied throughout the documentation.
+尽管当前的 Terra 文档不遵循以下所有样式指南，但在您修改当前内容和编写新内容时应用它们。随着时间的推移，样式指南将应用于​​整个文档。
 
-## Basic principles
+## 基本原则
 
-The following principles guide our content creation.
+以下原则指导我们的内容创作。
 
-- Write clearly and accurately.
-- Be aware of your audience.
-- Get to the point.
-- Be consistent.
-- Be friendly.
-- Include everyone.
+- 写得清楚准确。
+- 注意你的听众。
+- 切入正题。
+- 始终如一。
+- 友好一点。
+- 包括所有人。
 
-### Write clearly and accurately
+### 写清楚准确
 
-Use natural language, like a person. Always assume Terra users are not experts, and simplify the content while maintaining technical accuracy. Avoid technical jargon.
+使用自然语言，就像一个人一样。始终假设 Terra 用户不是专家，并在保持技术准确性的同时简化内容。避免使用技术术语。
 
-### Be aware of your audience
+### 注意你的听众
 
-Always consider Terra users' needs and help them complete processes quickly and easily. Do this by including all steps in procedures, suggesting best practices, and including tips and other types of notes.
+始终考虑 Terra 用户的需求，帮助他们快速轻松地完成流程。通过在程序中包含所有步骤、建议最佳实践以及包含提示和其他类型的注释来做到这一点。
 
-### Get to the point
+### 进入正题
 
-Provide relevant content without being wordy. Avoid repeating details in a single topic.
+提供相关内容而不是冗长。避免在单个主题中重复细节。
 
-### Be consistent
+### 始终如一
 
-Use the same terminology, formatting, voice, and tone.
+使用相同的术语、格式、语音和语气。
 
-### Be friendly
+###保持友好
 
-Write in a personable voice with a positive attitude.
+以积极的态度用风度翩翩的声音写作。
 
-### Include everyone
+### 包括所有人
 
-All people are welcome here. Use appropriate language as it relates to matters of identity.
+这里欢迎所有人。使用与身份相关的适当语言。
 
-For more information, see the [Microsoft bias-free writing guidelines](https://docs.microsoft.com/en-us/style-guide/bias-free-communication).
+有关详细信息，请参阅 [Microsoft 无偏见写作指南](https://docs.microsoft.com/en-us/style-guide/bias-free-communication)。
 
-## Style guidelines
+## 风格指南
 
-Generally, we abide by the [Microsoft Writing Style Guide](https://docs.microsoft.com/en-us/style-guide/welcome/) because it shares our goal of creating clear and useful content. However, we don't follow every rule, and, in some cases, we break the rules in favor of our own.
+通常，我们遵守 [Microsoft 写作风格指南](https://docs.microsoft.com/en-us/style-guide/welcome/)，因为它与我们共同的目标是创建清晰且有用的内容。但是，我们不会遵守所有规则，并且在某些情况下，我们会为了自己的规则而违反规则。
 
-Here are some of the more important guidelines we use. If you follow at least these guidelines, your content will begin to resemble other parts of the documentation, making a consistent experience for Terra users.
+以下是我们使用的一些更重要的准则。如果您至少遵循这些准则，您的内容将开始类似于文档的其他部分，从而为 Terra 用户提供一致的体验。
 
-### Acronyms
+### 首字母缩略词
 
-Use the spelled-out term followed by the acronym in parentheses, such as dynamic-link library (DLL). On subsequent occurrences in the same topic, use only the acronym.
+使用拼写出来的术语，后跟括号中的首字母缩略词，例如动态链接库 (DLL)。在同一主题中的后续出现时，仅使用首字母缩略词。
 
-### Audience knowledge levels
+### 观众知识水平
 
-Remember the two primary types of Terra users: new and experienced.
+记住两种主要类型的 Terra 用户:新用户和有经验的用户。
 
-### Contractions
+### 收缩
 
-Use them. They're part of writing like a person.
+使用它们。它们是像人一样写作的一部分。
 
-### Sentence case
+### 句子案例
 
-Use sentence-style capitalization in all levels of headings.
+在所有级别的标题中使用句子式大写。
 
-### Verb tense
+### 动词时态
 
-Use the present tense and active voice. Address the audience as you.
+使用现在时和主动语态。像你一样向观众讲话。 
