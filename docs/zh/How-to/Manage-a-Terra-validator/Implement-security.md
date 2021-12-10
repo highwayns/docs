@@ -23,20 +23,20 @@ Sentry 节点可以快速启动或用于更改 IP 地址。由于指向哨兵节
 1. 对于验证器节点，编辑`config.toml`:
 
 ```bash
-# 逗号分隔的节点列表，以保持持久连接
-# 如果您不希望他们公开，请不要将私有对等点添加到此列表中
-persistent_peers =[哨兵节点列表]
+# Comma separated list of nodes to keep persistent connections to
+# Do not add private peers to this list if you don't want them advertised
+persistent_peers =[list of sentry nodes]
 
-# 设置 true 以启用对等交换反应器
-pex = 假
-``
+# Set true to enable the peer-exchange reactor
+pex = false
+```
 
 2. 对于哨兵节点，编辑`config.toml`:
 
 ```bash
-# 逗号分隔的 peer ID 列表以保密（不会被其他 peer 八卦）
-private_peer_ids = "验证节点的ip地址"
-``
+# Comma separated list of peer IDs to keep private (will not be gossiped to other peers)
+private_peer_ids = "ipaddress of validator nodes"
+```
 
 ## 环境变量
 

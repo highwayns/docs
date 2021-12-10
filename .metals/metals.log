@@ -4,3 +4,4 @@
 [0m2021.12.10 12:55:03 WARN  no build tool detected in workspace 'D:\work\Blockchain\Stablecoin\teiwei2003\terra_docs'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
 12 10, 2021 3:48:26 åﬂå„ org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
 èÓïÒ: Unsupported notification method: $/setTrace
+[0m2021.12.10 17:43:43 INFO  shutting down Metals[0m

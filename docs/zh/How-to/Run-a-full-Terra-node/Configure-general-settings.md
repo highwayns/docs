@@ -54,7 +54,7 @@ wget https://network.terra.dev/testnet/addrbook.json -O ~/.terra/config/addrbook
 
 2. 找到`API 配置` 部分（`[api]`）。
 
-3.将`enable = false`改为`enable = true`。
+3. 将`enable = false`改为`enable = true`。
 
 ``` toml
 # Enable 定义是否应该启用 API 服务器。
@@ -75,7 +75,7 @@ swagger = true
 
 ## 其他设置
 
-###`seed_mode`
+### `seed_mode`
 
 在种子模式下，一个节点不断地为对等点爬行网络，并且在传入连接时共享一些对等点并断开连接。
 

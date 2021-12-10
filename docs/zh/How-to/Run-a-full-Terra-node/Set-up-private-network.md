@@ -6,7 +6,7 @@
 如果您是开发人员并且想要为智能合约设置本地的、支持 WASM 的私有测试网，请访问 [下载 LocalTerra](/zh/Tutorials/Smart-contracts/Set-up-local-environment.html#download-localterra)。
 :::
 
-##创建单个节点
+## 创建单个节点
 
 您可以设置的最简单的 Terra 网络是只有一个节点的本地测试网。 在单节点环境中，您拥有一个帐户，并且您是私有网络的唯一验证者签名块。
 

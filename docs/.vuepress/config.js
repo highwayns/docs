@@ -7,6 +7,10 @@ module.exports = {
         '/zh/': {
             title: "Terra 文档",
             description: "Terra is an open source, public blockchain protocol that provides fundamental infrastructure for a decentralized economy and enables open participation in the creation of new financial primitives to power the innovation of money.",
+        },
+        '/ja/': {
+            title: "Terra ドキュメント",
+            description: "Terra is an open source, public blockchain protocol that provides fundamental infrastructure for a decentralized economy and enables open participation in the creation of new financial primitives to power the innovation of money.",
         }
     },
     markdown: {
@@ -461,7 +465,193 @@ requestAnimationFrame(function() {
                         collapsable: false,
                     }, ],
                 },
-            }
+            },
+            '/ja/': {
+                selectText: '言語選択',
+                // 该语言在下拉菜单中的标签
+                label: '日本語',
+                nav: [
+                    { text: "概要", link: "/ja/" },
+                    { text: "チュートリアル", link: "/ja/Tutorials/" },
+                    { text: "ノーハウ ", link: "/ja/How-to/" },
+                    { text: "概念", link: "/ja/Concepts/" },
+                    { text: "参考", link: "/ja/Reference/" },
+                    { text: "SDKs", link: "/ja/SDKs/" },
+                    {
+                        text: "GitHub",
+                        link: "https://github.com/terra-money/core",
+                        icon: "/img/github.svg",
+                    },
+                ],
+                sidebar: {
+
+                    "/ja/Tutorials/": [
+                        "/ja/Tutorials/",
+                        {
+                            title: "开始",
+                            children: [
+                                "/ja/Tutorials/Get-started/Terra-Station-desktop",
+                                "/ja/Tutorials/Get-started/Terra-Station-extension",
+                                "/ja/Tutorials/Get-started/Terra-Station-mobile",
+                            ],
+                            collapsable: true,
+                        },
+                        {
+                            title: "Terra dApp作成",
+                            children: [
+                                "/ja/Tutorials/Smart-contracts/Overview",
+                                "/ja/Tutorials/Smart-contracts/Build-Terra-dApp",
+                                "/ja/Tutorials/Smart-contracts/Set-up-local-environment",
+                                "/ja/Tutorials/Smart-contracts/Write-smart-contract",
+                                "/ja/Tutorials/Smart-contracts/Interact-with-smart-contract",
+                                "/ja/Tutorials/Smart-contracts/Manage-CW20-tokens",
+                            ],
+                            collapsable: true,
+                        },
+                    ],
+                    "/ja/How-to/": [
+                        "/ja/How-to/",
+                        {
+                            title: "Terra Stationを使う",
+                            children: [
+                                "/ja/How-to/Terra-Station/Wallet",
+                                "/ja/How-to/Terra-Station/Testnet",
+                                "/ja/How-to/Terra-Station/Staking",
+                                "/ja/How-to/Terra-Station/Swap",
+                                "/ja/How-to/Terra-Station/Governance",
+                                "/ja/How-to/Terra-Station/Contracts",
+
+                            ],
+                            collapsable: true,
+                        },
+                        {
+                            title: "Terra nodeを稼働する",
+                            children: [
+                                "/ja/How-to/Run-a-full-Terra-node/Hardware-requirements",
+                                "/ja/How-to/Run-a-full-Terra-node/Build-Terra-core",
+                                "/ja/How-to/Run-a-full-Terra-node/Set-up-production-environment",
+                                "/ja/How-to/Run-a-full-Terra-node/Configure-general-settings",
+                                "/ja/How-to/Run-a-full-Terra-node/Set-up-private-network",
+                                "/ja/How-to/Run-a-full-Terra-node/Join-public-network",
+
+                            ],
+                            collapsable: true,
+                        },
+                        {
+                            title: "Terra validator管理",
+                            children: [
+                                "/ja/How-to/Manage-a-Terra-validator/Overview",
+                                "/ja/How-to/Manage-a-Terra-validator/Set-up-validator",
+                                "/ja/How-to/Manage-a-Terra-validator/Set-up-oracle-feeder",
+                                "/ja/How-to/Manage-a-Terra-validator/Court-delegations",
+                                "/ja/How-to/Manage-a-Terra-validator/Implement-security",
+                                "/ja/How-to/Manage-a-Terra-validator/Troubleshoot-validator-problems",
+                                "/ja/How-to/Manage-a-Terra-validator/faq",
+                            ],
+                            collapsable: true,
+                        },
+                        "/ja/How-to/Sign-with-multisig",
+                        "/ja/How-to/Start-LCD",
+                    ],
+                    "/ja/Concepts/": [
+                        "/ja/Concepts/",
+                        "/ja/Concepts/Protocol",
+                        "/ja/Concepts/Fees",
+                        "/ja/Concepts/glossary",
+                    ],
+                    "/ja/Reference/": [
+                        "/ja/Reference/",
+                        {
+                            title: "Terra core",
+                            collapsable: true,
+                            children: [
+                                "/ja/Reference/Terra-core/Overview",
+                                "/ja/Reference/Terra-core/Module-specifications/spec-auth",
+                                "/ja/Reference/Terra-core/Module-specifications/spec-authz",
+                                "/ja/Reference/Terra-core/Module-specifications/spec-bank",
+                                "/ja/Reference/Terra-core/Module-specifications/spec-capability",
+                                "/ja/Reference/Terra-core/Module-specifications/spec-distribution",
+                                "/ja/Reference/Terra-core/Module-specifications/spec-evidence",
+                                "/ja/Reference/Terra-core/Module-specifications/spec-feegrant",
+                                "/ja/Reference/Terra-core/Module-specifications/spec-governance",
+                                "/ja/Reference/Terra-core/Module-specifications/spec-market",
+                                "/ja/Reference/Terra-core/Module-specifications/spec-mint",
+                                "/ja/Reference/Terra-core/Module-specifications/spec-oracle",
+                                "/ja/Reference/Terra-core/Module-specifications/spec-slashing",
+                                "/ja/Reference/Terra-core/Module-specifications/spec-staking",
+                                "/ja/Reference/Terra-core/Module-specifications/spec-treasury",
+                                "/ja/Reference/Terra-core/Module-specifications/spec-wasm",
+                            ],
+                        },
+                        {
+                            title: "terrad",
+                            collapsable: true,
+                            children: [
+                                "/ja/Reference/terrad/",
+                                "/ja/Reference/terrad/commands",
+                                "/ja/Reference/terrad/subcommands",
+                            ],
+                        },
+                        "/ja/Reference/integrations",
+                        {
+                            title: "Ecosystem",
+                            collapsable: true,
+                            children: [
+                                "/ja/Reference/ecosystem",
+                                "/ja/Reference/Terra-Delegation-Program/terra-delegation-program.md",
+                            ],
+                        },
+                        "/ja/Reference/endpoints.md",
+                        {
+                            title: "Other resources",
+                            collapsable: true,
+                            children: [
+                                [
+                                    "https://pkg.go.dev/github.com/terra-money/core?tab=subdirectories",
+                                    "Terra Core GoDoc",
+                                ],
+                                ["https://lcd.terra.dev/swagger/", "Terra REST API"],
+
+                            ],
+                        },
+                    ],
+                    "/ja/SDKs/": [
+                        "/ja/SDKs/",
+                        {
+                            title: "terra.js",
+                            children: [
+                                "/ja/SDKs/Terra-js/Overview",
+                                "/ja/SDKs/Terra-js/Common-examples",
+                                "/ja/SDKs/Terra-js/Add-modules",
+                                "/ja/SDKs/Terra-js/Make-a-connection",
+                                "/ja/SDKs/Terra-js/Query-data",
+                                "/ja/SDKs/Terra-js/Coin-and-Coins",
+                                "/ja/SDKs/Terra-js/Fees",
+                                "/ja/SDKs/Terra-js/Keys",
+                                "/ja/SDKs/Terra-js/MsgAuthorization",
+                                "/ja/SDKs/Terra-js/Multisend",
+                                "/ja/SDKs/Terra-js/Numeric",
+                                "/ja/SDKs/Terra-js/Oracle-feeder",
+                                "/ja/SDKs/Terra-js/Smart-contracts",
+                                "/ja/SDKs/Terra-js/Station-extension",
+                                "/ja/SDKs/Terra-js/Transactions",
+                                "/ja/SDKs/Terra-js/Wallets",
+                                "/ja/SDKs/Terra-js/Websockets",
+                            ],
+                            collapsable: true,
+                        },
+                    ],
+
+                    "/ja/": [{
+                        title: "Overview",
+                        children: [
+                            "/ja/history-and-changes",
+                            "/ja/migration-guide",
+                        ],
+                        collapsable: false,
+                    }, ],
+                },
+            },
         },
         sidebarDepth: 3,
         // overrideTheme: 'dark',

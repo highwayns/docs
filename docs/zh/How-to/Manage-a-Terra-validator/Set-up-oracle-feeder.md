@@ -39,7 +39,7 @@ terrad tx send <from-address> <feeder-address> <luna-amount>uluna
 terrad tx market swap <luna-amount>uluna ukrw --from=<feeder>
 ```
 
-##设置oracle feeder程序
+## 设置oracle feeder程序
 
 要开始使用您的 feeder 帐户提交 oracle 消息，请安装并设置 oracle feeder。
 

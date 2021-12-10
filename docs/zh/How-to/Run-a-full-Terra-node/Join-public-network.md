@@ -25,8 +25,6 @@ terrad init <your_custom_moniker>
 moniker = "<your_custom_moniker>"
 ```
 
-520 / 5000
-翻訳結果
 ### 设置交易的最低 gas 价格（推荐）
 
 您可以编辑 `~/.terra/config/app.toml` 以通过拒绝隐含 gas 价格低于指定最小值的传入交易来启用反垃圾邮件。 为 Terra 主网推荐的最低 gas 价格如下:
@@ -128,7 +126,7 @@ terrad status
 
 这些说明适用于已在以前的测试网上运行并希望升级到最新测试网上的完整节点。
 
-####重置数据
+#### 重置数据
 
 首先，删除过时的文件并重置数据。
 

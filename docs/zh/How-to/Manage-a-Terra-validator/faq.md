@@ -125,7 +125,7 @@ terrad tx staking create-validator
 
 委托给活动集之外的验证者时要小心。一些不活跃的验证器可能会被监禁或不再受支持。 Station 仅显示能够参与共识的活跃或最近活跃的验证者。
 
-###有水龙头吗？
+### 有水龙头吗？
 
 使用 [Terra faucet](https://faucet.terra.money/) 获取测试网币。
 

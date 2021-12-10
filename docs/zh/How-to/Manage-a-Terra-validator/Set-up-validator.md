@@ -16,8 +16,8 @@
 创建新的验证器需要您节点的共识 PubKey。跑:
 
 ```bash
---pubkey=$(terrad tendenmint show-validator)
-``
+--pubkey=$(terrad tendermint show-validator)
+```
 
 ## 2. 创建一个新的验证器
 
@@ -28,17 +28,17 @@
 要创建验证器并使用自委托对其进行初始化，请运行以下命令。 `key-name` 是用于签署交易的私钥的名称。
 
 ```bash
-terrad tx 抵押创建验证器 \
+terrad tx staking create-validator \
     --amount=5000000uluna \
     --pubkey=$(<your-consensus-PubKey>) \
-    --moniker="<你的名字>" \
+    --moniker="<your-moniker>" \
     --chain-id=<chain_id> \
     --from=<key-name> \
     --commission-rate="0.10" \
     --commission-max-rate="0.20" \
     --commission-max-change-rate="0.01" \
     --min-self-delegation="1"
-``
+```
 
 ::: 警告警告:
 当您指定佣金参数时，`commission-max-change-rate` 被衡量为`commission-rate` 的百分比变化。例如，从 1% 到 2% 的变化是 100% 的速率增加，但“commission-max-change-rate”测量为 1%。
@@ -49,8 +49,8 @@ terrad tx 抵押创建验证器 \
 如果运行以下命令返回一些内容，则验证器处于活动状态。
 
 ```bash
-terrad 查询tendermint-validator-set | grep "$(terrad tendenmint show-validator)"
-``
+terrad query tendermint-validator-set | grep "$(terrad tendermint show-validator)"
+```
 
 您正在`~/.terra/config/priv_validator.json` 文件中查找`bech32` 编码的`address`。
 
