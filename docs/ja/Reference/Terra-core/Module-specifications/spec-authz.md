@@ -1,14 +1,14 @@
-# 身份验证
+#認証
 
-authz（消息授权）模块允许用户授权另一个账户代表他们发送消息。某些授权，例如花费另一个帐户的代币，可以参数化以限制受赠者的权限（例如设置花费限制）。
+authz（メッセージ認証）モジュールを使用すると、ユーザーは別のアカウントに自分に代わってメッセージを送信することを認証できます。 別のアカウントからの支出トークンなどの特定の承認は、被付与者の権限を制限するためにパラメーター化できます（支出制限の設定など）。
 
-## 消息类型
+## メッセージタイプ 
 
 ### MsgGrantAuthorization
 
 ```go
-// MsgGrantAuthorization 将所提供的授权授予授予者的被授予者
-// 在提供的时间段内的帐户
+// MsgGrantAuthorizationは、提供された承認を被付与者に付与します
+//指定された期間のアカウント 
 type MsgGrantAuthorization struct {
 	Granter       sdk.AccAddress `json:"granter"`
 	Grantee       sdk.AccAddress `json:"grantee"`
@@ -20,8 +20,8 @@ type MsgGrantAuthorization struct {
 ### MsgRevokeAuthorization
 
 ```go
-// MsgRevokeAuthorization 使用提供的 sdk.Msg 类型撤销任何授权
-// 授予者的帐户已授予受赠者
+// MsgRevokeAuthorizationは、提供されたsdk.Msgタイプを使用して、承認を取り消します
+//被付与者のアカウントが被付与者に付与されました 
 type MsgRevokeAuthorization struct {
 	Granter sdk.AccAddress `json:"granter"`
 	Grantee sdk.AccAddress `json:"grantee"`
@@ -34,9 +34,9 @@ type MsgRevokeAuthorization struct {
 ### MsgExecAuthorized
 
 ```go
-// MsgExecAuthorized 尝试使用提供的消息执行
-// 授予受让人的授权。每条消息应该只有
-// 与授权授予者相对应的一个签名者。
+// MsgExecAuthorizedは、提供されたメッセージを使用して実行を試みます
+//譲受人の承認を付与します。 各メッセージには
+//承認された付与者に対応する署名者。 
 type MsgExecAuthorized struct {
 	Grantee sdk.AccAddress `json:"grantee"`
 	Msgs    []sdk.Msg      `json:"msgs"`

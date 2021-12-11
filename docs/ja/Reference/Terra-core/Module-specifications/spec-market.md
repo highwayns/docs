@@ -1,44 +1,44 @@
-# 市场
+# 市場
 
-Market 模块支持不同 Terra 稳定币面额之间以及 Terra 和 Luna 之间的原子交换。 该模块确保协议资产之间的可用、流动性市场、稳定的价格和公平的汇率。
+Marketモジュールは、異なるTerra安定通貨単位間およびTerraとLuna間の原子交換をサポートします。このモジュールは、合意された資産間の可用性、市場の流動性、安定した価格、および公正な為替レートを保証します。
 
-TerraSDR 的价格稳定是通过 Terra<>Luna 对协议算法做市商的套利活动实现的，该套利活动扩大和收缩 Terra 的供应以维持其挂钩。
+TerraSDRの価格安定性は、合意アルゴリズムのマーケットメーカーに対するTerra <> Lunaの裁定取引を通じて達成されます。この裁定取引は、Terraの供給を拡大および縮小してペグを維持します。
 
 ## 概念
 
-### 掉期费
+### スワップ手数料
 
-由于 Terra 的价格馈送源自验证者预言机，因此链上报告的价格与实时价格之间存在延迟。
+Terraの価格フィードはバリデーターのオラクルから派生しているため、チェーンで報告された価格とリアルタイムの価格の間には遅延があります。
 
-延迟持续大约一分钟（我们的预言机“VotePeriod”是 30 秒），这对于几乎所有实际交易都可以忽略不计。 但是，抢先攻击者可以利用这种延迟并从网络中提取价值。
+遅延は約1分続きます（オラクルの「VotePeriod」は30秒です）。これは、ほとんどすべての実際のトランザクションでは無視できます。ただし、先制攻撃者はこの遅延を利用して、ネットワークから価値を引き出すことができます。
 
-为了抵御这种类型的攻击，市场模块强制执行以下掉期费用: 
+このタイプの攻撃から防御するために、マーケットモジュールは次のスワップ手数料を適用します。
 
-- [**Tobin tax**](#tobintax) for spot-converting Terra<>Terra swaps
+-[**トービン税**]（#tobintax）スポット変換Terra <> Terraスワップ
 
-例如，假设当前 KRT 的托宾税为 0.35%，oracle 报告 Luna<>SDT 汇率为 10，Luna<>KRT 汇率为 10,000。交换 1 SDT 将返回 0.1 Luna，即 1,000 KRT。应用托宾税后，您将拥有 996.5 KRT（1,000 的 0.35% 为 3.5），这比任何零售货币兑换和汇款都要优惠[^1]。
+たとえば、KRTの現在のトービン税が0.35％であり、オラクルがLuna <> SDTの為替レートが10であり、Luna <> KRTの為替レートが10,​​000であると報告したとします。 Exchange 1 SDTは、1,000KRTである0.1ルナを返します。トービン税を適用すると、996.5 KRT（1,000の0.35％は3.5）になります。これは、どの小売外貨両替や送金よりも安価です[^ 1]。
 
-[^1]:最初我们维持零费用掉期政策。然而，为了防止抢先攻击者利用汇率延迟并以牺牲用户利益为代价获利，我们实施了托宾税。有关更多信息，请参阅 [“关于掉期费:贪婪和明智”](https://medium.com/terra-money/on-swap-fees-the-greedy-and-the-wise-b967f0c8914e)。
+[^ 1]:当初は無料のスワップポリシーを維持していました。ただし、先制攻撃者が為替レートの遅延を利用してユーザーを犠牲にして利益を得るのを防ぐために、トービン税を導入しました。詳細については、[「スワップ手数料について:貪欲で賢明な」]（https://medium.com/terra-money/on-swap-fees-the-greedy-and-the-wise-b967f0c8914e）を参照してください。
 
-- [**最小点差**](#minspread) 用于 Terra<>Luna 掉期
+-テラ<>ルナスワップの[**最小スプレッド**]（#minspread）
 
-  最低点差为 0.5%。使用我们上面使用的相同汇率，交换 1 SDT 将返回价值 995 KRT 的 Luna（1000 的 0.5% 为 5，这作为交换费用）。如果您反转掉期，1 Luna 将返回 9.95 SDT（10 的 0.5% 为 0.05）或 9,950 KRT（10,000 的 0.5% = 50）。
+  最小スプレッドは0.5％です。上記で使用したのと同じ為替レートを使用して、1つのSDTを交換すると、995 KRT相当のルナが返されます（1000の0.5％は5であり、これは交換手数料です）。スワップを逆にすると、1ルナは9.95 SDT（10の0.5％は0.05）または9,950 KRT（10,000の0.5％= 50）を返します。
 
-### 做市算法
+### マーケットメイクアルゴリズム
 
-Terra 使用恒定乘积做市算法来确保 Terra<>Luna 掉期的流动性。 [^2]
+Terraは、一定の製品マーケットメイクアルゴリズムを使用して、Terra <> Lunaスワップの流動性を確保しています。 [^ 2]
 
-[^2]:要更深入地了解我们更新的做市算法，请查看 [Nick Platias 的 SFBW 2019 演讲](https://agora.terra.money/t/terra-stability-swap-mechanism-deep -dive-at-sfbw/135）。
+[^ 2]:更新されたマーケットメイクアルゴリズムの詳細については、[NickPlatiasのSFBW2019スピーチ]（https://agora.terra.money/t/terra-stability-swap-mechanism-deep-）を確認してください。 dive-at-sfbw/135）。
 
-对于 Constant Product，我们定义了一个值 $CP$，该值设置为 Terra 池的大小乘以 Luna 的一组**法定值**，并确保我们的做市商通过调整点差在任何掉期期间保持不变。
+コンスタントプロダクトの場合、値$ CP $を定義します。これは、TerraプールのサイズにLunaの**法的値**のセットを掛けたものに設定され、マーケットメーカーがスワップ期間中にそれを維持するように調整します。スプレッド定数。
 
-::: 警告 注意:
-我们对 Constant Product 的实现与 Uniswap 不同，因为我们使用 Luna 的法定价值而不是 Luna 池的大小。这种细微差别意味着 Luna 价格的变化不会影响产品，而是影响 Luna 池的大小。
+:::警告注:
+Constant Productの実装は、Lunaプールのサイズではなく、Lunaの法定値を使用するため、Uniswapとは異なります。このニュアンスは、ルナの価格の変更が製品に影響を与えるのではなく、ルナのプールのサイズに影響を与えることを意味します。
 :::
 
-$$CP = Pool_{Terra} * Pool_{Luna} * (Price_{Luna}/Price_{SDR})$$
+$$ CP = Pool_ {Terra} * Pool_ {Luna} *（Price_ {Luna}/Price_ {SDR}）$$
 
-例如，我们将从相等的 Terra 和 Luna 池开始，两者的总价值为 1000 SDR。 Terra 矿池的大小为 1000 SDT，假设 Luna<>SDR 的价格为 0.5，则 Luna 矿池的大小为 2000 Luna。 用 100 SDT 交换 Luna 将返回价值约 90.91 SDR 的 Luna（≈ 181.82 Luna）。 100 SDT的offer加入Terra矿池，价值90.91 SDT的Luna从Luna矿池中取出。 
+たとえば、合計値が1000SDRの等しいTerraプールとLunaプールから始めます。 Terraマイニングプールのサイズは1000SDTです。Luna<> SDRの価格を0.5とすると、Lunaマイニングプールのサイズは2000Lunaです。 100 SDTをLunaに交換すると、約90.91 SDR（≈181.82Luna）に相当するLunaが返されます。 100 SDTのオファーがTerraマイニングプールに追加され、90.91SDTに相当するLunaがLunaマイニングプールから撤回されました。  
 
 ```
 CP = 1000000 SDR
@@ -50,51 +50,51 @@ CP = 1000000 SDR
 
 Constant-Product 的主要优势在于它提供了“无限”的流动性，并且可以提供任何规模的掉期服务。
 
-### 虚拟流动资金池
+### 仮想流動性プール
 
-市场开始时有两个大小相等的流动性池，一个代表 Terra 的所有面额，另一个代表 Luna。 参数 [`BasePool`](#basepool) 定义了 Terra 和 Luna 流动性池的初始大小 $Pool_{Base}$。
+市場の初めには、同じサイズの2つの流動性プールがありました。1つはテラのすべての宗派を表し、もう1つはルナを表します。 パラメータ[`BasePool`]（#basepool）は、TerraおよびLuna流動性プール$ Pool_ {Base} $の初期サイズを定義します。
 
-该信息不是跟踪两个池的大小，而是以数字 $\delta$ 编码，区块链将其存储为“TerraPoolDelta”。 这表示 Terra 池与其基本大小的偏差，单位为 µSDR。
+この情報は2つのプールのサイズを追跡しませんが、番号$ \ delta $でエンコードされ、ブロックチェーンはそれを「TerraPoolDelta」として格納します。 これは、Terraプールの基本サイズからの偏差をµSDRで表したものです。
 
-Terra 和 Luna 流动性池的大小可以使用以下公式从 $\delta$ 生成:
+TerraおよびLunaの流動性プールのサイズは、次の式を使用して$ \ delta $から生成できます。 
 
 $$Pool_{Terra} = Pool_{Base} + \delta$$
-$$Pool_{Luna} = ({Pool_{Base}})^2 / Pool_{Terra}$$
+$$Pool_{Luna} = ({Pool_{Base}})^2/Pool_{Terra}$$
 
-在[每个区块的末尾](#end-block)，市场模块尝试通过降低 Terra 和 Luna 矿池之间的 $\delta$ 大小来补充矿池。将池补充到平衡的速率由参数 [`PoolRecoveryPeriod`](#poolrecoveryperiod) 设置。较低的周期意味着对交易的敏感性较低:以前的交易会更快地被遗忘，市场能够提供更多的流动性。
+[各ブロックの終わり]（#end-block）で、マーケットモジュールは、TerraマイニングプールとLunaマイニングプールの間の$ \ delta $のサイズを縮小することにより、マイニングプールを補充しようとします。バランスを取るためにプールを補充する速度は、パラメーター[`PoolRecoveryPeriod`]（#poolrecoveryperiod）によって設定されます。サイクルが低いということは、取引に対する感度が低いことを意味します。以前の取引はより早く忘れられ、市場はより多くの流動性を提供できます。
 
-这种机制确保流动性并充当低通滤波器，允许点差费用（这是“TerraPoolDelta”的函数）在需求发生变化时回落，导致供应发生必要的变化，这需要吸收了。
+このメカニズムは流動性を確保し、ローパスフィルターとして機能し、需要の変化に応じてスプレッドコスト（「TerraPoolDelta」の機能）を下げ、必要な供給の変化を吸収する必要があります。
 
-### 交换程序
+### 交換プログラム
 
-1. Market 模块接收 [`MsgSwap`](#msgswap) 消息并执行基本验证检查。
+1. Marketモジュールは、[`MsgSwap`]（#msgswap）メッセージを受信し、基本的な検証チェックを実行します。
 
-2. 使用[`k.ComputeSwap()`](#k-computeswap)计算汇率$ask$和$spread$。
+2. [`k.ComputeSwap（）`]（#k-computeswap）を使用して、為替レート$ ask $と$ spread $を計算します。
 
-3. 使用 [`k.ApplySwapToPool()`](#k-applyswaptopool) 更新 `TerraPoolDelta`。
+3. [`k.ApplySwapToPool（）`]（#k-applyswaptopool）を使用して、 `TerraPoolDelta`を更新します。
 
-4. 使用 `supply.SendCoinsFromAccountToModule()` 将 `OfferCoin` 从账户转移到模块。
+4. `supply.SendCoinsFromAccountToModule（）`を使用して、 `OfferCoin`をアカウントからモジュールに転送します。
 
-5. 使用 `supply.BurnCoins()` 销毁提供的硬币。
+5. `supply.BurnCoins（）`を使用して、提供されたコインを破棄します。
 
-6.让$fee = spread * ask$，这就是点差费用。
+6. $ fee =スプレッド* ask $とします。これは、スプレッド料金です。
 
-7. 使用 `supply.MintCoins()` 铸造 $ask - 费用 $ 硬币的 `AskDenom`。当 $fee$ 硬币被销毁时，这隐含地应用了点差费用。
+7. `supply.MintCoins（）`を使用して、コスト$コインの$ ask-`AskDenom`を作成します。 $ fee $コインが破棄されると、これは暗黙的にスプレッド料金を適用します。
 
-8. 使用 `supply.SendCoinsFromModuleToAccount()` 将新铸造的硬币发送给交易者。
+8. `supply.SendCoinsFromModuleToAccount（）`を使用して、新しく鋳造されたコインをトレーダーに送信します。
 
-9. 发出`swap`事件来宣传掉期并记录点差费用。
+9. 「スワップ」イベントを発行して、スワップを促進し、スプレッドコストを記録します。
 
-如果交易者的“账户”余额不足以执行掉期，则掉期交易失败。
+トレーダーの「口座」残高がスワップを実行するのに不十分である場合、スワップトランザクションは失敗します。
 
-成功完成 Terra<>Luna 掉期后，将记入用户账户的部分代币作为点差费用被扣留。
+Terra <> Lunaスワップが正常に完了すると、ユーザーのアカウントにクレジットされたトークンの一部がスプレッド料金として差し引かれます。
 
-### 铸币税
+### シニョリッジ
 
-当 Luna 交换到 Terra 时，被协议重新捕获的 Luna 称为 seigniorage——发行新 Terra 产生的价值。每个时期结束时的总铸币税被计算并重新引入经济，作为汇率预言机的选票奖励和财政部模块的社区池，更完整地描述 [here](/ja/Reference/Terra-core/Module-spec/spec-treasury.html#k-settleseigniorage）。
+ルナがテラに交換されるとき、合意によって取り戻されたルナは、シニョリッジと呼ばれます。これは、新しいテラの発行によって生成される価値です。各期間の終わりの総シニョリッジ税が計算され、為替レートのオラクルと財務省モジュールのコミュニティプールの投票報酬として経済に再導入されます。詳細については[こちら]（/ja/Reference/Terra -core/Module- spec/spec-treasury.html#k-settleseigniorage）。
 
-::: 警告 注意:
-从 Columbus-5 开始，所有铸币税都被烧毁，社区资金池不再被资助。掉期费被用作汇率预言机的投票奖励。
+:::警告注:
+Columbus-5以降、すべてのシニョリッジが燃やされ、コミュニティの資金プールには資金が提供されなくなりました。スワップ手数料は、為替レートオラクルの投票報酬として使用されます。 
 :::
 
 ## State
@@ -103,20 +103,20 @@ $$Pool_{Luna} = ({Pool_{Base}})^2 / Pool_{Terra}$$
 
 - type: `sdk.Dec`
 
-这表示当前 Terra 池大小与其原始基本大小之间的差异，以 µSDR 为单位。
+これは、現在のTerraプールサイズと元の基本サイズの差をµSDRで表したものです。
 
-## 消息类型
+## メッセージタイプ
 
-### 消息交换
+### メッセージ交換
 
-“MsgSwap”交易表示“交易者”打算将他们的“OfferCoin”余额换成新的“AskDenom”。 这用于 Terra<>Terra 和 Terra<>Luna 交换。 
+「MsgSwap」トランザクションは、「トレーダー」が「OfferCoin」の残高を新しい「AskDenom」と交換することを意図していることを示します。 これは、Terra <> TerraとTerra <> Lunaの交換に使用されます。  
 
 ```go
-// MsgSwap contains a swap request
+//MsgSwap contains a swap request
 type MsgSwap struct {
-	Trader    sdk.AccAddress `json:"trader" yaml:"trader"`         // Address of the trader
-	OfferCoin sdk.Coin       `json:"offer_coin" yaml:"offer_coin"` // Coin being offered
-	AskDenom  string         `json:"ask_denom" yaml:"ask_denom"`   // Denom of the coin to swap to
+	Trader    sdk.AccAddress `json:"trader" yaml:"trader"`        //Address of the trader
+	OfferCoin sdk.Coin       `json:"offer_coin" yaml:"offer_coin"`//Coin being offered
+	AskDenom  string         `json:"ask_denom" yaml:"ask_denom"`  //Denom of the coin to swap to
 }
 ```
 
@@ -126,10 +126,10 @@ A `MsgSendSwap` first performs a swap of `OfferCoin` into `AskDenom` and then se
 
 ```go
 type MsgSwapSend struct {
-	FromAddress sdk.AccAddress `json:"from_address" yaml:"from_address"` // Address of the offer coin payer
-	ToAddress   sdk.AccAddress `json:"to_address" yaml:"to_address"`     // Address of the recipient
-	OfferCoin   sdk.Coin       `json:"offer_coin" yaml:"offer_coin"`     // Coin being offered
-	AskDenom    string         `json:"ask_denom" yaml:"ask_denom"`       // Denom of the coin to swap to
+	FromAddress sdk.AccAddress `json:"from_address" yaml:"from_address"`//Address of the offer coin payer
+	ToAddress   sdk.AccAddress `json:"to_address" yaml:"to_address"`    //Address of the recipient
+	OfferCoin   sdk.Coin       `json:"offer_coin" yaml:"offer_coin"`    //Coin being offered
+	AskDenom    string         `json:"ask_denom" yaml:"ask_denom"`      //Denom of the coin to swap to
 }
 ```
 
@@ -142,44 +142,43 @@ func (k Keeper) ComputeSwap(ctx sdk.Context, offerCoin sdk.Coin, askDenom string
     (retDecCoin sdk.DecCoin, spread sdk.Dec, err sdk.Error)
 ```
 
-此函数从报价中检测掉期类型并询问面额并返回:
+この関数は、見積もりからスワップタイプを検出し、金額を要求して次を返します。
 
-1. 给定的“offerCoin”应该返回的被询问的硬币数量。 这是通过首先将“offerCoin”现货转换为 µSDR，然后使用 Oracle 报告的适当汇率从 µSDR 转换为所需的“askDenom”来实现的。
+1.特定の「offerCoin」に対して返される必要がある照会されたコインの数。 これは、最初に「offerCoin」スポットをµSDRに変換し、次にOracleによって報告された適切な為替レートを使用してµSDRから必要な「askDenom」に変換することによって実現されます。
 
-2. 给定掉期类型应作为掉期费的点差百分比。 Terra<>Terra 掉期只有托宾税点差费。 Terra<>Luna 掉期使用`MinSpread` 或恒定产品定价点差，以较大者为准。
+2.所定のスワップタイプは、スワップ手数料のスプレッドのパーセンテージとして使用する必要があります。 Terra <> Terraスワップには、トービン税スプレッドのみがあります。 Terra <> Lunaスワップは、 `MinSpread`または一定の商品価格スプレッドのいずれか大きい方を使用します。
 
-如果 `offerCoin` 的面额与 `askDenom` 相同，这将引发 `ErrRecursiveSwap`。
+`offerCoin`の額面金額が` askDenom`の額面金額と同じである場合、これは `ErrRecursiveSwap`をトリガーします。
 
-::: 警告 注意:
-`k.ComputeSwap()` 在内部使用了 `k.ComputeInternalSwap()`，它只包含计算适当的要交换的要币的逻辑，而不是常量产品点差。
-:::
-
+:::警告注:
+`k.ComputeSwap（）`は内部で `k.ComputeInternalSwap（）`を使用します。これには、交換される適切な通貨を計算するロジックのみが含まれ、一定の商品スプレッドは含まれません。
+::: 
 ### `k.ApplySwapToPool()`
 
 ```go
 func (k Keeper) ApplySwapToPool(ctx sdk.Context, offerCoin sdk.Coin, askCoin sdk.DecCoin) sdk.Error
 ```
 
-`k.ApplySwapToPools()` 在交换期间被调用以更新区块链的 $\delta$ 度量，`TerraPoolDelta`，当 Terra 和 Luna 流动性池的余额发生变化时。
+交換中に `k.ApplySwapToPools（）`が呼び出され、TerraとLunaの流動性プールのバランスが変更されたときに、ブロックチェーンの$ \ delta $メトリック `TerraPoolDelta`が更新されます。
 
-所有 Terra 稳定币共享相同的流动性池，因此在 Terra<>Terra 掉期期间，“TerraPoolDelta”保持不变。
+すべてのTerraステーブルコインは同じ流動性プールを共有するため、Terra <> Terraスワップ中、「TerraPoolDelta」は変更されません。
 
-对于 Terra<>Luna 交换，交换后池的相对大小会有所不同，$\delta$ 将使用以下公式更新:
+Terra <> Luna交換の場合、交換後のプールの相対サイズは異なり、$ \ delta $は次の式を使用して更新されます。
 
-- 对于 Terra 到 Luna，$\delta' = \delta + Offer_{\mu SDR}$
-- 对于 Luna 到 Terra，$\delta' = \delta - Ask_{\mu SDR}$
+-TerraからLunaの場合、$ \ delta '= \ delta + Offer _ {\ mu SDR} $
+-LunaからTerraの場合、$ \ delta '= \ delta-Ask _ {\ mu SDR} $
 
-## 交易
+## 取引
 
-### 结束块
+### エンドブロック
 
-Market 模块在每个块的末尾调用 `k.ReplenishPools()`，这会根据 `PoolRecoveryPeriod` $pr$ 减少 `TerraPoolDelta`（Terra 和 Luna 池之间的差异）的值。
+Marketモジュールは、各ブロックの最後で `k.ReplenishPools（）`を呼び出します。これにより、 `PoolRecoveryPeriod` $ pr $に従って、` TerraPoolDelta`（TerraプールとLunaプールの違い）の値が減少します。
 
-这允许网络在价格剧烈波动期间大幅增加点差费用。一段时间后，价差会自动恢复到长期价格变化的正常水平。
+これにより、ネットワークは、価格が大幅に変動する期間中にスプレッド料金を大幅に引き上げることができます。 一定期間後、スプレッドは自動的に通常の長期価格変動レベルに戻ります。
 
-## 参数
+## パラメーター
 
-Market 模块的子空间是“market”。
+Marketモジュールのサブスペースは「market」です。
 
 ```go
 type Params struct {
@@ -195,25 +194,25 @@ type Params struct {
 - type: `int64`
 - default: `BlocksPerDay`
 
-Terra & Luna 矿池通过自动池补充自然“重置”到平衡（$\delta \to 0$）所需的块数。 
+Terra＆Lunaマイニングプールは、自動プールを介してバランスをとる（$ \ delta \ to 0 $）自然な「リセット」に必要なブロック数を補充します。 
 
 ### BasePool
 
 - type: `Dec`
 - default: 250,000 SDR (= 250,000,000,000 µSDR)
 
-Terra 和 Luna 流动性池的初始起始大小。
+TerraおよびLuna流動性プールの初期開始サイズ。
 
 ### MinSpread
 
 - type: `Dec`
 - default: 0.5%
 
-对 Terra<>Luna 收取的最低点差交换，以防止因抢先攻击而泄漏价值。
+先制攻撃による価値の漏洩を防ぐためにTerra <> Lunaに請求される最低のスプレッド交換。 
 
 ### TobinTax
 
 - type: `Dec`
 - default: 0.35%
 
-在 Terra 货币之间交换的额外费用（现货交易）。 汇率不同，取决于面额。 例如，虽然大多数面额的税率为 0.35%，但 MNT 的税率为 2%。 要查看费率，请[查询预言机](/ja/Reference/terrad/subcommands.html#query-oracle-tobin-taxes)。
+Terra通貨間の交換（スポット取引）の追加料金。 為替レートは金種によって異なります。 たとえば、ほとんどの金種の税率は0.35％ですが、MNTの税率は2％です。 料金を確認するには、[query oracle]（/ja/Reference/terrad/subcommands.html#query-oracle-tobin-taxes）を実行してください。 

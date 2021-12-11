@@ -1,36 +1,36 @@
-# 认证
+# 認証
 
-::: 警告注意
-Terra 的 Auth 模块继承自 Cosmos SDK 的 [`auth`](https://docs.cosmos.network/master/modules/auth/) 模块。本文档是一个存根，主要涵盖有关如何使用它的 Terra 特定的重要说明。
+:::警告メモ
+TerraのAuthモジュールは、Cosmos SDKの[`auth`]（https://docs.cosmos.network/master/modules/auth/）モジュールを継承しています。このドキュメントはスタブであり、主にその使用方法に関する重要なTerra固有の手順をカバーしています。
 :::
 
-Terra 的 Auth 模块扩展了 Cosmos SDK 的 `auth` 模块的功能，并使用修改后的 ante 处理程序将稳定性层费用与所有基本交易有效性检查（签名、随机数、辅助字段）一起应用。此外，还定义了一个特殊的归属账户类型，它处理来自 Luna 预售的代币归属逻辑。
+TerraのAuthモジュールは、Cosmos SDKの `auth`モジュールの機能を拡張し、変更されたanteハンドラーを使用して、すべての基本的なトランザクション有効性チェック（署名、乱数、補助フィールド）とともに安定性レイヤー料金を適用します。さらに、Lunaの先行販売からのトークンの帰属ロジックを処理する、特別な帰属アカウントタイプが定義されています。
 
-## 费用
+## 料金
 
-Auth 模块从 [`Treasury`](./spec-treasury.md) 模块读取当前有效的 `TaxRate` 和 `TaxCap` 参数以强制执行稳定层费用。
+Authモジュールは、現在有効な `TaxRate`および` TaxCap`パラメーターを[`Treasury`]（./spec-treasury.md）モジュールから読み取り、安定性レイヤー料金を適用します。
 
-### 汽油费
+### ガソリン代
 
-与任何其他交易一样，[`MsgSend`](./spec-bank.md#msgsend) 和 [`MsgMultiSend`](./spec-bank.md#msgmultisend) 支付 gas 费用，其大小取决于验证者的偏好（每个验证者设置自己的最低汽油费）和交易的复杂性。 [gas 和费用的注释](/ja/Reference/terrad/#fees) 更详细地解释了 gas 是如何计算的。这里要注意的重要细节是，gas 费用是在交易出站时由发件人指定的。
+他のトランザクションと同様に、[`MsgSend`]（./spec-bank.md#msgsend）と[` MsgMultiSend`]（./spec-bank.md#msgmultisend）はガス料金を支払います。そのサイズは、検証者の設定（各検証者は独自の最小ガス料金を設定します）とトランザクションの複雑さ。 [ガスと料金に関する注意事項]（/ja/Reference/terrad/#fees）では、ガスの計算方法について詳しく説明しています。ここで注意すべき重要な詳細は、トランザクションがステーションを出るときにガス料金が送信者によって指定されることです。
 
-### 稳定费
+### 安定料金
 
-除了gas费之外，赌注处理者仅对**稳定币**（**LUNA**除外）收取稳定费，该费用占交易价值的百分比。它从 [`Treasury`](./spec-treasury.md) 模块读取税率和税收上限参数，以计算需要收取的稳定税金额。
+ガス料金に加えて、賭け処理業者は、取引額のパーセンテージである**安定したコイン**（** LUNA **を除く）の安定料金のみを請求します。 [`Treasury`]（./spec-treasury.md）モジュールから税率と税の上限パラメータを読み取り、徴収される安定した税額を計算します。
 
-**税率** 是网络商定的一个参数，它指定将在区块奖励中作为税收收入收集的支付交易的百分比，这些百分比将在验证者之间分配。分发模型有点复杂，详细解释[这里](../validator/faq.md#how-are-block-provisions-distributed)。每笔交易收取的税款不能超过为该交易的面额定义的特定 **Tax Cap**。每一个时期，网络都会自动重新校准税率和税收上限；有关更多详细信息，请参见 [此处](spec-treasury.md#monetary-policy-levers)。
+**税率**は、ブロック報酬で税収として収集される支払いトランザクションの割合を指定するネットワークによってネゴシエートされたパラメーターであり、これらの割合はバリデーター間で分配されます。分散モデルは少し複雑で、詳細に説明されています[ここ]（../validator/faq.md#how-are-block-provisions-distributed）。各取引に対して徴収される税金は、その取引の額面に対して定義された特定の**税金上限**を超えることはできません。各期間で、ネットワークは税率と課税上限を自動的に再調整します。詳細については、[こちら]（spec-treasury.md#monetary-policy-levers）を参照してください。
 
-对于 µSDR 代币的“MsgSend”交易示例，
+µSDRトークンの「MsgSend」トランザクションの例については、
 
 ```text
 stability fee = min(1000 * tax_rate, tax_cap(usdr))
 ```
 
-对于“MsgMultiSend”交易，每笔出站交易都会收取稳定费。
+「MsgMultiSend」トランザクションの場合、アウトバウンドトランザクションごとに安定料金が請求されます。 
 
-## 参数
+## パラメーター
 
-Auth 模块的子空间是`auth`。
+Authモジュールのサブスペースは `auth`です。 
 
 ```go
 type Params struct {
@@ -44,35 +44,35 @@ type Params struct {
 
 ### MaxMemoCharacters
 
-交易备忘录中允许的最大字符数。
+トランザクションメモで許可される最大文字数。
 
 - type: `uint64`
 - default: `256`
 
 ### TxSigLimit
 
-交易中的最大签名者数。单个交易可以有多个消息和多个签名者。 sig 验证成本远高于其他操作，因此我们将其限制为 100。
+トランザクション内の署名者の最大数。 1つのトランザクションに、複数のメッセージと複数の署名者を含めることができます。 sig検証のコストは他の操作よりもはるかに高いため、100に制限します。
 
 - type: `uint64`
 - default: `100`
 
 ### TxSizeCostPerByte
 
-用于计算交易的gas消耗，`TxSizeCostPerByte * txsize`。
+トランザクションのガス消費量 `TxSizeCostPerByte * txsize`を計算するために使用されます。
 
 - type: `uint64`
 - default: `10`
 
 ### SigVerifyCostED25519
 
-验证 ED25519 签名的 gas 成本。
+ED25519署名を検証するためのガスコスト。
 
 - type: `uint64`
 - default: `590`
 
 ### SigVerifyCostSecp256k1
 
-验证Secp256k1签名的gas成本。
+Secp256k1署名を検証するためのガスコスト。
 
 - type: `uint64`
 - default: `1000`

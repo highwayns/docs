@@ -1,55 +1,55 @@
-# 费用补助
+#経費補助
 
-::: 警告注意
-Terra 的费用授予模块继承自 Cosmos SDK 的 [`feegrant`](https://docs.cosmos.network/master/modules/feegrant/) 模块。 本文档是一个存根，主要解释了有关如何使用它的 Terra 特定的重要注意事项。
+:::警告メモ
+Terraの料金付与モジュールは、Cosmos SDKの[`feegrant`]（https://docs.cosmos.network/master/modules/feegrant/）モジュールから継承されます。 このドキュメントは、主にその使用方法に関する重要なTerra固有の考慮事項を説明するスタブです。
 :::
 
-该模块允许一个账户，即授予者，允许另一个账户，即被授予者，从授予者的账户余额中支付费用。 受助人无需维持自己的余额来支付费用。
+このモジュールを使用すると、付与者である1つのアカウントで、被付与者である別のアカウントが、付与者のアカウント残高から料金を支払うことができます。 受信者は、費用を支払うために自分のバランスを維持する必要はありません。
 
 ## 概念
 
-### 授予
+### 許す
 
-`Grant` 存储在 KVStore 中以记录具有完整上下文的授权。
+`Grant`はKVStoreに保存され、完全なコンテキストで認証を記録します。
 
-每个 `grant` 都包含以下信息:
+各 `grant`には、次の情報が含まれています。 
 
 - `granter`: The account address that gives permission to the grantee.
 - `grantee`: The beneficiary account address.
 - `allowance`: The [type of fee allowance]
-`Allowance` 接受一个实现 `FeeAllowanceI` 编码为 `Any` 类型的接口，如下例所示: 
+次の例に示すように、 `Allowance`は、` Any`としてエンコードされた `FeeAllowanceI`を実装するインターフェースを受け入れます。
 
   ```
-    // allowance can be any of basic and filtered fee allowance.
+   //allowance can be any of basic and filtered fee allowance.
     google.protobuf.Any allowance = 3 [(cosmos_proto.accepts_interface) = "FeeAllowanceI"];
   }
   ```
 
-以下示例显示了 `FeeAllowanceI`: 
+次の例は、 `FeeAllowanceI`を示しています。
 
   ```
   type FeeAllowanceI interface {
-          // Accept can use fee payment requested as well as timestamp of the current block
-          // to determine whether or not to process this. This is checked in
-          // Keeper.UseGrantedFees and the return values should match how it is handled there.
-          //
-          // If it returns an error, the fee payment is rejected, otherwise it is accepted.
-          // The FeeAllowance implementation is expected to update it's internal state
-          // and will be saved again after an acceptance.
-          //
-          // If remove is true (regardless of the error), the FeeAllowance will be deleted from storage
-          // (eg. when it is used up). (See call to RevokeFeeAllowance in Keeper.UseGrantedFees)
+         //Accept can use fee payment requested as well as timestamp of the current block
+         //to determine whether or not to process this. This is checked in
+         //Keeper.UseGrantedFees and the return values should match how it is handled there.
+         //
+         //If it returns an error, the fee payment is rejected, otherwise it is accepted.
+         //The FeeAllowance implementation is expected to update it's internal state
+         //and will be saved again after an acceptance.
+         //
+         //If remove is true (regardless of the error), the FeeAllowance will be deleted from storage
+         //(eg. when it is used up). (See call to RevokeFeeAllowance in Keeper.UseGrantedFees)
           Accept(ctx sdk.Context, fee sdk.Coins, msgs []sdk.Msg) (remove bool, err error)
 
-          // ValidateBasic should evaluate this FeeAllowance for internal consistency.
-          // Don't allow negative amounts, or negative periods for example.
+         //ValidateBasic should evaluate this FeeAllowance for internal consistency.
+         //Don't allow negative amounts, or negative periods for example.
           ValidateBasic() error
   }
   ```
 
-授予者和受资助者之间只允许进行一次费用授予。 禁止自给自足。
+だけ者と被者の時間で許可権の許与は1つつです。 自給自足は禁じられています。
 
-### 费用津贴类型
+### 経费手当 
 
 - [`BasicAllowance`](#basicallowance)
 - [`PeriodicAllowance`](#periodicallowance)
@@ -57,95 +57,94 @@ Terra 的费用授予模块继承自 Cosmos SDK 的 [`feegrant`](https://docs.co
 “BasicAllowance”允许受赠人使用受赠人账户中的资金支付费用。 如果满足“spend_limit”或“expiration”的阈值，则从状态中删除授权。 
 
 ```
-// BasicAllowance implements Allowance with a one-time grant of tokens
-// that optionally expires. The grantee can use up to SpendLimit to cover fees.
+//BasicAllowance implements Allowance with a one-time grant of tokens
+//that optionally expires. The grantee can use up to SpendLimit to cover fees.
 message BasicAllowance {
   option (cosmos_proto.implements_interface) = "FeeAllowanceI";
 
-  // spend_limit specifies the maximum amount of tokens that can be spent
-  // by this allowance and will be updated as tokens are spent. If it is
-  // empty, there is no spend limit and any amount of coins can be spent.
+ //spend_limit specifies the maximum amount of tokens that can be spent
+ //by this allowance and will be updated as tokens are spent. If it is
+ //empty, there is no spend limit and any amount of coins can be spent.
   repeated cosmos.base.v1beta1.Coin spend_limit = 1
       [(gogoproto.nullable) = false, (gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];
 
-  // expiration specifies an optional time when this allowance expires
+ //expiration specifies an optional time when this allowance expires
   google.protobuf.Timestamp expiration = 2 [(gogoproto.stdtime) = true];
 }
 ```
 
-- `spend_limit`:受赠者可以花费的来自授予者账户的代币数量。 该值是可选的。 如果为空，则不分配支出限制，并且受赠者可以在到期前从受赠者的帐户中花费任何数量的代币。
+-`spend_limit`:受信者が使用できる付与者のアカウントからのトークンの数。 この値はオプションです。 空の場合、使用制限は割り当てられず、受信者は有効期限が切れる前に受信者のアカウントから任意の量のトークンを使用できます。
 
-- `expiration`:授权到期的日期和时间。 该值是可选的。 如果为空白，则授权不会过期。
+-`expiration`:認証の有効期限が切れる日時。 この値はオプションです。 空白の場合、認証は期限切れになりません。
 
-要在 `spend_limit` 和 `expiration` 的值为空时限制受赠者，请撤销授权。
+`spend_limit`と` expiration`の値が空のときに受信者を制限するには、承認を取り消してください。
 
-`PeriodicAllowance` 是指定时期内的重复费用津贴，以及在该时期内可以花费的指定最大数量的代币。 
-
+`PeriodicAllowance`は、指定された期間内の定期的な費用の許容量であり、その期間に使用できるトークンの指定された最大数です。 
 ::: details `PeriodicAllowance` code
 
 ```
-// PeriodicAllowance extends Allowance to allow for both a maximum cap,
-// as well as a limit per time period.
+//PeriodicAllowance extends Allowance to allow for both a maximum cap,
+//as well as a limit per time period.
 message PeriodicAllowance {
   option (cosmos_proto.implements_interface) = "FeeAllowanceI";
 
-  // basic specifies a struct of `BasicAllowance`
+ //basic specifies a struct of `BasicAllowance`
   BasicAllowance basic = 1 [(gogoproto.nullable) = false];
 
-  // period specifies the time duration in which period_spend_limit coins can
-  // be spent before that allowance is reset
+ //period specifies the time duration in which period_spend_limit coins can
+ //be spent before that allowance is reset
   google.protobuf.Duration period = 2 [(gogoproto.stdduration) = true, (gogoproto.nullable) = false];
 
-  // period_spend_limit specifies the maximum number of coins that can be spent
-  // in the period
+ //period_spend_limit specifies the maximum number of coins that can be spent
+ //in the period
   repeated cosmos.base.v1beta1.Coin period_spend_limit = 3
       [(gogoproto.nullable) = false, (gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];
 
-  // period_can_spend is the number of coins left to be spent before the period_reset time
+ //period_can_spend is the number of coins left to be spent before the period_reset time
   repeated cosmos.base.v1beta1.Coin period_can_spend = 4
       [(gogoproto.nullable) = false, (gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];
 
-  // period_reset is the time at which this period resets and a new one begins,
-  // it is calculated from the start time of the first transaction after the
-  // last period ended
+ //period_reset is the time at which this period resets and a new one begins,
+ //it is calculated from the start time of the first transaction after the
+ //last period ended
   google.protobuf.Timestamp period_reset = 5 [(gogoproto.stdtime) = true, (gogoproto.nullable) = false];
 }
 
-// AllowedMsgAllowance creates allowance only for specified message types.
+//AllowedMsgAllowance creates allowance only for specified message types.
 message AllowedMsgAllowance {
   option (gogoproto.goproto_getters)         = false;
   option (cosmos_proto.implements_interface) = "FeeAllowanceI";
 
-  // allowance can be any of basic and filtered fee allowance.
+ //allowance can be any of basic and filtered fee allowance.
   google.protobuf.Any allowance = 1 [(cosmos_proto.accepts_interface) = "FeeAllowanceI"];
 
-  // allowed_messages are the messages for which the grantee has the access.
+ //allowed_messages are the messages for which the grantee has the access.
   repeated string allowed_messages = 2;
 }
 
-// Grant is stored in the KVStore to record a grant with full context
+//Grant is stored in the KVStore to record a grant with full context
 message Grant {
-  // granter is the address of the user granting an allowance of their funds.
+ //granter is the address of the user granting an allowance of their funds.
   string              granter   = 1;
 
-  // grantee is the address of the user being granted an allowance of another user's funds.
+ //grantee is the address of the user being granted an allowance of another user's funds.
   string              grantee   = 2;
 ```
 :::
 
-- `basic`:`BasicAllowance` 的实例。 它是可选的。 如果为空，则赠款将没有 `spend_limit` 或 `expiration`。
+-`basic`: `BasicAllowance`のインスタンス。 オプションです。 空の場合、付与には `spend_limit`または` expiration`はありません。
 
-- `period`:授予`PeriodicAllowance` 的持续时间。 在每个周期到期后，“period_spend_limit”被重置。
+-`period`: `PeriodicAllowance`を付与する期間。 各期間が終了すると、「period_spend_limit」がリセットされます。
 
-- `period_spend_limit`:受赠者在此期间允许花费的最大代币数量。
+-`period_spend_limit`:受信者がこの期間中に使用できるトークンの最大数。
 
-- `period_can_spend`:在 period_reset 时间之前剩余的代币数量。
+-`period_can_spend`:period_reset時間より前に残っているトークンの数。
 
-- `period_reset`:周期结束和新周期开始的时间。
+-`period_reset`:期間が終了し、新しい期間が開始する時刻。
 
-### 费用帐户标志
+### 経費勘定のロゴ
 
-要从 CLI 运行使用费用授予的交易，请指定 `FeeAccount` 标志，后跟授予者的帐户地址。 设置此标志后，`clientCtx` 会附加授予者的帐户地址。 
+CLIからの料金付与を使用してトランザクションを実行するには、「FeeAccount」フラグに続けて付与者のアカウントアドレスを指定します。 このフラグを設定した後、 `clientCtx`は付与者のアカウントアドレスを追加します。 
 
 ::: details `FeeAccount` code
 
@@ -190,15 +189,15 @@ import (
 	authtx "github.com/cosmos/cosmos-sdk/x/auth/tx"
 )
 
-// GenerateOrBroadcastTxCLI will either generate and print and unsigned transaction
-// or sign it and broadcast it returning an error upon failure.
+//GenerateOrBroadcastTxCLI will either generate and print and unsigned transaction
+//or sign it and broadcast it returning an error upon failure.
 func GenerateOrBroadcastTxCLI(clientCtx client.Context, flagSet *pflag.FlagSet, msgs ...sdk.Msg) error {
 	txf := NewFactoryCLI(clientCtx, flagSet)
 	return GenerateOrBroadcastTxWithFactory(clientCtx, txf, msgs...)
 }
 
-// GenerateOrBroadcastTxWithFactory will either generate and print and unsigned transaction
-// or sign it and broadcast it returning an error upon failure.
+//GenerateOrBroadcastTxWithFactory will either generate and print and unsigned transaction
+//or sign it and broadcast it returning an error upon failure.
 func GenerateOrBroadcastTxWithFactory(clientCtx client.Context, txf Factory, msgs ...sdk.Msg) error {
 	if clientCtx.GenerateOnly {
 		return GenerateTx(clientCtx, txf, msgs...)
@@ -207,10 +206,10 @@ func GenerateOrBroadcastTxWithFactory(clientCtx client.Context, txf Factory, msg
 	return BroadcastTx(clientCtx, txf, msgs...)
 }
 
-// GenerateTx will generate an unsigned transaction and print it to the writer
-// specified by ctx.Output. If simulation was requested, the gas will be
-// simulated and also printed to the same writer before the transaction is
-// printed.
+//GenerateTx will generate an unsigned transaction and print it to the writer
+//specified by ctx.Output. If simulation was requested, the gas will be
+//simulated and also printed to the same writer before the transaction is
+//printed.
 func GenerateTx(clientCtx client.Context, txf Factory, msgs ...sdk.Msg) error {
 	if txf.SimulateAndExecute() {
 		if clientCtx.Offline {
@@ -239,9 +238,9 @@ func GenerateTx(clientCtx client.Context, txf Factory, msgs ...sdk.Msg) error {
 	return clientCtx.PrintString(fmt.Sprintf("%s\n", json))
 }
 
-// BroadcastTx attempts to generate, sign and broadcast a transaction with the
-// given set of messages. It will also simulate gas requirements if necessary.
-// It will return an error upon failure.
+//BroadcastTx attempts to generate, sign and broadcast a transaction with the
+//given set of messages. It will also simulate gas requirements if necessary.
+//It will return an error upon failure.
 func BroadcastTx(clientCtx client.Context, txf Factory, msgs ...sdk.Msg) error {
 	txf, err := PrepareFactory(clientCtx, txf)
 	if err != nil {
@@ -295,7 +294,7 @@ func BroadcastTx(clientCtx client.Context, txf Factory, msgs ...sdk.Msg) error {
 		return err
 	}
 
-	// broadcast to a Tendermint node
+	//broadcast to a Tendermint node
 	res, err := clientCtx.BroadcastTx(txBytes)
 	if err != nil {
 		return err
@@ -304,11 +303,11 @@ func BroadcastTx(clientCtx client.Context, txf Factory, msgs ...sdk.Msg) error {
 	return clientCtx.PrintProto(res)
 }
 
-// WriteGeneratedTxResponse writes a generated unsigned transaction to the
-// provided http.ResponseWriter. It will simulate gas costs if requested by the
-// BaseReq. Upon any error, the error will be written to the http.ResponseWriter.
-// Note that this function returns the legacy StdTx Amino JSON format for compatibility
-// with legacy clients.
+//WriteGeneratedTxResponse writes a generated unsigned transaction to the
+//provided http.ResponseWriter. It will simulate gas costs if requested by the
+//BaseReq. Upon any error, the error will be written to the http.ResponseWriter.
+//Note that this function returns the legacy StdTx Amino JSON format for compatibility
+//with legacy clients.
 func WriteGeneratedTxResponse(
 	ctx client.Context, w http.ResponseWriter, br rest.BaseReq, msgs ...sdk.Msg,
 ) {
@@ -372,9 +371,9 @@ func WriteGeneratedTxResponse(
 	_, _ = w.Write(output)
 }
 
-// BuildUnsignedTx builds a transaction to be signed given a set of messages. The
-// transaction is initially created via the provided factory's generator. Once
-// created, the fee, memo, and messages are set.
+//BuildUnsignedTx builds a transaction to be signed given a set of messages. The
+//transaction is initially created via the provided factory's generator. Once
+//created, the fee, memo, and messages are set.
 func BuildUnsignedTx(txf Factory, msgs ...sdk.Msg) (client.TxBuilder, error) {
 	if txf.chainID == "" {
 		return nil, fmt.Errorf("chain ID required but not specified")
@@ -389,8 +388,8 @@ func BuildUnsignedTx(txf Factory, msgs ...sdk.Msg) (client.TxBuilder, error) {
 
 		glDec := sdk.NewDec(int64(txf.gas))
 
-		// Derive the fees based on the provided gas prices, where
-		// fee = ceil(gasPrice * gasLimit).
+		//Derive the fees based on the provided gas prices, where
+		//fee = ceil(gasPrice * gasLimit).
 		fees = make(sdk.Coins, len(txf.gasPrices))
 
 		for i, gp := range txf.gasPrices {
@@ -413,17 +412,17 @@ func BuildUnsignedTx(txf Factory, msgs ...sdk.Msg) (client.TxBuilder, error) {
 	return tx, nil
 }
 
-// BuildSimTx creates an unsigned tx with an empty single signature and returns
-// the encoded transaction or an error if the unsigned transaction cannot be
-// built.
+//BuildSimTx creates an unsigned tx with an empty single signature and returns
+//the encoded transaction or an error if the unsigned transaction cannot be
+//built.
 func BuildSimTx(txf Factory, msgs ...sdk.Msg) ([]byte, error) {
 	txb, err := BuildUnsignedTx(txf, msgs...)
 	if err != nil {
 		return nil, err
 	}
 
-	// Create an empty signature literal as the ante handler will populate with a
-	// sentinel pubkey.
+	//Create an empty signature literal as the ante handler will populate with a
+	//sentinel pubkey.
 	sig := signing.SignatureV2{
 		PubKey: &secp256k1.PubKey{},
 		Data: &signing.SingleSignatureData{
@@ -444,8 +443,8 @@ func BuildSimTx(txf Factory, msgs ...sdk.Msg) ([]byte, error) {
 	return simReq.Marshal()
 }
 
-// CalculateGas simulates the execution of a transaction and returns the
-// simulation response obtained by the query and the adjusted gas amount.
+//CalculateGas simulates the execution of a transaction and returns the
+//simulation response obtained by the query and the adjusted gas amount.
 func CalculateGas(
 	queryFunc func(string, []byte) ([]byte, int64, error), txf Factory, msgs ...sdk.Msg,
 ) (tx.SimulateResponse, uint64, error) {
@@ -454,8 +453,8 @@ func CalculateGas(
 		return tx.SimulateResponse{}, 0, err
 	}
 
-	// TODO This should use the generated tx service Client.
-	// https://github.com/cosmos/cosmos-sdk/issues/7726
+	//TODO This should use the generated tx service Client.
+	//https://github.com/cosmos/cosmos-sdk/issues/7726
 	bz, _, err := queryFunc("/cosmos.tx.v1beta1.Service/Simulate", txBytes)
 	if err != nil {
 		return tx.SimulateResponse{}, 0, err
@@ -470,10 +469,10 @@ func CalculateGas(
 	return simRes, uint64(txf.GasAdjustment() * float64(simRes.GasInfo.GasUsed)), nil
 }
 
-// PrepareFactory ensures the account defined by ctx.GetFromAddress() exists and
-// if the account number and/or the account sequence number are zero (not set),
-// they will be queried for and set on the provided Factory. A new Factory with
-// the updated fields will be returned.
+//PrepareFactory ensures the account defined by ctx.GetFromAddress() exists and
+//if the account number and/or the account sequence number are zero (not set),
+//they will be queried for and set on the provided Factory. A new Factory with
+//the updated fields will be returned.
 func PrepareFactory(clientCtx client.Context, txf Factory) (Factory, error) {
 	from := clientCtx.GetFromAddress()
 
@@ -500,8 +499,8 @@ func PrepareFactory(clientCtx client.Context, txf Factory) (Factory, error) {
 	return txf, nil
 }
 
-// SignWithPrivKey signs a given tx with the given private key, and returns the
-// corresponding SignatureV2 if the signing is successful.
+//SignWithPrivKey signs a given tx with the given private key, and returns the
+//corresponding SignatureV2 if the signing is successful.
 func SignWithPrivKey(
 	signMode signing.SignMode, signerData authsigning.SignerData,
 	txBuilder client.TxBuilder, priv cryptotypes.PrivKey, txConfig client.TxConfig,
@@ -509,19 +508,19 @@ func SignWithPrivKey(
 ) (signing.SignatureV2, error) {
 	var sigV2 signing.SignatureV2
 
-	// Generate the bytes to be signed.
+	//Generate the bytes to be signed.
 	signBytes, err := txConfig.SignModeHandler().GetSignBytes(signMode, signerData, txBuilder.GetTx())
 	if err != nil {
 		return sigV2, err
 	}
 
-	// Sign those bytes
+	//Sign those bytes
 	signature, err := priv.Sign(signBytes)
 	if err != nil {
 		return sigV2, err
 	}
 
-	// Construct the SignatureV2 struct
+	//Construct the SignatureV2 struct
 	sigData := signing.SingleSignatureData{
 		SignMode:  signMode,
 		Signature: signature,
@@ -544,12 +543,12 @@ func checkMultipleSigners(mode signing.SignMode, tx authsigning.Tx) error {
 	return nil
 }
 
-// Sign signs a given tx with a named key. The bytes signed over are canconical.
-// The resulting signature will be added to the transaction builder overwriting the previous
-// ones if overwrite=true (otherwise, the signature will be appended).
-// Signing a transaction with mutltiple signers in the DIRECT mode is not supprted and will
-// return an error.
-// An error is returned upon failure.
+//Sign signs a given tx with a named key. The bytes signed over are canconical.
+//The resulting signature will be added to the transaction builder overwriting the previous
+//ones if overwrite=true (otherwise, the signature will be appended).
+//Signing a transaction with mutltiple signers in the DIRECT mode is not supprted and will
+//return an error.
+//An error is returned upon failure.
 func Sign(txf Factory, name string, txBuilder client.TxBuilder, overwriteSig bool) error {
 	if txf.keybase == nil {
 		return errors.New("keybase must be set prior to signing a transaction")
@@ -557,7 +556,7 @@ func Sign(txf Factory, name string, txBuilder client.TxBuilder, overwriteSig boo
 
 	signMode := txf.signMode
 	if signMode == signing.SignMode_SIGN_MODE_UNSPECIFIED {
-		// use the SignModeHandler's default mode if unspecified
+		//use the SignModeHandler's default mode if unspecified
 		signMode = txf.txConfig.SignModeHandler().DefaultMode()
 	}
 	if err := checkMultipleSigners(signMode, txBuilder.GetTx()); err != nil {
@@ -575,14 +574,14 @@ func Sign(txf Factory, name string, txBuilder client.TxBuilder, overwriteSig boo
 		Sequence:      txf.sequence,
 	}
 
-	// For SIGN_MODE_DIRECT, calling SetSignatures calls setSignerInfos on
-	// TxBuilder under the hood, and SignerInfos is needed to generated the
-	// sign bytes. This is the reason for setting SetSignatures here, with a
-	// nil signature.
+	//For SIGN_MODE_DIRECT, calling SetSignatures calls setSignerInfos on
+	//TxBuilder under the hood, and SignerInfos is needed to generated the
+	//sign bytes. This is the reason for setting SetSignatures here, with a
+	//nil signature.
 	//
-	// Note: this line is not needed for SIGN_MODE_LEGACY_AMINO, but putting it
-	// also doesn't affect its generated sign bytes, so for code's simplicity
-	// sake, we put it here.
+	//Note: this line is not needed for SIGN_MODE_LEGACY_AMINO, but putting it
+	//also doesn't affect its generated sign bytes, so for code's simplicity
+	//sake, we put it here.
 	sigData := signing.SingleSignatureData{
 		SignMode:  signMode,
 		Signature: nil,
@@ -603,19 +602,19 @@ func Sign(txf Factory, name string, txBuilder client.TxBuilder, overwriteSig boo
 		return err
 	}
 
-	// Generate the bytes to be signed.
+	//Generate the bytes to be signed.
 	bytesToSign, err := txf.txConfig.SignModeHandler().GetSignBytes(signMode, signerData, txBuilder.GetTx())
 	if err != nil {
 		return err
 	}
 
-	// Sign those bytes
+	//Sign those bytes
 	sigBytes, _, err := txf.keybase.Sign(name, bytesToSign)
 	if err != nil {
 		return err
 	}
 
-	// Construct the SignatureV2 struct
+	//Construct the SignatureV2 struct
 	sigData = signing.SingleSignatureData{
 		SignMode:  signMode,
 		Signature: sigBytes,
@@ -633,7 +632,7 @@ func Sign(txf Factory, name string, txBuilder client.TxBuilder, overwriteSig boo
 	return txBuilder.SetSignatures(prevSignatures...)
 }
 
-// GasEstimateResponse defines a response definition for tx gas estimation.
+//GasEstimateResponse defines a response definition for tx gas estimation.
 type GasEstimateResponse struct {
 	GasEstimate uint64 `json:"gas_estimate" yaml:"gas_estimate"`
 }
@@ -651,32 +650,32 @@ func (w *wrapper) SetFeeGranter(feeGranter sdk.AccAddress) {
 
 	w.tx.AuthInfo.Fee.Granter = feeGranter.String()
 
-	// set authInfoBz to nil because the cached authInfoBz no longer matches tx.AuthInfo
+	//set authInfoBz to nil because the cached authInfoBz no longer matches tx.AuthInfo
 	w.authInfoBz = nil
 }
 ```
 
 ```
-// Fee includes the amount of coins paid in fees and the maximum
-// gas to be used by the transaction. The ratio yields an effective "gasprice",
-// which must be above some miminum to be accepted into the mempool.
+//Fee includes the amount of coins paid in fees and the maximum
+//gas to be used by the transaction. The ratio yields an effective "gasprice",
+//which must be above some miminum to be accepted into the mempool.
 message Fee {
-  // amount is the amount of coins to be paid as a fee
+ //amount is the amount of coins to be paid as a fee
   repeated cosmos.base.v1beta1.Coin amount = 1
       [(gogoproto.nullable) = false, (gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];
 
-  // gas_limit is the maximum gas that can be used in transaction processing
-  // before an out of gas error occurs
+ //gas_limit is the maximum gas that can be used in transaction processing
+ //before an out of gas error occurs
   uint64 gas_limit = 2;
 
-  // if unset, the first signer is responsible for paying the fees. If set, the specified account must pay the fees.
-  // the payer must be a tx signer (and thus have signed this field in AuthInfo).
-  // setting this field does *not* change the ordering of required signers for the transaction.
+ //if unset, the first signer is responsible for paying the fees. If set, the specified account must pay the fees.
+ //the payer must be a tx signer (and thus have signed this field in AuthInfo).
+ //setting this field does *not* change the ordering of required signers for the transaction.
   string payer = 3;
 
-  // if set, the fee payer (either the first signer or the value of the payer field) requests that a fee grant be used
-  // to pay fees instead of the fee payer's own balance. If an appropriate fee grant does not exist or the chain does
-  // not support fee grants, this will fail
+ //if set, the fee payer (either the first signer or the value of the payer field) requests that a fee grant be used
+ //to pay fees instead of the fee payer's own balance. If an appropriate fee grant does not exist or the chain does
+ //not support fee grants, this will fail
   string granter = 4;
 }
 ```
@@ -688,36 +687,36 @@ The following example shows a CLI command with the `--fee-account` flag:
 ./terrad tx gov submit-proposal --title="Test Proposal" --description="My awesome proposal" --type="Text" --from validator-key --fee-account=terra1fmcjjt6yc9wqup2r06urnrd928jhrde6gcld6n --chain-id=testnet --fees="10uluna"
 ```
 
-### 授予的费用减免
+### 付与された料金の削減
 
-费用从 `auth` ante 处理程序的赠款中扣除。
+費用は `auth`アンティハンドラーの付与から差し引かれます。
 
-### gas
+### ガス
 
-为了防止 DoS 攻击，使用过滤的“feegrant”会产生 gas。为确保所有受赠者的交易都符合受赠者设置的过滤器，SDK 会迭代过滤器中允许的消息，并对每个过滤的消息收取 10 gas。然后，SDK 遍历被授权者发送的消息，以确保消息符合过滤器，每条消息也会收取 10 gas。如果 SDK 发现不符合过滤条件的消息，则 SDK 停止迭代，交易失败。
+DoS攻撃を防ぐために、「feegrant」フィルターはガスを生成します。 すべての受信者のトランザクションが受信者によって設定されたフィルターを確実に満たすように、SDKはフィルターで許可されたメッセージを繰り返し、フィルター処理されたメッセージごとに10ガスを課金します。 次に、SDKは、許可された人から送信されたメッセージをトラバースして、メッセージがフィルターに適合していることを確認します。各メッセージも10ガスを充電します。 SDKがフィルター条件を満たさないメッセージを検出すると、SDKは反復を停止し、トランザクションは失敗します。
 
-::: 警告 警告
-天然气是从授予的津贴中扣除的。在使用配额发送交易之前，请确保所有现有消息都符合过滤器。
+:::警告警告
+天然ガスは、付与された助成金から差し引かれます。 クォータを使用してトランザクションを送信する前に、既存のすべてのメッセージがフィルターに適合していることを確認してください。
 :::
 
-## 状态
+## 状態
 
-### 费用津贴
+### 経費手当
 
-费用补贴是通过将“Granter”（授予另一个帐户将其可用代币用于费用的许可的帐户地址）与“Grantee”（获得将授予者的代币用于费用的许可的帐户地址）相结合来确定的。
+手数料の補助は、「Granter」（利用可能なトークンを手数料に使用する許可を別のアカウントに付与するアカウントアドレス）と「Grantee」（付与者のトークンを手数料に使用する許可を取得するアカウントアドレス）を組み合わせることによって実現されます。
 
-以下示例显示了如何在状态中存储费用津贴:
+次の例は、州で経費手当を保管する方法を示しています。
 
 Grant: `0x00 | grantee_addr_len (1 byte) | grantee_addr_bytes | granter_addr_len (1 byte) | granter_addr_bytes -> ProtocolBuffer(Grant)`
 
 ```
-// Grant is stored in the KVStore to record a grant with full context
+//Grant is stored in the KVStore to record a grant with full context
 type Grant struct {
-	// granter is the address of the user granting an allowance of their funds.
+	//granter is the address of the user granting an allowance of their funds.
 	Granter string `protobuf:"bytes,1,opt,name=granter,proto3" json:"granter,omitempty"`
-	// grantee is the address of the user being granted an allowance of another user's funds.
+	//grantee is the address of the user being granted an allowance of another user's funds.
 	Grantee string `protobuf:"bytes,2,opt,name=grantee,proto3" json:"grantee,omitempty"`
-	// allowance can be any of basic and filtered fee allowance.
+	//allowance can be any of basic and filtered fee allowance.
 	Allowance *types1.Any `protobuf:"bytes,3,opt,name=allowance,proto3" json:"allowance,omitempty"`
 }
 ```
@@ -726,34 +725,34 @@ type Grant struct {
 
 ### MsgGrantAllowance
 
-将使用 MsgGrantAllowance 消息创建费用津贴授予。 
+MsgGrantAllowanceメッセージは、経費手当の付与を作成するために使用されます。
 
 ```proto
-// MsgGrantAllowance adds permission for Grantee to spend up to Allowance
-// of fees from the account of Granter.
+//MsgGrantAllowance adds permission for Grantee to spend up to Allowance
+//of fees from the account of Granter.
 message MsgGrantAllowance {
-  // granter is the address of the user granting an allowance of their funds.
+ //granter is the address of the user granting an allowance of their funds.
   string              granter   = 1;
 
-  // grantee is the address of the user being granted an allowance of another user's funds.
+ //grantee is the address of the user being granted an allowance of another user's funds.
   string              grantee   = 2;
 
-  // allowance can be any of basic and filtered fee allowance.
+ //allowance can be any of basic and filtered fee allowance.
   google.protobuf.Any allowance = 3 [(cosmos_proto.accepts_interface) = "FeeAllowanceI"];
 }
 ```
 
 ### MsgRevokeAllowance
 
-费用津贴授予将通过 MsgRevokeAllowance 消息撤销。
+経費手当の付与は、MsgRevokeAllowanceメッセージによって取り消されます。 
 
 ```proto
-// MsgRevokeAllowance removes any existing Allowance from Granter to Grantee.
+//MsgRevokeAllowance removes any existing Allowance from Granter to Grantee.
 message MsgRevokeAllowance {
-  // granter is the address of the user granting an allowance of their funds.
+ //granter is the address of the user granting an allowance of their funds.
   string granter = 1;
 
-  // grantee is the address of the user being granted an allowance of another user's funds.
+ //grantee is the address of the user being granted an allowance of another user's funds.
   string grantee = 2;
 }
 ```

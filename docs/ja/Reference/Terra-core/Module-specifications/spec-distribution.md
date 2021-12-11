@@ -1,62 +1,62 @@
-# 分配
+# 分配します
 
-::: 警告 注意:
-Terra 的 Distribution 模块继承自 Cosmos SDK 的 [`distribution`](https://docs.cosmos.network/master/modules/distribution/) 模块。本文档是一个存根，主要涵盖有关如何使用它的 Terra 特定的重要说明。
+:::警告注:
+Terraの配布モジュールは、Cosmos SDKの[`distribution`]（https://docs.cosmos.network/master/modules/distribution/）モジュールを継承しています。このドキュメントはスタブであり、主にその使用方法に関する重要なTerra固有の手順をカバーしています。
 :::
 
-`Distribution` 模块描述了一种跟踪收取的费用并_被动_将它们分配给验证者和委托者的机制。此外，Distribution 模块还定义了【社区池】(#community-pool)，是链上治理控制下的资金。
+`Distribution`モジュールは、収集された料金を追跡し、それらを検証者と委任者に_受動的に_割り当てるためのメカニズムを説明します。さらに、配布モジュールは、チェーンのガバナンス制御下にある資金である[community-pool]（#community-pool）も定義します。
 
 ## 概念
 
-### 验证人和委托人奖励
+### バリデーターとデリゲーターの報酬
 
-::: 警告 重要
-被动分配意味着验证者和委托者必须通过提交提款交易来手动收取费用奖励。阅读如何使用 `terrad` [此处](../terrad/distribution.md)。
+:::警告重要
+パッシブアロケーションとは、バリデーターとデリゲーターが引き出しトランザクションを送信することにより、手数料の報酬を手動で収集する必要があることを意味します。 `terrad`の使い方を読んでください[ここ]（../terrad/distribution.md）。
 :::
 
-收集到的奖励在全球汇集并分发给验证者和委托者。每个验证者都有机会就代表委托人收集的奖励向委托人收取佣金。费用直接收集到全球奖励池和验证者提议者奖励池中。由于被动记账的性质，每当影响奖励分配率的参数发生变化时，也必须撤回奖励。
+集められた報酬は世界中で集められ、検証者と委任者に配布されます。各バリデーターには、委任者に代わって収集された報酬について、委任者からコミッションを収集する機会があります。料金は、グローバル報酬プールとバリデーター提案者報酬プールに直接収集されます。受動的な簿記の性質上、報酬の分配率に影響を与えるパラメータが変更されるたびに、報酬も撤回する必要があります。
 
-### 社区池
+### コミュニティプール
 
-社区池是一个代币储备，专门用于资助促进 Terra 经济进一步采用和增长的项目。指定给汇率 Oracle 投票获胜者的铸币税部分称为 [奖励权重](spec-treasury.md#reward-weight)，该值由财政部管理。其余的铸币税全部用于社区池。
+コミュニティプールは、テラ経済のさらなる採用と成長を促進するプロジェクトに資金を提供するために特別に使用されるトークンリザーブです。為替レートのオラクル投票勝者に割り当てられたシニョリッジ部分は[報酬ウェイト]（spec-treasury.md#reward-weight）と呼ばれ、この値は財務省によって管理されます。残りのシニョリッジはすべてコミュニティプールで使用されます。
 
-::: 警告 注意:
-从 Columbus-5 开始，所有铸币税都被烧毁，社区池不再获得资金。
+:::警告注:
+Columbus-5以降、すべてのシニョリッジが燃やされ、コミュニティプールは資金を受け取らなくなりました。
 :::
 
-## 状态
+## 状態
 
-> 本节取自 Cosmos SDK 官方文档，放在这里是为了方便您了解 Distribution 模块的参数和创世变量。
+>このセクションは、Cosmos SDKの公式ドキュメントから抜粋したものであり、Distributionモジュールのパラメーターと作成変数の理解を容易にするためにここに配置されています。
 
-### 费用池
+### 経費プール
 
-所有用于分发的全局跟踪参数都存储在
-`费用池`。收集奖励并添加到奖励池中
-从这里分发给验证者/委托者。
+配布に使用されるすべてのグローバル追跡パラメータは、に保存されます
+「コストプール」。報酬を収集し、報酬プールに追加します
+ここから検証者/委任者に配布します。
 
-请注意，奖励池包含十进制硬币（`DecCoins`）以允许
-从通货膨胀等操作中获得一小部分硬币。
-当硬币从池中分配时，它们会被截断回
-`sdk.Coins` 非十进制。
+報酬プールには、許可するための小数コイン（ `DecCoins`）が含まれていることに注意してください
+インフレなどの操作からコインのごく一部を取得します。
+コインがプールから配布されると、切り捨てられます
+`sdk.Coins`は10進数ではありません。
 
-### 验证器分发
+### バリデーターの配布
 
-相关验证器的验证器分布信息每次都会更新:
+関連するバリデーターのバリデーター配布情報は、毎回更新されます。
 
-1. 更新了验证者的委托数量，
-2. 验证者成功提出区块并获得奖励，
-3. 任何委托人退出验证人，或
-4. 验证者撤回其佣金。 
+1.バリデーターのデリゲートの数を更新しました。
+2.バリデーターはブロックを正常に提案し、報酬を受け取ります。
+3.委任者がバリデーターから撤退する、または
+4.検証者はその手数料を撤回します。
 
-### 委托分发
+### 配布の委任
 
-每个委托分布只需要记录它最后的高度
-撤回费用。因为代表团每次都必须撤回费用
-属性改变（又名绑定令牌等）它的属性将保持不变
-并且委托人的_accumulation_因子可以被动计算
-只有最后一次提款的高度及其当前属性。
+各コミッション配分は、最終的な高さを記録するだけで済みます
+手数料を引き出します。代表団は毎回料金を撤回しなければならないので
+プロパティの変更（別名バインディングトークンなど）のプロパティは変更されません
+そして、クライアントの_蓄積_係数は受動的に計算することができます
+最後の引き出しの高さとその現在の属性のみ。
 
-## 消息类型
+## メッセージタイプ 
 
 ### MsgSetWithdrawAddress
 
@@ -71,7 +71,7 @@ type MsgSetWithdrawAddress struct {
 ### MsgWithdrawDelegatorReward
 
 ```go
-// 用于委托的 msg 结构从单个验证器中退出
+//委任に使用されるmsg構造は、単一のバリデーターから終了します 
 type MsgWithdrawDelegatorReward struct {
 	DelegatorAddress sdk.AccAddress `json:"delegator_address" yaml:"delegator_address"`
 	ValidatorAddress sdk.ValAddress `json:"validator_address" yaml:"validator_address"`
@@ -102,7 +102,7 @@ type MsgFundCommunityPool struct {
 
 ### CommunityPoolSpendProposal
 
-分配模块定义了一个特殊提案，该提案通过后，将使用社区池中的资金将“Amount”中指定的硬币支付给“Recipient”账户。
+配布モジュールは特別な提案を定義します。提案が渡された後、コミュニティプールの資金は、「金額」で指定されたコインを「受信者」アカウントに支払うために使用されます。 
 
 ```go
 type CommunityPoolSpendProposal struct {
@@ -113,21 +113,21 @@ type CommunityPoolSpendProposal struct {
 }
 ```
 
-## 交易
+## 取引
 
-### 开始区块
+### スターティングブロック
 
-> 本节来源于Cosmos SDK 官方文档，放在这里是为了方便大家理解分发模块的参数。
+>このセクションは、Cosmos SDKの公式ドキュメントから派生したものであり、配布モジュールのパラメーターを誰もが理解しやすいようにここに配置されています。
 
-在区块开始时，Distribution 模块将设置提议者以确定结束区块期间的分配，并为前一个区块分配奖励。
+ブロックの開始時に、配布モジュールは、ブロックの終了時に配布を決定し、前のブロックの報酬を配布する提案者を設定します。
 
-收到的费用被转移到分发模块“ModuleAccount”，它跟踪硬币进出模块的流量。费用也分配给提议者、社区基金和全球池:
+受け取った料金は、モジュールに出入りするコインの流れを追跡する配布モジュール「ModuleAccount」に転送されます。料金は、提案者、コミュニティファンド、およびグローバルプールにも割り当てられます。
 
-- 提议者:当验证者是一轮的提议者时，该验证者及其委托人将获得 1-5% 的费用奖励。
-- 社区基金:储备社区税被收取并分配到社区池中。从 Columbus-5 开始，不再收取此税，社区池不再获得资金。
-- 全球池:剩余的资金分配到全球池，在那里它们通过投票权按比例分配给所有绑定验证者，而不管他们是否投票。这种分配称为社会分配。除了提议者奖励之外，社会分配还应用于提议者验证者。
+-提案者:検証者がラウンドの提案者である場合、検証者とその委任者は1〜5％の手数料を受け取ります。
+-コミュニティ基金:予備のコミュニティ税が徴収され、コミュニティプールに分配されます。 Columbus-5から、この税金は請求されなくなり、コミュニティプールは資金を受け取らなくなりました。
+-グローバルプール:残りの資金はグローバルプールに分配され、投票するかどうかに関係なく、投票権を通じてすべてのバインドされたバリデーターに比例して分配されます。この分布は社会的分布と呼ばれます。提案者の報酬に加えて、社会的分配も提案者の検証者に適用されます。
 
-提议者奖励是根据预提交 Tendermint 消息计算的，以激励验证者等待并在区块中包含额外的预提交。所有供应奖励都添加到供应奖励池中，每个验证者单独持有（`ValidatorDistribution.ProvisionsRewardPool`）。
+プロポーザーの報酬は、事前コミットのTendermintメッセージに基づいて計算され、バリデーターが待機し、追加の事前コミットをブロックに含めるように促します。すべての供給報酬は供給報酬プールに追加され、各バリデーターは個別に保持します（ `ValidatorDistribution.ProvisionsRewardPool`）。 
 
 ```go
 func AllocateTokens(feesCollected sdk.Coins, feePool FeePool, proposer ValidatorDistribution,
@@ -137,7 +137,7 @@ func AllocateTokens(feesCollected sdk.Coins, feePool FeePool, proposer Validator
      SendCoins(FeeCollectorAddr, DistributionModuleAccAddr, feesCollected)
      feesCollectedDec = MakeDecCoins(feesCollected)
      proposerReward = feesCollectedDec * (0.01 + 0.04
-                       * sumPowerPrecommitValidators / totalBondedTokens)
+                       * sumPowerPrecommitValidators/totalBondedTokens)
 
      commission = proposerReward * proposerCommissionRate
      proposer.PoolCommission += commission
@@ -153,9 +153,9 @@ func AllocateTokens(feesCollected sdk.Coins, feePool FeePool, proposer Validator
      SetFeePool(feePool)
 ```
 
-## 参数
+## パラメーター
 
-Distribution 模块的子空间是“distribution”。 
+分布モジュールの部分空間は「分布」です。 
 
 ```go
 type GenesisState struct {

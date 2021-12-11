@@ -1,17 +1,17 @@
-# 银行
+# 銀行
 
-::: 警告注意
-Terra 的 Bank 模块继承自 Cosmos SDK 的 [`bank`](https://docs.cosmos.network/master/modules/bank/) 模块。本文档是一个存根，主要涵盖有关如何使用它的 Terra 特定的重要说明。
+:::警告メモ
+TerraのBankモジュールは、Cosmos SDKの[`bank`]（https://docs.cosmos.network/master/modules/bank/）モジュールを継承しています。 このドキュメントはスタブであり、主にその使用方法に関する重要なTerra固有の手順をカバーしています。
 :::
 
-Bank 模块是 Terra 区块链的基础交易层:它允许资产从一个“账户”发送到另一个“账户”。银行定义了两种类型的发送交易:`MsgSend` 和 `MsgMultiSend`。这些消息会自动产生稳定费，这是由 [`Auth` 模块中的 ante 处理程序](spec-auth.md#stability-fee) 执行的。
+Bankモジュールは、Terraブロックチェーンの基本的なトランザクションレイヤーです。これにより、アセットを1つの「アカウント」から別の「アカウント」に送信できます。 銀行は、 `MsgSend`と` MsgMultiSend`の2種類の送信トランザクションを定義しています。 これらのメッセージは、[`Auth`モジュールのアンティハンドラー]（spec-auth.md#stability-fee）によって実行される安定性料金を自動的に生成します。
 
-## 消息类型
+## メッセージタイプ 
 
 ### MsgSend
 
 ```go
-// MsgSend - 硬币模块的高级交易
+//MsgSend-コインモジュールの高度なトランザクション
 type MsgSend struct {
     FromAddress sdk.AccAddress `json:"from_address"`
     ToAddress   sdk.AccAddress `json:"to_address"`
@@ -19,18 +19,18 @@ type MsgSend struct {
 }
 ```
 
-Bank 模块可用于将硬币从一个 `Account`（`terra-` 前缀帐户）发送到另一个。构造了一个 `MsgSend` 来促进传输。如果“账户”中的硬币余额不足或接收方“账户”不允许通过银行模块接收资金，则交易失败。
+Bankモジュールを使用して、ある `Account`（` terra-`プレフィックスアカウント）から別の `Account`にコインを送ることができます。 送信を容易にするために `MsgSend`を構築しました。 「口座」のコイン残高が不足している場合、または受取人の「口座」が銀行モジュールを介して資金を受け取ることが許可されていない場合、取引は失敗します。 
 
 ### MsgMultiSend
 
 ```go
-// MsgMultiSend - 硬币模块的高级交易
+//MsgMultiSend-コインモジュールの高度なトランザクション 
 type MsgMultiSend struct {
     Inputs  []Input  `json:"inputs"`
     Outputs []Output `json:"outputs"`
 }
 ```
 
-银行模块可用于一次发送多笔交易。 `Inputs` 包含传入的交易，`Outputs` 包含传出的交易。 “输入”和“输出”的硬币余额必须完全匹配。通过 multisend 批量交易的好处是节省网络带宽和 gas 费用。
+銀行モジュールを使用して、一度に複数のトランザクションを送信できます。 `Inputs`には着信トランザクションが含まれ、` Outputs`には発信トランザクションが含まれます。 「入力」と「出力」のコイン残高は正確に一致する必要があります。 マルチセンドによるバッチトランザクションの利点は、ネットワーク帯域幅とガスコストを節約できることです。
 
-如果任何“帐户”失败，则不会退还已通过交易支付的税费。
+「アカウント」のいずれかが失敗した場合、トランザクションを通じて支払われた税金は返金されません。
