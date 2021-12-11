@@ -12,4 +12,4 @@
 
 - Easy2stake 公共 RPC:`https://terra-rpc.easy2stake.com/`
 - Blockdaemon 公共 LCD:`https://blockdaemon-terra-lcd.api.bdnodes.net:1317`
-- Terra 公共 RPC（仅限`http`，未安装证书）:`http://public-node.terra.dev:26657/` 
+- Terra 公共 RPC(仅限`http`，未安装证书):`http://public-node.terra.dev:26657/` 

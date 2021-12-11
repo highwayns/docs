@@ -1,6 +1,6 @@
-＃ 概念
+# 概念
 
-[Terra and Luna]（/ja/Concepts/Protocol.md）、[プロトコルの仕組み]（/ja/Concepts/Protocol.html＃how-the-terra-protocol-works）、[Validator]（/ja/Concepts/Protocol .html＃validators）、[stakeing]（/ja/Concepts/Protocol.html＃staking）、[governance]（/ja/Concepts/Protocol.html＃governance）セクションの概念。 特定の用語の詳細については、[用語集]（/ja/Concepts/glossary.md）を使用してください。
+[Terra and Luna](/ja/Concepts/Protocol.md)、[プロトコルの仕組み](/ja/Concepts/Protocol.html#how-the-terra-protocol-works)、[Validator](/ja/Concepts/Protocol .html#validators)、[stakeing](/ja/Concepts/Protocol.html#staking)、[governance](/ja/Concepts/Protocol.html#governance)セクションの概念。 特定の用語の詳細については、[用語集](/ja/Concepts/glossary.md)を使用してください。
 
 <!--
 <div class="cards twoColumn">

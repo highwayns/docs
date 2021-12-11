@@ -704,7 +704,7 @@ The following example shows a CLI command with the `--fee-account` flag:
 
 ### 费用津贴
 
-费用补贴是通过将“Granter”（授予另一个帐户将其可用代币用于费用的许可的帐户地址）与“Grantee”（获得将授予者的代币用于费用的许可的帐户地址）相结合来确定的。
+费用补贴是通过将“Granter”(授予另一个帐户将其可用代币用于费用的许可的帐户地址)与“Grantee”(获得将授予者的代币用于费用的许可的帐户地址)相结合来确定的。
 
 以下示例显示了如何在状态中存储费用津贴:
 

@@ -1,14 +1,14 @@
-# 预言机反馈
+# オラクルのフィードバック
 
-以下代码段演示了如何使用 [LocalTerra](https://github.com/terra-money/LocalTerra) 网络使用 Terra.js 创建一个简单的价格预言机馈送器。 此示例中未显示价格。 它只是跟踪公共 LCD 节点当前注册的预言机价格并将其提交给本地测试网。
+次のコードスニペットは、[LocalTerra](https://github.com/terra-money/LocalTerra)ネットワークを使用して、Terra.jsを使用してシンプルな価格のオラクルフィーダーを作成する方法を示しています。 この例では価格は表示されていません。 パブリックLCDノードに現在登録されているオラクルの価格を追跡し、ローカルテストネットに送信するだけです。
 
-请注意以下事项:
+次の点に注意してください:
 
-1. 使用 [`MsgAggregateExchangeRateVote.getPrevote()`](https://terra-money.github.io/terra.js/classes/msgexchangeratevote.html#getprevote) 自动生成预投票
+1. [`MsgAggregateExchangeRateVote.getPrevote()`](https://terra-money.github.io/terra.js/classes/msgexchangeratevote.html#getprevote)を使用して、prevoteを自動的に生成します
 
-2. `MsgAggregateExchangeRateVote` 消息必须在一个交易中按顺序先于 `MsgAggregateExchangeRatePrevote` 消息，否则 `MsgAggregateExchangeRatePrevote` 将覆盖当前为验证器注册的未完成预投票。
+2. `MsgAggregateExchangeRateVote`メッセージは、トランザクションで順番に` MsgAggregateExchangeRatePrevote`メッセージの前に置く必要があります。そうしないと、 `MsgAggregateExchangeRatePrevote`が現在バリデーターに登録されている不完全な事前投票を上書きします。
 
-### 伪反馈 
+### 誤ったフィードバック 
 
 ```ts
 import { randomBytes } from 'crypto';

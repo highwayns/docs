@@ -28,7 +28,7 @@
 
 ## 绑定Luna
 
-代表绑定 Luna 的代币，可以自由交易或用作 Terra 网络中其他协议的抵押品，例如 [Anchor](https://anchorprotocol.com/) 和 [Mirror](https://mirror.finance/ ）。 Bonded Luna 需要 21 天才能解除绑定。
+代表绑定 Luna 的代币，可以自由交易或用作 Terra 网络中其他协议的抵押品，例如 [Anchor](https://anchorprotocol.com/) 和 [Mirror](https://mirror.finance/ )。 Bonded Luna 需要 21 天才能解除绑定。
 
 ## 绑定验证器
 
@@ -242,7 +242,7 @@ Terra 的原生钱包、交换、治理和质押平台。在 Station 中，您�
 
 ## 托宾税
 
-Terra 稳定币（现货交易）之间的每次交换都会增加费用。汇率不同，取决于面额。例如，虽然大多数面额的税率为 0.35%，但 MNT 的税率为 2%。要查看费率，请[查询预言机](../terrad/oracle.html#tobin-taxes)。
+Terra 稳定币(现货交易)之间的每次交换都会增加费用。汇率不同，取决于面额。例如，虽然大多数面额的税率为 0.35%，但 MNT 的税率为 2%。要查看费率，请[查询预言机](../terrad/oracle.html#tobin-taxes)。
 
 ## 总股份
 

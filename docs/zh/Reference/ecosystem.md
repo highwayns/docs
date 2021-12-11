@@ -49,7 +49,7 @@
 [Medium](https://medium.com/anchor-protocol):所有主要合作伙伴公告和每月生态系统更新的官方Anchor Medium<br> 1111111111111111
 ## 分析
 
-[Chaiscan](https://www.chaiscan.com/):提供CHAI每日和每月用户和交易数量（由DSRV提供）<br>
+[Chaiscan](https://www.chaiscan.com/):提供CHAI每日和每月用户和交易数量(由DSRV提供)<br>
 [Flipside Crypto](http://terra.flipsidecrypto.com/):提供对 Terra 生态系统的洞察，包括生态系统使用、利益相关者行为、抵押模式和经济学<br>
 [Smartstake](http://terra.smartstake.io/):提供Staking APR和MIR空投数据<br>
 [Megastake](http://lunarichlist.com/):提供顶级LUNA钱包列表<br>
@@ -59,7 +59,7 @@
 [Token Terminal](https://terminal.tokenterminal.com/dashboard/Terra):提供Terra P/S、VOL/MC、GMV和其他区块链排名数据<br>
 [Token Terminal Mirror](https://terminal.tokenterminal.com/dashboard/MirrorProtocol):提供Mirror P/S、VOL/MC、GMV及其他dapp排名数据<br>
 [AssetDash](https://assetdash.com/?q=luna):LUNA与其他资产的排名<br>
-[Luna Whale](https://www.lunawhale.com/):提供对 LUNA 鲸鱼活动的见解（由 DSRV）<br>
+[Luna Whale](https://www.lunawhale.com/):提供对 LUNA 鲸鱼活动的见解(由 DSRV)<br>
 [TerraSwap Dashboard](https://alpac4.com/TerraSwapDashboard):提供关于 TerraSwap 的交易量和流动性的见解，Terra 的 AMM DEX<br>
 [镜像市场](https://mirrormarket.finance/):提供镜像生态系统的跟踪和数据洞察<br>
 [Anchor Simulator](https://anchor-simulator.com/):使用户可以使用不同的策略估算Anchor的收益<br>
@@ -77,7 +77,7 @@
 ## 应用程序由 Terra 提供支持
 
 [PayWithTerra](https://paywithterra.com/):使商家能够接受 Terra 稳定币的 API 网关<br>
-[Kash](https://app.kash.io/):Intellabridge 的去中心化移动银行应用程序（Alpha 版）提供用户友好的界面来访问 Mirror 和 Anchor<br>
+[Kash](https://app.kash.io/):Intellabridge 的去中心化移动银行应用程序(Alpha 版)提供用户友好的界面来访问 Mirror 和 Anchor<br>
 [LoTerra](https://loterra.io/):去中心化彩票<br>
 [Alice Finance](https://www.alice.co/):Terra 产品套件的前端接口<br>
 [Spar Protocol](https://spar.finance/):去中心化的链上资产管理协议<br>
@@ -122,7 +122,7 @@
 - [CREAM Finance](https://cream.finance/) - UST的借贷<br>
 - [稳定协议](https://www.stabilize.finance/):STBZ 激励的 UST 稳定币池<br>
 - [Pickle Finance](https://app.pickle.finance/jars):激励 UST/MIR 池<br>
-- [Set Protocol](https://www.tokensets.com):Uniswap 上 5 个 mAssets（Facebook、Amazon、Apple、Netflix 和 Google）的 FAANG 索引集<br>
+- [Set Protocol](https://www.tokensets.com):Uniswap 上 5 个 mAssets(Facebook、Amazon、Apple、Netflix 和 Google)的 FAANG 索引集<br>
 - [Ren 协议](https://renproject.io/):renVM 桥将 $renLUNA 传输到以太坊<br>
 
 #### 币安智能链
@@ -192,4 +192,4 @@ Terra Station 手机:[iOS](https://apps.apple.com/app/id1548434735) | [Android](
 [Ledger Nano X/S](https://support.ledger.com/hc/en-us/articles/360017698979-Terra-LUNA-):Ledger 团队的硬件钱包<br>
 [Oxis](https://www.oxis.com/):非托管钱包，具有法定到加密货币入口和出口以及交易功能<br>
 [ZenGo](https://www.zengo.com/):多资产钱包，手机优化<br>
-[XDEFI](https://www.xdefi.io/):跨链钱包（Chrome）扩展。处理以太坊、Thorchain、Poligon、比特币、BSC、Terra... 
+[XDEFI](https://www.xdefi.io/):跨链钱包(Chrome)扩展。处理以太坊、Thorchain、Poligon、比特币、BSC、Terra... 

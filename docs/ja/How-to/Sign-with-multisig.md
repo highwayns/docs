@@ -33,7 +33,7 @@ terrad keys show --multisig-threshold=K name1 name2 name3 [...]
 ## トランザクションに署名します
 
 :::警告メモ
-この例では、[LocalTerra]（https://github.com/terra-money/LocalTerra）の `test1`、` test2`、 `test3`キーを使用しています。 後続の操作のために、それらを `terrad`キーストアにインポートします。
+この例では、[LocalTerra](https://github.com/terra-money/LocalTerra)の `test1`、` test2`、 `test3`キーを使用しています。 後続の操作のために、それらを `terrad`キーストアにインポートします。
 :::
 
 ### ステップ1:マルチ署名キーを作成する

@@ -2,7 +2,7 @@
 
 ## ウォレットを作成する
 
-`LCDClient.wallet（）`を使用して、 `Key`から` Wallet`を作成します。 
+`LCDClient.wallet()`を使用して、 `Key`から` Wallet`を作成します。 
 
 ```ts
 import { LCDClient, MnemonicKey } from '@terra-money/terra.js';
@@ -50,7 +50,7 @@ const unsignedTx = await wallet.createTx({
 const tx = wallet.key.signTx(unsignedTx);
 ```
 
-便利な関数 `Wallet.createAndSignTx（）`を使用することもできます。これにより、ブロードキャスト用の署名付き取引が自動的に生成されます。  
+便利な関数 `Wallet.createAndSignTx()`を使用することもできます。これにより、ブロードキャスト用の署名付き取引が自動的に生成されます。  
 
 ```ts
 const tx = await wallet.createAndSignTx({

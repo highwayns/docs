@@ -6,9 +6,9 @@
 
 質問をするためにプルリクエストを送信しないでください。代わりに、以下のコミュニティに参加して、すべての質問をしてください。
 
--[Terra Telegram Community]（https://t.me/TerraLunaChat）
--[Terra Discord Community]（https://discord.gg/bYfyhUT）
--[Terra Validator Discord Community]（https://discord.gg/Bf4Ug2Zf）
+-[Terra Telegram Community](https://t.me/TerraLunaChat)
+-[Terra Discord Community](https://discord.gg/bYfyhUT)
+-[Terra Validator Discord Community](https://discord.gg/Bf4Ug2Zf)
 
 ## 最初の一歩
 
@@ -18,19 +18,19 @@
 
 ### ドキュメントの変更を提案する
 
-Terra Docsでは、例外なく、プルリクエスト（PR）を使用してドキュメントの変更を送信する必要があります。 PRは、コミュニティからの貢献、簡単なテスト、直接のピアレビューをサポートします。
+Terra Docsでは、例外なく、プルリクエスト(PR)を使用してドキュメントの変更を送信する必要があります。 PRは、コミュニティからの貢献、簡単なテスト、直接のピアレビューをサポートします。
 
 ドキュメント変更の提案を送信するには、次のワークフローを使用してください。
 
-1. [フォークリポジトリ]（https://github.com/terra-money/docs）。
-1. [アップストリームを追加]（https://docs.github.com/en/github/collaborating-with-pull-requests/working-with-forks/syncing-a-fork）、フォークを更新できるようにします。
+1. [フォークリポジトリ](https://github.com/terra-money/docs)。
+1. [アップストリームを追加](https://docs.github.com/en/github/collaborating-with-pull-requests/working-with-forks/syncing-a-fork)、フォークを更新できるようにします。
 1. フォークをコンピューターに複製します。
 1. ブランチを作成し、適切な名前を付けます。
 1. プルリクエストで処理される変更は1つだけです。
 1. 次の規則に従ってください。
 
-    1. [Terra Docsスタイルガイド]（STYLE-GUIDE.md）および以下に説明するコーディング規則に従って変更を加えます。一般的に、提出は単一の目的を果たし、違いは理解しやすいものでなければなりません。フォーマットの修正やコードの移動と実際のコードの変更を混在させないでください。
-    1.変更を送信します。シンプルでわかりやすいコミットメッセージを作成します。詳細については、[Gitコミットメッセージの書き方]（https://chris.beams.io/posts/git-commit/）を参照してください。
+    1. [Terra Docsスタイルガイド](STYLE-GUIDE.md)および以下に説明するコーディング規則に従って変更を加えます。一般的に、提出は単一の目的を果たし、違いは理解しやすいものでなければなりません。フォーマットの修正やコードの移動と実際のコードの変更を混在させないでください。
+    1.変更を送信します。シンプルでわかりやすいコミットメッセージを作成します。詳細については、[Gitコミットメッセージの書き方](https://chris.beams.io/posts/git-commit/)を参照してください。
     1.変更をリモートブランチにプッシュします。
     1. TerraDocsリポジトリにPRを作成します。
     1.タグを追加して、PRのタイプを識別します。たとえば、まだ変更を加えている場合は、** work-in-progress **タグを追加します。拡張機能を提案する場合は、**拡張機能**タグを追加してください。

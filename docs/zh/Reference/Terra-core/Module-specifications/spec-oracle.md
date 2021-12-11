@@ -18,7 +18,7 @@ Oracle 模块为 Terra 区块链提供了最新且准确的 Luna 与各种 Terra
 
 #### 预先投票和投票
 
-让 $P_t$ 是由 [`VotePeriod`](#voteperiod)（当前设置为 5 个区块链块）定义的当前时间间隔，在此期间验证者必须提交两条消息:
+让 $P_t$ 是由 [`VotePeriod`](#voteperiod)(当前设置为 5 个区块链块)定义的当前时间间隔，在此期间验证者必须提交两条消息:
 
 - [`MsgExchangeRatePrevote`](#msgexchangerateprevote)，包含 Luna 相对于 Terra 挂钩的汇率的 SHA256 哈希值。必须为每个不同的面额提交单独的预投票，以报告 Luna 汇率。
 
@@ -45,10 +45,10 @@ Oracle 模块为 Terra 区块链提供了最新且准确的 Luna 与各种 Terra
 
 2. 计算 Oracle 汇率
 
-   - 每个验证器现在计算`w_i`的交叉汇率（`CER`），如下所示。
+   - 每个验证器现在计算`w_i`的交叉汇率(`CER`)，如下所示。
      - 对于`i≠r`，`CER_j_i = Vote_j_r / Vote_j_i`
      - 对于`i=r`，`CER_j_i = Vote_j_r`
-   - 计算每个交叉汇率的功率加权中位数（`PWM`，跨所有验证器）`CER_j_iMCER_i` = `PWM`（对于所有 j）[`CER_j_i`]
+   - 计算每个交叉汇率的功率加权中位数(`PWM`，跨所有验证器)`CER_j_iMCER_i` = `PWM`(对于所有 j)[`CER_j_i`]
    - 现在我们将这些`MCER_i`s 转换为原始形式 uluna/terra，如下所示
      - 对于`i≠r`，`LunaRate_i = MCER_r / MCER_i`
      - 对于`i=r`，`LunaRate_i = MCER_r`
@@ -69,7 +69,7 @@ Oracle 模块为 Terra 区块链提供了最新且准确的 Luna 与各种 Terra
 
 ### 奖励带
 
-设 $M$ 为加权中位数，$\sigma$ 为选票中选票的标准差，$R$ 为 [`RewardBand`](#rewardband) 参数。中位数周围的带设置为 $\varepsilon = \max(\sigma, R/2)$。所有在 $\left[ M - \varepsilon, M + \varepsilon \right]$ 区间内提交汇率投票的有效（即保税和非监禁）验证者都应该被包括在获胜者的集合中，由他们的亲属加权投票权。
+设 $M$ 为加权中位数，$\sigma$ 为选票中选票的标准差，$R$ 为 [`RewardBand`](#rewardband) 参数。中位数周围的带设置为 $\varepsilon = \max(\sigma, R/2)$。所有在 $\left[ M - \varepsilon, M + \varepsilon \right]$ 区间内提交汇率投票的有效(即保税和非监禁)验证者都应该被包括在获胜者的集合中，由他们的亲属加权投票权。
 
 ### 削减
 
@@ -83,9 +83,9 @@ Oracle 模块为 Terra 区块链提供了最新且准确的 Luna 与各种 Terra
 
 - 验证者未能在围绕一种或多种面额的加权中位数的 [奖励范围](#reward-band) 内投票。
 
-在每个 [`SlashWindow`](#slashwindow) 期间，参与的验证者必须保持至少 [`MinValidPerWindow`](#minvalidperwindow) (5%) 的有效投票率，以免他们的股份被削减（目前设置为 [0.01%） ](#slashfraction))。被削减的验证人会被协议自动暂时“监禁”（以保护委托人的资金），运营商应及时修复差异以恢复验证人参与。
+在每个 [`SlashWindow`](#slashwindow) 期间，参与的验证者必须保持至少 [`MinValidPerWindow`](#minvalidperwindow) (5%) 的有效投票率，以免他们的股份被削减(目前设置为 [0.01%) ](#slashfraction))。被削减的验证人会被协议自动暂时“监禁”(以保护委托人的资金)，运营商应及时修复差异以恢复验证人参与。
 
-###弃权投票
+### 弃权投票
 
 验证者可以通过为 [`MsgExchangeRateVote`](#msgexchangeratevote) 中的 `ExchangeRate` 字段提交一个非正整数来放弃投票。这样做将免除他们因错过“VotePeriod”而受到的任何处罚，但也会使他们失去因忠实报告而获得 Oracle 铸币税奖励的资格。
 
@@ -109,15 +109,15 @@ type MsgExchangeRatePrevote struct {
 }
 ```
 
-`Hash` 是由格式为 `salt:exchange_rate:denom:voter` 的字符串的 SHA256 哈希（十六进制字符串）的前 20 个字节生成的十六进制字符串，实际的 `MsgExchangeRateVote` 的元数据将在下一个`投票期`。你可以使用 [`VoteHash()`](#votehash) 函数来帮助编码这个哈希。请注意，由于在随后的“MsgExchangeRateVote”中，必须显示盐，因此必须为每次预投票提交重新生成使用的盐。
+`Hash` 是由格式为 `salt:exchange_rate:denom:voter` 的字符串的 SHA256 哈希(十六进制字符串)的前 20 个字节生成的十六进制字符串，实际的 `MsgExchangeRateVote` 的元数据将在下一个`投票期`。你可以使用 [`VoteHash()`](#votehash) 函数来帮助编码这个哈希。请注意，由于在随后的“MsgExchangeRateVote”中，必须显示盐，因此必须为每次预投票提交重新生成使用的盐。
 
 “Denom”是投票所针对的货币的面额。例如，如果选民希望为美元提交预投票，那么正确的“Denom”是“uusd”。
 
 哈希中使用的汇率必须是 Luna 的公开市场汇率，相对于与“Denom”匹配的面额。例如，如果`Denom` 是`uusd`，而Luna 的现行汇率是1 美元，那么必须使用“1”作为汇率，因为`1 uluna` = `1 uusd`。
 
-`Feeder`（`terra-` 地址）用于如果验证者希望将 oracle 投票签名委托给一个单独的密钥（代替运营商“提供”价格）以降低暴露其验证者签名密钥的风险。
+`Feeder`(`terra-` 地址)用于如果验证者希望将 oracle 投票签名委托给一个单独的密钥(代替运营商“提供”价格)以降低暴露其验证者签名密钥的风险。
 
-`Validator` 是原始验证器的验证器地址（`terravaloper-`）。
+`Validator` 是原始验证器的验证器地址(`terravaloper-`)。
 
 ### MsgExchangeRateVote
 
@@ -141,10 +141,10 @@ type MsgExchangeRateVote struct {
 验证者还可以选择将投票权委托给另一个密钥，以防止块签名密钥保持在线。 为此，他们必须提交“MsgDelegateFeedConsent”，将他们的预言机投票权委托给代表验证者签署“MsgExchangeRatePrevote”和“MsgExchangeRateVote”的“Delegate”。
 
 ::: 危险
-委托验证者可能会要求您存入一些资金（在 Terra 或 Luna 中），他们可以用这些资金来支付费用，并在单独的“MsgSend”中发送。 该协议是在链下制定的，不受 Terra 协议的强制执行。
+委托验证者可能会要求您存入一些资金(在 Terra 或 Luna 中)，他们可以用这些资金来支付费用，并在单独的“MsgSend”中发送。 该协议是在链下制定的，不受 Terra 协议的强制执行。
 :::
 
-`Operator` 字段包含验证器的操作员地址（前缀为 `terravaloper-`）。 `Delegate` 字段是将代表 `Operator` 提交与汇率相关的投票和预投票的受托人账户的账户地址（前缀为 `terra-`）。
+`Operator` 字段包含验证器的操作员地址(前缀为 `terravaloper-`)。 `Delegate` 字段是将代表 `Operator` 提交与汇率相关的投票和预投票的受托人账户的账户地址(前缀为 `terra-`)。
 
 ```go
 // MsgDelegateFeedConsent - struct for delegating oracle voting rights to another address.
@@ -231,9 +231,9 @@ func tally(ctx sdk.Context, pb types.ExchangeRateBallot, rewardBand sdk.Dec) (we
 func (k Keeper) RewardBallotWinners(ctx sdk.Context, ballotWinners types.ClaimPool)
 ```
 
-在每个“VotePeriod”结束时，一部分铸币税将奖励给预言机投票获胜者（在区间内提交汇率投票的验证者）。
+在每个“VotePeriod”结束时，一部分铸币税将奖励给预言机投票获胜者(在区间内提交汇率投票的验证者)。
 
-每个`VotePeriod`奖励的Luna总量等于当前奖励池中的Luna数量（Oracle模块拥有的Luna）除以参数[`RewardDistributionWindow`](#rewarddistributionwindow)。
+每个`VotePeriod`奖励的Luna总量等于当前奖励池中的Luna数量(Oracle模块拥有的Luna)除以参数[`RewardDistributionWindow`](#rewarddistributionwindow)。
 
 每个获胜的验证者都会获得与他们在那段时间的获胜投票权重成比例的奖励。
 
@@ -243,7 +243,7 @@ func (k Keeper) RewardBallotWinners(ctx sdk.Context, ballotWinners types.ClaimPo
 func SlashAndResetMissCounters(ctx sdk.Context, k Keeper)
 ```
 
-这个函数在每个 `SlashWindow` 结束时被调用，并会检查每个验证器的未命中计数器，以查看该验证器是否满足参数 [`MinValidPerWindow`](#minvalidperwindow) 中定义的最小有效票数（没有错过超过 门槛）。
+这个函数在每个 `SlashWindow` 结束时被调用，并会检查每个验证器的未命中计数器，以查看该验证器是否满足参数 [`MinValidPerWindow`](#minvalidperwindow) 中定义的最小有效票数(没有错过超过 门槛)。
 
 如果验证者没有达到标准，他们的质押资金将被 [`SlashFraction`](#slashfraction) 削减，并被监禁。
 
@@ -267,18 +267,18 @@ func SlashAndResetMissCounters(ctx sdk.Context, k Keeper)
 
 4. 对于每个剩余的带有通过选票的“denom”:
 
-   - 使用 [`Compute Cross Exchange Rate using Reference Terra`](#compute-cross-exchange-rate-using-reference-terra) 统计投票，并使用 [`tally()`]( #相符）
+   - 使用 [`Compute Cross Exchange Rate using Reference Terra`](#compute-cross-exchange-rate-using-reference-terra) 统计投票，并使用 [`tally()`]( #相符)
    - 遍历投票的获胜者并将他们的权重添加到他们的总和中
    - 使用 `k.SetLunaExchangeRate()` 在区块链上为 Luna<>`denom` 设置 Luna 汇率
    - 发出 [`exchange_rate_update`](#exchange_rate_update) 事件
 
 5. 计算 [missed](#slashing) Oracle 投票的验证者并增加相应的miss counter
 
-6. 如果在 [`SlashWindow`](#slashwindow) 的末尾，惩罚错过超过惩罚阈值的验证器（提交的有效票数少于 [`MinValidPerWindow`](#minvalidperwindow)）
+6. 如果在 [`SlashWindow`](#slashwindow) 的末尾，惩罚错过超过惩罚阈值的验证器(提交的有效票数少于 [`MinValidPerWindow`](#minvalidperwindow))
 
 7. 使用 [`k.RewardBallotWinners()`](#krewardballotwinners) 向投票获胜者分发奖励
 
-8. 清除所有prevotes（下一个`VotePeriod`除外）和来自商店的投票 
+8. 清除所有prevotes(下一个`VotePeriod`除外)和来自商店的投票 
 
 ::: details Events
 

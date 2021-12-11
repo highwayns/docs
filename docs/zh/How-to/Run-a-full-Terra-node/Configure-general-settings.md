@@ -42,17 +42,17 @@ wget https://network.terra.dev/testnet/addrbook.json -O ~/.terra/config/addrbook
 ``` toml
 # 验证者愿意接受的最低gas价格来处理a
 # 交易。 交易费用必须满足任何面额的最低要求
-# 在此配置中指定（例如 0.25token1;0.0001token2）。minimum-gas-prices = "0.01133uluna,0.15uusd,0.104938usdr,169.77ukrw,428.571umnt,0.125ueur,0.98ucny,16.37ujpy,0.11ugbp,10.88uinr,0.19ucad,0.14uchf,0.19uaud,0.2usgd,4.62uthb,1.25usek,1.25unok,0.9udkk,2180.0uidr,7.6uphp,1.17uhkd"
+# 在此配置中指定(例如 0.25token1;0.0001token2)。minimum-gas-prices = "0.01133uluna,0.15uusd,0.104938usdr,169.77ukrw,428.571umnt,0.125ueur,0.98ucny,16.37ujpy,0.11ugbp,10.88uinr,0.19ucad,0.14uchf,0.19uaud,0.2usgd,4.62uthb,1.25usek,1.25unok,0.9udkk,2180.0uidr,7.6uphp,1.17uhkd"
 ```
 
 
-## 启动轻客户端守护进程（LCD）
+## 启动轻客户端守护进程(LCD)
 
 要启用 REST API 和 Swagger，并启动 LCD，请完成以下步骤:
 
 1. 打开`~/.terra/config/app.toml`。
 
-2. 找到`API 配置` 部分（`[api]`）。
+2. 找到`API 配置` 部分(`[api]`)。
 
 3. 将`enable = false`改为`enable = true`。
 

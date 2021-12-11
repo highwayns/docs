@@ -36,7 +36,7 @@ docker-compose up
 
 虽然理论上 WASM 智能合约可以用任何编程语言编写，但我们目前只推荐使用 Rust，因为它是 CosmWasm 存在成熟库和工具的唯一语言。对于本教程，您还需要按照 [此处](https://www.rust-lang.org/tools/install) 的说明安装最新版本的 Rust。
 
-安装 Rust 及其工具链（cargo 等）后，您需要添加 `wasm32-unknown-unknown` 编译目标。
+安装 Rust 及其工具链(cargo 等)后，您需要添加 `wasm32-unknown-unknown` 编译目标。
 
 ```sh
 rustup default stable

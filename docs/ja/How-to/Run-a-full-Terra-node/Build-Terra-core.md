@@ -1,6 +1,6 @@
 ## Terraコアのソースコードを取得する
 
-`git`を使用して[Terracore]（https://github.com/terra-money/core/）を取得し、最新の安定バージョンを含む` main`ブランチを確認します。
+`git`を使用して[Terracore](https://github.com/terra-money/core/)を取得し、最新の安定バージョンを含む` main`ブランチを確認します。
 
 LocalTerraを使用するか、バリデーターを実行する場合は、 `v0.x.x-oracle`タグを使用してください。 それ以外の場合は、 `v0.x.x`タグを使用します。 
 

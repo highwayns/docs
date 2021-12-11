@@ -49,11 +49,11 @@ pub struct State {
 pub const STATE: Item<State> = Item::new("state");
 ```
 
-Terra 智能合约能够通过 Terra 的原生 LevelDB（一种基于字节的键值存储）保持持久状态。因此，您希望保留的任何数据都应分配一个唯一的键，在该键上可以对数据进行索引并在以后检索。我们上面例子中的单例被分配了键`config`（以字节为单位）。
+Terra 智能合约能够通过 Terra 的原生 LevelDB(一种基于字节的键值存储)保持持久状态。因此，您希望保留的任何数据都应分配一个唯一的键，在该键上可以对数据进行索引并在以后检索。我们上面例子中的单例被分配了键`config`(以字节为单位)。
 
 数据只能作为原始字节持久化，因此任何结构或数据类型的概念都必须表示为一对序列化和反序列化函数。例如，对象必须存储为字节，因此您必须提供将对象编码为字节以将其保存在区块链上的函数，以及将字节解码回合约逻辑可以理解的数据类型的函数。字节表示的选择取决于您，只要它提供干净的双向映射即可。
 
-幸运的是，CosmWasm 团队提供了诸如 [cosmwasm_storage](https://github.com/CosmWasm/cosmwasm/tree/master/packages/storage) 之类的实用工具箱，它为数据容器提供了方便的高级抽象，例如“ singleton”和“bucket”，它们自动为常用类型（如结构和 Rust 数字）提供序列化和反序列化。
+幸运的是，CosmWasm 团队提供了诸如 [cosmwasm_storage](https://github.com/CosmWasm/cosmwasm/tree/master/packages/storage) 之类的实用工具箱，它为数据容器提供了方便的高级抽象，例如“ singleton”和“bucket”，它们自动为常用类型(如结构和 Rust 数字)提供序列化和反序列化。
 
 注意 `State` 结构如何同时保存 `count` 和 `owner`。此外，`derive` 属性用于自动实现一些有用的特征:
 
@@ -64,14 +64,14 @@ Terra 智能合约能够通过 Terra 的原生 LevelDB（一种基于字节的�
 - `PartialEq`: gives us equality comparison
 - `JsonSchema`: auto-generates a JSON schema for us
 
-`Addr`，是指以 `terra...` 为前缀的人类可读的 Terra 地址。 它的对应物是“CanonicalAddr”，它指代 Terra 地址的本地解码 Bech32 格式（以字节为单位）。
+`Addr`，是指以 `terra...` 为前缀的人类可读的 Terra 地址。 它的对应物是“CanonicalAddr”，它指代 Terra 地址的本地解码 Bech32 格式(以字节为单位)。
 
 
 ## 实例化消息
 
 当用户通过“MsgInstantiateContract”在区块链上创建合约时，会提供“InstantiateMsg”。 这为合约提供了它的配置以及它的初始状态。
 
-在 Terra 区块链上，与以太坊不同，合约代码的上传和合约的实例化被视为单独的事件。 这是为了允许一小组经过审查的合约原型作为多个实例存在，这些实例共享相同的基本代码但配置了不同的参数（想象一个规范的 ERC20，以及多个使用其代码的代币）。
+在 Terra 区块链上，与以太坊不同，合约代码的上传和合约的实例化被视为单独的事件。 这是为了允许一小组经过审查的合约原型作为多个实例存在，这些实例共享相同的基本代码但配置了不同的参数(想象一个规范的 ERC20，以及多个使用其代码的代币)。
 
 ### 例子
 
@@ -248,7 +248,7 @@ Which should return:
 
 ### Message Definition
 
-为了支持对我们的数据契约的查询，我们必须定义一个 `QueryMsg` 格式（代表请求），以及提供查询输出的结构——在这种情况下是 `CountResponse`。 我们必须这样做，因为`query()` 将通过结构中的 JSON 将信息发送回用户，并且我们必须使我们的响应的形状已知。
+为了支持对我们的数据契约的查询，我们必须定义一个 `QueryMsg` 格式(代表请求)，以及提供查询输出的结构——在这种情况下是 `CountResponse`。 我们必须这样做，因为`query()` 将通过结构中的 JSON 将信息发送回用户，并且我们必须使我们的响应的形状已知。
 
 将以下内容添加到您的 `src/msg.rs`:
 

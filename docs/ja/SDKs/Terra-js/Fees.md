@@ -1,4 +1,4 @@
-# 费用 
+# 料金  
 
 ```ts
 import { Fee } from '@terra-money/terra.js';
@@ -9,15 +9,15 @@ const fee = new Fee(50000, { uluna: 4500000 });
 const tx = await wallet.createAndSignTx({ msgs, fee });
 ```
 
-## 自动费用估算
+## 自動コスト見積もり
 
-如果您在创建交易时未指定费用，则会通过在节点内对其进行模拟来自动估算费用。
+トランザクションの作成時に料金を指定しなかった場合は、ノードでシミュレートすることにより、料金が自動的に見積もられます。
 
 ```ts
 const tx = await wallet.createAndSignTx({ msgs });
 ```
 
-您可以在创建 `LCDClient` 实例时定义费用估算参数。 默认值是: 
+`LCDClient`インスタンスを作成するときに、コスト見積もりパラメータを定義できます。 デフォルト値は次のとおりです。
 
 ```ts
 const terra = new LCDClient({
@@ -28,7 +28,7 @@ const terra = new LCDClient({
 });
 ```
 
-您可以通过在 `wallet.createTx` 或 `wallet.createAndSignTx` 中传递费用估算参数来覆盖这些设置: 
+`wallet.createTx`または` wallet.createAndSignTx`でコスト見積もりパラメータを渡すことにより、これらの設定を上書きできます。  
 
 ```ts
 const tx = await wallet.createAndSignTx({

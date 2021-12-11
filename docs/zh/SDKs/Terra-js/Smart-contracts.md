@@ -49,7 +49,7 @@ const {
 
 对于 Terra 智能合约，上传合约代码和创建合约是有区别的。 这允许多个合约共享相同的代码，如果它们的逻辑只有很小的变化可以在合约创建时进行配置。 此配置在 **InitMsg** 中传递，并为合约提供初始状态。
 
-要创建（实例化）智能合约，您必须首先知道上传代码的代码 ID。 您将在 InitMsg 旁边的 `MsgInstantiateContract` 中引用它以创建合约。 成功创建后，您的合约将位于您指定的地址。 
+要创建(实例化)智能合约，您必须首先知道上传代码的代码 ID。 您将在 InitMsg 旁边的 `MsgInstantiateContract` 中引用它以创建合约。 成功创建后，您的合约将位于您指定的地址。 
 
 ```ts
 import { MsgInstantiateContract } from '@terra-money/terra.js';

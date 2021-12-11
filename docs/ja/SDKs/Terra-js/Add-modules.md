@@ -1,18 +1,18 @@
-# 添加模块
+# モジュールを追加
 
-将新模块添加到 Terra 核心时，您也必须将其添加到 Terra.js 中的多个位置。 要添加它，请完成以下步骤:
+新しいモジュールをTerraコアに追加するときは、Terra.jsの複数の場所にも追加する必要があります。 追加するには、次の手順を実行します。
 
-##  新建一个文件夹
+## 新しいフォルダを作成します
 
-在 `src/core` 文件夹中，创建一个新文件夹并以新模块命名。 例如，`src/core/greeting`。
+`src/core`フォルダーに新しいフォルダーを作成し、新しいモジュールにちなんで名前を付けます。 たとえば、 `src/core/greeting`です。
 
-## 添加消息
+## メッセージを追加
 
-1. 在您为新模块创建的文件夹的子目录中注册新消息，如以下示例所示:
+1.次の例に示すように、新しいモジュール用に作成したフォルダのサブディレクトリに新しいメッセージを登録します。
 
 `src/core/greeting/msgs`
 
-在这个例子中，假设您正在创建两条新消息，`MsgHello` 和 `MsgGoodbye`。 以下示例显示了 `MsgHello` 的代码，您可以从中推断出实现 `MsgGoodbye` 的方式。
+この例では、 `MsgHello`と` MsgGoodbye`の2つの新しいメッセージを作成するとします。 次の例は、 `MsgHello`のコードを示しています。このコードから、` MsgGoodbye`の実装方法を推測できます。
 
 ```ts
 import { JSONSerializable } from '../../../util/json';
@@ -57,7 +57,7 @@ export namespace MsgHello {
 
 ```
 
-1. 创建以下文件，它将为您的新消息建立索引。
+2.次のファイルを作成します。これにより、新しいメッセージのインデックスが作成されます。
 
 `src/core/greeting/msgs/index.ts` 
 
@@ -75,12 +75,12 @@ export namespace GreetingMsg {
 }
 ```
 
-3.在`src/core/Msg.ts`中注册消息，以便正确解析。
+3.正しい分析のために、メッセージを `src/core/Msg.ts`に登録します。 
 
 `src/core/Msg.ts` 
 
 ```ts
-// import greeting module messages
+//import greeting module messages
 ...
 import {
   MsgHello,
@@ -89,12 +89,12 @@ import {
 } from './greeting/msgs';
 ...
 
-// register GreetingMsg
+//register GreetingMsg
 export type Msg =
   | BankMsg
   | DistributionMsg
   | GovMsg
-  | GreetingMsg // ADD HERE
+  | GreetingMsg//ADD HERE
   | MarketMsg
   | MsgAuthMsg
   | OracleMsg
@@ -104,13 +104,13 @@ export type Msg =
 
 ...
 
-// register GreetingMsg.Data
+//register GreetingMsg.Data
 export namespace Msg {
   export type Data =
     | BankMsg.Data
     | DistributionMsg.Data
     | GovMsg.Data
-    | Greeting.Data // ADD HERE
+    | Greeting.Data//ADD HERE
     | MarketMsg.Data
     | MsgAuthMsg.Data
     | OracleMsg.Data
@@ -119,10 +119,10 @@ export namespace Msg {
     | WasmMsg.Data;
 ...
 
-  // register deserializer in Msg.fromData(...)
+ //register deserializer in Msg.fromData(...)
   export function fromData(data: Msg.Data): Msg {
   ...
-      // greeting
+     //greeting
       case 'greeting/MsgHello':
         return MsgHello.fromData(data);
       case 'greeting/MsgGoodbye':
@@ -132,17 +132,17 @@ export namespace Msg {
 }
 ```
 
-4.在`src/core/index.ts`中注册要导出的消息: 
+4.エクスポートするメッセージを `src/core/index.ts`に登録します。 
 
 ```ts
 ...
-// greeting
+//greeting
 export 'greeting/msgs';
 ```
 
-5. 添加参数更改。
+5.パラメータの変更を追加します。
 
-Terra.js 提供了一种简单的方法来生成`ParameterChangeProposal`s，这是一个改变与模块关联的区块链参数的提议。 如果您的模块具有可以通过提案更改的参数，您应该创建以下文件:
+Terra.jsは、モジュールに関連付けられたブロックチェーンパラメーターを変更するための提案である `ParameterChangeProposal`を生成する簡単な方法を提供します。 モジュールにプロポーザルを通じて変更できるパラメーターがある場合は、次のファイルを作成する必要があります。 
 
 `src/core/greeting/params.ts` 
 
@@ -200,7 +200,7 @@ import { GreetingParamChange, GreetingParamChanges } from '../greeting/params';
 
 export type ParamChanges = DistributionParamChanges &
   GovParamChanges &
-  GreetingParamChanges & // ADD HERE
+  GreetingParamChanges &//ADD HERE
   MarketParamChanges &
   OracleParamChanges &
   SlashingParamChanges &
@@ -212,7 +212,7 @@ export namespace ParamChanges {
   export const ConversionTable = {
     ...DistributionParamChanges.ConversionTable,
     ...GovParamChanges.ConversionTable,
-    ...GreetingParamChanges.ConverstionTable, // ADD HERE
+    ...GreetingParamChanges.ConverstionTable,//ADD HERE
     ...MarketParamChanges.ConversionTable,
     ...OracleParamChanges.ConversionTable,
     ...SlashingParamChanges.ConversionTable,
@@ -226,7 +226,7 @@ export namespace ParamChanges {
 export type ParamChange =
   | DistributionParamChange
   | GovParamChange
-  | GreetingParamChange // ADD HERE
+  | GreetingParamChange//ADD HERE
   | MarketParamChange
   | OracleParamChange
   | SlashingParamChange
@@ -238,16 +238,16 @@ export type ParamChange =
 
 ```
 
-## 向 LCDClient 添加 API 功能
+## LCDClientにAPI関数を追加します
 
-如果新模块存在 API 端点，则需要将此功能添加到“LCDClient”，以便它们可以访问。
+新しいモジュールのAPIエンドポイントがある場合は、それらにアクセスできるように、この関数を「LCDClient」に追加する必要があります。
 
-假设我们的 `greeting` 模块具有以下端点:
+グリーティングモジュールに次のエンドポイントがあるとします。
 
--`GET /greeting/hello/{accAddress}`
--`获取/问候/参数`
+-`GET/greeting/hello/{accAddress} `
+-`Get/Greetings/Parameters`
 
-1. 使用以下内容创建`src/client/lcd/api/GreetingAPI.ts`:
+1.次の内容で `src/client/lcd/api/GreetingAPI.ts`を作成します。 
 
 ```ts
 import { BaseAPI } from "./BaseAPI";
@@ -284,14 +284,14 @@ export class GreetingAPI extends BaseAPI {
 }
 ```
 
-2. 在 `src/client/lcd/api/index.ts` 中注册 API 功能:
+2.API関数を `src/client/lcd/api/index.ts`に登録します。 
 
 ```ts
 export * from './AuthAPI';
 export * from './BankAPI';
 export * from './DistributionAPI';
 export * from './GovAPI';
-export * from './GreetingAPI'; // ADD HERE
+export * from './GreetingAPI';//ADD HERE
 export * from './MarketAPI';
 export * from './MsgAuthAPI';
 export * from './OracleAPI';
@@ -304,7 +304,7 @@ export * from './TxAPI';
 export * from './WasmAPI';
 ```
 
-3. 将功能添加到`src/client/lcd/LCDClient.ts`:
+3.関数を `src/client/lcd/LCDClient.ts`に追加します。 
 
 ```ts
 ...
@@ -313,7 +313,7 @@ import {
   BankAPI,
   DistributionAPI,
   GovAPI,
-  GreetingAPI, // ADD HERE
+  GreetingAPI,//ADD HERE
   MarketAPI,
   MsgAuthAPI,
   OracleAPI,
@@ -332,12 +332,12 @@ export class LCDClient {
   public config: LCDClientConfig;
   public apiRequester: APIRequester;
 
-  // API access
+ //API access
   public auth: AuthAPI;
   public bank: BankAPI;
   public distribution: DistributionAPI;
   public gov: GovAPI;
-  public greeting: GreetingAPI; // ADD HERE
+  public greeting: GreetingAPI;//ADD HERE
   public market: MarketAPI;
   public msgauth: MsgAuthAPI;
   public oracle: OracleAPI;
@@ -349,7 +349,7 @@ export class LCDClient {
   public wasm: WasmAPI;
   public tx: TxAPI;
 
-  /**
+ /**
    * Creates a new LCD client with the specified configuration.
    *
    * @param config LCD configuration
@@ -362,12 +362,12 @@ export class LCDClient {
 
     this.apiRequester = new APIRequester(this.config.URL);
 
-    // instantiate APIs
+   //instantiate APIs
     this.auth = new AuthAPI(this.apiRequester);
     this.bank = new BankAPI(this.apiRequester);
     this.distribution = new DistributionAPI(this.apiRequester);
     this.gov = new GovAPI(this.apiRequester);
-    this.greeting = new GreetingAPI(this.apiRequester); // ADD HERE
+    this.greeting = new GreetingAPI(this.apiRequester);//ADD HERE
     this.market = new MarketAPI(this.apiRequester);
     this.msgauth = new MsgAuthAPI(this.apiRequester);
     this.oracle = new OracleAPI(this.apiRequester);

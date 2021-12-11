@@ -104,7 +104,7 @@ Terra Station 现在已连接到您选择的钱包。要更换钱包，请[断�
 
 ## 删除钱包
 
-删除钱包会从您的设备中删除钱包名称、密码和私钥。您可以通过输入您的[种子短语](#recover-a-wallet-using-a-seed-phrase)或[私钥和密码](#connect-to-a-wallet-using-a-)再次访问钱包私钥）。从一台设备上删除钱包并不会从其他设备上删除它。
+删除钱包会从您的设备中删除钱包名称、密码和私钥。您可以通过输入您的[种子短语](#recover-a-wallet-using-a-seed-phrase)或[私钥和密码](#connect-to-a-wallet-using-a-)再次访问钱包私钥)。从一台设备上删除钱包并不会从其他设备上删除它。
 
 ::: 危险 写下你的助记词
 在删除钱包之前，请务必确保您拥有种子短语和私钥。切勿将您的种子短语存储在数字设备上。如果没有种子短语或私钥和密码，您的钱包和资金将永远无法访问。始终将您的种子短语存储在安全的位置。
@@ -118,7 +118,7 @@ Terra Station 现在已连接到您选择的钱包。要更换钱包，请[断�
 
 4. 按照提示点击**删除**。
 
-您的钱包现已删除。您只能通过输入您的 [种子短语](#recover-a-wallet-using-a-seed-phrase) 或 [私钥和密码](#connect-to-a-wallet-using-a-private-key）。 
+您的钱包现已删除。您只能通过输入您的 [种子短语](#recover-a-wallet-using-a-seed-phrase) 或 [私钥和密码](#connect-to-a-wallet-using-a-private-key)。 
 
 ## 更改您的密码
 

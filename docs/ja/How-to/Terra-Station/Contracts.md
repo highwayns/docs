@@ -1,6 +1,6 @@
 # スマートコントラクトを使用する
 
-スマートコントラクトはTerraStationの高度な機能です。 Terra Stationを初めて使用する場合は、[Terra Stationチュートリアル]（/ja/Tutorials/Get-started/Terra-station-desktop.md）に従ってください。
+スマートコントラクトはTerraStationの高度な機能です。 Terra Stationを初めて使用する場合は、[Terra Stationチュートリアル](/ja/Tutorials/Get-started/Terra-station-desktop.md)に従ってください。
 
 ## 前提条件
 

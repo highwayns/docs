@@ -1,6 +1,6 @@
-# 键
+# 鍵
 
-要使用带有 Terra.js 的帐户执行操作，您需要一个 **Key**，它提供围绕帐户签名功能的抽象。
+Terra.jsでアカウントを使用して操作を実行するには、アカウント署名関数の抽象化を提供する**キー**が必要です。 
 
 ## Key interface
 
@@ -20,13 +20,13 @@ interface Key {
 }
 ```
 
-## 关键实现
+## 重要な実現
 
-Terra.js 提供了几种标准的“Key”实现，这些实现提供了多种方式将具有签名功能的帐户加载到您的程序中。
+Terra.jsは、いくつかの標準的な「キー」実装を提供します。これは、署名関数を持つアカウントをプログラムにロードするための複数の方法を提供します。
 
 ###`RawKey`
 
-`Key` 最基本的实现是 `RawKey`，它是用一个普通的私钥创建的。
+`Key`の最も基本的な実装は` RawKey`で、これは通常の秘密鍵で作成されます。 
 
 ```ts
 import { RawKey } from '@terra-money/terra.js';
@@ -34,7 +34,7 @@ import { RawKey } from '@terra-money/terra.js';
 const rk = new RawKey("<private key>");
 ```
 
-与 `RawKey` 关联的私钥可通过实例获得:
+`RawKey`に関連付けられた秘密鍵は、次の例で取得できます。 
 
 ```ts
 console.log(rk.privateKey);
@@ -50,18 +50,18 @@ const mk = new MnemonicKey({
 });
 ```
 
-#### 生成随机助记符
+#### ランダムなニーモニックを生成する
 
-如果你想生成一个随机助记符，你可以创建一个不带任何参数的`MnemonicKey`: 
+ランダムなニーモニックを生成する場合は、パラメーターなしで `MnemonicKey`を作成できます。 
 
 ```ts
 const mk = new MnemonicKey();
 console.log(mk.mnemonic);
 ```
 
-#### 指定高清路径
+#### HDパスを指定する
 
-`MnemonicKey` 可用于恢复具有特定 BIP44 HD 路径的钱包:`m/44'/${coinType}'/${account}'/0/${index}`。 
+`MnemonicKey`は、特定のBIP44HDパスでウォレットを復元するために使用できます :`m/44'/${coinType}'/${account}'/0/${index}`。 
 
 ```ts
 const mk = new MnemonicKey({
@@ -72,7 +72,7 @@ const mk = new MnemonicKey({
 });
 ```
 
-例如，使用代币类型为 ATOM (118) 使用旧的 Terra 钱包 HD 路径恢复助记符: 
+たとえば、トークンタイプATOM(118)を使用して、古いTerraウォレットHDパスを使用してニーモニックを復元します。 
 
 ```ts
 const mk = new MnemonicKey({
@@ -83,9 +83,9 @@ const mk = new MnemonicKey({
 
 ### `CLIKey`
 
-> 注意:这需要您安装 `terrad`。
+>注:これには、terradをインストールする必要があります。
 
-如果您想使用存储在“terrad”安装密钥环中的密钥来签署交易，您可以使用“CLIKey”。 这也适用于使用 Ledger 硬件设备使用 `--ledger` 在您的密钥环中注册的密钥。
+「terrad」インストールキーリングに保存されているキーを使用してトランザクションに署名する場合は、「CLIKey」を使用できます。 これは、キーリングに `--ledger`で登録されたキーを持つ元帳ハードウェアデバイスの使用にも当てはまります。
 
 ```ts
 import { StdFee, MsgSend } from '@terra-money/terra.js';
@@ -113,11 +113,11 @@ async function main() {
 main().catch(console.error);
 ```
 
-## 自定义键实现
+## カスタムキーの実装
 
-如果您需要编写自己的密钥管理解决方案，则需要继承抽象的“Key”类并提供您自己的签名功能。 请注意，密钥不需要公开与私钥有关的任何详细信息——例如，您可以指定一个 `sign()` 函数，将签名请求转发到服务器或硬件钱包。 其余与签名相关的函数（`createSignature()` 和 `signTx()`）是自动提供的，并在下面使用 `sign()`。
+独自の鍵管理ソリューションを作成する必要がある場合は、抽象「Key」クラスを継承し、独自の署名関数を提供する必要があります。 キーは秘密キーに関連する詳細を開示する必要がないことに注意してください。たとえば、 `sign()`関数を指定して、署名要求をサーバーまたはハードウェアウォレットに転送できます。 残りの署名関連関数( `createSignature()`と `signTx()`)は自動的に提供され、以下の `sign()`を使用します。
 
-下面的代码清单是`RawKey`的实现，它说明了如何编写自定义`Key`:
+次のコードリストは `RawKey`の実装であり、カスタム` Key`の記述方法を示しています。
 
 ```ts
 import SHA256 from 'crypto-js/sha256';
@@ -153,4 +153,4 @@ export class RawKey extends Key {
 }
 ```
 
-请注意，您必须使用公钥调用“super()”——这会生成与您的密钥关联的相关帐户和验证器公钥。 
+「super()」を呼び出すには、公開鍵を使用する必要があることに注意してください。これにより、関連するアカウントと、鍵に関連付けられた検証者の公開鍵が生成されます。  

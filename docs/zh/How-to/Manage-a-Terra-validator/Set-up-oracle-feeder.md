@@ -43,7 +43,7 @@ terrad tx market swap <luna-amount>uluna ukrw --from=<feeder>
 
 要开始使用您的 feeder 帐户提交 oracle 消息，请安装并设置 oracle feeder。
 
-- 通过访问 [Terra's oracle feeder Github repo](https://github.com/terra-) 安装 Terra 的 Node.js [`oracle-feeder`](https://github.com/terra-money/oracle-feeder)金钱/oracle-feeder）。
+- 通过访问 [Terra's oracle feeder Github repo](https://github.com/terra-) 安装 Terra 的 Node.js [`oracle-feeder`](https://github.com/terra-money/oracle-feeder)金钱/oracle-feeder)。
 
 鼓励验证者建立自己的预言机馈送器。
 

@@ -1,6 +1,6 @@
 # キャスト、書き込み、交換
 
-このガイドは、TerraStationの高度な交換機能に適しています。 Terra Stationを初めて使用する場合、またはコインを交換する場合は、[Terra Stationチュートリアル]（/ja/Tutorials/Get-started/Terra-station-desktop.md）に従ってください。
+このガイドは、TerraStationの高度な交換機能に適しています。 Terra Stationを初めて使用する場合、またはコインを交換する場合は、[Terra Stationチュートリアル](/ja/Tutorials/Get-started/Terra-station-desktop.md)に従ってください。
 
 ## 市場スワップ
 

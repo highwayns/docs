@@ -2,9 +2,9 @@
 
 検証者は、プライベートネットワークをセットアップして、パブリックネットワークに参加する前にTerraフルノードの実行に慣れることができます。
 
-：：：ヒントLocalTerra
-開発者であり、スマートコントラクト用にローカルのWASM対応プライベートテストネットをセットアップする場合は、[Download LocalTerra]（/ja/Tutorials/Smart-contracts/Setup-local-environment.html#download-）にアクセスしてください。 localterra）。
-：：：
+:::ヒントLocalTerra
+開発者であり、スマートコントラクト用にローカルのWASM対応プライベートテストネットをセットアップする場合は、[Download LocalTerra](/ja/Tutorials/Smart-contracts/Setup-local-environment.html#download-)にアクセスしてください。 localterra)。
+:::
 
 ## 単一のノードを作成します
 
@@ -23,8 +23,8 @@ terrad keys add <account-name>
 ```
 
 ::: tipトークンを取得
-Terradがウォレットアドレスを認識するためには、トークンが含まれている必要があります。 テストネットの場合は、[蛇口]（https://faucet.terra.money/）を使用してLunaをウォレットに送信します。 メインネットをご利用の場合は、既存のウォレットから資金を送金してください。 ほとんどのセットアップ手順では、1〜3ルナで十分です。
-：：：
+Terradがウォレットアドレスを認識するためには、トークンが含まれている必要があります。 テストネットの場合は、[蛇口](https://faucet.terra.money/)を使用してLunaをウォレットに送信します。 メインネットをご利用の場合は、既存のウォレットから資金を送金してください。 ほとんどのセットアップ手順では、1〜3ルナで十分です。
+:::
 
 ## アカウントをGenesisに追加します
 
@@ -44,4 +44,4 @@ terrad collect-gentxs
 terrad start
 ```
 
-プライベートTerraネットワークが正しく設定されている場合、 `terrad`ノードは` tcp：//localhost：26656`でノードを実行し、着信トランザクションをリッスンしてブロックに署名します。 
+プライベートTerraネットワークが正しく設定されている場合、 `terrad`ノードは` tcp://localhost:26656`でノードを実行し、着信トランザクションをリッスンしてブロックに署名します。 

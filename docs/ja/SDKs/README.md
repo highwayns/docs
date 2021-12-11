@@ -1,6 +1,6 @@
 # SDKs
 
-使用此部分访问 terra.js SDK。 
+このセクションを使用して、terra.jsSDKにアクセスします。 
 
 <!--
 <div class="cards twoColumn">

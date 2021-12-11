@@ -1,7 +1,7 @@
 # 能力
 
 :::警告メモ
-Terraの機能モジュールは、Cosmos SDKの[`capability`]（https://docs.cosmos.network/master/modules/capability/）モジュールから継承されます。このドキュメントはスタブであり、主にその使用方法に関する重要なTerra固有の手順をカバーしています。
+Terraの機能モジュールは、Cosmos SDKの[`capability`](https://docs.cosmos.network/master/modules/capability/)モジュールから継承されます。このドキュメントはスタブであり、主にその使用方法に関する重要なTerra固有の手順をカバーしています。
 :::
 
 機能モジュールを使用すると、実行時に複数所有者の機能を構成、追跡、および検証できます。

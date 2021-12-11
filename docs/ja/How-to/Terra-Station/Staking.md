@@ -1,6 +1,6 @@
 # 管理委任
 
-このガイドを使用して、TerraStationでの誓約委任を管理します。特典のコミッションまたは引き出し方法については、Terra Station [desktop]（/ja/Tutorials/Get-started/Terra-Station-desktop.md）または[mobile]（/ja/Tutorials/Get-started/Terra-）にアクセスしてください。 Station-mobile。md）チュートリアル。
+このガイドを使用して、TerraStationでの誓約委任を管理します。特典のコミッションまたは引き出し方法については、Terra Station [desktop](/ja/Tutorials/Get-started/Terra-Station-desktop.md)または[mobile](/ja/Tutorials/Get-started/Terra-)にアクセスしてください。 Station-mobile。md)チュートリアル。
 
 ## 再委任
 

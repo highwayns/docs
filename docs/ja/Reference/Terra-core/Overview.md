@@ -3,7 +3,7 @@
 このドキュメントには、Terraがどのように機能するかを理解し、Terraノードソフトウェアの公式Golangリファレンス実装であるTerraCoreのコードベースを効果的にナビゲートするのに役立つヒントとガイドが含まれています。
 
 :::ヒントと提案
-Terra Coreは、[Cosmos SDK]（https://cosmos.network/sdk）を使用して構築されます。これは、[Tendermint]（https://tendermint.com/）コンセンサスプロトコルBlockchain上で構築および実行するための強力なフレームワークを提供します。 。
+Terra Coreは、[Cosmos SDK](https://cosmos.network/sdk)を使用して構築されます。これは、[Tendermint](https://tendermint.com/)コンセンサスプロトコルBlockchain上で構築および実行するための強力なフレームワークを提供します。 。
 
 ABCI、バリデーター、キーパー、メッセージハンドラーなどの概念に精通していることを前提としているため、Terra開発者向けドキュメントを詳しく調べる前に、これらの項目を確認することを強くお勧めします。
 :::
@@ -14,7 +14,7 @@ ABCI、バリデーター、キーパー、メッセージハンドラーなど�
 
 はじめに、各モジュールでは、主要なプロセスとアルゴリズム、および理解する必要のある概念について、より詳細に説明します。モジュールは通常、特定の状態変数、メッセージハンドラー、対象となる可能性のある関数など、仕様のより深くより具体的な部分と相互参照されるため、モジュールの理解を開始することをお勧めします。
 
-現在の関数のドキュメントは完全なリファレンスではありませんが、Terra Coreコードベースを直接使用するか、それを理解する必要がある人のためのリファレンスコンパニオンです。各モジュールの重要な機能がカバーされています。経済性のために、多くの些細な機能（ゲッターやセッターなど）は省略されています。モジュールロジックを見つけることができる他の場所は、メッセージハンドラーまたはブロック変換（begin-blockerおよびend-blocker）です。
+現在の関数のドキュメントは完全なリファレンスではありませんが、Terra Coreコードベースを直接使用するか、それを理解する必要がある人のためのリファレンスコンパニオンです。各モジュールの重要な機能がカバーされています。経済性のために、多くの些細な機能(ゲッターやセッターなど)は省略されています。モジュールロジックを見つけることができる他の場所は、メッセージハンドラーまたはブロック変換(begin-blockerおよびend-blocker)です。
 
 最後に、仕様には、さまざまなモジュールパラメータとそのデフォルト値がリストされており、それらの目的、および関連するイベント/タグとモジュールによって発行されたエラーが簡単に説明されています。
 
@@ -23,27 +23,27 @@ ABCI、バリデーター、キーパー、メッセージハンドラーなど�
 ノードソフトウェアは、Terraプロトコルのさまざまな部分を実装する次の個別のモジュールに編成されています。それらは、作成時に初期化された順序でリストされています。
 
 1. `genaccounts`-ジェネシスアカウントのインポートとエクスポート
-2. [`distribution`]（./Module-specifications/spec-distribution.md）:バリデーターとデリゲーターの間で報酬を分配します
+2. [`distribution`](./Module-specifications/spec-distribution.md):バリデーターとデリゲーターの間で報酬を分配します
    -税金と報酬の分配
    -コミュニティスイミングプール
-3. [`staking`]（./Module-specifications/spec-staking.md）:ベリファイアとルナ
-4. [`auth`]（./Module-specifications/spec-auth.md）:アンティハンドラー
+3. [`staking`](./Module-specifications/spec-staking.md):ベリファイアとルナ
+4. [`auth`](./Module-specifications/spec-auth.md):アンティハンドラー
    -帰属アカウント
    -安定層料金
-5. [`bank`]（./Module-specifications/spec-bank.md）-口座から口座への資金の送金
-6. [`slashing`]（./Module-specifications/spec-slashing.md）-低レベルのテンダーミントスラッシュ（二重署名など）
-7. [`oracle`]（./Module-specifications/spec-oracle.md）-為替レートフィードオラクル
+5. [`bank`](./Module-specifications/spec-bank.md)-口座から口座への資金の送金
+6. [`slashing`](./Module-specifications/spec-slashing.md)-低レベルのテンダーミントスラッシュ(二重署名など)
+7. [`oracle`](./Module-specifications/spec-oracle.md)-為替レートフィードオラクル
    -カウントされた投票の加重中央値
    -投票報酬
    -不正行為によるオラクルの削減
-8. [`treasury`]（./Module-specifications/spec-treasury.md）:鉱夫のための安定したインセンティブ
+8. [`treasury`](./Module-specifications/spec-treasury.md):鉱夫のための安定したインセンティブ
    -マクロ経済モニタリング
-   -金融政策のレバレッジ（税率、報酬の重み）
+   -金融政策のレバレッジ(税率、報酬の重み)
    -シニョリッジの和解:コロンバス5日から、すべてのシニョリッジが燃やされました
-9. [`gov`]（./Module-specifications/spec-governance.md）:オンチェーンガバナンス
+9. [`gov`](./Module-specifications/spec-governance.md):オンチェーンガバナンス
     -提案
     -パラメータの更新
-10. [`market`]（./Module-specifications/spec-market.md）:価格の安定性
+10. [`market`](./Module-specifications/spec-market.md):価格の安定性
     -Terra <> Terraスポット変換、トービン税
     -Terra <> Lunaマーケットメーカー、一定の製品スプレッド
 11. `crisis`-コンセンサスの失敗状況を報告し、チェーンを停止する証拠を提供します
@@ -79,8 +79,8 @@ TerraCoreの多くのモジュールはCosmosSDKから継承され、ジェネ�
 
 5. オラクル
 
-   -「VotePeriod」で終わる場合は、[投票手順]（/ja/Module-specifications/spec-oracle.md#voting-procedure）を実行し、**ルナの為替レートを更新**します。
-   -`SlashWindow`の最後にある場合、**ペナルティ[missed]（/ja/Module-specifications/spec-slashing.md）が `VotePeriod`の許可されたバリデーター**を超えています。
+   -「VotePeriod」で終わる場合は、[投票手順](/ja/Module-specifications/spec-oracle.md#voting-procedure)を実行し、**ルナの為替レートを更新**します。
+   -`SlashWindow`の最後にある場合、**ペナルティ[missed](/ja/Module-specifications/spec-slashing.md)が `VotePeriod`の許可されたバリデーター**を超えています。
 
 6. ガバナンス
 
@@ -88,11 +88,11 @@ TerraCoreの多くのモジュールはCosmosSDKから継承され、ジェネ�
 
 7. 市場
 
-   -[補足]（/ja/Module-specifications/spec-market.md#end-block）流動性プール、**許容可能なスプレッドコストの削減**。
+   -[補足](/ja/Module-specifications/spec-market.md#end-block)流動性プール、**許容可能なスプレッドコストの削減**。
 
 8. 財務省
 
-   -「エポック」の終わりに、次の時代の指標を更新し、シニョリッジを燃やし、金融政策のレバレッジ（税率、報酬の重み）を再調整します。
+   -「エポック」の終わりに、次の時代の指標を更新し、シニョリッジを燃やし、金融政策のレバレッジ(税率、報酬の重み)を再調整します。
 
 9. 誓約
    -アクティブなバリデーターの新しいセットは、上位130のLuna誓約者から決定されます。コレクション内での位置を失ったバリデーターは、バインド解除プロセスを開始します。
@@ -103,13 +103,13 @@ TerraCoreの多くのモジュールはCosmosSDKから継承され、ジェネ�
 
 Terraプロトコルでは、アカウントとウォレットは2種類のトークンを保持できます。
 
-1. ** Terraのステーブルコイン**は、さまざまな法定通貨の為替レートを追跡します。各Terraステーブルコインは、対応する3文字の[ISO 4217法定通貨コード]（https://www.xe.com/iso4217.php）にちなんで名付けられ、 `Terra <currencycode>`と記述されています。値として使用する場合、各通貨コードの省略形の最後の文字はTに置き換えられ、Terraステーブルコインであることを示します。たとえば、韓国ウォンのKRWにペグされたTerraステーブルコインはTerraKRWと呼ばれ、その略語はKRTです。
+1. ** Terraのステーブルコイン**は、さまざまな法定通貨の為替レートを追跡します。各Terraステーブルコインは、対応する3文字の[ISO 4217法定通貨コード](https://www.xe.com/iso4217.php)にちなんで名付けられ、 `Terra <currencycode>`と記述されています。値として使用する場合、各通貨コードの省略形の最後の文字はTに置き換えられ、Terraステーブルコインであることを示します。たとえば、韓国ウォンのKRWにペグされたTerraステーブルコインはTerraKRWと呼ばれ、その略語はKRTです。
 
-   Terra契約の標準基本通貨は、TerraSDR（SDT）であり、IMFの特別引出権にリンクされています。 Terraプロトコルは、SDTを使用してレート標準を計算および設定します。
+   Terra契約の標準基本通貨は、TerraSDR(SDT)であり、IMFの特別引出権にリンクされています。 Terraプロトコルは、SDTを使用してレート標準を計算および設定します。
 
 2. ** Luna **は、Terraプロトコルの元の誓約資産です。委任者がアクティブなバリデーターにルナを誓約すると、マイニング報酬を受け取ります。 Lunaは、Terraステーブルコインの価格変動を吸収することで、Terra経済を安定させ、ガバナンスの推奨事項を作成するためにも使用されます。
 
-マイクロ単位（$ \ times 10 ^ {-6} $）は、Terraステーブルコインとルナの最小の原子単位です。
+マイクロ単位($ \ times 10 ^ {-6} $)は、Terraステーブルコインとルナの最小の原子単位です。
 
 | Denomination | Micro-Unit | Code    | Value         |
 | :----------- | :--------- | :------ | :------------ |

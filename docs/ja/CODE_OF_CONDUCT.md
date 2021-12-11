@@ -12,7 +12,7 @@
 ## 私たちの基準
 
 ポジティブな環境を作るのに役立つ行動の例
-含む：
+含む:
 
 *歓迎的で包括的な言葉を使用する
 *さまざまな意見や経験を尊重する
@@ -70,7 +70,7 @@ general@terra.money経由でプロジェクトチームに連絡して報告し�
 この行動規範は、[寄稿者会議] [ホームページ]、バージョン1.4、
 https://www.contributor-covenant.org/version/1/4/code-of-conduct.htmlで入手可能
 
-[ホームページ]：https：//www.contributor-covenant.org
+[ホームページ]:https://www.contributor-covenant.org
 
 この行動規範に関するよくある質問への回答については、以下を参照してください。
 https://www.contributor-covenant.org/faq 

@@ -2,7 +2,7 @@
 
 次の情報を使用して、実稼働レベルの完全なTerraノードをセットアップおよび管理します。
 
-バリデーターノードの実行については、[バリデーターガイド]（/ja/How-to/Manage-a-Terra-validator/Overview.md）にアクセスしてください。
+バリデーターノードの実行については、[バリデーターガイド](/ja/How-to/Manage-a-Terra-validator/Overview.md)にアクセスしてください。
 
 :::警告推奨オペレーティングシステム
 このガイドは、RPMベースのLinuxディストリビューションに対してのみテストされています。 実稼働環境を正常にセットアップするために、RPMベースのLinuxシステムでのセットアップを検討してください。
@@ -32,9 +32,9 @@
 
 追加のポート:
 
--`1317`:[Lite Client Daemon]（/ja/How-to/Start-LCD.md）（LCD）のデフォルトポート。`terradrest-server`で実行できます。 LCDはHTTPRESTful APIレイヤーを提供し、アプリケーションとサービスがRPCを介して「terrad」インスタンスと対話できるようにします。使用例については、[Terra REST API]（https://lcd.terra.dev/swagger/）を参照してください。使用しない限り、このポートを開く必要はありません。
+-`1317`:[Lite Client Daemon](/ja/How-to/Start-LCD.md)(LCD)のデフォルトポート。`terradrest-server`で実行できます。 LCDはHTTPRESTful APIレイヤーを提供し、アプリケーションとサービスがRPCを介して「terrad」インスタンスと対話できるようにします。使用例については、[Terra REST API](https://lcd.terra.dev/swagger/)を参照してください。使用しない限り、このポートを開く必要はありません。
 
--`26660`:[Prometheus]（https://prometheus.io）データベースと対話するためのデフォルトのポート。環境の監視に使用できます。デフォルト設定では、このポートは開いていません。
+-`26660`:[Prometheus](https://prometheus.io)データベースと対話するためのデフォルトのポート。環境の監視に使用できます。デフォルト設定では、このポートは開いていません。
 
 -`26657`:RPCプロトコルのデフォルトポート。このポートはトランザクションのクエリと送信に使用されるため、 `terrad`からクエリサービスを提供するにはポートを開く必要があります。
 

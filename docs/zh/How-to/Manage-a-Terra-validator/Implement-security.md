@@ -42,8 +42,8 @@ private_peer_ids = "ipaddress of validator nodes"
 
 默认情况下，具有以下前缀的大写环境变量将替换小写命令行标志:
 
-- `TE` \（用于 Terra 标志\）
-- `TM` \（用于 Tendermint 标志\）
-- `BC` \（用于 democli 或 basecli 标志\）
+- `TE` \(用于 Terra 标志\)
+- `TM` \(用于 Tendermint 标志\)
+- `BC` \(用于 democli 或 basecli 标志\)
 
 例如，环境变量“TE_CHAIN_ID”将映射到命令行标志“--chain-id”。虽然显式命令行标志将优先于环境变量，但环境变量将优先于您的任何配置文件。因此，您必须锁定您的环境，以便将任何关键参数定义为 CLI 上的标志，或者防止修改任何环境变量。 

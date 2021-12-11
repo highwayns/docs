@@ -1,37 +1,37 @@
-# 与合约交互
+# 契約と対話する
 
-::: 警告注意
+:::警告メモ
 
-您也可以在 Terra 的官方桌面钱包 [Terra Station](https://station.terra.money) 中执行这些步骤。
+これらの手順は、Terraの公式デスクトップウォレット[Terra Station](https://station.terra.money)でも実行できます。
 
 :::
 
-## 要求
+## 必須
 
-确保您已设置 **LocalTerra** 并且它已启动并正在运行:
+** LocalTerra **を設定し、稼働していることを確認してください。 
 
 ```sh
 cd localterra
 docker-compose up
 ```
 
-您还应该通过构建最新版本的 Terra Core 来获得最新版本的 `terrad`。 我们将配置它以在我们隔离的测试网环境中使用它。
+また、最新バージョンのTerra Coreをビルドして、最新バージョンの `terrad`を入手する必要があります。 分離されたテストネット環境で使用するように構成します。
 
-在单独的终端中，确保设置以下助记符:
+別の端末で、必ず次のニーモニックを設定してください。
 
 ```sh
 terrad keys add test1 --recover
 ```
 
-使用助记符: 
+ニーモニックを使用する: 
 
 ```
 satisfy adjust timber high purchase tuition stool faith fine install that you unaware feed domain license impose boss human eager hat rent enjoy dawn
 ```
 
-## 上传代码
+## コードをアップロード
 
-确保您在上一节中创建的 `my_first_contract.wasm` 的**优化构建**位于您当前的工作目录中。 
+前のセクションで作成した `my_first_contract.wasm`の**最適化されたビルド**が現在の作業ディレクトリにあることを確認してください。  
 
 ```sh
 terrad tx wasm store artifacts/my_first_contract.wasm --from test1 --chain-id=localterra --gas=auto --fees=100000uluna --broadcast-mode=block
@@ -42,9 +42,9 @@ Or, if you are on an arm64 machine:
 terrad tx wasm store artifacts/my_first_contract-aarch64.wasm --from test1 --chain-id=localterra --gas=auto --fees=100000uluna --broadcast-mode=block
 ```
 
-这将在向 LocalTerra 广播之前要求确认，输入“y”并按 Enter。
+これにより、LocalTerraにブロードキャストする前に確認を求められます。「y」と入力して、Enterキーを押します。
 
-您应该会看到类似于以下内容的输出:
+次のような出力が表示されます。 
 
 ```sh
 height: 6
@@ -87,9 +87,9 @@ codehash: KVR4SWuieLxuZaStlvFoUY9YXlcLLMTHYVpkubdjHEI=
 creator: terra1dcegyrekltswvyy0xy69ydgxn9x8x32zdtapd8
 ```
 
-## 创建合约
+## これにより、LocalTerraにブロードキャストする前に確認を求められます。「y」と入力して、Enterキーを押します。
 
-我们现在已经上传了我们合约的代码，但我们仍然没有合约。 让我们使用以下 InitMsg 创建它: 
+次のような出力が表示されます。 
 
 ```json
 {
@@ -137,9 +137,9 @@ tx: null
 timestamp: ""
 ```
 
-从输出中，我们看到我们的合约是在上面创建的:`terra18vd8fpwxzck93qlwghaj6arh4p7c5n896xzem5`。 记下这个合约地址，因为我们将在下一节中用到它。
+これにより、LocalTerraにブロードキャストする前に確認を求められます。「y」と入力して、Enterキーを押します。
 
-查看您的合同信息:
+次のような出力が表示されます。 
 
 ```sh
 terrad query wasm contract terra18vd8fpwxzck93qlwghaj6arh4p7c5n896xzem5
@@ -220,10 +220,10 @@ query_result:
   count: 7
 ```
 
-优秀的！ 恭喜，您已经创建了第一个智能合约，并且现在知道如何使用 Terra dApp 平台进行开发。
+優れました！ おめでとうございます。これで最初のスマートコントラクトが作成され、TerradAppプラットフォームを使用して開発する方法がわかりました。
 
-## 下一步是什么？
+## 次は何ですか？
 
-我们只介绍了一个简单的智能合约示例，它在其内部状态中修改了一个简单的余额。 虽然这足以制作一个简单的 dApp，但我们可以通过**发送消息** 为更多有趣的应用程序提供动力，这将使我们能够与其他合约以及区块链模块的其余部分进行交互。
+内部状態の単純なバランスを変更する単純なスマートコントラクトの例のみを紹介しました。 これは単純なdAppを作成するのに十分ですが、**メッセージを送信**することで、より興味深いアプリケーションを強化できます。これにより、他のコントラクトや残りのブロックチェーンモジュールと対話できるようになります。
 
-在我们的 [repo](https://github.com/terra-money/cosmwasm-contracts) 上查看更多关于 Terra 的智能合约示例。 
+[リポジトリ](https://github.com/terra-money/cosmwasm-contracts)でTerraのスマートコントラクトのその他の例を確認してください。 

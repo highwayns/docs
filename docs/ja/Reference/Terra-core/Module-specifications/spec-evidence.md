@@ -1,7 +1,7 @@
 # 証拠
 
 :::警告メモ
-Terraの証拠モジュールは、Cosmos SDKの[`evidence`]（https://docs.cosmos.network/master/modules/evidence/）モジュールから継承されます。このドキュメントはスタブであり、主にその使用方法に関する重要なTerra固有の手順をカバーしています。
+Terraの証拠モジュールは、Cosmos SDKの[`evidence`](https://docs.cosmos.network/master/modules/evidence/)モジュールから継承されます。このドキュメントはスタブであり、主にその使用方法に関する重要なTerra固有の手順をカバーしています。
 :::
 
 証拠モジュールを使用すると、あいまいさや反事実的署名など、不正行為の任意の証拠を提出および処理できます。
@@ -150,7 +150,7 @@ func SubmitEvidence(ctx Context, evidence Evidence) error {
 #### 証拠処理
 
 テンダーミントブロックには次のものが含まれます
-[証拠]（https://github.com/tendermint/tendermint/blob/master/docs/spec/blockchain/blockchain.md#evidence）検証者が悪意のある動作をしているかどうかを示します。 関連情報は、ABCIの証拠としてabci.RequestBeginBlockでアプリケーションに転送されるため、バリデーターはそれに応じて罰せられます。
+[証拠](https://github.com/tendermint/tendermint/blob/master/docs/spec/blockchain/blockchain.md#evidence)検証者が悪意のある動作をしているかどうかを示します。 関連情報は、ABCIの証拠としてabci.RequestBeginBlockでアプリケーションに転送されるため、バリデーターはそれに応じて罰せられます。
 
 #### あいまいさ
 
@@ -180,7 +180,7 @@ where:
 - `block.Timestamp` is the current block timestamp.
 
 ブロックに有効な「Equivocation」証拠が含まれている場合、検証者の公平性は
-[slashing module]（spec-slashing.md）で定義される `SlashFractionDoubleSign`を削減しました。 削減は、証拠が発見されたときではなく、違反が発生したときに実装されます。
+[slashing module](spec-slashing.md)で定義される `SlashFractionDoubleSign`を削減しました。 削減は、証拠が発見されたときではなく、違反が発生したときに実装されます。
 再承認された場合やバインドが解除され始めた場合でも、違反の原因となったシェアは減少します。
 
 さらに、検証者は永久に投獄され、墓石に入れられるため、検証者は検証者セットに再び入ることはできません。
@@ -289,4 +289,4 @@ func (k Keeper) HandleEquivocationEvidence(ctx sdk.Context, evidence *types.Equi
 ```
 :::
 
-スラッシュ、ジェイル、およびトゥームストーニングの呼び出しは、情報イベントを発行し、最終的にステーキングモジュールに呼び出しを委任するスラッシュモジュールを介して委任されます。 ステーキングと投獄の詳細については、[transitions]（spec-staking.md#transitions）を参照してください。 
+スラッシュ、ジェイル、およびトゥームストーニングの呼び出しは、情報イベントを発行し、最終的にステーキングモジュールに呼び出しを委任するスラッシュモジュールを介して委任されます。 ステーキングと投獄の詳細については、[transitions](spec-staking.md#transitions)を参照してください。 

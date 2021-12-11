@@ -32,7 +32,7 @@ Terraswap 或其他 dApp 可能会在 Terra 网络费用之外收取自己的交
 
 托宾税是添加到 Terra 稳定币面额之间的任何 [市场互换](./glossary.md#market-swap) 的固定百分比费用。费率因每个 Terra 稳定币而异。例如，虽然大多数面额的税率为 0.35%，但 MNT 的税率为 2%。要查看托宾税率，请[查询预言机](https://lcd.terra.dev/terra/oracle/v1beta1/denoms/tobin_taxes)。当稳定币有不同的托宾税率时，交易将使用较高的税率。
 
- 托宾税旨在阻止以牺牲用户利益为代价抢先运行预言机和外汇交易。有关托宾税实施的更多信息，请阅读 [“关于掉期费:贪婪和明智”](https://medium.com/terra-money/on-swap-fees-the-greedy-and- the-wise-b967f0c8914e）。
+ 托宾税旨在阻止以牺牲用户利益为代价抢先运行预言机和外汇交易。有关托宾税实施的更多信息，请阅读 [“关于掉期费:贪婪和明智”](https://medium.com/terra-money/on-swap-fees-the-greedy-and- the-wise-b967f0c8914e)。
 
 ## 点差费
 

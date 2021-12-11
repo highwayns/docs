@@ -1,6 +1,6 @@
 # 使用 terrad
 
-以下信息解释了您可以从“terrad”（连接正在运行的“terrad”进程的命令行界面）中使用的功能。使用它来访问 Terra。有关命令行的更多一般信息，请运行`terrad --help`。有关特定`terrad` 命令的更多信息，请在命令后附加`-h` 或`--help` 标志，例如`terrad query --help`。
+以下信息解释了您可以从“terrad”(连接正在运行的“terrad”进程的命令行界面)中使用的功能。使用它来访问 Terra。有关命令行的更多一般信息，请运行`terrad --help`。有关特定`terrad` 命令的更多信息，请在命令后附加`-h` 或`--help` 标志，例如`terrad query --help`。
 
 ## 访问节点
 
@@ -8,7 +8,7 @@
 
 ### 运行你自己的全节点
 
-运行自己的全节点是最安全的选择，但它对资源的要求相对较高。有关运行您自己的完整节点的要求和安装 `terrad` 的教程的更多信息，请参阅 [安装](../../How-to/Run-a-full-Terra-node/Build-Terra-核心.md）。有关解释如何连接到现有 Terra 网络的教程，请参阅[加入网络](../../How-to/Run-a-full-Terra-node/Join-public-network.md)。
+运行自己的全节点是最安全的选择，但它对资源的要求相对较高。有关运行您自己的完整节点的要求和安装 `terrad` 的教程的更多信息，请参阅 [安装](../../How-to/Run-a-full-Terra-node/Build-Terra-核心.md)。有关解释如何连接到现有 Terra 网络的教程，请参阅[加入网络](../../How-to/Run-a-full-Terra-node/Join-public-network.md)。
 
 ### 连接远程全节点
 
@@ -107,7 +107,7 @@ Terra 协议网络上的交易需要包括交易费才能进行处理。这笔�
 
 $$ 费用 = gas * gasPrices$$
 
-`gas` 取决于交易。不同的交易需要不同数量的“gas”。交易的 `gas` 金额是在处理过程中计算的，但是有一种方法可以通过使用 `gas` 标志的 `auto` 值来预先估计它。当然，这只是一个估计。如果你想确保为交易提供足够的`gas`，你可以使用标志`--gas-adjustment` \（默认`1.0`\）来调整这个估计。
+`gas` 取决于交易。不同的交易需要不同数量的“gas”。交易的 `gas` 金额是在处理过程中计算的，但是有一种方法可以通过使用 `gas` 标志的 `auto` 值来预先估计它。当然，这只是一个估计。如果你想确保为交易提供足够的`gas`，你可以使用标志`--gas-adjustment` \(默认`1.0`\)来调整这个估计。
 
 `gasPrice` 是每单位 `gas` 的价格。每个验证器都会设置一个 `min-gas-price` 值，并且只会包含 `gasPrice` 大于其 `min-gas-price` 的交易。
 
@@ -131,7 +131,7 @@ terrad tx send ... --fees=100000uluna
 
 如果您使用费用，验证器将通过将您的费用除以估计的 gas 消耗来计算隐含的 `minGasPrices`，以正确地为您的交易分配正确的优先级。
 
-使用汽油价格（使用逗号分隔的金额和面额列表）。 
+使用汽油价格(使用逗号分隔的金额和面额列表)。 
 
 ```bash
 terrad tx send ... --gas-prices=0.15uusd
@@ -168,7 +168,7 @@ terrad tx send ... \
 
 ## shell自动完成
 
-可以通过 `completion` 命令生成流行的 UNIX shell 解释器（如 `bash` 和 `zsh`）的自动完成脚本，该命令可用于 `terrad` 和 `terrad`。 这允许在使用命令行时以更方便的方式与 Terra Core 端点交1互。
+可以通过 `completion` 命令生成流行的 UNIX shell 解释器(如 `bash` 和 `zsh`)的自动完成脚本，该命令可用于 `terrad` 和 `terrad`。 这允许在使用命令行时以更方便的方式与 Terra Core 端点交1互。
 
 如果要生成`bash`完成脚本，请运行以下命令: 11
 

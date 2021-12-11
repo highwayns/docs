@@ -4,14 +4,14 @@
 
 ## Oracle投票用の新しいキーを作成します
 
-検証者のアカウントを制御するために使用されるキーを、検証者に代わってOracle投票を送信するために使用されるキーから分離できます。 走る： 
+検証者のアカウントを制御するために使用されるキーを、検証者に代わってOracle投票を送信するために使用されるキーから分離できます。 走る: 
 
 ```bash
 terrad keys add <feeder>
 ```
 
 
-フィーダーアカウントの詳細を表示する： 
+フィーダーアカウントの詳細を表示する: 
 ```bash
 terrad keys show <feeder>
 ```
@@ -42,10 +42,10 @@ terrad tx market swap <luna-amount>uluna ukrw --from=<feeder>
 
 フィーダーアカウントを使用してオラクルメッセージの送信を開始するには、オラクルフィーダーをインストールして設定してください。
 
--[TerraのオラクルフィーダーGithubリポジトリ]（https://github.com/terra-）[`oracle-feeder`]（https://github.com/terra-money/oracle-feeder]にアクセスしてTerraのNode.jsをインストールします）money/oracle-feeder）。
+-[TerraのオラクルフィーダーGithubリポジトリ](https://github.com/terra-)[`oracle-feeder`](https://github.com/terra-money/oracle-feeder]にアクセスしてTerraのNode.jsをインストールします)money/oracle-feeder)。
 
 検証者に独自のオラクルフィーダーを構築するように促します。
 
 OracleFeederプロジェクトの例は次のとおりです。
--[`terra_oracle_voter`]（https://github.com/b-harvest/terra_oracle_voter）は[B-Harvest]（https://bharvest.io/）によって作成されました。
--[`terra-oracle`]（https://github.com/node-a-team/terra-oracle）は[Node A-Team]（https://nodeateam.com/）によって作成されました。 
+-[`terra_oracle_voter`](https://github.com/b-harvest/terra_oracle_voter)は[B-Harvest](https://bharvest.io/)によって作成されました。
+-[`terra-oracle`](https://github.com/node-a-team/terra-oracle)は[Node A-Team](https://nodeateam.com/)によって作成されました。 

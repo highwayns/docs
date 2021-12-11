@@ -1,79 +1,79 @@
 # WASM
 
-WASM 模块实现了 WebAssembly 智能合约的执行环境，由 [CosmWasm](https://cosmwasm.com) 提供支持。
+WASMモジュールは、[CosmWasm](https://cosmwasm.com)でサポートされているWebAssemblyスマートコントラクトの実行環境を実装します。
 
 ## 概念
 
-### 智能合约
+### スマートコントラクト
 
-智能合约是自主代理，能够与 Terra 区块链上的其他实体进行交互，例如人类拥有的账户、验证器和其他智能合约。每个智能合约都有:
+スマートコントラクトは、人間が所有するアカウント、バリデーター、その他のスマートコントラクトなど、Terraブロックチェーン上の他のエンティティと対話できる自律エージェントです。すべてのスマートコントラクトには次のものがあります。
 
-- 一个唯一的**合约地址**，账户持有资金
-- **代码 ID**，其中定义了其逻辑
-- 它自己的**键值存储**，它可以在其中持久化和检索数据
+-一意の**契約アドレス**、アカウントは資金を保持します
+-**コードID **、そのロジックを定義します
+-独自の** Key-Valueストア**で、データを永続化および取得できます
 
-#### 合约地址
+#### 契約アドレス
 
-实例化后，每个合约都会自动分配一个 Terra 账户地址，称为_合约地址_。地址是链上程序生成的，没有附带的私钥/公钥对，完全可以由合约的编号存在顺序决定。例如，在两个独立的 Terra 网络上，第一个合约将始终分配地址“terra18vd8fpwxzck93qlwghaj6arh4p7c5n896xzem5”，第二个、第三个等类似。
+インスタンス化後、各コントラクトには_contractaddress_と呼ばれるTerraアカウントアドレスが自動的に割り当てられます。アドレスはチェーン上のプログラムによって生成され、秘密鍵と公開鍵のペアは接続されておらず、契約番号の順序によって完全に決定できます。たとえば、2つの独立したTerraネットワークでは、最初のコントラクトは常にアドレス「terra18vd8fpwxzck93qlwghaj6arh4p7c5n896xzem5」を割り当て、2番目、3番目などは同様です。
 
-#### 代码 ID
+#### コードID
 
-在 Terra 上，代码上传和合约创建作为单独的事件发生。智能合约编写者首先将 WASM 字节码上传到区块链以获得 _code ID_，然后他们可以使用它来初始化该合约的实例。该方案促进了高效存储，因为大多数合约共享相同的底层逻辑，并且仅在初始配置上有所不同。针对常见用例（例如可互换代币和多重签名钱包）的经过审查的高质量合同可以轻松重复使用，无需上传新代码。
+Terraでは、コードのアップロードとコントラクトの作成は別々のイベントとして発生します。スマートコントラクトライターは、最初にWASMバイトコードをブロックチェーンにアップロードして_code ID_を取得し、次にそれを使用してコントラクトのインスタンスを初期化できます。ほとんどのコントラクトは同じ基本ロジックを共有し、初期構成のみが異なるため、このソリューションは効率的なストレージを促進します。交換可能なトークンやマルチシグニチャウォレットなどの一般的なユースケース向けの精査された高品質の契約は、新しいコードをアップロードしなくても簡単に再利用できます。
 
-#### 键值存储
+#### キー値ストレージ
 
-每个智能合约在 LevelDB 中都有自己的专用密钥空间，以合约地址为前缀。合约代码被安全地沙箱化，只能在其分配的键空间内设置和删除新的键和值。
+各スマートコントラクトには、LevelDBに独自の秘密鍵スペースがあり、その前にコントラクトアドレスが付いています。契約コードは安全にサンドボックス化されており、新しいキーと値は、割り当てられたキースペースでのみ設定および削除できます。
 
-### 相互作用
+### 交流
 
-用户可以通过多种方式与智能合约进行交互。
+ユーザーはさまざまな方法でスマートコントラクトを操作できます。
 
-#### 实例化
+#### インスタンス化
 
-用户可以通过发送“MsgInstantiateContract”来实例化一个新的智能合约。在其中，用户能够:
+ユーザーは「MsgInstantiateContract」を送信することで新しいスマートコントラクトをインスタンス化できます。その中で、ユーザーは次のことができます。
 
-- 为合同分配一个所有者
-- 指定代码将通过代码 ID 用于合同
-- 通过`InitMsg`定义初始参数/配置
-- 为新合约的账户提供一些初始资金
-- 表示合约是否可迁移（可以更改代码ID）
+-契約に所有者を割り当てます
+-指定されたコードは、コードIDを介して契約で使用されます
+-`InitMsg`を介して初期パラメータ/設定を定義します
+-新しい契約のアカウントに初期資金を提供します
+-契約を移行できるかどうかを示します(コードIDは変更できます)
 
-`InitMsg` 是一个 JSON 消息，其预期格式在合约代码中定义。每个合约都包含一个部分，该部分定义了如何根据提供的 `InitMsg` 设置初始状态。 
+`InitMsg`はJSONメッセージであり、予想される形式はコントラクトコードで定義されています。各コントラクトには、提供された `InitMsg`に従って初期状態を設定する方法を定義するセクションが含まれています。
 
-#### Execution
+#### 実行
 
-用户可以通过发送“MsgExecuteContract”来执行智能合约以调用其定义的功能之一。在其中，用户能够:
+ユーザーは、「MsgExecuteContract」を送信して定義された関数の1つを呼び出すことにより、スマートコントラクトを実行できます。その中で、ユーザーは次のことができます。
 
-- 指定使用 `HandleMsg` 调用哪个函数
-- 向合约发送资金，这在执行期间可能会发生
+-`HandleMsg`で呼び出す関数を指定します
+-契約に資金を送金します。これは実行中に発生する可能性があります
 
-`HandleMsg` 是一个 JSON 消息，包含函数调用参数并被路由到适当的处理逻辑。从那里，合约执行函数的指令，在此期间可以修改合约自己的状态。合约只能在其自身执行结束后通过返回区块链消息列表（例如“MsgSend”和“MsgSwap”）来修改外部状态（例如其他合约或模块中的状态）。这些消息被附加到与 `MsgExecuteContract` 相同的事务中，如果任何消息无效，则整个事务无效。
+`HandleMsg`は、関数呼び出しパラメーターを含み、適切な処理ロジックにルーティングされるJSONメッセージです。そこから、コントラクトは関数の命令を実行します。その間、コントラクト自体の状態を変更できます。コントラクトは、自身の実行が終了した後にブロックチェーンメッセージ(「MsgSend」や「MsgSwap」など)のリストを返すことによってのみ、外部状態(他のコントラクトまたはモジュールの状態など)を変更できます。これらのメッセージは、 `MsgExecuteContract`と同じトランザクションに添付されます。いずれかのメッセージが無効な場合、トランザクション全体が無効になります。
 
 #### 移民
 
-如果用户是合约的所有者，并且合约被实例化为可迁移的，他们可以发出 `MsgMigrateContract` 将其代码 ID 重置为新的。迁移通过一个 `MigrateMsg`（一个 JSON 消息）进行参数化。
+ユーザーがコントラクトの所有者であり、コントラクトが移行可能としてインスタンス化されている場合、ユーザーは `MsgMigrateContract`を発行して、コードIDを新しいものにリセットできます。移行は `MigrateMsg`(JSONメッセージ)でパラメーター化されます。
 
-####所有权转让
+#### 所有権の譲渡
 
-智能合约的当前所有者可以使用 `MsgUpdateContractOwner` 将新的所有者重新分配给合约。
+スマートコントラクトの現在の所有者は、 `MsgUpdateContractOwner`を使用して、新しい所有者をコントラクトに再割り当てできます。
 
-#### 询问
+#### 聞く
 
-合约可以定义查询函数，或用于数据检索的只读操作。这允许合约使用 JSON 响应而不是来自低级键值存储的原始字节公开丰富的自定义数据端点。由于区块链状态无法改变，节点可以直接运行查询，无需交易。
+コントラクトは、データ取得のためのクエリ関数または読み取り専用操作を定義できます。これにより、コントラクトは、低レベルのKey-Valueストアからの生のバイトの代わりにJSON応答を使用して豊富なカスタムデータエンドポイントを公開できます。ブロックチェーンの状態は変更できないため、ノードはトランザクションなしでクエリを直接実行できます。
 
-用户可以使用 JSON `QueryMsg` 指定哪个查询函数以及任何参数。即使没有 gas 费用，查询函数的执行也会受到计量执行（不收费）确定的 gas 的限制，作为一种垃圾邮件保护形式。
+ユーザーはJSON`QueryMsg`を使用して、どのクエリ関数と任意のパラメーターを指定できます。ガス料金がない場合でも、スパム対策の一環として、従量制の実行(無料)で決まるガスによってクエリ機能の実行が制限されます。
 
-### Wasmer 虚拟机
+### Wasmer仮想マシン
 
-WASM 字节码的实际执行由 [wasmer](https://github.com/wasmerio/wasmer) 执行，它提供了一个轻量级的沙盒运行时，具有计量执行以解决计算的资源成本。
+WASMバイトコードの実際の実行は[wasmer](https://github.com/wasmerio/wasmer)によって実行されます。これは、計算のリソースコストを解決するために、従量制の実行を備えた軽量のサンドボックスランタイムを提供します。
 
-#### 燃气表
+#### ガスメーター
 
-除了创建交易产生的常规 gas 费用外，Terra 在执行智能合约代码时还会计算单独的 gas。这是由 **gas meter** 跟踪的，它在每个操作码的执行过程中都会通过一个常数乘数（当前设置为 100）转换回原生 Terra 气体。
+トランザクションを作成するための通常のガス料金に加えて、Terraはスマートコントラクトコードを実行するときに別のガスも計算します。これは**ガスメーター**によって追跡され、各オペコードの実行中に一定の乗数(現在は100に設定されています)を介してネイティブのテラガスに変換されます。
 
-### 汽油费
+### ガソリン代
 
-Wasm 数据和事件花费的 gas 高达“1 * 字节”。将事件和数据传递给另一个合约也会花费 gas 作为回复。
+Wasmデータとイベントのコストは最大「1 *バイト」のガスです。イベントとデータを別の契約に渡すことも、対応としてガスの費用がかかります。 
 
 ## Data
 
@@ -111,62 +111,61 @@ A counter for the last uploaded code ID.
 
 - type: `uint64`
 
-最后实例化的合约编号的计数器。
+最後にインスタンス化された契約番号のカウンター。 
 
 ### Code
 
 - type: `map[uint64]CodeInfo`
 
-将代码 ID 映射到 `CodeInfo` 条目。 
+コードIDを `CodeInfo`エントリにマップします。
 
 ### Contract Info
 
 - type: `map[bytes]ContractInfo`
 
-将合约地址映射到其对应的“ContractInfo”。 
+契約アドレスを対応する「ContractInfo」にマップします。  
 
 ### Contract Store
 
 - type: `map[bytes]KVStore`
 
-将合约地址映射到其专用的 KVStore。
-
+契約アドレスを専用のKVStoreにマップします。
 ## Message Types
 
 ### MsgStoreCode
 
-将新代码上传到区块链，如果成功则生成新的代码 ID。 `WASMByteCode` 被接受为未压缩或 gzipped 二进制数据，编码为 Base64。 
+新しいコードをブロックチェーンにアップロードし、成功した場合は、新しいコードIDを生成します。 `WASMByteCode`は、Base64としてエンコードされた非圧縮またはgzip圧縮されたバイナリデータとして受け入れられます。 
 
 ```go
 type MsgStoreCode struct {
 	Sender sdk.AccAddress `json:"sender" yaml:"sender"`
-	// WASMByteCode can be raw or gzip compressed
+	//WASMByteCode can be raw or gzip compressed
 	WASMByteCode core.Base64Bytes `json:"wasm_byte_code" yaml:"wasm_byte_code"`
 }
 ```
 
 ### MsgInstantiateContract
 
-创建智能合约的新实例。 `InitMsg` 中提供了初始配置，它是一个以 Base64 编码的 JSON 消息。 如果 `Migratable` 设置为 `true`，则允许合约的所有者将合约的代码 ID 重置为新的。
+スマートコントラクトの新しいインスタンスを作成します。 初期構成は、Base64でエンコードされたJSONメッセージである `InitMsg`で提供されます。 `Migratable`が` true`に設定されている場合、契約の所有者は契約のコードIDを新しいものにリセットできます。 
 
 ```go
 type MsgInstantiateContract struct {
-	// Sender is an sender address
+	//Sender is an sender address
 	Sender string `protobuf:"bytes,1,opt,name=sender,proto3" json:"sender,omitempty" yaml:"sender"`
-	// Admin is an optional admin address who can migrate the contract
+	//Admin is an optional admin address who can migrate the contract
 	Admin string `protobuf:"bytes,2,opt,name=admin,proto3" json:"admin,omitempty" yaml:"admin"`
-	// CodeID is the reference to the stored WASM code
+	//CodeID is the reference to the stored WASM code
 	CodeID uint64 `protobuf:"varint,3,opt,name=code_id,json=codeId,proto3" json:"code_id,omitempty" yaml:"code_id"`
-	// InitMsg json encoded message to be passed to the contract on instantiation
+	//InitMsg json encoded message to be passed to the contract on instantiation
 	InitMsg encoding_json.RawMessage `protobuf:"bytes,4,opt,name=init_msg,json=initMsg,proto3,casttype=encoding/json.RawMessage" json:"init_msg,omitempty" yaml:"init_msg"`
-	// InitCoins that are transferred to the contract on execution
+	//InitCoins that are transferred to the contract on execution
 	InitCoins github_com_cosmos_cosmos_sdk_types.Coins `protobuf:"bytes,5,rep,name=init_coins,json=initCoins,proto3,castrepeated=github.com/cosmos/cosmos-sdk/types.Coins" json:"init_coins" yaml:"init_coins"`
 }
 ```
 
 ### MsgExecuteContract
 
-调用智能合约中定义的函数。 函数和参数在 `ExecuteMsg` 中编码，它是一个以 Base64 编码的 JSON 消息。
+スマートコントラクトで定義された関数を呼び出します。 関数とパラメーターは、Base64でエンコードされたJSONメッセージである `ExecuteMsg`でエンコードされます。 
 
 ```go
 type MsgExecuteContract struct {
@@ -179,7 +178,7 @@ type MsgExecuteContract struct {
 
 ### MsgMigrateContract
 
-可由可迁移智能合约的所有者发布，以将其代码 ID 重置为另一个。 `MigrateMsg` 是一个以 Base64 编码的 JSON 消息。
+移行可能なスマートコントラクトの所有者が発行して、コードIDを別のコードIDにリセットできます。 `MigrateMsg`は、Base64でエンコードされたJSONメッセージです。 
 
 ```go
 type MsgMigrateContract struct {
@@ -192,7 +191,7 @@ type MsgMigrateContract struct {
 
 ### MsgUpdateContractOwner
 
-可以由智能合约的所有者发行以转移所有权。
+スマートコントラクトの所有者が所有権を譲渡するために発行することができます。
 
 ```go
 type MsgUpdateContractOwner struct {
@@ -205,7 +204,7 @@ type MsgUpdateContractOwner struct {
 
 ## Parameters
 
-WASM 模块的子空间是`wasm`。 
+WASMモジュールの部分空間は `wasm`です。 
 
 ```go
 type Params struct {
@@ -219,16 +218,16 @@ type Params struct {
 
 - type: `uint64`
 
-最大合约字节码大小，以字节为单位。
+コントラクトの最大バイトコードサイズ(バイト単位)。 
 
 ### MaxContractGas
 
 - type: `uint64`
 
-任何执行期间的最大合同气体消耗。
+任意の実行期間中の最大契約ガス消費量。 
 
 ### MaxContractMsgSize
 
 - type: `uint64`
 
-最大合同消息大小，以字节为单位。
+コントラクトメッセージの最大サイズ(バイト単位)。 

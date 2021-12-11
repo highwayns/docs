@@ -10,7 +10,7 @@
 ## 与 CW20 合约交互
 
 - CW20 是一个 cosmwasm 合约，使用 `wasm/MsgExecuteContract` 与之交互
-- 消息有效载荷格式细分如下（类似于`bank/MsgSend`，但添加了`execute_msg`）: 
+- 消息有效载荷格式细分如下(类似于`bank/MsgSend`，但添加了`execute_msg`): 
 
 ```
 {

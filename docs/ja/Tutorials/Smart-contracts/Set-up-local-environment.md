@@ -1,18 +1,18 @@
-# 环境设置
+# 環境設定
 
-作为智能合约开发人员，您需要编写、编译、上传和测试您的合约，然后才能将它们部署到 Columbus 主网上。由于此开发过程可能涉及在多次迭代中手动处理多个移动部件，因此首先设置专门的环境以简化开发是有帮助的。
+スマートコントラクト開発者は、コントラクトをColumbusメインネットにデプロイする前に、コントラクトを作成、コンパイル、アップロード、およびテストする必要があります。この開発プロセスでは、複数の反復で複数の可動部品を手動で処理する必要がある場合があるため、開発を簡素化するために、最初に専用の環境をセットアップすると便利です。
 
-## 在本地安装 Terra Core
+## TerraCoreをローカルにインストールする
 
-访问 [build Terra core](/ja/How-to/Run-a-full-Terra-node/Build-Terra-core.md) 安装最新版本的 Terra Core 以获得可用版本的 `terrad`。您将需要它来连接到您本地的 Terra 测试网络以使用智能合约。
+[build Terra core](/ja/How-to/Run-a-full-Terra-node/Build-Terra-core.md)にアクセスして、最新バージョンのTerra Coreをインストールし、利用可能なバージョンの `terrad`を入手します。スマートコントラクトを使用するには、ローカルのTerraテストネットワークに接続するために必要になります。
 
-## 下载 LocalTerra
+## LocalTerraをダウンロードする
 
-为了使用 Terra 智能合约，您应该可以访问包含 WASM 集成的 Terra 网络。
+Terraスマートコントラクトを使用するには、WASM統合を含むTerraネットワークにアクセスできる必要があります。
 
-在本教程中，我们将使用 [LocalTerra](https://github.com/terra-money/localterra)，这是一个使您能够轻松启动本地、支持 WASM 的私有测试网的包。这通过让您完全控制私有 Terra 区块链以及轻松重置世界状态的可能性来减少开发摩擦。
+このチュートリアルでは、[LocalTerra](https://github.com/terra-money/localterra)を使用します。これは、ローカルのWASM対応のプライベートテストネットを簡単に開始できるパッケージです。これにより、プライベートTerraブロックチェーンを完全に制御し、世界の状態を簡単にリセットできるようになるため、開発の摩擦が軽減されます。
 
-要使用 **LocalTerra**，您应该首先按照 [Docker 入门教程](https://www.docker.com/get-started) 确保您的计算机上安装了 Docker。您还需要在您的机器上设置和配置 [Docker Compose](https://docs.docker.com/compose/install/)。 
+** LocalTerra **を使用するには、最初に[Docker入門チュートリアル](https://www.docker.com/get-started)に従って、Dockerがコンピューターにインストールされていることを確認する必要があります。また、マシンで[Docker Compose](https://docs.docker.com/compose/install/)をセットアップして構成する必要があります。 
 
 ```sh
 git clone --depth 1 https://github.com/terra-money/localterra
@@ -20,23 +20,23 @@ cd localterra
 docker-compose up
 ```
 
-您现在应该在您的机器上运行一个本地测试网，具有以下配置:
+これで、次の構成でマシン上でローカルテストネットを実行する必要があります。 
 
-- 节点监听 RPC 端口`26657`
-- LCD在端口`1317`上运行
-- [http://localhost:3060/swagger](http://localhost:3060/swagger) 上的 Swagger 文档
+-ノードはRPCポート `26657`を監視します
+-LCDはポート `1317`で動作します
+-[http://localhost:3060/swagger](http://localhost:3060/swagger)に関するSwaggerドキュメント
 
-具有以下助记符的帐户是网络上的唯一验证器，并且有足够的资金开始使用智能合约。
+次のニーモニックを持つアカウントは、ネットワーク上の唯一のバリデーターであり、スマートコントラクトの使用を開始するのに十分な資金があります。 
 
 ``
-满足调整木材高额购买学费凳子信仰罚款安装你不知道饲料域许可证强加老板人类渴望帽子租金享受黎明
+satisfy adjust timber high purchase tuition stool faith fine install that you unaware feed domain license impose boss human eager hat rent enjoy dawn
 ``
 
-## 安装 Rust
+## Rustをインストールする
 
-虽然理论上 WASM 智能合约可以用任何编程语言编写，但我们目前只推荐使用 Rust，因为它是 CosmWasm 存在成熟库和工具的唯一语言。对于本教程，您还需要按照 [此处](https://www.rust-lang.org/tools/install) 的说明安装最新版本的 Rust。
+理論的にはWASMスマートコントラクトは任意のプログラミング言語で記述できますが、CosmWasmに成熟したライブラリとツールがある唯一の言語であるRustのみを使用することを現在お勧めします。 このチュートリアルでは、[ここ](https://www.rust-lang.org/tools/install)で説明されているように、最新バージョンのRustもインストールする必要があります。
 
-安装 Rust 及其工具链（cargo 等）后，您需要添加 `wasm32-unknown-unknown` 编译目标。
+Rustとそのツールチェーン(貨物など)をインストールした後、 `wasm32-unknown-unknown`コンパイルターゲットを追加する必要があります。 
 
 ```sh
 rustup default stable

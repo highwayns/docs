@@ -10,25 +10,25 @@ TerraSDR 的价格稳定是通过 Terra<>Luna 对协议算法做市商的套利�
 
 由于 Terra 的价格馈送源自验证者预言机，因此链上报告的价格与实时价格之间存在延迟。
 
-延迟持续大约一分钟（我们的预言机“VotePeriod”是 30 秒），这对于几乎所有实际交易都可以忽略不计。 但是，抢先攻击者可以利用这种延迟并从网络中提取价值。
+延迟持续大约一分钟(我们的预言机“VotePeriod”是 30 秒)，这对于几乎所有实际交易都可以忽略不计。 但是，抢先攻击者可以利用这种延迟并从网络中提取价值。
 
 为了抵御这种类型的攻击，市场模块强制执行以下掉期费用: 
 
 - [**Tobin tax**](#tobintax) for spot-converting Terra<>Terra swaps
 
-例如，假设当前 KRT 的托宾税为 0.35%，oracle 报告 Luna<>SDT 汇率为 10，Luna<>KRT 汇率为 10,000。交换 1 SDT 将返回 0.1 Luna，即 1,000 KRT。应用托宾税后，您将拥有 996.5 KRT（1,000 的 0.35% 为 3.5），这比任何零售货币兑换和汇款都要优惠[^1]。
+例如，假设当前 KRT 的托宾税为 0.35%，oracle 报告 Luna<>SDT 汇率为 10，Luna<>KRT 汇率为 10,000。交换 1 SDT 将返回 0.1 Luna，即 1,000 KRT。应用托宾税后，您将拥有 996.5 KRT(1,000 的 0.35% 为 3.5)，这比任何零售货币兑换和汇款都要优惠[^1]。
 
 [^1]:最初我们维持零费用掉期政策。然而，为了防止抢先攻击者利用汇率延迟并以牺牲用户利益为代价获利，我们实施了托宾税。有关更多信息，请参阅 [“关于掉期费:贪婪和明智”](https://medium.com/terra-money/on-swap-fees-the-greedy-and-the-wise-b967f0c8914e)。
 
 - [**最小点差**](#minspread) 用于 Terra<>Luna 掉期
 
-  最低点差为 0.5%。使用我们上面使用的相同汇率，交换 1 SDT 将返回价值 995 KRT 的 Luna（1000 的 0.5% 为 5，这作为交换费用）。如果您反转掉期，1 Luna 将返回 9.95 SDT（10 的 0.5% 为 0.05）或 9,950 KRT（10,000 的 0.5% = 50）。
+  最低点差为 0.5%。使用我们上面使用的相同汇率，交换 1 SDT 将返回价值 995 KRT 的 Luna(1000 的 0.5% 为 5，这作为交换费用)。如果您反转掉期，1 Luna 将返回 9.95 SDT(10 的 0.5% 为 0.05)或 9,950 KRT(10,000 的 0.5% = 50)。
 
 ### 做市算法
 
 Terra 使用恒定乘积做市算法来确保 Terra<>Luna 掉期的流动性。 [^2]
 
-[^2]:要更深入地了解我们更新的做市算法，请查看 [Nick Platias 的 SFBW 2019 演讲](https://agora.terra.money/t/terra-stability-swap-mechanism-deep -dive-at-sfbw/135）。
+[^2]:要更深入地了解我们更新的做市算法，请查看 [Nick Platias 的 SFBW 2019 演讲](https://agora.terra.money/t/terra-stability-swap-mechanism-deep -dive-at-sfbw/135)。
 
 对于 Constant Product，我们定义了一个值 $CP$，该值设置为 Terra 池的大小乘以 Luna 的一组**法定值**，并确保我们的做市商通过调整点差在任何掉期期间保持不变。
 
@@ -38,7 +38,7 @@ Terra 使用恒定乘积做市算法来确保 Terra<>Luna 掉期的流动性。 
 
 $$CP = Pool_{Terra} * Pool_{Luna} * (Price_{Luna}/Price_{SDR})$$
 
-例如，我们将从相等的 Terra 和 Luna 池开始，两者的总价值为 1000 SDR。 Terra 矿池的大小为 1000 SDT，假设 Luna<>SDR 的价格为 0.5，则 Luna 矿池的大小为 2000 Luna。 用 100 SDT 交换 Luna 将返回价值约 90.91 SDR 的 Luna（≈ 181.82 Luna）。 100 SDT的offer加入Terra矿池，价值90.91 SDT的Luna从Luna矿池中取出。 
+例如，我们将从相等的 Terra 和 Luna 池开始，两者的总价值为 1000 SDR。 Terra 矿池的大小为 1000 SDT，假设 Luna<>SDR 的价格为 0.5，则 Luna 矿池的大小为 2000 Luna。 用 100 SDT 交换 Luna 将返回价值约 90.91 SDR 的 Luna(≈ 181.82 Luna)。 100 SDT的offer加入Terra矿池，价值90.91 SDT的Luna从Luna矿池中取出。 
 
 ```
 CP = 1000000 SDR
@@ -63,7 +63,7 @@ $$Pool_{Luna} = ({Pool_{Base}})^2 / Pool_{Terra}$$
 
 在[每个区块的末尾](#end-block)，市场模块尝试通过降低 Terra 和 Luna 矿池之间的 $\delta$ 大小来补充矿池。将池补充到平衡的速率由参数 [`PoolRecoveryPeriod`](#poolrecoveryperiod) 设置。较低的周期意味着对交易的敏感性较低:以前的交易会更快地被遗忘，市场能够提供更多的流动性。
 
-这种机制确保流动性并充当低通滤波器，允许点差费用（这是“TerraPoolDelta”的函数）在需求发生变化时回落，导致供应发生必要的变化，这需要吸收了。
+这种机制确保流动性并充当低通滤波器，允许点差费用(这是“TerraPoolDelta”的函数)在需求发生变化时回落，导致供应发生必要的变化，这需要吸收了。
 
 ### 交换程序
 
@@ -91,7 +91,7 @@ $$Pool_{Luna} = ({Pool_{Base}})^2 / Pool_{Terra}$$
 
 ### 铸币税
 
-当 Luna 交换到 Terra 时，被协议重新捕获的 Luna 称为 seigniorage——发行新 Terra 产生的价值。每个时期结束时的总铸币税被计算并重新引入经济，作为汇率预言机的选票奖励和财政部模块的社区池，更完整地描述 [here](/zh/Reference/Terra-core/Module-spec/spec-treasury.html#k-settleseigniorage）。
+当 Luna 交换到 Terra 时，被协议重新捕获的 Luna 称为 seigniorage——发行新 Terra 产生的价值。每个时期结束时的总铸币税被计算并重新引入经济，作为汇率预言机的选票奖励和财政部模块的社区池，更完整地描述 [here](/zh/Reference/Terra-core/Module-spec/spec-treasury.html#k-settleseigniorage)。
 
 ::: 警告 注意:
 从 Columbus-5 开始，所有铸币税都被烧毁，社区资金池不再被资助。掉期费被用作汇率预言机的投票奖励。
@@ -173,7 +173,7 @@ func (k Keeper) ApplySwapToPool(ctx sdk.Context, offerCoin sdk.Coin, askCoin sdk
 
 ### 结束块
 
-Market 模块在每个块的末尾调用 `k.ReplenishPools()`，这会根据 `PoolRecoveryPeriod` $pr$ 减少 `TerraPoolDelta`（Terra 和 Luna 池之间的差异）的值。
+Market 模块在每个块的末尾调用 `k.ReplenishPools()`，这会根据 `PoolRecoveryPeriod` $pr$ 减少 `TerraPoolDelta`(Terra 和 Luna 池之间的差异)的值。
 
 这允许网络在价格剧烈波动期间大幅增加点差费用。一段时间后，价差会自动恢复到长期价格变化的正常水平。
 
@@ -195,7 +195,7 @@ type Params struct {
 - type: `int64`
 - default: `BlocksPerDay`
 
-Terra & Luna 矿池通过自动池补充自然“重置”到平衡（$\delta \to 0$）所需的块数。 
+Terra & Luna 矿池通过自动池补充自然“重置”到平衡($\delta \to 0$)所需的块数。 
 
 ### BasePool
 
@@ -216,4 +216,4 @@ Terra 和 Luna 流动性池的初始起始大小。
 - type: `Dec`
 - default: 0.35%
 
-在 Terra 货币之间交换的额外费用（现货交易）。 汇率不同，取决于面额。 例如，虽然大多数面额的税率为 0.35%，但 MNT 的税率为 2%。 要查看费率，请[查询预言机](/zh/Reference/terrad/subcommands.html#query-oracle-tobin-taxes)。
+在 Terra 货币之间交换的额外费用(现货交易)。 汇率不同，取决于面额。 例如，虽然大多数面额的税率为 0.35%，但 MNT 的税率为 2%。 要查看费率，请[查询预言机](/zh/Reference/terrad/subcommands.html#query-oracle-tobin-taxes)。

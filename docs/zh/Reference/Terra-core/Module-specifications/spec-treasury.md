@@ -208,7 +208,7 @@ func (k Keeper) UpdateTaxPolicy(ctx sdk.Context) (newTaxRate sdk.Dec)
 
 2. 计算上个月 `WindowShort` 中每单位 Luna 的税收奖励的滚动平均值 $\tau_m$。
 
-3. 如果$\tau_m = 0$，则上个月没有税收。 税率应设置为税收政策允许的最大值，受制于 `pc.Clamp()` 的规则（参见 [约束](#policy-constraints)）。
+3. 如果$\tau_m = 0$，则上个月没有税收。 税率应设置为税收政策允许的最大值，受制于 `pc.Clamp()` 的规则(参见 [约束](#policy-constraints))。
 
 4.如果$\tau_m > 0$，新的税率为$r_{t+1} = (n r_t \tau_y)/\tau_m$，以`pc.Clamp()`的规则为准。 有关更多详细信息，请参阅 [约束](#policy-constraints)。
 

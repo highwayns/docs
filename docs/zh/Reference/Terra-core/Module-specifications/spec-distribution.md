@@ -34,7 +34,7 @@ Terra 的 Distribution 模块继承自 Cosmos SDK 的 [`distribution`](https://d
 `费用池`。收集奖励并添加到奖励池中
 从这里分发给验证者/委托者。
 
-请注意，奖励池包含十进制硬币（`DecCoins`）以允许
+请注意，奖励池包含十进制硬币(`DecCoins`)以允许
 从通货膨胀等操作中获得一小部分硬币。
 当硬币从池中分配时，它们会被截断回
 `sdk.Coins` 非十进制。
@@ -52,7 +52,7 @@ Terra 的 Distribution 模块继承自 Cosmos SDK 的 [`distribution`](https://d
 
 每个委托分布只需要记录它最后的高度
 撤回费用。因为代表团每次都必须撤回费用
-属性改变（又名绑定令牌等）它的属性将保持不变
+属性改变(又名绑定令牌等)它的属性将保持不变
 并且委托人的_accumulation_因子可以被动计算
 只有最后一次提款的高度及其当前属性。
 
@@ -127,7 +127,7 @@ type CommunityPoolSpendProposal struct {
 - 社区基金:储备社区税被收取并分配到社区池中。从 Columbus-5 开始，不再收取此税，社区池不再获得资金。
 - 全球池:剩余的资金分配到全球池，在那里它们通过投票权按比例分配给所有绑定验证者，而不管他们是否投票。这种分配称为社会分配。除了提议者奖励之外，社会分配还应用于提议者验证者。
 
-提议者奖励是根据预提交 Tendermint 消息计算的，以激励验证者等待并在区块中包含额外的预提交。所有供应奖励都添加到供应奖励池中，每个验证者单独持有（`ValidatorDistribution.ProvisionsRewardPool`）。
+提议者奖励是根据预提交 Tendermint 消息计算的，以激励验证者等待并在区块中包含额外的预提交。所有供应奖励都添加到供应奖励池中，每个验证者单独持有(`ValidatorDistribution.ProvisionsRewardPool`)。
 
 ```go
 func AllocateTokens(feesCollected sdk.Coins, feePool FeePool, proposer ValidatorDistribution,

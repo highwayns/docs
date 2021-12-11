@@ -1,6 +1,6 @@
-# 查询数据
+# クエリデータ
 
-通过“LCDClient”实例连接到区块链后，您可以从中查询数据。 数据访问被组织成各种模块 API，可以从“LCDClient”实例中访问这些 API。 因为它们在后台发出 HTTP 请求，所以它们是可以等待的 Promises，以便在网络 IO 期间不被阻塞。 
+「LCDClient」インスタンスを介してブロックチェーンに接続した後、そこからデータをクエリできます。 データアクセスは、「LCDClient」インスタンスからアクセスできるさまざまなモジュールAPIに編成されています。 これらはバックグラウンドでHTTPリクエストを行うため、ネットワークIO中にブロックされないように待機できるPromiseです。 
 
 ```ts
 async main() {
@@ -13,7 +13,7 @@ async main() {
 main();
 ```
 
-每个模块都有自己的一组查询函数。 要获得完整列表，请浏览模块文档:
+各モジュールには、独自のクエリ関数のセットがあります。 完全なリストについては、モジュールのドキュメントを参照してください。 
 
 - [`auth`](https://terra-money.github.io/terra.js/classes/AuthAPI.html)
 - [`bank`](https://terra-money.github.io/terra.js/classes/BankAPI.html)

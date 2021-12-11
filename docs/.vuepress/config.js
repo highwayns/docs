@@ -488,7 +488,7 @@ requestAnimationFrame(function() {
                     "/ja/Tutorials/": [
                         "/ja/Tutorials/",
                         {
-                            title: "开始",
+                            title: "初めに",
                             children: [
                                 "/ja/Tutorials/Get-started/Terra-Station-desktop",
                                 "/ja/Tutorials/Get-started/Terra-Station-extension",

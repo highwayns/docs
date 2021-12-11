@@ -1,6 +1,6 @@
 # 削减
 
-Slashing 模块使 Terra 能够通过惩罚（“slashing”）来抑制协议认可的具有风险的行为者的任何可归因行为。 Terra 主要使用 [`Staking`](spec-staking.md) 模块在违反验证者职责时进行斜线（例如在汇率预言机中遗漏过多的 `VotePeriod`）。 该模块处理 Tendermint 共识级别的较低级别的惩罚，例如双重签名。
+Slashing 模块使 Terra 能够通过惩罚(“slashing”)来抑制协议认可的具有风险的行为者的任何可归因行为。 Terra 主要使用 [`Staking`](spec-staking.md) 模块在违反验证者职责时进行斜线(例如在汇率预言机中遗漏过多的 `VotePeriod`)。 该模块处理 Tendermint 共识级别的较低级别的惩罚，例如双重签名。
 
 ## 消息类型 
 
@@ -34,8 +34,8 @@ Tendermint 块可以包含证据，这表明验证者犯下了恶意
 `Evidence.Height` 和 `block.Timestamp` 是当前区块的时间戳。
 
 如果一个区块中包含有效证据，则验证者的权益将减少
-他们的赌注的一些惩罚（`SlashFractionDoubleSign` 用于模棱两可）
-违规发生的时间（而不是发现证据的时间）。我们
+他们的赌注的一些惩罚(`SlashFractionDoubleSign` 用于模棱两可)
+违规发生的时间(而不是发现证据的时间)。我们
 想要“关注赌注”，即导致违规的赌注
 应该削减，即使它已经被重新授权或开始解除绑定。
 

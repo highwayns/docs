@@ -132,7 +132,7 @@ LUNA 和 Terra 稳定币在以下交易所交易:
   </a>
 </div>
 
-##钱包
+## 钱包
 
 [Terra Station](https://station.terra.money/):Terra 的原生钱包<br>
 Terra Station 扩展:[Chrome](https://chrome.google.com/webstore/detail/terra-station/aiifbnbfobpmeekipheeijimdpnlpgpp)<br>

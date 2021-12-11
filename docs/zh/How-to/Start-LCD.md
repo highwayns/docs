@@ -1,4 +1,4 @@
-# 启动轻客户端守护进程（LCD）
+# 启动轻客户端守护进程(LCD)
 
 ::: 警告注意
 Terra SDK 目前依赖于与正在运行的 LCD 服务器的活动连接。 如果您需要 SDK 的专用连接，请进行设置。
@@ -10,7 +10,7 @@ Terra SDK 目前依赖于与正在运行的 LCD 服务器的活动连接。 如�
 
 1. 打开`~/.terra/config/app.toml`。
 
-2. 找到`API 配置` 部分（`[api]`）。
+2. 找到`API 配置` 部分(`[api]`)。
 
 3. 将`enable = false`改为`enable = true`。 
 

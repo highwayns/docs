@@ -2,72 +2,72 @@
 sidebarDepth: 2
 ---
 
-# 财政部
+# 財務省
 
-财政部模块充当 Terra 经济的“中央银行”，通过[观察指标](#observed-indicators) 和调整[货币政策杠杆](#monetary-policy-levers) 来衡量宏观经济活动，以调节矿工的激励措施，使其趋于稳定，长期增长。
+財務省モジュールは、テラの経済の「中央銀行」として機能し、[観測された指標](#observed-indicators)と調整[金融政策レバー](#monetary-policy-levers)を通じてマクロ経済活動を測定し、鉱夫、それはそれが長期的に安定して成長する傾向があるように。
 
-::: 警告 注意:
-虽然财政部通过调整奖励来稳定矿工需求，但 [`Market`](spec-market.md) 模块通过套利和做市商负责 Terra 的价格稳定。
+:::警告注:
+財務省は鉱山労働者の需要を安定させるために報酬を調整しますが、[`Market`](spec-market.md)モジュールは、裁定取引とマーケットメーカーを通じてTerraの価格安定に責任があります。
 :::
 
 ## 概念
 
-### 观察到的指标
+### 観測された指標
 
-财政部观察每个时期的三个宏观经济指标，并保留 [指标](#indicators) 在前几个时期的值:
+財務省は、各期間の3つのマクロ経済指標を観察し、前の期間の[指標](#指標)の値を保持します。
 
-- **税收奖励**:$T$，一个时期内交易和稳定费用产生的收入。
-- **铸币税奖励***:$S$，在一个纪元期间从 Luna 交换到 Terra 所产生的铸币税金额，该纪元将用于“Oracle”奖励中的投票奖励。从 Columbus-5 开始，所有铸币税都被烧毁。
-- **总质押 Luna **:$\lambda$，用户质押的 Luna 总量并绑定到他们委托的验证者。
+-**税の報酬**:$ T $、一定期間の取引と安定した料金によって生み出された収入。
+-**シニョリッジ報酬***:$ S $、エポック中にルナからテラへの交換中に生成されたシニョリッジの量。このエポックは、「オラクル」報酬の投票報酬に使用されます。コロンバス-5から始まって、すべてのシニョリッジは燃やされました。
+-**合計誓約Luna **:$ \ lambda $、ユーザーによって誓約され、委任されたバリデーターにバインドされたLunaの合計金額。
 
-这些指标用于推导出另外两个值:
-- **每单位 Luna 的税收奖励** $\tau = T / \lambda$:这用于 [更新税率](#k-updatetaxpolicy)
-- **总挖矿奖励** $R = T + S$:税收奖励和铸币税奖励的总和，用于[更新奖励权重](#k-updaterewardpolicy)。
+これらの指標は、他の2つの値を導出するために使用されます。
+-**ルナの単位あたりの税制上の優遇措置** $ \ tau = T/\ lambda $:これは[税率の更新](#k-updatetaxpolicy)に使用されます
+-**マイニング報酬の合計** $ R = T + S $:[報酬の重みの更新](#k-updaterewardpolicy)に使用される税報酬とシニョリッジ報酬の合計。
 
-::: 警告 注意:
-从 Columbus-5 开始，所有铸币税都被烧毁，不再为社区或奖励池提供资金。
+:::警告注:
+Columbus-5以降、すべてのシニョリッジが燃やされ、コミュニティや報酬プールにこれ以上の資金は提供されません。
 :::
 
-- **铸币税奖励:**:$S$，在每个时期 Luna 交换到 Terra 产生的铸币税金额。
+-**シニョリッジ報酬:**:$ S $、各期間にルナがテラに交換するシニョリッジの量。
 
-::: 警告 注意:
-从 Columbus-5 开始，所有铸币税都被烧毁。
+:::警告注:
+コロンバス-5から始まって、すべてのシニョリッジは燃やされました。
 :::
 
-这些指标可用于推导出另外两个值，用 $\tau = T / \lambda$ 表示的 **每单位 Luna 的税收奖励**，用于[更新税率](#k-updatetaxpolicy)，以及**总挖矿奖励** $R = T + S$:税收奖励和铸币税奖励的总和，用于[更新奖励权重](#k-updaterewardpolicy)。
+これらの指標を使用して、他の2つの値を導き出すことができます。**ルナの単位あたりの税額**は$ \ tau = T/\ lambda $で表され、[税率の更新](#k-updatetaxpolicy)に使用されます。**マイニング報酬の合計** $ R = T + S $:[報酬の重みの更新](#k-updaterewardpolicy)に使用される税報酬とシニョリッジ報酬の合計。
 
-该协议可以计算和比较上述指标的短期 ([`WindowShort`](#windowshort)) 和长期 ([`WindowLong`](#windowlong)) 滚动平均值，以确定相对方向和速度Terra 经济。
+プロトコルは、上記のインジケーターの短期([`WindowShort`](#windowshort))と長期([` WindowLong`](#windowlong))の移動平均を計算して比較し、の相対的な方向と速度を決定できます。テラエコノミー。
 
-### 货币政策杠杆
+### 金融政策のレバレッジ
 
-- **税率**:$r$，调整从 Terra 交易中获得的收入金额，受 [_tax cap_](#tax-caps) 限制。
+-**税率**:$ r $、[_ tax cap _](#tax-caps)の制限に従って、Terraトランザクションからの収入額を調整します。
 
-- **奖励权重**:$w$，分配给 [`Oracle`](spec-oracle.md) 投票获胜者奖励池的铸币税部分。这是给在加权中值汇率的奖励范围内投票的验证者。
+-**報酬の重み**:$ w $、[`Oracle`](spec-oracle.md)投票勝者の報酬プールのシニョリッジ部分に割り当てられます。これは、加重中央値為替レートの報酬範囲内で投票するバリデーター向けです。
 
-::: 警告提示
-从 Columbus-5 开始，所有铸币税都被烧毁，不再为社区池或预言机奖励池提供资金。验证者通过交换费用获得忠实的预言机投票奖励。
+:::警告プロンプト
+Columbus-5から、すべてのシニョリッジが燃やされ、コミュニティプールまたはオラクル報酬プールにこれ以上の資金が提供されなくなりました。検証者は、交換手数料を通じて忠実なオラクル投票報酬を取得します。
 :::
 
-### 更新政策
+### ポリシーの更新
 
-[Tax Rate](#tax-rate) 和 [Reward Weight](#reward-weight) 都作为值存储在 `KVStore` 中，并且可以在它们之后通过 [governance proposal](#governance-proposals) 更新它们的值已经通过。财政部在每个时期重新校准每个杠杆一次，以稳定 Luna 的单位回报，确保通过 Staking 获得可预测的采矿奖励:
+[税率](#tax-rate)と[報酬の重み](#reward-weight)は値として `KVStore`に保存され、その後[ガバナンス提案](#governance-proposals)で更新できます。値が渡されました。財務省は、各期間に1回各レバーを再調整して、ルナのユニットリターンを安定させ、ステーキングを通じて予測可能なマイニング報酬を確実に取得できるようにします。
 
-- 对于税率，为了确保单位挖矿奖励不会停滞不前，国库添加了 [`MiningIncrement`](#miningincrement)，因此挖矿奖励会随着时间的推移稳步增加，如 [此处](#kupdatetaxpolicy) 所述。
+-税率に関しては、ユニットマイニング報酬が停滞しないようにするために、国庫は[`MiningIncrement`](#miningincrement)を追加しました。これにより、マイニング報酬は[here]( #kupdatetaxpolicy)言った。
 
-- 对于奖励权重，财政部观察承担整体奖励概况所需的铸币税部分，[`SeigniorageBurdenTarget`](#seigniorageburdentarget)，并相应地提高利率，如[此处](#k-updaterewardpolicy) 所述。当前的奖励权重为“1”。
+-報酬の重みに関して、財務省は、全体的な報酬プロファイル[`SeigniorageBurdenTarget`](#seigniorageburdentarget)を負担するために必要なシニョリッジ部分を観察し、[ここ](#k-updaterewardpolicy]で説明されているように、それに応じて金利を引き上げます。 )。現在の報酬の重みは「1」です。
 
-### 缓刑
+### 保護観察
 
-[`WindowProbation`](#windowprobation) 指定的试用期阻止网络在创世后的第一个纪元期间执行税率和奖励权重更新，以允许区块链首先获得临界交易量和成熟可靠的历史记录 指标。
+[`WindowProbation`](#windowprobation)指定された試用期間は、ネットワークが作成後の最初のエポック中に税率と報酬の重みの更新を実行することを防ぎ、ブロックチェーンが最初に重要なトランザクション量と成熟した信頼できる履歴インジケーターを取得できるようにします。
 
-## 数据
+## データ
 
-### 政策约束
+### ポリシーの制約
 
-来自治理提案和自动校准的政策更新分别受 [`TaxPolicy`](#taxpolicy) 和 [`RewardPolicy`](#rewardpolicy) 参数的约束。 `PolicyConstraints` 指定每个变量的下限、上限和最大周期变化。
+ガバナンス提案からのポリシー更新と自動調整は、それぞれ[`TaxPolicy`](#taxpolicy)と[` RewardPolicy`](#rewardpolicy)パラメーターの対象となります。 `PolicyConstraints`は、各変数の下限、上限、および最大期間の変更を指定します。
 
 ```go
-// PolicyConstraints defines constraints around updating a key Treasury variable
+//PolicyConstraints defines constraints around updating a key Treasury variable
 type PolicyConstraints struct {
     RateMin       sdk.Dec  `json:"rate_min"`
     RateMax       sdk.Dec  `json:"rate_max"`
@@ -76,10 +76,10 @@ type PolicyConstraints struct {
 }
 ```
 
-限制策略杠杆更新的逻辑由`pc.Clamp()` 执行。 
+ストラテジーレバーの更新を制限するロジックは、 `pc.Clamp()`によって実行されます。
 
 ```go
-// Clamp constrains a policy variable update within the policy constraints
+//Clamp constrains a policy variable update within the policy constraints
 func (pc PolicyConstraints) Clamp(prevRate sdk.Dec, newRate sdk.Dec) (clampedRate sdk.Dec) {
 	if newRate.LT(pc.RateMin) {
 		newRate = pc.RateMin
@@ -103,20 +103,20 @@ func (pc PolicyConstraints) Clamp(prevRate sdk.Dec, newRate sdk.Dec) (clampedRat
 
 ## Proposals
 
-财政部模块定义了特殊提案，允许对`KVStore`中的[税率](#tax-rate)和[奖励权重](#reward-weight)值进行投票并相应地改变，受[政策约束] ](#policy-constraints) 由 `pc.Clamp()` 强加。
+財務省モジュールは、 `KVStore`の[税率](#tax-rate)と[reward-weight](#reward-weight)の値に投票できる特別な提案を定義し、それに応じて[ポリシー制約]](#policy-constraints)は `pc.Clamp()`によって課されます。 
 
 ### TaxRateUpdateProposal
 
 ```go
 type TaxRateUpdateProposal struct {
-	Title       string  `json:"title" yaml:"title"`             // Title of the Proposal
-	Description string  `json:"description" yaml:"description"` // Description of the Proposal
-	TaxRate     sdk.Dec `json:"tax_rate" yaml:"tax_rate"`       // target TaxRate
+	Title       string  `json:"title" yaml:"title"`           //Title of the Proposal
+	Description string  `json:"description" yaml:"description"`//Description of the Proposal
+	TaxRate     sdk.Dec `json:"tax_rate" yaml:"tax_rate"`     //target TaxRate
 }
 ```
 
 ::: warning Note:
-从 Columbus-5 开始，所有铸币税都被烧毁。 奖励权重现在设置为“1”。 
+コロンバス-5から始まって、すべてのシニョリッジは燃やされました。 報酬の重みが「1」に設定されました。 
 :::
 
 ## State
@@ -127,40 +127,40 @@ type TaxRateUpdateProposal struct {
 - min: .1%
 - max: 1%
 
-当前时期的税率政策杠杆的价值。 
+当期の税率政策レバレッジの価値。 
 
 ### Reward Weight
 
 - type: `Dec`
 - default: `1`
 
-当前时期的奖励权重政策杠杆的值。 从 Columbus-5 开始，奖励权重设置为“1”。
+当期の報酬ウェイトポリシーレバレッジの値。 Columbus-5から、報酬の重みは「1」に設定されます。 
 
 ### Tax Caps
 
 - type: `map[string]Int`
 
-财政部保留了一个“KVStore”，它将面额“denom”映射到一个“sdk.Int”，它代表同一面额的交易税可以产生的最大收入。 这在每个时期都更新为 [`TaxPolicy.Cap`](#taxpolicy) 在当前汇率下的等价值。
+財務省は、金種「denom」を「sdk.Int」にマッピングする「KVStore」を保持しています。これは、同じ金種の取引税によって生成できる最大収入を表します。 これは、各期間で、現在の為替レートで[`TaxPolicy.Cap`](#taxpolicy)と同等の値に更新されます。
 
-例如，如果一笔交易的价值为 100 SDT，税率为 5%，税收上限为 1 SDT，则产生的收入将是 1 SDT，而不是 5 SDT。 
+たとえば、トランザクションの値が100 SDT、税率が5％、課税上限が1 SDTの場合、生成される収入は5SDTではなく1SDTになります。
 
 ### Tax Proceeds
 
 - type: `Coins`
 
-当前时期的税收奖励 $T$。 
+当期の税制上の優遇措置は$ T $です。
 
 ### Epoch Initial Issuance
 
 - type: `Coins`
 
-当前纪元开始时 Luna 的总供应量。 该值在 [`k.SettleSeigniorage()`](#k-settleseigniorage) 中用于计算每个 epoch 结束时分配的铸币税。 从哥伦布 5 号开始，所有铸币税都被烧毁。
+現在の時代の初めのルナの総供給。 この値は、[`k.SettleSeigniorage()`](#k-settleseigniorage)で使用され、各エポックの終わりに割り当てられたシニョリッジを計算します。 コロンバス5から始まって、すべてのシニョリッジは燃やされました。
 
-记录初始发行量会自动使用 [`Supply`](spec-supply.md) 模块来确定 Luna 的总发行量。 为清楚起见，Peeking 会将 μLuna 的 epoch 初始发行返回为 `sdk.Int` 而不是 `sdk.Coins`。
+初期循環を記録すると、[`Supply`](spec-supply.md)モジュールが自動的に使用され、ルナの総循環が決定されます。 わかりやすくするために、PeekingはμLunaのエポックの初期リリースを `sdk.Coins`ではなく` sdk.Int`として返します。
 
-### 指标
+### インジケーター
 
-财政部跟踪当前和以前时期的以下指标:
+財務省は、現在および過去の期間について次の指標を追跡します。
 
 #### Tax Rewards
 
@@ -188,53 +188,51 @@ The Total Staked Luna $\lambda$ for each `epoch`.
 func (k Keeper) UpdateIndicators(ctx sdk.Context)
 ```
 
-在每个 epoch $t$ 结束时，该函数会记录当前的税收奖励 $T$、铸币税奖励 $S$ 和抵押 Luna $\lambda$ 的当前值，然后再转移到下一个 epoch $t+1$。
+各エポック$ t $の終わりに、関数は税報酬$ T $、シニョリッジ報酬$ S $、住宅ローンLuna $ \ lambda $の現在の値を記録し、次のエポック$ t + 1 $に転送します。
 
-- $T_t$ 是 [`TaxProceeds`](#tax-proceeds) 中的当前值
-- $S_t = \Sigma * w$，带有纪元铸币税 $\Sigma$ 和奖励权重 $w$。
-- $\lambda_t$ 是 `staking.TotalBondedTokens()` 的结果 
-
+-$ T_t $は、[`TaxProceeds`](#tax-proceeds)の現在の値です。
+-$ S_t = \ Sigma * w $、エポックシニョリッジ$ \ Sigma $および報酬ウェイト$ w $。
+-$ \ lambda_t $は、 `stake.TotalBondedTokens()`の結果です。 
 ### `k.UpdateTaxPolicy()`
 
 ```go
 func (k Keeper) UpdateTaxPolicy(ctx sdk.Context) (newTaxRate sdk.Dec)
 ```
 
-在每个时期结束时，该函数计算税率货币杠杆的下一个值。
+各期間の終わりに、関数は税率通貨レバレッジの次の値を計算します。
 
-使用 $r_t$ 作为当前税率和 $n$ 作为 [`MiningIncrement`](#miningincrement) 参数:
+$ r_t $を現在の税率として使用し、$ n $を[`MiningIncrement`](#miningincrement)パラメーターとして使用します。
 
-1.计算过去一年`WindowLong`单位Luna税收奖励的滚动平均值$\tau_y$。
+1.過去1年間の `WindowLong`のユニットに対するルナの税制上の優遇措置の移動平均$ \ tau_y $を計算します。
 
-2. 计算上个月 `WindowShort` 中每单位 Luna 的税收奖励的滚动平均值 $\tau_m$。
+2.先月の `WindowShort`で、ルナの単位あたりの税制上の優遇措置の移動平均$ \ tau_m $を計算します。
 
-3. 如果$\tau_m = 0$，则上个月没有税收。 税率应设置为税收政策允许的最大值，受制于 `pc.Clamp()` 的规则（参见 [约束](#policy-constraints)）。
+3. $ \ tau_m = 0 $の場合、前月には税金はありませんでした。 税率は、 `pc.Clamp()`の規則に従って、税務ポリシーで許可されている最大値に設定する必要があります([制約](#policy-constraints)を参照)。
 
-4.如果$\tau_m > 0$，新的税率为$r_{t+1} = (n r_t \tau_y)/\tau_m$，以`pc.Clamp()`的规则为准。 有关更多详细信息，请参阅 [约束](#policy-constraints)。
+4. $ \ tau_m> 0 $の場合、新しい税率は$ r_ {t + 1} =(n r_t \ tau_y)/\ tau_m $であり、 `pc.Clamp()`の規則に従います。 詳細については、[constraints](#policy-constraints)を参照してください。
 
-当每月税收收入低于年度平均水平时，财政部就会提高税率。 当每月税收收入超过年度平均水平时，财政部会降低税率。
-
+月々の税収が年平均よりも低い場合、財務省は税率を引き上げます。 月々の税収が年平均を超えると、財務省は税率を引き下げます。 
 ### `k.UpdateRewardPolicy()`
 
 ```go
 func (k Keeper) UpdateRewardPolicy(ctx sdk.Context) (newRewardWeight sdk.Dec)
 ```
 
-在每个 epoch 结束时，此函数会计算下一个奖励权重货币杠杆的值。
+各エポックの終わりに、この関数は次の報酬ウェイト通貨レバレッジの値を計算します。
 
-使用 $w_t$ 作为当前奖励权重，$b$ 作为 [`SeigniorageBurdenTarget`](#seigniorageburdentarget) 参数:
+$ w_t $を現在の報酬の重みとして使用し、$ b $を[`SeigniorageBurdenTarget`](#seigniorageburdentarget)パラメーターとして使用します。
 
-1.计算上个月`WindowShort`的铸币税奖励总和$S_m$。
+1.先月の `WindowShort`のシニョリッジ報酬$ S_m $の合計額を計算します。
 
-2. 计算上个月`WindowShort`的总挖矿奖励总和$R_m$。
+2.先月の `WindowShort`の合計マイニング報酬$ R_m $の合計を計算します。
 
-3. 如果 $R_m = 0$ 且 $S_m = 0$，则上个月没有挖矿或铸币税奖励。 奖励权重应设置为奖励政策允许的最大值，但须遵守 `pc.Clamp()` 的规则。 有关更多详细信息，请参阅 [约束](#policy-constraints)。
+3. $ R_m = 0 $および$ S_m = 0 $の場合、先月は採掘またはシニョリッジの報酬はありませんでした。 報酬の重みは、報酬ポリシーで許可されている最大値に設定する必要がありますが、 `pc.Clamp()`のルールに従います。 詳細については、[constraints](#policy-constraints)を参照してください。
 
-4.如果$R_m > 0$或$S_m > 0$，新的奖励权重为$w_{t+1} = b w_t S_m / R_m$，受`pc.Clamp()`规则约束。 有关更多详细信息，请参阅 [约束](#policy-constraints)。
+4. $ R_m> 0 $または$ S_m> 0 $の場合、新しい報酬の重みは$ w_ {t + 1} = b w_t S_m/R_m $であり、 `pc.Clamp()`ルールに従います。 詳細については、[constraints](#policy-constraints)を参照してください。
 
 
-::: 警告 注意:
-从 Columbus-5 开始，所有铸币税都被烧毁，不再为社区或奖励池提供资金。
+:::警告注:
+Columbus-5以降、すべてのシニョリッジが燃やされ、コミュニティや報酬プールにこれ以上の資金は提供されません。
 :::
 
 ### `k.UpdateTaxCap()`
@@ -243,9 +241,9 @@ func (k Keeper) UpdateRewardPolicy(ctx sdk.Context) (newRewardWeight sdk.Dec)
 func (k Keeper) UpdateTaxCap(ctx sdk.Context) sdk.Coins
 ```
 
-这个函数在一个时期结束时被调用，以计算下一个时期每个面额的税收上限。
+この関数は、期間の終わりに呼び出され、次の期間の各金種の課税上限を計算します。
 
-对于流通中的每个面额，每个面额的新税收上限设置为 [`TaxPolicy`](#taxpolicy) 参数中定义的全球税收上限，按当前汇率计算。 
+流通している各金種について、各金種の新しい課税上限は、現在の為替レートで計算された[`TaxPolicy`](#taxpolicy)パラメータで定義されたグローバル課税上限に設定されます。 
 
 ### `k.SettleSeigniorage()`
 
@@ -253,35 +251,35 @@ func (k Keeper) UpdateTaxCap(ctx sdk.Context) sdk.Coins
 func (k Keeper) SettleSeigniorage(ctx sdk.Context)
 ```
 
-这个函数在一个纪元结束时被调用来计算铸币税并将资金转发到 [`Oracle`](spec-oracle.md) 模块以获得投票奖励，以及 [`Distribution`](spec-distribution.md)用于社区游泳池。
+この関数は、エポックの終わりに呼び出され、シニョリッジを計算し、投票報酬のために資金を[`Oracle`](spec-oracle.md)モジュールに転送し、[` Distribution`](spec-distribution.md)Inコミュニティスイミングプール。
 
-1. 当前epoch的铸币税$\Sigma$是取epoch开始时的Luna供应量([Epoch Initial Issuance](#epoch-initial-issuance))与当时的Luna供应量之差计算的的呼叫。
+1.現在のエポックのシニョリッジ$ \ Sigma $は、エポックの開始時のルナ供給([エポック初期発行](#epoch-initial-issuance))とその時点でのルナ供給の差から計算された呼び出しです。時間。
 
-   请注意，当当前 Luna 供应量低于纪元开始时，$\Sigma > 0$，因为 Luna 已从 Luna 交换到 Terra 中被烧毁。请参阅[此处](spec-market.md#seigniorage)。
+   ルナがルナからテラに交換されて燃やされたため、ルナの現在の供給がエポックの開始よりも低い場合、$ \ Sigma> 0 $であることに注意してください。 [こちら](spec-market.md#seigniorage)を参照してください。
 
-2. 奖励权重 $w$ 是指定用于投票奖励的铸币税的百分比。铸造了 $S$ 的新 Luna，并且 [`Oracle`](spec-oracle.md) 模块收到 $S = \Sigma * w$ 铸币税。
+2.報酬の重み$ w $は、投票報酬に指定されたシニョリッジのパーセンテージです。 $ S $の新しいLunaが作成され、[`Oracle`](spec-oracle.md)モジュールは$ S = \ Sigma * w $ seigniorageを受け取りました。
 
-3. 剩余的硬币 $\Sigma - S$ 被发送到 [`Distribution`](spec-distribution.md) 模块，在那里它被分配到社区池中。
+3.残りのコイン$ \ Sigma-S $は[`Distribution`](spec-distribution.md)モジュールに送信され、そこでコミュニティプールに配布されます。
 
-::: 警告 注意:
-从 Columbus-5 开始，所有铸币税都被烧毁，不再为社区池或预言机奖励池提供资金。验证者通过交换费用获得忠实的预言机投票奖励。
+:::警告注:
+Columbus-5から、すべてのシニョリッジが燃やされ、コミュニティプールまたはオラクル報酬プールにこれ以上の資金が提供されなくなりました。検証者は、交換手数料を通じて忠実なオラクル投票報酬を取得します。 
 :::
 
 ## Transitions
 
 ### End-Block
 
-1. 使用[`k.UpdateIndicators()`](#kupdateindicators)更新所有指标
+1. [`k.UpdateIndicators()`](#kupdateindicators)を使用して、すべてのインジケーターを更新します
 
-2. 如果当前区块在[试用](#probation)下，跳到步骤6。
+2.現在のブロックが[Trial](#probation)の下にある場合は、手順6にスキップします。
 
-3. [Settle seigniorage](#ksettleseigniorage) 在 epoch 期间累积，并将资金用于下一个 epoch 期间的投票奖励和社区池。 从 Columbus-5 开始，所有铸币税都被烧毁。
+3. [Settle seigniorage](#ksettleseigniorage)はエポック中に蓄積され、次のエポック中に投票報酬とコミュニティプールに資金を使用します。 コロンバス-5から始まって、すべてのシニョリッジは燃やされました。
 
-4. 计算下一个epoch的[Tax Rate](#k-updatetaxpolicy)、[Reward Weight](#k-updaterewardpolicy)和[Tax Cap](#k-updatetaxcap)。 从 Columbus-5 开始，所有铸币税都被烧毁，奖励权重设置为“1”。
+4.次のエポックの[税率](#k-updatetaxpolicy)、[報酬の重み](#k-updaterewardpolicy)、および[税の上限](#k-updatetaxcap)を計算します。 Columbus-5から、すべてのシニョリッジが燃やされ、報酬の重みが「1」に設定されています。
 
-5. 发出 [`policy_update`](#policy_update) 事件，记录新的政策杠杆值。
+5. [`policy_update`](#policy_update)イベントを送信して、新しいポリシーレバレッジ値を記録します。
 
-6. 最后用[`k.RecordEpochInitialIssuance()`](#epoch-initial-issuance)记录Luna的发行。 这将用于计算下一个时期的铸币税。
+6.最後に、[`k.RecordEpochInitialIssuance()`](#epoch-initial-issuance)を使用してLunaのリリースを記録します。 これは、次の期間のシニョリッジを計算するために使用されます。 
 
 ::: details Events
 
@@ -316,14 +314,14 @@ type Params struct {
 
 ```go
 DefaultTaxPolicy = PolicyConstraints{
-    RateMin:       sdk.NewDecWithPrec(5, 4), // 0.05%
-    RateMax:       sdk.NewDecWithPrec(1, 2), // 1%
-    Cap:           sdk.NewCoin(core.MicroSDRDenom, sdk.OneInt().MulRaw(core.MicroUnit)), // 1 SDR Tax cap
-    ChangeRateMax: sdk.NewDecWithPrec(25, 5), // 0.025%
+    RateMin:       sdk.NewDecWithPrec(5, 4),//0.05%
+    RateMax:       sdk.NewDecWithPrec(1, 2),//1%
+    Cap:           sdk.NewCoin(core.MicroSDRDenom, sdk.OneInt().MulRaw(core.MicroUnit)),//1 SDR Tax cap
+    ChangeRateMax: sdk.NewDecWithPrec(25, 5),//0.025%
 }
 ```
 
-Constraints / rules for updating the [Tax Rate](#tax-rate) monetary policy lever.
+Constraints/rules for updating the [Tax Rate](#tax-rate) monetary policy lever.
 
 ### RewardPolicy
 
@@ -332,46 +330,46 @@ Constraints / rules for updating the [Tax Rate](#tax-rate) monetary policy lever
 
 ```go
 DefaultRewardPolicy = PolicyConstraints{
-    RateMin:       sdk.NewDecWithPrec(5, 2), // 5%
-    RateMax:       sdk.NewDecWithPrec(90, 2), // 90%
-    ChangeRateMax: sdk.NewDecWithPrec(25, 3), // 2.5%
-    Cap:           sdk.NewCoin("unused", sdk.ZeroInt()), // UNUSED
+    RateMin:       sdk.NewDecWithPrec(5, 2),//5%
+    RateMax:       sdk.NewDecWithPrec(90, 2),//90%
+    ChangeRateMax: sdk.NewDecWithPrec(25, 3),//2.5%
+    Cap:           sdk.NewCoin("unused", sdk.ZeroInt()),//UNUSED
 }
 ```
 
-Constraints / rules for updating the [Reward Weight](#reward-weight) monetary policy lever.
+Constraints/rules for updating the [Reward Weight](#reward-weight) monetary policy lever.
 
 ### SeigniorageBurdenTarget
 
 - type: `sdk.Dec`
 - default: 67%
 
-乘数指定部分铸币税需要承担在纪元转换期间奖励权重更新的整体奖励配置文件。 
+乗数によって指定されたシニョリッジは、エポック遷移中に報酬の重みを更新するための全体的な報酬プロファイルを保持するために必要です。 
 
 ### MiningIncrement
 
 - type: `sdk.Dec`
 - default: 1.07 growth rate, 15% CAGR of $\tau$
 
-确定时代过渡期间税率政策更新的年增长率的乘数。
+移行期間中の税率ポリシー更新の年間成長率の乗数を決定します。 
 
 ### WindowShort
 
 - type: `int64`
 - default: `4` (month = 4 weeks)
 
-指定计算短期移动平均线的时间间隔的多个时期
+短期移動平均を計算するための時間間隔の複数の期間を指定します 
 
 ### WindowLong
 
 - type: `int64`
 - default: `52` (year = 52 weeks)
 
-指定计算长期移动平均线的时间间隔的多个时期。
+長期移動平均を計算するための時間間隔の複数の期間を指定します。 
 
 ### WindowProbation
 
 - type: `int64`
 - default: `12` (3 months = 12 weeks)
 
-指定试用期时间间隔的多个时期。 
+試用期間間隔の複数の期間を指定します。

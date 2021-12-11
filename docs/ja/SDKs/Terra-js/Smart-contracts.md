@@ -1,10 +1,10 @@
-# 智能合约
+# スマートコントラクト
 
-本文档解释了如何使用 Terra.js 执行与使用智能合约相关的任务。
+このドキュメントでは、Terra.jsを使用してスマートコントラクトの使用に関連するタスクを実行する方法について説明します。
 
-## 上传代码
+## コードをアップロード
 
-您首先需要一个编译好的 WASM 智能合约的二进制文件来上传。 
+アップロードするには、最初にWASMスマートコントラクトのコンパイル済みバイナリファイルが必要です。  
 
 ```ts
 import { LCDClient, MsgStoreCode, MnemonicKey, isTxError } from '@terra-money/terra.js';
@@ -45,11 +45,11 @@ const {
 } = storeCodeTxResult.logs[0].eventsByType;
 ```
 
-## 创建合约
+## 契約を作成する
 
-对于 Terra 智能合约，上传合约代码和创建合约是有区别的。 这允许多个合约共享相同的代码，如果它们的逻辑只有很小的变化可以在合约创建时进行配置。 此配置在 **InitMsg** 中传递，并为合约提供初始状态。
+Terraスマートコントラクトの場合、コントラクトコードのアップロードとコントラクトの作成には違いがあります。 これにより、コントラクトの作成時に構成できる小さな変更のみがロジックにある場合、複数のコントラクトが同じコードを共有できます。 この構成は** InitMsg **で渡され、コントラクトの初期状態を提供します。
 
-要创建（实例化）智能合约，您必须首先知道上传代码的代码 ID。 您将在 InitMsg 旁边的 `MsgInstantiateContract` 中引用它以创建合约。 成功创建后，您的合约将位于您指定的地址。 
+スマートコントラクトを作成(インスタンス化)するには、最初にアップロードされたコードのコードIDを知っている必要があります。 InitMsgの横にある `MsgInstantiateContract`で参照して、コントラクトを作成します。 作成が成功すると、契約は指定したアドレスに配置されます。 
 
 ```ts
 import { MsgInstantiateContract } from '@terra-money/terra.js';
@@ -104,10 +104,9 @@ const executeTx = await wallet.createAndSignTx({
 const executeTxResult = await terra.tx.broadcast(executeTx);
 ```
 
-## 从合约中查询数据
+## 契約からのデータのクエリ
 
-合约可以定义一个查询处理程序，该处理程序理解对名为 QueryMsg 的 JSON 消息中指定的数据的请求。 与消息处理程序不同，查询处理程序不能修改合约或区块链的状态——它是一个只读操作。 因此，从合约查询数据不使用消息和事务，而是直接通过“LCDClient”API 工作。
-
+コントラクトは、QueryMsgという名前のJSONメッセージで指定されたデータのリクエストを理解するクエリハンドラーを定義できます。 メッセージハンドラーとは異なり、クエリハンドラーはコントラクトまたはブロックチェーンの状態を変更できません。これは読み取り専用の操作です。 したがって、コントラクトからのデータのクエリはメッセージやトランザクションを使用せず、「LCDClient」APIを介して直接機能します。
 ```ts
 const result = await terra.wasm.contractQuery(
   contract_address[0],

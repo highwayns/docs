@@ -19,15 +19,15 @@ moniker = "cx-mbp-will.local"
 
 `addrbook.json`を選択してダウンロードし、`〜/.terra/config/addrbook.json`に移動します。これにより、他のノードを見つけるために選択したピアダイヤルがノードに提供されます。
 
-p2pとシードの設定の詳細については、[追加設定]（#additional-settings）にアクセスしてください。
+p2pとシードの設定の詳細については、[追加設定](#additional-settings)にアクセスしてください。
 
--メインネットの名簿：
+-メインネットの名簿:
 
 ```bash
 wget https://network.terra.dev/addrbook.json -O〜/.terra/config/addrbook.json
 ```
 
--テストネットの名簿：
+-テストネットの名簿:
 
 ```bash
 wget https://network.terra.dev/testnet/addrbook.json -O〜/.terra/config/addrbook.json
@@ -42,18 +42,18 @@ wget https://network.terra.dev/testnet/addrbook.json -O〜/.terra/config/addrboo
 ```toml
 #検証者が処理するために受け入れることをいとわない最低ガス価格
 # トレード。取引手数料は、あらゆる宗派の最低要件を満たしている必要があります
-#この構成で指定します（たとえば、0.25token1; 0.0001token2）。 
+#この構成で指定します(たとえば、0.25token1; 0.0001token2)。 
 minimum-gas-prices = "0.01133uluna、0.15uusd、0.104938usdr、169.77ukrw、428.571umnt、0.125ueur、0.98ucny、16.37ujpy、0.11ugbp、10.88uinr、0.19ucad、0.14uchf、0.19uaud、0.2usgd、4.62 uthb、1.25usek、1.25unok、0.9udkk、2180.0uidr、7.6uphp、1.17uhkd "
 ```
 
 
-## ライトクライアントデーモン（LCD）を起動します
+## ライトクライアントデーモン(LCD)を起動します
 
 REST APIとSwaggerを有効にし、LCDをアクティブ化するには、次の手順を実行します。
 
 1. `〜/.terra/config/app.toml`を開きます。
 
-2. `API構成`セクション（ `[api]`）を見つけます。
+2. `API構成`セクション( `[api]`)を見つけます。
 
 3. `enable = false`を` enable = true`に変更します。
 
@@ -62,7 +62,7 @@ REST APIとSwaggerを有効にし、LCDをアクティブ化するには、次�
 enable = true
 ```
 
-4. オプション：Swaggerを有効にするには、 `swagger = flase`を` swagger = true`に変更してください。
+4. オプション:Swaggerを有効にするには、 `swagger = flase`を` swagger = true`に変更してください。
 
 ```toml
 #Swaggerは、Swaggerドキュメントを自動的に登録するかどうかを定義します。
@@ -72,7 +72,7 @@ swagger = true
 
 再起動後、LCDが使用可能になります。
 
-Terra REST APIエンドポイントの詳細については、[Swaggerドキュメント]（https://lcd.terra.dev/swagger/）を参照してください。
+Terra REST APIエンドポイントの詳細については、[Swaggerドキュメント](https://lcd.terra.dev/swagger/)を参照してください。
 
 ## その他の設定
 
@@ -109,4 +109,4 @@ persistent_peers = "id100000000000000000000000000000000@1.2.3.4:26656,id20000000
 
 RosettaAPIを介してTerraをCoinbaseと統合します。 Rosettaは、ブロックチェーンデータを標準化された形式に編成するオープンソースAPIであり、開発者がクロスチェーンアプリケーションを構築するのに便利です。 Rosettaはチェーンごとに特定のコードを作成しませんが、RosettaAPIを使用する交換にさまざまなブロックチェーンを統合できます。
 
-詳細については、[Rosettaドキュメントサイト]（https://www.rosetta-api.org/docs/welcome.html）にアクセスしてください。 
+詳細については、[Rosettaドキュメントサイト](https://www.rosetta-api.org/docs/welcome.html)にアクセスしてください。 

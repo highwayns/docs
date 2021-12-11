@@ -1,6 +1,6 @@
 # 使用 Terra Station 桌面
 
-本教程将引导您完成使用 Terra Station（Terra 的官方桌面钱包）的过程。
+本教程将引导您完成使用 Terra Station(Terra 的官方桌面钱包)的过程。
 
 有关如何使用 Station 高级功能的更多指南，请访问 [如何](/zh/How-to/Terra-Station/Wallet.html) 部分。
 
