@@ -72,7 +72,7 @@ LimitNOFILE=65535
 
 3. 运行`systemctl daemon-reload`和`systemctl enable terrad`。
 
-##控制服务
+## 控制服务
 
 使用`systemctl` 来启动、停止和重启服务。 
 ```bash
